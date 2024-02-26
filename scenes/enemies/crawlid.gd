@@ -6,7 +6,7 @@ var move_direction: int = 1
 
 func _physics_process(delta):
 	velocity.x = speed * move_direction
-	
+	var a=1
 	if velocity.y < 2000:
 		velocity.y += gravity * delta
 	move_and_slide()
