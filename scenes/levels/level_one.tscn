@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct2hi03a7nlaj"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
+[ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
+[ext_resource type="PackedScene" uid="uid://oynlk5akiwwh" path="res://scenes/objects/ceiling.tscn" id="3_h3rff"]
+[ext_resource type="PackedScene" uid="uid://dhmttpr42027r" path="res://scenes/players/player.tscn" id="4_mqvlf"]
+[ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="5_0all0"]
+
+[node name="LevelOne" type="Node2D"]
+script = ExtResource("1_e8soq")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Floor" parent="Obstacles" instance=ExtResource("2_aij7w")]
+scale = Vector2(88.7668, 13.675)
+
+[node name="Ceiling" parent="Obstacles" instance=ExtResource("3_h3rff")]
+position = Vector2(1700, -700)
+scale = Vector2(58.529, 1000)
+
+[node name="Ceiling2" parent="Obstacles" instance=ExtResource("3_h3rff")]
+position = Vector2(-1700, -700)
+scale = Vector2(58.529, 1000)
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Drops" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("4_mqvlf")]
+position = Vector2(825, -88)
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Crawlid" parent="." instance=ExtResource("5_0all0")]
+position = Vector2(1199, -25)
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

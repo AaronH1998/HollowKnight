@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3s05gsleqc74"]
+
+[ext_resource type="Script" path="res://scenes/levels/Woolfbox.gd" id="1_gm485"]
+[ext_resource type="PackedScene" uid="uid://bol62geaj15tt" path="res://assets/dog.glb" id="1_pybkd"]
+
+[node name="WoolfBox" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.987309, -0.0663954, 0.144268, 0, 0.908413, 0.418073, -0.158813, -0.412767, 0.896884, 0.873631, 1.59439, 3.0767)
+
+[node name="dog2" parent="." instance=ExtResource("1_pybkd")]
+transform = Transform3D(-0.661561, 0, -0.749892, 0, 1, 0, 0.749892, 0, -0.661561, 0, 0, 0)
+script = ExtResource("1_gm485")
+
+[node name="DoggyBiggerTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05112, 8.29756)
+light_energy = 7.359
+
+[connection signal="timeout" from="DoggyBiggerTimer" to="dog2" method="_on_doggy_bigger_timer_timeout"]

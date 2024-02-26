@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct2hi03a7nlaj"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
+[ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
+[ext_resource type="Texture2D" uid="uid://ddcale0ve6q8g" path="res://assets/Square/Square-0002.png" id="3_wmk6x"]
+[ext_resource type="PackedScene" uid="uid://dhmttpr42027r" path="res://scenes/players/player.tscn" id="4_mqvlf"]
+
+[node name="LevelOne" type="Node2D"]
+script = ExtResource("1_e8soq")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Floor" parent="Obstacles" instance=ExtResource("2_aij7w")]
+scale = Vector2(88.7668, 13.675)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles"]
+position = Vector2(-2140, -4840)
+scale = Vector2(82.6134, -268.105)
+texture = ExtResource("3_wmk6x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Obstacles"]
+position = Vector2(2140, -4840)
+scale = Vector2(82.6134, -268.105)
+texture = ExtResource("3_wmk6x")
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Drops" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("4_mqvlf")]
+position = Vector2(-170, -92)
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
