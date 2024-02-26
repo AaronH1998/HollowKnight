@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 var speed: float = 4 * Globals.UNIT_SIZE
 var min_jump_height: float = 0.8 * Globals.UNIT_SIZE
@@ -20,7 +20,8 @@ var looking_up:bool = false
 var looking_down:bool = false
 var camera_modifier: int
 
-@onready var physics: CharacterBody2D = $PlayerPhysics
+var camera_reached_lock: bool
+
 @onready var visual = $Visual
 @onready var animation_player = $AnimationPlayer
 
@@ -30,13 +31,13 @@ var camera_modifier: int
 @onready var look_up_timer = $Timers/LookUpTimer
 @onready var look_down_timer = $Timers/LookDownTimer
 
-@onready var slash_sprite = $Visual/Smoothing2D/Slashes
-@onready var player_sprite = $Visual/Smoothing2D/Knight
+@onready var slash_sprite = $Visual/Slashes
+@onready var player_sprite = $Visual/Knight
 
-@onready var camera = $Camera2D
-@onready var camera_horizontal_marker = $PlayerPhysics/CameraPosition
+@onready var camera = $Visual/Camera2D
+@onready var camera_horizontal_marker = $CameraPosition
 
-@onready var state_label = $Visual/Smoothing2D/MarginContainer/Label
+@onready var state_label = $Visual/MarginContainer/Label
 
 func _ready():
 	gravity = 2.0 * max_jump_height / pow(jump_duration, 2)
@@ -46,43 +47,43 @@ func _ready():
 
 
 func _process(_delta):
-	if physics.velocity.x < 0:
-		visual.scale.x = -1
-	elif physics.velocity.x > 0: 
-		visual.scale.x = 1
-	
 	_handle_camera()
 
 
 func _handle_camera():
-	if Globals.near_floor or Globals.near_ceiling:
-		camera.global_position = camera.global_position.lerp(Vector2(camera.global_position.x, (Globals.camera_height + camera_modifier)), 0.002)
+
+	if Globals.camera_vertical_locked:
+		if camera_reached_lock:
+			camera.global_position.y = Globals.camera_height
+		else:
+			camera.global_position.y = lerp(camera.global_position.y, Globals.camera_height, 0.002)
+		
 	else:
-		camera.global_position = camera.global_position.lerp(Vector2(camera.global_position.x, (player_sprite.global_position.y + camera_modifier)), 0.002)
-	camera.global_position.x = camera_horizontal_marker.global_position.x
+		camera.global_position.y = lerp(camera.global_position.y, $CameraPosition.global_position.y, 0.002)
+	camera_reached_lock =Globals.camera_height -camera.global_position.y  < 1
 
 
 func _handle_move_input():
 	var direction = Input.get_axis("left", "right")
-	physics.velocity.x = direction * speed
+	velocity.x = direction * speed
 
 
 func _apply_gravity(delta):
-	if physics.velocity.y < 2000:
-		physics.velocity.y += gravity * delta
+	if velocity.y < 2000:
+		velocity.y += gravity * delta
 
 
 func _apply_movement():
-	if physics.velocity.x > 0:
+	if velocity.x > 0:
 		if move_direction != 1:
 			move_direction = 1
-			physics.scale.x = -1
-	elif physics.velocity.x < 0:
+			scale.x = -1
+	elif velocity.x < 0:
 		if move_direction != -1:
 			move_direction = -1
-			physics.scale.x = -1
+			scale.x = -1
 	
-	physics.move_and_slide()
+	move_and_slide()
 
 
 func _on_alt_attack_timer_timeout():
@@ -109,3 +110,7 @@ func _on_look_up_timer_timeout():
 func _on_look_down_timer_timeout():
 	camera_modifier = 100
 
+
+
+func _on_enemy_detection_area_body_entered(body):
+	print(body)

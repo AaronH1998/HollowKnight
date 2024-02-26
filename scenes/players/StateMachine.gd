@@ -17,16 +17,16 @@ func _input(event):
 	if Globals.level_preparing:
 		return
 		
-	if [states.idle, states.walk, states.attack, states.look_up, states.look_down].has(state) and parent.physics.is_on_floor():
+	if [states.idle, states.walk, states.attack, states.look_up, states.look_down].has(state) and parent.is_on_floor():
 		if event.is_action_pressed("jump"):
-			parent.physics.velocity.y = parent.max_jump_velocity
+			parent.velocity.y = parent.max_jump_velocity
 			parent.jumping = true
 
-	if event.is_action_released("jump") and parent.physics.velocity.y < parent.min_jump_velocity:
-		parent.physics.velocity.y = parent.min_jump_velocity
+	if event.is_action_released("jump") and parent.velocity.y < parent.min_jump_velocity:
+		parent.velocity.y = parent.min_jump_velocity
 	
 	if event.is_action_pressed("attack"):
-		if !parent.physics.is_on_floor() and Input.is_action_pressed("down"):
+		if !parent.is_on_floor() and Input.is_action_pressed("down"):
 			if parent.can_normal_attack:
 				parent.attack_timer.stop()
 				parent.down_attacking = true
@@ -88,12 +88,12 @@ func _get_transition(delta):
 				return states.up_attack
 			if parent.normal_attacking:
 				return states.attack
-			if !parent.physics.is_on_floor():
-				if parent.physics.velocity.y < 0:
+			if !parent.is_on_floor():
+				if parent.velocity.y < 0:
 					return states.jump
-				elif parent.physics.velocity.y > 0:
+				elif parent.velocity.y > 0:
 					return states.fall
-			elif parent.physics.velocity.x != 0:
+			elif parent.velocity.x != 0:
 				return states.walk
 			elif parent.looking_up:
 				return states.look_up
@@ -106,12 +106,12 @@ func _get_transition(delta):
 				return states.up_attack
 			if parent.normal_attacking:
 				return states.attack
-			if !parent.physics.is_on_floor():
-				if parent.physics.velocity.y < 0:
+			if !parent.is_on_floor():
+				if parent.velocity.y < 0:
 					return states.jump
-				elif parent.physics.velocity.y > 0:
+				elif parent.velocity.y > 0:
 					return states.fall
-			elif parent.physics.velocity.x == 0:
+			elif parent.velocity.x == 0:
 				return states.idle
 		states.jump:
 			if parent.down_attacking:
@@ -120,9 +120,9 @@ func _get_transition(delta):
 				return states.up_attack
 			if parent.normal_attacking:
 				return states.attack
-			if parent.physics.is_on_floor():
+			if parent.is_on_floor():
 				return states.idle
-			elif parent.physics.velocity.y >= 0:
+			elif parent.velocity.y >= 0:
 				return states.fall
 		states.fall:
 			if parent.down_attacking:
@@ -131,73 +131,73 @@ func _get_transition(delta):
 				return states.up_attack
 			if parent.normal_attacking:
 				return states.attack
-			if parent.physics.is_on_floor():
+			if parent.is_on_floor():
 				return states.idle
-			elif parent.physics.velocity.y < 0:
+			elif parent.velocity.y < 0:
 				return states.jump
 		states.attack:
 			if parent.alt_attacking:
 				return states.alt_attack
 			if !parent.normal_attacking:
-				if parent.physics.velocity.y < 0:
+				if parent.velocity.y < 0:
 					return states.jump
-				if parent.physics.velocity.y > 0:
+				if parent.velocity.y > 0:
 					return states.fall
-				if parent.physics.velocity.x != 0:
+				if parent.velocity.x != 0:
 					return states.walk
-				elif parent.physics.velocity.x == 0:
+				elif parent.velocity.x == 0:
 					return states.idle
 		states.alt_attack:
 			if parent.normal_attacking:
 				return states.attack
 			if !parent.alt_attacking:
-				if parent.physics.velocity.y < 0:
+				if parent.velocity.y < 0:
 					return states.jump
-				if parent.physics.velocity.y > 0:
+				if parent.velocity.y > 0:
 					return states.fall
-				if parent.physics.velocity.x != 0:
+				if parent.velocity.x != 0:
 					return states.walk
-				elif parent.physics.velocity.x == 0:
+				elif parent.velocity.x == 0:
 					return states.idle
 		states.up_attack:
 			if !parent.up_attacking:
-				if parent.physics.velocity.y < 0:
+				if parent.velocity.y < 0:
 					return states.jump
-				if parent.physics.velocity.y > 0:
+				if parent.velocity.y > 0:
 					return states.fall
-				if parent.physics.velocity.x != 0:
+				if parent.velocity.x != 0:
 					return states.walk
-				elif parent.physics.velocity.x == 0:
+				elif parent.velocity.x == 0:
 					return states.idle
 		states.down_attack:
 			if !parent.down_attacking:
-				if parent.physics.velocity.y < 0:
+				if parent.velocity.y < 0:
 					return states.jump
-				if parent.physics.velocity.y > 0:
+				if parent.velocity.y > 0:
 					return states.fall
-				if parent.physics.velocity.x != 0:
+				if parent.velocity.x != 0:
 					return states.walk
-				elif parent.physics.velocity.x == 0:
+				elif parent.velocity.x == 0:
 					return states.idle
 		states.look_up:
 			if parent.up_attacking:
 				return states.up_attack
-			if parent.physics.velocity.y < 0:
+			if parent.velocity.y < 0:
 				return states.jump
-			if parent.physics.velocity.y > 0:
+			if parent.velocity.y > 0:
 					return states.fall
-			if parent.physics.velocity.x != 0:
+			if parent.velocity.x != 0:
 				return states.walk
 			if !parent.looking_up:
 				return states.idle
 		states.look_down:
 			if parent.normal_attacking:
 				return states.attack
-			if parent.physics.velocity.y < 0:
+			if parent.velocity.y < 0:
 				return states.jump
-			if parent.physics.velocity.y > 0:
+			if parent.velocity.y > 0:
 				return states.fall
-			if parent.physics.velocity.x != 0:
+			if parent.velocity.x != 0:
 				return states.walk
 			if !parent.looking_down:
 				return states.idle
