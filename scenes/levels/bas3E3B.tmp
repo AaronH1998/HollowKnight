@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://xsb3045ytxh"]
+
+[ext_resource type="Texture2D" uid="uid://ddcale0ve6q8g" path="res://assets/Square/Square-0002.png" id="1_7pb6l"]
+[ext_resource type="Script" path="res://scenes/levels/Basic.gd" id="2_jof2v"]
+[ext_resource type="Texture2D" uid="uid://dfle4yfqqfo2y" path="res://assets/the_knight.png" id="3_bt1d1"]
+[ext_resource type="Script" path="res://scenes/levels/LerpCamera.gd" id="3_ifl28"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ki6lm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_om6xn"]
+
+[node name="Basic" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(21.3095, 7.57353)
+shape = SubResource("RectangleShape2D_ki6lm")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(13.5333, 4.7069)
+texture = ExtResource("1_7pb6l")
+
+[node name="Basic" type="CharacterBody2D" parent="."]
+position = Vector2(0, -94)
+script = ExtResource("2_jof2v")
+
+[node name="LerpCamera" type="Camera2D" parent="Basic"]
+process_physics_priority = 1
+position = Vector2(-1, 0)
+zoom = Vector2(2.08, 2.08)
+position_smoothing_enabled = true
+script = ExtResource("3_ifl28")
+
+[node name="Sprite2D" type="Sprite2D" parent="Basic"]
+position = Vector2(0, -14)
+scale = Vector2(0.0348837, 0.0444444)
+texture = ExtResource("3_bt1d1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basic"]
+shape = SubResource("CapsuleShape2D_om6xn")

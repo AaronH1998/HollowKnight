@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://blmjo3hrx08cl"]
+
+[ext_resource type="Script" path="res://scenes/objects/Floor.gd" id="1_jxebf"]
+[ext_resource type="Texture2D" uid="uid://ddcale0ve6q8g" path="res://assets/Square/Square-0002.png" id="2_cmf1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlj7v"]
+size = Vector2(32, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fpfdg"]
+size = Vector2(32, 32)
+
+[node name="Floor" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_jxebf")
+
+[node name="CameraLockArea" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLockArea"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_vlj7v")
+
+[node name="CameraMinHeight" type="Marker2D" parent="CameraLockArea"]
+position = Vector2(0, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_fpfdg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("2_cmf1a")
+
+[connection signal="body_entered" from="CameraLockArea" to="." method="_on_camera_lock_area_body_entered"]
+[connection signal="body_exited" from="CameraLockArea" to="." method="_on_camera_lock_area_body_exited"]

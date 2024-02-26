@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct2hi03a7nlaj"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
+[ext_resource type="PackedScene" uid="uid://d15rja5d63k3v" path="res://scenes/players/the_knight.tscn" id="1_fwpdh"]
+[ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
+[ext_resource type="Script" path="res://scenes/players/the_knight.gd" id="2_dd35r"]
+[ext_resource type="Script" path="res://scenes/levels/PlayerCamera.gd" id="5_pms6e"]
+
+[node name="LevelOne" type="Node2D"]
+script = ExtResource("1_e8soq")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Floor" parent="Obstacles" instance=ExtResource("2_aij7w")]
+position = Vector2(1421, 407)
+scale = Vector2(88.7668, 13.675)
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Drops" type="Node2D" parent="."]
+
+[node name="TheKnight" parent="." instance=ExtResource("1_fwpdh")]
+position = Vector2(862, 327)
+script = ExtResource("2_dd35r")
+
+[node name="PlayerCamera" type="Camera2D" parent="TheKnight"]
+position_smoothing_enabled = true
+script = ExtResource("5_pms6e")
+
+[node name="Foreground" type="Node2D" parent="."]

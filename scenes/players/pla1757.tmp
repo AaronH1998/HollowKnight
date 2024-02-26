@@ -1,0 +1,298 @@
+[gd_scene load_steps=16 format=3 uid="uid://dhmttpr42027r"]
+
+[ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
+[ext_resource type="Script" path="res://scenes/players/StateMachine.gd" id="1_yhpfl"]
+[ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
+[ext_resource type="Texture2D" uid="uid://bja844y03mekb" path="res://assets/Knight/sprite_sheet_proj.png" id="4_ggx58"]
+[ext_resource type="Texture2D" uid="uid://dnniy7w86adtj" path="res://assets/Knight/slashes.png" id="5_1feuw"]
+[ext_resource type="Script" path="res://scenes/players/PlayerCamera.gd" id="5_mlvux"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy1a"]
+radius = 41.0
+height = 138.0
+
+[sub_resource type="Animation" id="Animation_r85q6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/Smoothing2D/Slashes:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_svix5"]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/Smoothing2D/Slashes:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visual/Smoothing2D/Slashes:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_k6gtg"]
+resource_name = "attack alt"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_stop_attack"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visual/Smoothing2D/Slashes:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visual/Smoothing2D/Slashes:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vuewp"]
+resource_name = "fall"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35]
+}
+
+[sub_resource type="Animation" id="Animation_i06da"]
+resource_name = "idle wind"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+
+[sub_resource type="Animation" id="Animation_pyj1d"]
+resource_name = "jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 25]
+}
+
+[sub_resource type="Animation" id="Animation_g351x"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqk6u"]
+_data = {
+"RESET": SubResource("Animation_r85q6"),
+"attack": SubResource("Animation_svix5"),
+"attack alt": SubResource("Animation_k6gtg"),
+"fall": SubResource("Animation_vuewp"),
+"idle wind": SubResource("Animation_i06da"),
+"jump": SubResource("Animation_pyj1d"),
+"walk": SubResource("Animation_g351x")
+}
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_vxu5b")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("1_yhpfl")
+
+[node name="PlayerPhysics" type="CharacterBody2D" parent="."]
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPhysics"]
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_hyy1a")
+
+[node name="CameraPosition" type="Marker2D" parent="PlayerPhysics"]
+position = Vector2(100, 0)
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Smoothing2D" type="Node2D" parent="Visual"]
+script = ExtResource("1_yvi7j")
+target = NodePath("../../PlayerPhysics")
+flags = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="Visual/Smoothing2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = -69.0
+offset_right = 170.5
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="Visual/Smoothing2D/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="Knight" type="Sprite2D" parent="Visual/Smoothing2D"]
+position = Vector2(3, -4.00001)
+scale = Vector2(1.5, 1.46875)
+texture = ExtResource("4_ggx58")
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="Slashes" type="Sprite2D" parent="Visual/Smoothing2D"]
+visible = false
+position = Vector2(76, -1)
+scale = Vector2(1.66992, 2.27829)
+texture = ExtResource("5_1feuw")
+hframes = 8
+vframes = 8
+frame = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(100, 0)
+scale = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+script = ExtResource("5_mlvux")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kqk6u")
+}
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AltSlashTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="Timers/AltSlashTimer" to="." method="_on_alt_slash_timer_timeout"]
+[connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]
