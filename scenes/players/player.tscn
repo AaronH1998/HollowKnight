@@ -19,7 +19,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +31,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Smoothing2D/Slashes:frame")
+tracks/1/path = NodePath("Visual/Slashes:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +48,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +60,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Smoothing2D/Slashes:frame")
+tracks/1/path = NodePath("Visual/Slashes:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -72,7 +72,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/Smoothing2D/Slashes:visible")
+tracks/2/path = NodePath("Visual/Slashes:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -84,7 +84,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/Smoothing2D/Slashes:position")
+tracks/3/path = NodePath("Visual/Slashes:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -96,7 +96,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/Smoothing2D/Slashes:scale")
+tracks/4/path = NodePath("Visual/Slashes:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -113,7 +113,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -125,7 +125,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Smoothing2D/Slashes:frame")
+tracks/1/path = NodePath("Visual/Slashes:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -137,7 +137,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/Smoothing2D/Slashes:visible")
+tracks/2/path = NodePath("Visual/Slashes:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -149,7 +149,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/Smoothing2D/Slashes:position")
+tracks/3/path = NodePath("Visual/Slashes:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -161,7 +161,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/Smoothing2D/Slashes:scale")
+tracks/4/path = NodePath("Visual/Slashes:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -178,7 +178,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -190,7 +190,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Smoothing2D/Slashes:frame")
+tracks/1/path = NodePath("Visual/Slashes:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -202,7 +202,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/Smoothing2D/Slashes:position")
+tracks/2/path = NodePath("Visual/Slashes:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -214,7 +214,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/Smoothing2D/Slashes:scale")
+tracks/3/path = NodePath("Visual/Slashes:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -226,7 +226,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/Smoothing2D/Slashes:visible")
+tracks/4/path = NodePath("Visual/Slashes:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -243,7 +243,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -255,7 +255,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Smoothing2D/Slashes:frame")
+tracks/1/path = NodePath("Visual/Slashes:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -267,7 +267,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/Smoothing2D/Slashes:visible")
+tracks/2/path = NodePath("Visual/Slashes:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -279,7 +279,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/Smoothing2D/Slashes:position")
+tracks/3/path = NodePath("Visual/Slashes:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -291,7 +291,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/Smoothing2D/Slashes:scale")
+tracks/4/path = NodePath("Visual/Slashes:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -308,7 +308,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -325,7 +325,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -341,7 +341,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -356,7 +356,7 @@ resource_name = "look down"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -372,7 +372,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -389,7 +389,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Smoothing2D/Knight:frame")
+tracks/0/path = NodePath("Visual/Knight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -414,38 +414,34 @@ _data = {
 "walk": SubResource("Animation_g351x")
 }
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 29
 script = ExtResource("1_vxu5b")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_yhpfl")
 
-[node name="PlayerPhysics" type="CharacterBody2D" parent="."]
-collision_mask = 29
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPhysics"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 17)
 shape = SubResource("CapsuleShape2D_hyy1a")
 
-[node name="CameraPosition" type="Marker2D" parent="PlayerPhysics"]
+[node name="CameraPosition" type="Marker2D" parent="."]
 position = Vector2(100, 0)
 
-[node name="EnemyDetectionArea" type="Area2D" parent="PlayerPhysics"]
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPhysics/EnemyDetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 position = Vector2(0, 17)
 shape = SubResource("CapsuleShape2D_tfv70")
 
 [node name="Visual" type="Node2D" parent="."]
-
-[node name="Smoothing2D" type="Node2D" parent="Visual"]
 script = ExtResource("1_yvi7j")
-target = NodePath("../../PlayerPhysics")
+target = NodePath("..")
 flags = 15
 
-[node name="MarginContainer" type="MarginContainer" parent="Visual/Smoothing2D"]
+[node name="MarginContainer" type="MarginContainer" parent="Visual"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -462,13 +458,19 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="Label" type="Label" parent="Visual/Smoothing2D/MarginContainer"]
+[node name="Label" type="Label" parent="Visual/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 
-[node name="Knight" type="Sprite2D" parent="Visual/Smoothing2D"]
+[node name="Camera2D" type="Camera2D" parent="Visual"]
+position = Vector2(100, 0)
+scale = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+
+[node name="Knight" type="Sprite2D" parent="Visual"]
 position = Vector2(3, -4.00001)
 scale = Vector2(1.5, 1.46875)
 texture = ExtResource("4_ggx58")
@@ -476,7 +478,7 @@ hframes = 10
 vframes = 10
 frame = 1
 
-[node name="Slashes" type="Sprite2D" parent="Visual/Smoothing2D"]
+[node name="Slashes" type="Sprite2D" parent="Visual"]
 visible = false
 position = Vector2(-4, 78)
 rotation = 6.28319
@@ -485,12 +487,6 @@ texture = ExtResource("5_1feuw")
 hframes = 8
 vframes = 8
 frame = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(100, 0)
-scale = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
-position_smoothing_speed = 6.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -517,7 +513,9 @@ one_shot = true
 [node name="LookDownTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[connection signal="body_entered" from="PlayerPhysics/EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="timeout" from="Timers/NormalAttackTimer" to="." method="_on_normal_attack_timer_timeout"]
 [connection signal="timeout" from="Timers/AltAttackTimer" to="." method="_on_alt_attack_timer_timeout"]
 [connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw8wfitl8qa2i"]
+
+[ext_resource type="Script" path="res://scenes/objects/camera_lock_area.gd" id="1_utvi0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqomi"]
+
+[node name="CameraLockArea" type="Area2D"]
+script = ExtResource("1_utvi0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -10)
+shape = SubResource("RectangleShape2D_tqomi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
