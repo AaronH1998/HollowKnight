@@ -33,13 +33,15 @@ func _input(event):
 				parent.can_normal_attack = false
 				parent.alt_attacking = false
 				parent.attack_timer.start()
-		if Input.is_action_pressed("up"):
+				parent.attack_targets()
+		elif Input.is_action_pressed("up"):
 			if parent.can_normal_attack:
 				parent.attack_timer.stop()
 				parent.up_attacking = true
 				parent.can_normal_attack = false
 				parent.alt_attacking = false
 				parent.attack_timer.start()
+				parent.attack_targets()
 		elif parent.can_normal_attack:
 			parent.attack_timer.stop()
 			parent.normal_attacking = true
@@ -47,6 +49,7 @@ func _input(event):
 			parent.alt_attacking = false
 			parent.normal_attack_timer.start()
 			parent.attack_timer.start()
+			parent.attack_targets()
 		elif parent.can_alt_attack:
 			parent.attack_timer.stop()
 			parent.alt_attacking = true
@@ -54,6 +57,7 @@ func _input(event):
 			parent.normal_attacking = false
 			parent.alt_attack_timer.start()
 			parent.attack_timer.start()
+			parent.attack_targets()
 	
 	if event.is_action_pressed("up") and state == states.idle:
 		parent.looking_up = true
@@ -206,25 +210,45 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
-			parent.animation_player.play("idle wind")
+			parent.knight_animated_sprite.play("idle")
 		states.walk:
-			parent.animation_player.play("walk")
+			parent.knight_animated_sprite.play("walk")
 		states.jump:
-			parent.animation_player.play("jump")
+			parent.knight_animated_sprite.play("jump")
 		states.fall:
-			parent.animation_player.play("fall")
+			parent.knight_animated_sprite.play("fall")
 		states.attack:
-			parent.animation_player.play("attack")
+			parent.knight_animated_sprite.play("slash")
+			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
+			parent.slash_animated_sprite.show()
+			parent.slash_animated_sprite.play("slash effect")
+			await parent.slash_animated_sprite.animation_finished
+			parent.slash_animated_sprite.hide()
 		states.alt_attack:
-			parent.animation_player.play("attack alt")
+			parent.knight_animated_sprite.play("slash alt")
+			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
+			parent.slash_animated_sprite.show()
+			parent.slash_animated_sprite.play("slash effect alt")
+			await parent.slash_animated_sprite.animation_finished
+			parent.slash_animated_sprite.hide()
 		states.up_attack:
-			parent.animation_player.play("attack up")
+			parent.knight_animated_sprite.play("slash up")
+			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
+			parent.slash_animated_sprite.show()
+			parent.slash_animated_sprite.play("slash effect up")
+			await parent.slash_animated_sprite.animation_finished
+			parent.slash_animated_sprite.hide()
 		states.down_attack:
-			parent.animation_player.play("attack down")
+			parent.knight_animated_sprite.play("slash down")
+			parent.slash_animated_sprite.position = parent.down_slash_marker.position
+			parent.slash_animated_sprite.show()
+			parent.slash_animated_sprite.play("slash effect down")
+			await parent.slash_animated_sprite.animation_finished
+			parent.slash_animated_sprite.hide()
 		states.look_up:
-			parent.animation_player.play("look up")
+			parent.knight_animated_sprite.play("look up")
 		states.look_down:
-			parent.animation_player.play("look down")
+			parent.knight_animated_sprite.play("look down")
 	
 func _exit_state(old_state, new_state):
 	pass

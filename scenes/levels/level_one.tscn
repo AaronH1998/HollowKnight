@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=9 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
@@ -7,10 +7,29 @@
 [ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="5_0all0"]
 [ext_resource type="PackedScene" uid="uid://cw8wfitl8qa2i" path="res://scenes/objects/camera_lock_area.tscn" id="6_rv3fu"]
 
+[sub_resource type="Gradient" id="Gradient_pkeoc"]
+offsets = PackedFloat32Array(0, 0.930314, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.658537, 0.658537, 0.658537, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yyeer"]
+gradient = SubResource("Gradient_pkeoc")
+fill_from = Vector2(1, 0)
+
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_e8soq")
+metadata/_edit_vertical_guides_ = [3203.0]
 
 [node name="Background" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_mirroring = Vector2(3200, 3200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer"]
+scale = Vector2(50, 50)
+texture = SubResource("GradientTexture2D_yyeer")
+centered = false
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -20,10 +39,12 @@ script = ExtResource("1_e8soq")
 scale = Vector2(88.7668, 13.675)
 
 [node name="Ceiling" parent="Obstacles" instance=ExtResource("3_h3rff")]
+visible = false
 position = Vector2(1700, -700)
 scale = Vector2(58.529, 1000)
 
 [node name="Ceiling2" parent="Obstacles" instance=ExtResource("3_h3rff")]
+visible = false
 position = Vector2(-1700, -700)
 scale = Vector2(58.529, 1000)
 
@@ -32,7 +53,7 @@ scale = Vector2(58.529, 1000)
 [node name="Drops" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
-position = Vector2(825, -88)
+position = Vector2(418, -93)
 
 [node name="Foreground" type="Node2D" parent="."]
 
@@ -40,15 +61,22 @@ position = Vector2(825, -88)
 one_shot = true
 autostart = true
 
-[node name="Crawlid" parent="." instance=ExtResource("5_0all0")]
-position = Vector2(1199, -25)
-
 [node name="CameraLockArea" parent="." instance=ExtResource("6_rv3fu")]
 position = Vector2(-765, -2)
 scale = Vector2(75.8481, 16.93)
+can_look_up = false
+can_look_down = false
 
 [node name="CameraLockArea2" parent="." instance=ExtResource("6_rv3fu")]
 position = Vector2(752, -2)
 scale = Vector2(73.9013, 34.8371)
+
+[node name="Crawlid" parent="." instance=ExtResource("5_0all0")]
+position = Vector2(-4, -36)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.576471, 0.376471, 0.317647, 1)
+energy = 0.5
+blend_mode = 1
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

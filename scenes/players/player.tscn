@@ -1,418 +1,605 @@
-[gd_scene load_steps=20 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=137 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://scenes/players/StateMachine.gd" id="1_yhpfl"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
-[ext_resource type="Texture2D" uid="uid://bja844y03mekb" path="res://assets/Knight/sprite_sheet_proj.png" id="4_ggx58"]
-[ext_resource type="Texture2D" uid="uid://dnniy7w86adtj" path="res://assets/Knight/slashes.png" id="5_1feuw"]
+[ext_resource type="Texture2D" uid="uid://pnuqea280sri" path="res://assets/textures/lights/circle.png" id="3_m8sk1"]
+[ext_resource type="Texture2D" uid="uid://b1o3mgm1v7exo" path="res://assets/animations/knight/idle/Idle_000.png" id="5_31uuw"]
+[ext_resource type="Texture2D" uid="uid://bp5cty5mew2t4" path="res://assets/animations/knight/fall/Fall_000.png" id="5_v7p8w"]
+[ext_resource type="Texture2D" uid="uid://bnrr3jdig8681" path="res://assets/animations/knight/fall/Fall_001.png" id="6_ecx22"]
+[ext_resource type="Texture2D" uid="uid://irohn41f8h2v" path="res://assets/animations/knight/idle/Idle_001.png" id="6_gs2ec"]
+[ext_resource type="Texture2D" uid="uid://mcfrlwi34arc" path="res://assets/animations/knight/fall/Fall_002.png" id="7_11ldh"]
+[ext_resource type="Texture2D" uid="uid://bo07fxj8hrhtw" path="res://assets/animations/knight/idle/Idle_002.png" id="7_cawbe"]
+[ext_resource type="Texture2D" uid="uid://bj8xu75x4vdjx" path="res://assets/animations/knight/fall/Fall_003.png" id="8_1567y"]
+[ext_resource type="Texture2D" uid="uid://bntwesp5tvrjp" path="res://assets/animations/knight/idle/Idle_003.png" id="8_fumd0"]
+[ext_resource type="Texture2D" uid="uid://b23ysheo2dlpd" path="res://assets/animations/knight/fall/Fall_004.png" id="9_vdtiy"]
+[ext_resource type="Texture2D" uid="uid://cvdsan2b72wwe" path="res://assets/animations/knight/idle/Idle_004.png" id="9_w65ks"]
+[ext_resource type="Texture2D" uid="uid://bruby5g136otn" path="res://assets/animations/knight/fall/Fall_005.png" id="10_hopih"]
+[ext_resource type="Texture2D" uid="uid://m86shmctor04" path="res://assets/animations/knight/idle/Idle_005.png" id="10_jmwgo"]
+[ext_resource type="Texture2D" uid="uid://b37brndshm2n7" path="res://assets/animations/knight/idle/Idle_006.png" id="11_egv66"]
+[ext_resource type="Texture2D" uid="uid://d0legnu0mv7gc" path="res://assets/animations/knight/idle/Idle_007.png" id="12_rwbcl"]
+[ext_resource type="Texture2D" uid="uid://dyvyxg8vhckb" path="res://assets/animations/knight/idle/Idle_008.png" id="13_qv56u"]
+[ext_resource type="Texture2D" uid="uid://bqc8sklkiaqac" path="res://assets/animations/knight/airborne/Airborne_000.png" id="14_8eh3o"]
+[ext_resource type="Texture2D" uid="uid://318rf7bo0n3g" path="res://assets/animations/knight/walk/Walk_000.png" id="14_bmn8q"]
+[ext_resource type="Texture2D" uid="uid://bypc7gq5t68n0" path="res://assets/animations/knight/airborne/Airborne_001.png" id="15_kaymn"]
+[ext_resource type="Texture2D" uid="uid://bxe3jsv6sj4c7" path="res://assets/animations/knight/walk/Walk_001.png" id="15_wdx40"]
+[ext_resource type="Texture2D" uid="uid://cgr0yd2f4di1s" path="res://assets/animations/knight/airborne/Airborne_002.png" id="16_60o4y"]
+[ext_resource type="Texture2D" uid="uid://d2x0nx8akksup" path="res://assets/animations/knight/walk/Walk_002.png" id="16_ekvb3"]
+[ext_resource type="Texture2D" uid="uid://ck7pqrjhph55l" path="res://assets/animations/knight/airborne/Airborne_003.png" id="17_edqh3"]
+[ext_resource type="Texture2D" uid="uid://exaxlep2iciw" path="res://assets/animations/knight/walk/Walk_003.png" id="17_qn86x"]
+[ext_resource type="Texture2D" uid="uid://ud8m8pkgbjps" path="res://assets/animations/knight/airborne/Airborne_004.png" id="18_0pykh"]
+[ext_resource type="Texture2D" uid="uid://d0omfcvw4tyln" path="res://assets/animations/knight/walk/Walk_004.png" id="18_y20yh"]
+[ext_resource type="Texture2D" uid="uid://dmbyy1tpjruqh" path="res://assets/animations/knight/walk/Walk_005.png" id="19_hgsva"]
+[ext_resource type="Texture2D" uid="uid://bdtlot0hm5ir7" path="res://assets/animations/knight/airborne/Airborne_005.png" id="19_jnqry"]
+[ext_resource type="Texture2D" uid="uid://c5l2es40a4vli" path="res://assets/animations/knight/walk/Walk_006.png" id="20_ga5s1"]
+[ext_resource type="Texture2D" uid="uid://cyslukeyphyaq" path="res://assets/animations/knight/airborne/Airborne_006.png" id="20_ytcsm"]
+[ext_resource type="Texture2D" uid="uid://cs1pbkrsaiyxc" path="res://assets/animations/knight/airborne/Airborne_007.png" id="21_jdeyh"]
+[ext_resource type="Texture2D" uid="uid://d373qbbdhf2ae" path="res://assets/animations/knight/airborne/Airborne_008.png" id="22_ytrly"]
+[ext_resource type="Texture2D" uid="uid://bfern75dc3mbq" path="res://assets/animations/knight/airborne/Airborne_009.png" id="23_v7vy5"]
+[ext_resource type="Texture2D" uid="uid://d32lyx0xop77y" path="res://assets/animations/knight/slash/Slash_000.png" id="30_0qqap"]
+[ext_resource type="Texture2D" uid="uid://brfsl4ks4w7cs" path="res://assets/animations/knight/look up/LookUp_000.png" id="30_a2xq8"]
+[ext_resource type="Texture2D" uid="uid://dixt8v7focde5" path="res://assets/animations/knight/look down/LookDown_000.png" id="30_wwaln"]
+[ext_resource type="Texture2D" uid="uid://b6sgd08r5bj2c" path="res://assets/animations/knight/look down/LookDown_001.png" id="31_88fuk"]
+[ext_resource type="Texture2D" uid="uid://ddswdvgas0vj6" path="res://assets/animations/knight/slash/Slash_001.png" id="31_0100e"]
+[ext_resource type="Texture2D" uid="uid://cm3usoltam8ik" path="res://assets/animations/knight/look up/LookUp_001.png" id="31_h7toj"]
+[ext_resource type="Texture2D" uid="uid://d25ix5dcgq1db" path="res://assets/animations/knight/look up/LookUp_002.png" id="32_7c6dg"]
+[ext_resource type="Texture2D" uid="uid://b5y44u7ytmyv7" path="res://assets/animations/knight/slash/Slash_002.png" id="32_a6h8w"]
+[ext_resource type="Texture2D" uid="uid://duijwcvjrp5tk" path="res://assets/animations/knight/look down/LookDown_002.png" id="32_tkcrq"]
+[ext_resource type="Texture2D" uid="uid://6okp8l5gu6eb" path="res://assets/animations/knight/slash/Slash_003.png" id="33_0fi0j"]
+[ext_resource type="Texture2D" uid="uid://dqc4xtn361oxd" path="res://assets/animations/knight/look up/LookUp_003.png" id="33_dg5vj"]
+[ext_resource type="Texture2D" uid="uid://cmljwrk2lsdpa" path="res://assets/animations/knight/look down/LookDown_003.png" id="33_o20sy"]
+[ext_resource type="Texture2D" uid="uid://br70aebnax374" path="res://assets/animations/knight/slash/Slash_004.png" id="34_fsp78"]
+[ext_resource type="Texture2D" uid="uid://baic567kvlpgx" path="res://assets/animations/knight/look down/LookDown_004.png" id="34_g8fk2"]
+[ext_resource type="Texture2D" uid="uid://b3j2d5xwdmlrl" path="res://assets/animations/knight/look up/LookUp_004.png" id="34_yto1u"]
+[ext_resource type="Texture2D" uid="uid://xbvyr5oakll4" path="res://assets/animations/knight/look down/LookDown_005.png" id="35_j1pk6"]
+[ext_resource type="Texture2D" uid="uid://drk1nsl7sodhg" path="res://assets/animations/knight/slash/Slash_005.png" id="35_mevta"]
+[ext_resource type="Texture2D" uid="uid://erac5iyksvl8" path="res://assets/animations/knight/look up/LookUp_005.png" id="35_tryc2"]
+[ext_resource type="Texture2D" uid="uid://go5kx22t7t3d" path="res://assets/animations/knight/slash/Slash_006.png" id="36_2bnii"]
+[ext_resource type="Texture2D" uid="uid://bywg50bcudn5w" path="res://assets/animations/knight/slash/Slash_007.png" id="37_gp17w"]
+[ext_resource type="Texture2D" uid="uid://njgedi5xs82e" path="res://assets/animations/knight/slash/Slash_008.png" id="38_87h4w"]
+[ext_resource type="Texture2D" uid="uid://da56u5vun3nti" path="res://assets/animations/knight/slash/Slash_009.png" id="39_kaie7"]
+[ext_resource type="Texture2D" uid="uid://bc3tj4hsbsjtm" path="res://assets/animations/knight/slash/Slash_010.png" id="40_gmhwv"]
+[ext_resource type="Texture2D" uid="uid://bvm5x60h4ylgm" path="res://assets/animations/knight/slash/Slash_011.png" id="41_41wsb"]
+[ext_resource type="Texture2D" uid="uid://cxac0gxysvpko" path="res://assets/animations/knight/slash/Slash_012.png" id="42_majuu"]
+[ext_resource type="Texture2D" uid="uid://b0rm06whj3x8c" path="res://assets/animations/knight/slash/Slash_013.png" id="43_1a0eo"]
+[ext_resource type="Texture2D" uid="uid://b6s5m7quy615k" path="res://assets/animations/knight/slash/Slash_014.png" id="44_1dgk4"]
+[ext_resource type="Texture2D" uid="uid://dnbt0oei40bg8" path="res://assets/animations/knight/slash_alt/SlashAlt_000.png" id="45_4bc2w"]
+[ext_resource type="Texture2D" uid="uid://byvi83ajinxi4" path="res://assets/animations/knight/slash_alt/SlashAlt_001.png" id="46_gfhgf"]
+[ext_resource type="Texture2D" uid="uid://cqc6fbwqdpqag" path="res://assets/animations/knight/slash_alt/SlashAlt_002.png" id="47_qyq83"]
+[ext_resource type="Texture2D" uid="uid://b6dagkxxouw71" path="res://assets/animations/knight/slash_alt/SlashAlt_003.png" id="48_m8wbl"]
+[ext_resource type="Texture2D" uid="uid://df3jbq0jvwvfh" path="res://assets/animations/knight/slash_alt/SlashAlt_004.png" id="49_dxqxi"]
+[ext_resource type="Texture2D" uid="uid://x7gq2nr4grhr" path="res://assets/animations/knight/slash_alt/SlashAlt_005.png" id="50_4eqa8"]
+[ext_resource type="Texture2D" uid="uid://bud5i845xktcm" path="res://assets/animations/knight/slash_alt/SlashAlt_006.png" id="51_v7e5n"]
+[ext_resource type="Texture2D" uid="uid://bp3xck716k425" path="res://assets/animations/knight/slash_alt/SlashAlt_007.png" id="52_x28y3"]
+[ext_resource type="Texture2D" uid="uid://ddgbngb8jwfw1" path="res://assets/animations/knight/slash_alt/SlashAlt_008.png" id="53_qdyus"]
+[ext_resource type="Texture2D" uid="uid://ep4vpw3jr13b" path="res://assets/animations/knight/slash_alt/SlashAlt_009.png" id="54_slewg"]
+[ext_resource type="Texture2D" uid="uid://d10f7hsc6ifto" path="res://assets/animations/knight/slash_alt/SlashAlt_010.png" id="55_so2ii"]
+[ext_resource type="Texture2D" uid="uid://gb2e4a3167a" path="res://assets/animations/knight/slash_alt/SlashAlt_011.png" id="56_pg5fe"]
+[ext_resource type="Texture2D" uid="uid://ci2sd6miuodco" path="res://assets/animations/knight/slash_alt/SlashAlt_012.png" id="57_jp72g"]
+[ext_resource type="Texture2D" uid="uid://sf5v1h56lugo" path="res://assets/animations/knight/slash_alt/SlashAlt_013.png" id="58_2dwj1"]
+[ext_resource type="Texture2D" uid="uid://dfq1s85i6x37u" path="res://assets/animations/knight/slash_alt/SlashAlt_014.png" id="59_8rtyu"]
+[ext_resource type="Texture2D" uid="uid://c6a3bbxc6sxrt" path="res://assets/animations/knight/slash_down/DownSlash_000.png" id="60_jt65m"]
+[ext_resource type="Texture2D" uid="uid://dygu8ec4t05j3" path="res://assets/animations/knight/slash_up/UpSlash_000.png" id="60_n6e5g"]
+[ext_resource type="Texture2D" uid="uid://bmnrdybvicib2" path="res://assets/animations/knight/slash_down/DownSlash_001.png" id="61_5l5dq"]
+[ext_resource type="Texture2D" uid="uid://nouq36nuv74g" path="res://assets/animations/knight/slash_up/UpSlash_001.png" id="61_na367"]
+[ext_resource type="Texture2D" uid="uid://bnf8a6hfcsooi" path="res://assets/animations/knight/slash_down/DownSlash_002.png" id="62_s3ns7"]
+[ext_resource type="Texture2D" uid="uid://c4qiwlp0u0c15" path="res://assets/animations/knight/slash_up/UpSlash_002.png" id="62_w3fo8"]
+[ext_resource type="Texture2D" uid="uid://bu8ym2iecgtf8" path="res://assets/animations/knight/slash_down/DownSlash_003.png" id="63_1w07v"]
+[ext_resource type="Texture2D" uid="uid://c5l4bvcllwich" path="res://assets/animations/knight/slash_up/UpSlash_003.png" id="63_u3yc0"]
+[ext_resource type="Texture2D" uid="uid://d2yje788dm35" path="res://assets/animations/knight/slash_down/DownSlash_004.png" id="64_5ts6v"]
+[ext_resource type="Texture2D" uid="uid://ddpv6rcqpdxaf" path="res://assets/animations/knight/slash_up/UpSlash_004.png" id="64_nkl8g"]
+[ext_resource type="Texture2D" uid="uid://4phijiv0qwp3" path="res://assets/animations/knight/slash_up/UpSlash_005.png" id="65_40loh"]
+[ext_resource type="Texture2D" uid="uid://bt7wi77r487pq" path="res://assets/animations/knight/slash_down/DownSlash_005.png" id="65_xlbol"]
+[ext_resource type="Texture2D" uid="uid://0hwkpmtvr1cq" path="res://assets/animations/knight/slash_up/UpSlash_006.png" id="66_6ok0s"]
+[ext_resource type="Texture2D" uid="uid://bhdjrjrp2q45f" path="res://assets/animations/knight/slash_down/DownSlash_006.png" id="66_wdohe"]
+[ext_resource type="Texture2D" uid="uid://wbxxr1mppsk2" path="res://assets/animations/knight/slash_down/DownSlash_007.png" id="67_nujws"]
+[ext_resource type="Texture2D" uid="uid://bhxcyejwb8tgh" path="res://assets/animations/knight/slash_up/UpSlash_007.png" id="67_xnc8w"]
+[ext_resource type="Texture2D" uid="uid://c3hxbviqnpa3y" path="res://assets/animations/knight/slash_up/UpSlash_008.png" id="68_c8uqn"]
+[ext_resource type="Texture2D" uid="uid://d3tpljw8fvqi0" path="res://assets/animations/knight/slash_down/DownSlash_008.png" id="68_cr4tq"]
+[ext_resource type="Texture2D" uid="uid://cdkoj0t8dktoc" path="res://assets/animations/knight/slash_down/DownSlash_009.png" id="69_caags"]
+[ext_resource type="Texture2D" uid="uid://dld3tctmael2y" path="res://assets/animations/knight/slash_up/UpSlash_009.png" id="69_ldnn2"]
+[ext_resource type="Texture2D" uid="uid://0iwshe5sjdy4" path="res://assets/animations/knight/slash_up/UpSlash_010.png" id="70_ccebe"]
+[ext_resource type="Texture2D" uid="uid://1msmlia6c6mc" path="res://assets/animations/knight/slash_down/DownSlash_010.png" id="70_p3ex7"]
+[ext_resource type="Texture2D" uid="uid://c434gbqt45nvd" path="res://assets/animations/knight/slash_up/UpSlash_011.png" id="71_ad8pa"]
+[ext_resource type="Texture2D" uid="uid://woet1d2km6b8" path="res://assets/animations/knight/slash_down/DownSlash_011.png" id="71_o7ij1"]
+[ext_resource type="Texture2D" uid="uid://c12sogc1ump58" path="res://assets/animations/knight/slash_down/DownSlash_012.png" id="72_35rwn"]
+[ext_resource type="Texture2D" uid="uid://b8i3aa80m5k4w" path="res://assets/animations/knight/slash_up/UpSlash_012.png" id="72_fglad"]
+[ext_resource type="Texture2D" uid="uid://wcxuhhlxk4yd" path="res://assets/animations/knight/slash_up/UpSlash_013.png" id="73_hin47"]
+[ext_resource type="Texture2D" uid="uid://c665v136sdhxu" path="res://assets/animations/knight/slash_down/DownSlash_013.png" id="73_kfelg"]
+[ext_resource type="Texture2D" uid="uid://bvytiqsbpy2v3" path="res://assets/animations/knight/slash_up/UpSlash_014.png" id="74_o5qmn"]
+[ext_resource type="Texture2D" uid="uid://cxa1tnki87dtc" path="res://assets/animations/knight/slash_down/DownSlash_014.png" id="74_quv47"]
+[ext_resource type="Texture2D" uid="uid://ic6ov7cc2hbt" path="res://assets/animations/knight/slash_effect/SlashEffect_000.png" id="108_o3pmi"]
+[ext_resource type="Texture2D" uid="uid://ywdj1v6x1w26" path="res://assets/animations/knight/slash_effect/SlashEffect_001.png" id="109_f1kpf"]
+[ext_resource type="Texture2D" uid="uid://cnmrbox3y3kh5" path="res://assets/animations/knight/slash_effect/SlashEffect_002.png" id="110_3v3f5"]
+[ext_resource type="Texture2D" uid="uid://q6tdtxw0bhwp" path="res://assets/animations/knight/slash_effect/SlashEffect_003.png" id="111_1x055"]
+[ext_resource type="Texture2D" uid="uid://dtuby0nll3d10" path="res://assets/animations/knight/slash_effect/SlashEffect_004.png" id="112_x2kfs"]
+[ext_resource type="Texture2D" uid="uid://byw2wayl8oak5" path="res://assets/animations/knight/slash_effect/SlashEffect_005.png" id="113_hkoka"]
+[ext_resource type="Texture2D" uid="uid://bb5k28r3r3n2t" path="res://assets/animations/knight/slash_effect_alt/SlashEffectAlt_000.png" id="114_7pl03"]
+[ext_resource type="Texture2D" uid="uid://vkgh222myboo" path="res://assets/animations/knight/slash_effect_alt/SlashEffectAlt_001.png" id="115_rpdam"]
+[ext_resource type="Texture2D" uid="uid://d1hoyu4fvaje3" path="res://assets/animations/knight/slash_effect_alt/SlashEffectAlt_002.png" id="116_dq7m8"]
+[ext_resource type="Texture2D" uid="uid://ce3oeo2u43g3m" path="res://assets/animations/knight/slash_effect_alt/SlashEffectAlt_003.png" id="117_gptna"]
+[ext_resource type="Texture2D" uid="uid://drjhoma5nnove" path="res://assets/animations/knight/slash_effect_alt/SlashEffectAlt_004.png" id="118_klygy"]
+[ext_resource type="Texture2D" uid="uid://dkbc7vnk3ror2" path="res://assets/animations/knight/slash_effect_alt/SlashEffectAlt_005.png" id="119_60jb3"]
+[ext_resource type="Texture2D" uid="uid://dhlp0qi1v7c10" path="res://assets/animations/knight/slash_down_effect/DownSlashEffect_000.png" id="120_d2xj2"]
+[ext_resource type="Texture2D" uid="uid://6dcd3sbwvgbn" path="res://assets/animations/knight/slash_effect_up/UpSlashEffect_000.png" id="120_jo5k6"]
+[ext_resource type="Texture2D" uid="uid://bfotp3cjofqej" path="res://assets/animations/knight/slash_effect_up/UpSlashEffect_001.png" id="121_nj3o4"]
+[ext_resource type="Texture2D" uid="uid://d3ymwkrl2qv4i" path="res://assets/animations/knight/slash_down_effect/DownSlashEffect_001.png" id="121_xkii5"]
+[ext_resource type="Texture2D" uid="uid://bo2keiglg6stb" path="res://assets/animations/knight/slash_effect_up/UpSlashEffect_002.png" id="122_enqvj"]
+[ext_resource type="Texture2D" uid="uid://i78av2k6iega" path="res://assets/animations/knight/slash_down_effect/DownSlashEffect_002.png" id="122_wekte"]
+[ext_resource type="Texture2D" uid="uid://ctbpcge7316k6" path="res://assets/animations/knight/slash_effect_up/UpSlashEffect_003.png" id="123_23mc4"]
+[ext_resource type="Texture2D" uid="uid://ci85dl2inn10a" path="res://assets/animations/knight/slash_down_effect/DownSlashEffect_003.png" id="123_ixoe8"]
+[ext_resource type="Texture2D" uid="uid://bwg1cxx540dga" path="res://assets/animations/knight/slash_down_effect/DownSlashEffect_004.png" id="124_a7hna"]
+[ext_resource type="Texture2D" uid="uid://cniidj06wfx5c" path="res://assets/animations/knight/slash_effect_up/UpSlashEffect_004.png" id="124_w65gb"]
+[ext_resource type="Texture2D" uid="uid://ck67whgtmi0hk" path="res://assets/animations/knight/slash_effect_up/UpSlashEffect_005.png" id="125_bg8sa"]
+[ext_resource type="Texture2D" uid="uid://c2ehmun6uhs7m" path="res://assets/animations/knight/slash_down_effect/DownSlashEffect_005.png" id="125_jgn2v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy1a"]
-radius = 41.0
-height = 138.0
+radius = 29.0
+height = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfv70"]
-radius = 41.0
-height = 138.0
+radius = 29.0
+height = 100.0
 
-[sub_resource type="Animation" id="Animation_r85q6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Slashes:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_o271f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v7p8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ecx22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_11ldh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1567y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vdtiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hopih")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_31uuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gs2ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cawbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fumd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w65ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jmwgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_egv66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rwbcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qv56u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_8eh3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kaymn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_60o4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_edqh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0pykh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jnqry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ytcsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jdeyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ytrly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_v7vy5")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_wwaln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_88fuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_tkcrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_o20sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_g8fk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_j1pk6")
+}],
+"loop": false,
+"name": &"look down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_a2xq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_h7toj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7c6dg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_dg5vj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_yto1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_tryc2")
+}],
+"loop": false,
+"name": &"look up",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_0qqap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_0100e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_a6h8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_0fi0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_fsp78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mevta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_2bnii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_gp17w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_87h4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_kaie7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_gmhwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_41wsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_majuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_1a0eo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_1dgk4")
+}],
+"loop": false,
+"name": &"slash",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_4bc2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_gfhgf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_qyq83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_m8wbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_dxqxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_4eqa8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_v7e5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_x28y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_qdyus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_slewg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_so2ii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_pg5fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_jp72g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_2dwj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_8rtyu")
+}],
+"loop": false,
+"name": &"slash alt",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("60_jt65m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_5l5dq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_s3ns7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_1w07v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_5ts6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_xlbol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_wdohe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_nujws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_cr4tq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_caags")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_p3ex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_o7ij1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_35rwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_kfelg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_quv47")
+}],
+"loop": false,
+"name": &"slash down",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("60_n6e5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_na367")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_w3fo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_u3yc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_nkl8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_40loh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_6ok0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_xnc8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_c8uqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_ldnn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_ccebe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_ad8pa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_fglad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_hin47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_o5qmn")
+}],
+"loop": false,
+"name": &"slash up",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_bmn8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wdx40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ekvb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qn86x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_y20yh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_hgsva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ga5s1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
 
-[sub_resource type="Animation" id="Animation_svix5"]
-resource_name = "attack"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [23, 24, 25, 26, 27]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Slashes:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/Slashes:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/Slashes:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(40, -14)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/Slashes:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2.435, 2.52)]
-}
-
-[sub_resource type="Animation" id="Animation_k6gtg"]
-resource_name = "attack alt"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [28, 29, 30, 31, 32]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Slashes:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/Slashes:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/Slashes:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(40, -14)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/Slashes:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2.435, 2.52)]
-}
-
-[sub_resource type="Animation" id="Animation_5n6mj"]
-resource_name = "attack down"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [38, 39, 40, 41, 42]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Slashes:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [12, 13]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/Slashes:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-4, 78)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/Slashes:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.7094, 1.931)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/Slashes:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_gasnt"]
-resource_name = "attack up"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [33, 34, 35, 36, 37]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/Slashes:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [8, 9]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/Slashes:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/Slashes:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(10, -66)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/Slashes:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.81535, 3.02344)]
-}
-
-[sub_resource type="Animation" id="Animation_vuewp"]
-resource_name = "fall"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [17, 18, 19, 20, 21, 22]
-}
-
-[sub_resource type="Animation" id="Animation_i06da"]
-resource_name = "idle wind"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 0]
-}
-
-[sub_resource type="Animation" id="Animation_pyj1d"]
-resource_name = "jump"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [11, 12, 13, 14, 15, 16]
-}
-
-[sub_resource type="Animation" id="Animation_dv0wb"]
-resource_name = "look down"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [56, 57, 58, 59, 60, 61]
-}
-
-[sub_resource type="Animation" id="Animation_paahh"]
-resource_name = "look up"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [50, 51, 52, 53, 54, 55]
-}
-
-[sub_resource type="Animation" id="Animation_g351x"]
-resource_name = "walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/Knight:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [43, 44, 45, 46, 47, 48, 49, 46, 43]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqk6u"]
-_data = {
-"RESET": SubResource("Animation_r85q6"),
-"attack": SubResource("Animation_svix5"),
-"attack alt": SubResource("Animation_k6gtg"),
-"attack down": SubResource("Animation_5n6mj"),
-"attack up": SubResource("Animation_gasnt"),
-"fall": SubResource("Animation_vuewp"),
-"idle wind": SubResource("Animation_i06da"),
-"jump": SubResource("Animation_pyj1d"),
-"look down": SubResource("Animation_dv0wb"),
-"look up": SubResource("Animation_paahh"),
-"walk": SubResource("Animation_g351x")
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_oa3pm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("108_o3pmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_f1kpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_3v3f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_1x055")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_x2kfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_hkoka")
+}],
+"loop": false,
+"name": &"slash effect",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("114_7pl03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_rpdam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_dq7m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_gptna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_klygy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_60jb3")
+}],
+"loop": false,
+"name": &"slash effect alt",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("120_d2xj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_xkii5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_wekte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_ixoe8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_a7hna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_jgn2v")
+}],
+"loop": false,
+"name": &"slash effect down",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("120_jo5k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_nj3o4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_enqvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_23mc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_w65gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_bg8sa")
+}],
+"loop": false,
+"name": &"slash effect up",
+"speed": 40.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 29
@@ -421,19 +608,27 @@ script = ExtResource("1_vxu5b")
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_yhpfl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 17)
-shape = SubResource("CapsuleShape2D_hyy1a")
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.6
+texture = ExtResource("3_m8sk1")
+texture_scale = 0.76
 
-[node name="CameraPosition" type="Marker2D" parent="."]
-position = Vector2(100, 0)
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
+scale = Vector2(0.658044, 0.590247)
+polygon = PackedVector2Array(30, 83, 188, 82, 272.018, 79.6277, 276.577, 0, 278, -36, 221.87, -94.8756, 139.808, -132.148, 30.3931, -162.644, 26, -136, 26, 83)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hyy1a")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-position = Vector2(0, 17)
 shape = SubResource("CapsuleShape2D_tfv70")
 
 [node name="Visual" type="Node2D" parent="."]
@@ -467,31 +662,24 @@ theme_override_font_sizes/font_size = 20
 [node name="Camera2D" type="Camera2D" parent="Visual"]
 position = Vector2(100, 0)
 scale = Vector2(1.5, 1.5)
+zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
-[node name="Knight" type="Sprite2D" parent="Visual"]
-position = Vector2(3, -4.00001)
-scale = Vector2(1.5, 1.46875)
-texture = ExtResource("4_ggx58")
-hframes = 10
-vframes = 10
-frame = 1
+[node name="KnightAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
+position = Vector2(2, -38)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_o271f")
+animation = &"idle"
+autoplay = "idle"
 
-[node name="Slashes" type="Sprite2D" parent="Visual"]
+[node name="SlashAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
 visible = false
-position = Vector2(-4, 78)
-rotation = 6.28319
-scale = Vector2(1.7094, 1.931)
-texture = ExtResource("5_1feuw")
-hframes = 8
-vframes = 8
-frame = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_kqk6u")
-}
+position = Vector2(-9, -59)
+scale = Vector2(-1.56502, 1.63817)
+sprite_frames = SubResource("SpriteFrames_oa3pm")
+animation = &"slash effect up"
+frame = 2
 
 [node name="Timers" type="Node" parent="."]
 
@@ -513,8 +701,18 @@ one_shot = true
 [node name="LookDownTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Markers" type="Node2D" parent="."]
 
+[node name="StandardSlashMarker" type="Marker2D" parent="Markers"]
+position = Vector2(-9, -59)
+
+[node name="DownSlashMarker" type="Marker2D" parent="Markers"]
+
+[node name="CameraPosition" type="Marker2D" parent="Markers"]
+position = Vector2(100, 0)
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="timeout" from="Timers/NormalAttackTimer" to="." method="_on_normal_attack_timer_timeout"]
 [connection signal="timeout" from="Timers/AltAttackTimer" to="." method="_on_alt_attack_timer_timeout"]
