@@ -278,7 +278,6 @@ func _enter_state(new_state, _old_state):
 			parent.jump_audio.play()
 		states.fall:
 			parent.knight_animated_sprite.play("fall")
-			parent.fall_audio.play()
 		states.attack:
 			parent.knight_animated_sprite.play("slash")
 			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
@@ -320,7 +319,7 @@ func _enter_state(new_state, _old_state):
 			parent.damage_audio.play()
 			parent.knight_animated_sprite.play("recoil")
 			await parent.knight_animated_sprite.animation_finished
-			parent.knight_animated_sprite.play("walk")
+			parent.knight_animated_sprite.play("idle")
 		states.dead:
 			parent.knight_animated_sprite.play("death")
 			parent.death_audio.play()

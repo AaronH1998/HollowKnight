@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var speed: float = 4 * Globals.UNIT_SIZE
 var min_jump_height: float = 0.8 * Globals.UNIT_SIZE
-var max_jump_height: float = 5 * Globals.UNIT_SIZE
+var max_jump_height: float = 3 * Globals.UNIT_SIZE
 var min_jump_velocity: float
 var max_jump_velocity: float
 var jump_duration: float = 0.5
@@ -26,10 +26,12 @@ var knockback_strength_y: float = 1000.0
 var knockback: Vector2 = Vector2.ZERO
 
 var targets = []
-var damage: int = 5
+var attack_damage: int = 5
 var health: int = 5
 var dead: bool = false
 var damaged: bool = false
+var vulnerable: bool = true
+
 var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tscn")
 
 @onready var visual = $Visual
@@ -42,6 +44,7 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var look_up_timer: Timer = $Timers/LookUpTimer
 @onready var look_down_timer: Timer = $Timers/LookDownTimer
 @onready var damaged_timer: Timer = $Timers/DamagedTimer
+@onready var hit_timer: Timer = $Timers/HitTimer
 
 @onready var camera: Camera2D = $Visual/Camera2D
 @onready var camera_marker: Marker2D = $Markers/CameraPosition
@@ -61,6 +64,8 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var attack_down_audio = $Audio/AttackDown
 @onready var damage_audio = $Audio/Damage
 @onready var death_audio = $Audio/Death
+
+@onready var animation_player = $AnimationPlayer
 
 func _ready():
 	gravity = 2.0 * max_jump_height / pow(jump_duration, 2)
@@ -149,16 +154,27 @@ func _on_enemy_detection_area_body_entered(body):
 
 
 func hit(pos, damage):
+	if vulnerable == false:
+		return
+		
 	damaged = true
-	health -= damage
+	vulnerable = false
+	hit_timer.start()
 	var direction = pos.direction_to(global_position)
 	var force = Vector2(direction.x * knockback_strength_x, direction.y * knockback_strength_y)
 	knockback = force
+	frame_freeze(0.05, 0.4)
+	animation_player.play("invulnerable")
 	
+	health -= damage
 	if health <= 0:
 		_die()
 	
-
+func frame_freeze(time_scale, duration):
+	Engine.time_scale = time_scale
+	await(get_tree().create_timer(duration * time_scale).timeout)
+	Engine.time_scale = 1
+	
 func _die():
 	dead = true
 	
@@ -182,8 +198,12 @@ func _on_attack_area_body_exited(body):
 
 func attack_targets():
 	for body in targets:
-		body.hit(global_position, damage)
+		body.hit(global_position, attack_damage)
 
 
 func _on_damaged_timer_timeout():
 	damaged = false
+
+
+func _on_hit_timer_timeout():
+	vulnerable = true

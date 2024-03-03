@@ -1,4 +1,4 @@
-[gd_scene load_steps=174 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=179 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://pnuqea280sri" path="res://assets/textures/lights/circle.png" id="3_m8sk1"]
 [ext_resource type="Texture2D" uid="uid://clj25ygq4tvu6" path="res://assets/animations/knight/death/Death_000.png" id="5_4nj00"]
 [ext_resource type="Texture2D" uid="uid://b1o3mgm1v7exo" path="res://assets/animations/knight/idle/Idle_000.png" id="5_31uuw"]
+[ext_resource type="Shader" path="res://shaders/invulenerable.gdshader" id="5_qwsj2"]
 [ext_resource type="Texture2D" uid="uid://bp5cty5mew2t4" path="res://assets/animations/knight/fall/Fall_000.png" id="5_v7p8w"]
 [ext_resource type="Texture2D" uid="uid://bnrr3jdig8681" path="res://assets/animations/knight/fall/Fall_001.png" id="6_ecx22"]
 [ext_resource type="Texture2D" uid="uid://irohn41f8h2v" path="res://assets/animations/knight/idle/Idle_001.png" id="6_gs2ec"]
@@ -177,6 +178,11 @@ height = 100.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfv70"]
 radius = 29.0
 height = 100.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvd1q"]
+shader = ExtResource("5_qwsj2")
+shader_parameter/color = Color(0.133333, 0.133333, 0.133333, 1)
+shader_parameter/progress = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o271f"]
 animations = [{
@@ -726,6 +732,43 @@ animations = [{
 "speed": 40.0
 }]
 
+[sub_resource type="Animation" id="Animation_nx5ec"]
+resource_name = "invulnerable"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hc54j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bypv"]
+_data = {
+"RESET": SubResource("Animation_hc54j"),
+"invulnerable": SubResource("Animation_nx5ec")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 29
 script = ExtResource("1_vxu5b")
@@ -792,6 +835,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
 [node name="KnightAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
+material = SubResource("ShaderMaterial_kvd1q")
 position = Vector2(2, -38)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_o271f")
@@ -829,6 +873,10 @@ one_shot = true
 [node name="DamagedTimer" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="HitTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="StandardSlashMarker" type="Marker2D" parent="Markers"]
@@ -851,6 +899,7 @@ volume_db = -12.339
 
 [node name="Fall" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("153_1rl1h")
+volume_db = -10.0
 
 [node name="Land" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("135_4liof")
@@ -882,6 +931,11 @@ stream = ExtResource("160_h2qai")
 [node name="Death" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("161_n88vd")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1bypv")
+}
+
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
@@ -891,3 +945,4 @@ stream = ExtResource("161_n88vd")
 [connection signal="timeout" from="Timers/LookUpTimer" to="." method="_on_look_up_timer_timeout"]
 [connection signal="timeout" from="Timers/LookDownTimer" to="." method="_on_look_down_timer_timeout"]
 [connection signal="timeout" from="Timers/DamagedTimer" to="." method="_on_damaged_timer_timeout"]
+[connection signal="timeout" from="Timers/HitTimer" to="." method="_on_hit_timer_timeout"]
