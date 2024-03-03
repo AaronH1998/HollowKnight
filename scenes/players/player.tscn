@@ -732,6 +732,21 @@ animations = [{
 "speed": 40.0
 }]
 
+[sub_resource type="Animation" id="Animation_hc54j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_nx5ec"]
 resource_name = "invulnerable"
 length = 2.0
@@ -746,21 +761,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_hc54j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bypv"]
@@ -870,9 +870,6 @@ one_shot = true
 [node name="LookDownTimer" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="DamagedTimer" type="Timer" parent="Timers"]
-one_shot = true
-
 [node name="HitTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
 one_shot = true
@@ -944,5 +941,4 @@ libraries = {
 [connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Timers/LookUpTimer" to="." method="_on_look_up_timer_timeout"]
 [connection signal="timeout" from="Timers/LookDownTimer" to="." method="_on_look_down_timer_timeout"]
-[connection signal="timeout" from="Timers/DamagedTimer" to="." method="_on_damaged_timer_timeout"]
 [connection signal="timeout" from="Timers/HitTimer" to="." method="_on_hit_timer_timeout"]
