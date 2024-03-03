@@ -1,4 +1,4 @@
-[gd_scene load_steps=174 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=166 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
@@ -96,28 +96,20 @@
 [ext_resource type="Texture2D" uid="uid://ci2sd6miuodco" path="res://assets/animations/knight/slash_alt/SlashAlt_012.png" id="57_jp72g"]
 [ext_resource type="Texture2D" uid="uid://sf5v1h56lugo" path="res://assets/animations/knight/slash_alt/SlashAlt_013.png" id="58_2dwj1"]
 [ext_resource type="Texture2D" uid="uid://dfq1s85i6x37u" path="res://assets/animations/knight/slash_alt/SlashAlt_014.png" id="59_8rtyu"]
-[ext_resource type="Texture2D" uid="uid://cr8siosr7oi3x" path="res://assets/animations/knight/recoil/Recoil_000.png" id="60_6dyia"]
 [ext_resource type="Texture2D" uid="uid://c6a3bbxc6sxrt" path="res://assets/animations/knight/slash_down/DownSlash_000.png" id="60_jt65m"]
 [ext_resource type="Texture2D" uid="uid://dygu8ec4t05j3" path="res://assets/animations/knight/slash_up/UpSlash_000.png" id="60_n6e5g"]
 [ext_resource type="Texture2D" uid="uid://bmnrdybvicib2" path="res://assets/animations/knight/slash_down/DownSlash_001.png" id="61_5l5dq"]
 [ext_resource type="Texture2D" uid="uid://nouq36nuv74g" path="res://assets/animations/knight/slash_up/UpSlash_001.png" id="61_na367"]
-[ext_resource type="Texture2D" uid="uid://deskay5ltdljl" path="res://assets/animations/knight/recoil/Recoil_001.png" id="61_w3ist"]
-[ext_resource type="Texture2D" uid="uid://bo3qnih678ti0" path="res://assets/animations/knight/recoil/Recoil_002.png" id="62_8e580"]
 [ext_resource type="Texture2D" uid="uid://bnf8a6hfcsooi" path="res://assets/animations/knight/slash_down/DownSlash_002.png" id="62_s3ns7"]
 [ext_resource type="Texture2D" uid="uid://c4qiwlp0u0c15" path="res://assets/animations/knight/slash_up/UpSlash_002.png" id="62_w3fo8"]
 [ext_resource type="Texture2D" uid="uid://bu8ym2iecgtf8" path="res://assets/animations/knight/slash_down/DownSlash_003.png" id="63_1w07v"]
-[ext_resource type="Texture2D" uid="uid://chlbt81od2n3" path="res://assets/animations/knight/recoil/Recoil_003.png" id="63_d7amp"]
 [ext_resource type="Texture2D" uid="uid://c5l4bvcllwich" path="res://assets/animations/knight/slash_up/UpSlash_003.png" id="63_u3yc0"]
 [ext_resource type="Texture2D" uid="uid://d2yje788dm35" path="res://assets/animations/knight/slash_down/DownSlash_004.png" id="64_5ts6v"]
 [ext_resource type="Texture2D" uid="uid://ddpv6rcqpdxaf" path="res://assets/animations/knight/slash_up/UpSlash_004.png" id="64_nkl8g"]
-[ext_resource type="Texture2D" uid="uid://ce45iptjs67kx" path="res://assets/animations/knight/recoil/Recoil_004.png" id="64_tyj41"]
 [ext_resource type="Texture2D" uid="uid://4phijiv0qwp3" path="res://assets/animations/knight/slash_up/UpSlash_005.png" id="65_40loh"]
-[ext_resource type="Texture2D" uid="uid://dx8q01pve7oki" path="res://assets/animations/knight/recoil/Recoil_005.png" id="65_lfsos"]
 [ext_resource type="Texture2D" uid="uid://bt7wi77r487pq" path="res://assets/animations/knight/slash_down/DownSlash_005.png" id="65_xlbol"]
 [ext_resource type="Texture2D" uid="uid://0hwkpmtvr1cq" path="res://assets/animations/knight/slash_up/UpSlash_006.png" id="66_6ok0s"]
-[ext_resource type="Texture2D" uid="uid://7j85766hplir" path="res://assets/animations/knight/recoil/Recoil_006.png" id="66_w8wku"]
 [ext_resource type="Texture2D" uid="uid://bhdjrjrp2q45f" path="res://assets/animations/knight/slash_down/DownSlash_006.png" id="66_wdohe"]
-[ext_resource type="Texture2D" uid="uid://clvjbed23t081" path="res://assets/animations/knight/recoil/Recoil_007.png" id="67_npu36"]
 [ext_resource type="Texture2D" uid="uid://wbxxr1mppsk2" path="res://assets/animations/knight/slash_down/DownSlash_007.png" id="67_nujws"]
 [ext_resource type="Texture2D" uid="uid://bhxcyejwb8tgh" path="res://assets/animations/knight/slash_up/UpSlash_007.png" id="67_xnc8w"]
 [ext_resource type="Texture2D" uid="uid://c3hxbviqnpa3y" path="res://assets/animations/knight/slash_up/UpSlash_008.png" id="68_c8uqn"]
@@ -374,35 +366,6 @@ animations = [{
 "loop": false,
 "name": &"look up",
 "speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("60_6dyia")
-}, {
-"duration": 1.0,
-"texture": ExtResource("61_w3ist")
-}, {
-"duration": 1.0,
-"texture": ExtResource("62_8e580")
-}, {
-"duration": 1.0,
-"texture": ExtResource("63_d7amp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("64_tyj41")
-}, {
-"duration": 1.0,
-"texture": ExtResource("65_lfsos")
-}, {
-"duration": 1.0,
-"texture": ExtResource("66_w8wku")
-}, {
-"duration": 1.0,
-"texture": ExtResource("67_npu36")
-}],
-"loop": false,
-"name": &"recoil",
-"speed": 24.24
 }, {
 "frames": [{
 "duration": 1.0,
@@ -795,7 +758,7 @@ position_smoothing_speed = 6.0
 position = Vector2(2, -38)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_o271f")
-animation = &"recoil"
+animation = &"death"
 autoplay = "idle"
 
 [node name="SlashAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]

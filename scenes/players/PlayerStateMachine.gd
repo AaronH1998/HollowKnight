@@ -11,6 +11,8 @@ func _ready():
 	add_state("down_attack")
 	add_state("look_up")
 	add_state("look_down")
+	add_state("damaged")
+	add_state("dead")
 	call_deferred("set_state", states.idle)
 
 func _input(event):
@@ -79,20 +81,25 @@ func _input(event):
 		parent.camera_modifier = 0
 
 func _state_logic(delta):
-	if !Globals.level_preparing:
-		parent._handle_move_input()
-	parent._apply_gravity(delta)
-	parent._apply_movement()
 	parent.state_label.text = states.find_key(state)
+	if state != states.dead:
+		if !Globals.level_preparing:
+			parent._handle_move_input()
+		parent._apply_gravity(delta)
+		parent._apply_movement()
 	
 func _get_transition(_delta):
 	match state:
 		states.idle:
-			if parent.up_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif parent.up_attacking:
 				return states.up_attack
-			if parent.normal_attacking:
+			elif parent.normal_attacking:
 				return states.attack
-			if !parent.is_on_floor():
+			elif !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
 				elif parent.velocity.y > 0:
@@ -104,13 +111,17 @@ func _get_transition(_delta):
 			elif parent.looking_down:
 				return states.look_down
 		states.walk:
-			if parent.down_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif parent.down_attacking:
 				return states.down_attack
-			if parent.up_attacking:
+			elif parent.up_attacking:
 				return states.up_attack
-			if parent.normal_attacking:
+			elif parent.normal_attacking:
 				return states.attack
-			if !parent.is_on_floor():
+			elif !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
 				elif parent.velocity.y > 0:
@@ -118,93 +129,141 @@ func _get_transition(_delta):
 			elif parent.velocity.x == 0:
 				return states.idle
 		states.jump:
-			if parent.down_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif parent.down_attacking:
 				return states.down_attack
-			if parent.up_attacking:
+			elif parent.up_attacking:
 				return states.up_attack
-			if parent.normal_attacking:
+			elif parent.normal_attacking:
 				return states.attack
-			if parent.is_on_floor():
+			elif parent.is_on_floor():
 				return states.idle
 			elif parent.velocity.y >= 0:
 				return states.fall
 		states.fall:
-			if parent.down_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif parent.down_attacking:
 				return states.down_attack
-			if parent.up_attacking:
+			elif parent.up_attacking:
 				return states.up_attack
-			if parent.normal_attacking:
+			elif parent.normal_attacking:
 				return states.attack
-			if parent.is_on_floor():
+			elif parent.is_on_floor():
 				return states.idle
 			elif parent.velocity.y < 0:
 				return states.jump
 		states.attack:
-			if parent.alt_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif parent.alt_attacking:
 				return states.alt_attack
-			if !parent.normal_attacking:
+			elif !parent.normal_attacking:
 				if parent.velocity.y < 0:
 					return states.jump
-				if parent.velocity.y > 0:
+				elif parent.velocity.y > 0:
 					return states.fall
-				if parent.velocity.x != 0:
+				elif parent.velocity.x != 0:
 					return states.walk
 				elif parent.velocity.x == 0:
 					return states.idle
 		states.alt_attack:
-			if parent.normal_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif parent.normal_attacking:
 				return states.attack
-			if !parent.alt_attacking:
+			elif !parent.alt_attacking:
 				if parent.velocity.y < 0:
 					return states.jump
-				if parent.velocity.y > 0:
+				elif parent.velocity.y > 0:
 					return states.fall
-				if parent.velocity.x != 0:
+				elif parent.velocity.x != 0:
 					return states.walk
 				elif parent.velocity.x == 0:
 					return states.idle
 		states.up_attack:
-			if !parent.up_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif !parent.up_attacking:
 				if parent.velocity.y < 0:
 					return states.jump
-				if parent.velocity.y > 0:
+				elif parent.velocity.y > 0:
 					return states.fall
-				if parent.velocity.x != 0:
+				elif parent.velocity.x != 0:
 					return states.walk
 				elif parent.velocity.x == 0:
 					return states.idle
 		states.down_attack:
-			if !parent.down_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif !parent.down_attacking:
 				if parent.velocity.y < 0:
 					return states.jump
-				if parent.velocity.y > 0:
+				elif parent.velocity.y > 0:
 					return states.fall
-				if parent.velocity.x != 0:
+				elif parent.velocity.x != 0:
 					return states.walk
 				elif parent.velocity.x == 0:
 					return states.idle
 		states.look_up:
-			if parent.up_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif parent.up_attacking:
 				return states.up_attack
-			if parent.velocity.y < 0:
+			elif parent.velocity.y < 0:
 				return states.jump
-			if parent.velocity.y > 0:
+			elif parent.velocity.y > 0:
 					return states.fall
-			if parent.velocity.x != 0:
+			elif parent.velocity.x != 0:
 				return states.walk
-			if !parent.looking_up:
+			elif !parent.looking_up:
 				return states.idle
 		states.look_down:
-			if parent.normal_attacking:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif parent.normal_attacking:
 				return states.attack
-			if parent.velocity.y < 0:
+			elif parent.velocity.y < 0:
 				return states.jump
-			if parent.velocity.y > 0:
+			elif parent.velocity.y > 0:
 				return states.fall
-			if parent.velocity.x != 0:
+			elif parent.velocity.x != 0:
 				return states.walk
-			if !parent.looking_down:
+			elif !parent.looking_down:
 				return states.idle
+		states.damaged:
+			if parent.dead:
+				return states.dead
+			if !parent.damaged:
+				if parent.down_attacking:
+					return states.down_attack
+				elif parent.up_attacking:
+					return states.up_attack
+				elif parent.normal_attacking:
+					return states.attack
+				elif parent.is_on_floor():
+					return states.idle
+				elif parent.velocity.y > 0:
+					return states.fall
+				elif parent.velocity.y < 0:
+					return states.jump
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -219,6 +278,7 @@ func _enter_state(new_state, _old_state):
 			parent.jump_audio.play()
 		states.fall:
 			parent.knight_animated_sprite.play("fall")
+			parent.fall_audio.play()
 		states.attack:
 			parent.knight_animated_sprite.play("slash")
 			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
@@ -255,8 +315,20 @@ func _enter_state(new_state, _old_state):
 			parent.knight_animated_sprite.play("look up")
 		states.look_down:
 			parent.knight_animated_sprite.play("look down")
+		states.damaged:
+			parent.damaged_timer.start()
+			parent.damage_audio.play()
+			parent.knight_animated_sprite.play("recoil")
+			await parent.knight_animated_sprite.animation_finished
+			parent.knight_animated_sprite.play("walk")
+		states.dead:
+			parent.knight_animated_sprite.play("death")
+			parent.death_audio.play()
+			await parent.knight_animated_sprite.animation_finished
+			parent._dead()
 	
 func _exit_state(old_state, new_state):
 	parent.walk_audio.stop()
+	parent.fall_audio.stop()
 	if(old_state == states.fall and new_state == states.idle):
 		parent.land_audio.play()

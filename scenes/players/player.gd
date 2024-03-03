@@ -27,7 +27,12 @@ var knockback: Vector2 = Vector2.ZERO
 
 var targets = []
 var damage: int = 5
+var health: int = 5
+var dead: bool = false
+var damaged: bool = false
+var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tscn")
 
+@onready var visual = $Visual
 @onready var knight_animated_sprite: AnimatedSprite2D = $Visual/KnightAnimatedSprite
 @onready var slash_animated_sprite: AnimatedSprite2D = $Visual/SlashAnimatedSprite
 
@@ -36,6 +41,7 @@ var damage: int = 5
 @onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var look_up_timer: Timer = $Timers/LookUpTimer
 @onready var look_down_timer: Timer = $Timers/LookDownTimer
+@onready var damaged_timer: Timer = $Timers/DamagedTimer
 
 @onready var camera: Camera2D = $Visual/Camera2D
 @onready var camera_marker: Marker2D = $Markers/CameraPosition
@@ -47,11 +53,14 @@ var damage: int = 5
 
 @onready var walk_audio = $Audio/Walk
 @onready var jump_audio = $Audio/Jump
+@onready var fall_audio = $Audio/Fall
 @onready var land_audio = $Audio/Land
 @onready var attack_normal_audio = $Audio/AttackNormal
 @onready var attack_alt_audio = $Audio/AttackAlt
 @onready var attack_up_audio = $Audio/AttackUp
 @onready var attack_down_audio = $Audio/AttackDown
+@onready var damage_audio = $Audio/Damage
+@onready var death_audio = $Audio/Death
 
 func _ready():
 	gravity = 2.0 * max_jump_height / pow(jump_duration, 2)
@@ -134,10 +143,31 @@ func _on_look_down_timer_timeout():
 
 
 func _on_enemy_detection_area_body_entered(body):
-	var direction = body.global_position.direction_to(global_position)
+	var damage = 1
+	var pos = body.global_position
+	hit(pos, damage)
+
+
+func hit(pos, damage):
+	damaged = true
+	health -= damage
+	var direction = pos.direction_to(global_position)
 	var force = Vector2(direction.x * knockback_strength_x, direction.y * knockback_strength_y)
 	knockback = force
-	$Audio/GG.play()
+	
+	if health <= 0:
+		_die()
+	
+
+func _die():
+	dead = true
+	
+func _dead():
+	var death_mask = death_mask_scene.instantiate()
+	death_mask.position = knight_animated_sprite.position
+	knight_animated_sprite.visible = false
+	visual.add_child(death_mask)
+
 
 func _on_attack_area_body_entered(body):
 	if "hit" in body:
@@ -153,3 +183,7 @@ func _on_attack_area_body_exited(body):
 func attack_targets():
 	for body in targets:
 		body.hit(global_position, damage)
+
+
+func _on_damaged_timer_timeout():
+	damaged = false

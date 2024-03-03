@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnniy7w86adtj"
-path="res://.godot/imported/slashes.png-318b10e0552adaf313720a34a27c816e.ctex"
+uid="uid://b7g5ks7ssmuys"
+path="res://.godot/imported/Death_016.png-389b0bad51d09f6358529e31b4cd1fc8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Knight/slashes.png"
-dest_files=["res://.godot/imported/slashes.png-318b10e0552adaf313720a34a27c816e.ctex"]
+source_file="res://assets/animations/knight/death/Death_016.png"
+dest_files=["res://.godot/imported/Death_016.png-389b0bad51d09f6358529e31b4cd1fc8.ctex"]
 
 [params]
 

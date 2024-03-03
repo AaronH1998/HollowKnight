@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://do62khb7wl28i"]
+
+[ext_resource type="Texture2D" uid="uid://b1u7rns0gk2qu" path="res://assets/sprites/Knight/Death Head Cracked_000.png" id="1_x2emx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmgg1"]
+radius = 28.0
+
+[node name="DeathMask" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x2emx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 14)
+shape = SubResource("CircleShape2D_wmgg1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(28, 3, 39, -12, 39, -26, 33, -36, 19, -43, 13, -41, 18, -36, 22, -34, 17, -31, 22, -26, 26, -19, 25, -12, 19, -8)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-27, 4, -38, -10, -38, -26, -28, -39, -17, -41, -16, -38, -22, -33, -17, -30, -17, -27, -21, -26, -23, -14, -20, -8, -17, -6)
