@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq1ljxbg322ko"
-path="res://.godot/imported/SpriteAtlasTexture-Tut_Start (Group 0)-512x1024-fmt12.png-7135cad2712b1bf6848e49daead7b3dd.ctex"
+uid="uid://cx1hwmmivslib"
+path="res://.godot/imported/tut_BG_set_01_0001_04.png-abbbe47225ae488e43e500fe9db6ee26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/backgrounds/Kings Pass/SpriteAtlasTexture-Tut_Start (Group 0)-512x1024-fmt12.png"
-dest_files=["res://.godot/imported/SpriteAtlasTexture-Tut_Start (Group 0)-512x1024-fmt12.png-7135cad2712b1bf6848e49daead7b3dd.ctex"]
+source_file="res://assets/sprites/backgrounds/Kings Pass/layer_x/tut_BG_set_01_0001_04.png"
+dest_files=["res://.godot/imported/tut_BG_set_01_0001_04.png-abbbe47225ae488e43e500fe9db6ee26.ctex"]
 
 [params]
 

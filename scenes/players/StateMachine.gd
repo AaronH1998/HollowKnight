@@ -213,8 +213,10 @@ func _enter_state(new_state, old_state):
 			parent.knight_animated_sprite.play("idle")
 		states.walk:
 			parent.knight_animated_sprite.play("walk")
+			parent.walk_audio.play()
 		states.jump:
 			parent.knight_animated_sprite.play("jump")
+			parent.jump_audio.play()
 		states.fall:
 			parent.knight_animated_sprite.play("fall")
 		states.attack:
@@ -222,6 +224,7 @@ func _enter_state(new_state, old_state):
 			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
 			parent.slash_animated_sprite.show()
 			parent.slash_animated_sprite.play("slash effect")
+			parent.attack_normal_audio.play()
 			await parent.slash_animated_sprite.animation_finished
 			parent.slash_animated_sprite.hide()
 		states.alt_attack:
@@ -229,6 +232,7 @@ func _enter_state(new_state, old_state):
 			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
 			parent.slash_animated_sprite.show()
 			parent.slash_animated_sprite.play("slash effect alt")
+			parent.attack_alt_audio.play()
 			await parent.slash_animated_sprite.animation_finished
 			parent.slash_animated_sprite.hide()
 		states.up_attack:
@@ -236,6 +240,7 @@ func _enter_state(new_state, old_state):
 			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
 			parent.slash_animated_sprite.show()
 			parent.slash_animated_sprite.play("slash effect up")
+			parent.attack_up_audio.play()
 			await parent.slash_animated_sprite.animation_finished
 			parent.slash_animated_sprite.hide()
 		states.down_attack:
@@ -243,6 +248,7 @@ func _enter_state(new_state, old_state):
 			parent.slash_animated_sprite.position = parent.down_slash_marker.position
 			parent.slash_animated_sprite.show()
 			parent.slash_animated_sprite.play("slash effect down")
+			parent.attack_down_audio.play()
 			await parent.slash_animated_sprite.animation_finished
 			parent.slash_animated_sprite.hide()
 		states.look_up:
@@ -251,4 +257,6 @@ func _enter_state(new_state, old_state):
 			parent.knight_animated_sprite.play("look down")
 	
 func _exit_state(old_state, new_state):
-	pass
+	parent.walk_audio.stop()
+	if(old_state == states.fall and new_state == states.idle):
+		parent.land_audio.play()

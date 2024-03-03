@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csejbogsh8sif"
-path="res://.godot/imported/tut_BG_set_01_0000_05.png-531368e7404e50231cde2d37f98bcfe3.ctex"
+uid="uid://bea4f601gx33j"
+path="res://.godot/imported/tut_BG_set_01_0002_03.png-d5c728ff25e700e792fc590905e1a467.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/backgrounds/Kings Pass/tut_BG_set_01_0000_05.png"
-dest_files=["res://.godot/imported/tut_BG_set_01_0000_05.png-531368e7404e50231cde2d37f98bcfe3.ctex"]
+source_file="res://assets/sprites/backgrounds/Kings Pass/layer_x/tut_BG_set_01_0002_03.png"
+dest_files=["res://.godot/imported/tut_BG_set_01_0002_03.png-d5c728ff25e700e792fc590905e1a467.ctex"]
 
 [params]
 

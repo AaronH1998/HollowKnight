@@ -5,7 +5,7 @@ extends Area2D
 
 func _on_body_entered(body):
 	Globals.can_look_up = can_look_up
-	Globals.can_look_down = can_look_up
+	Globals.can_look_down = can_look_down
 	Globals.camera_lock_areas += 1
 	Globals.camera_height = global_position.y + Globals.CAMERA_LOCK_HEIGHT
 

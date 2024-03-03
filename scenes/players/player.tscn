@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=145 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://scenes/players/StateMachine.gd" id="1_yhpfl"]
@@ -132,6 +132,14 @@
 [ext_resource type="Texture2D" uid="uid://cniidj06wfx5c" path="res://assets/animations/knight/slash_effect_up/UpSlashEffect_004.png" id="124_w65gb"]
 [ext_resource type="Texture2D" uid="uid://ck67whgtmi0hk" path="res://assets/animations/knight/slash_effect_up/UpSlashEffect_005.png" id="125_bg8sa"]
 [ext_resource type="Texture2D" uid="uid://c2ehmun6uhs7m" path="res://assets/animations/knight/slash_down_effect/DownSlashEffect_005.png" id="125_jgn2v"]
+[ext_resource type="AudioStream" uid="uid://7ir2mqucxpei" path="res://assets/sounds/knight/hero_walk_footsteps_stone.wav" id="133_yyw6a"]
+[ext_resource type="AudioStream" uid="uid://dcdbkmb5ve65a" path="res://assets/sounds/knight/hero_jump.wav" id="134_hj23j"]
+[ext_resource type="AudioStream" uid="uid://42epgarmuha7" path="res://assets/sounds/knight/hero_land_soft.wav" id="135_4liof"]
+[ext_resource type="AudioStream" uid="uid://cbos2x1ry4tfs" path="res://assets/sounds/knight/sword_1.wav" id="136_k0bhs"]
+[ext_resource type="AudioStream" uid="uid://ulvddjruqixj" path="res://assets/sounds/knight/sword_2.wav" id="137_4l63g"]
+[ext_resource type="AudioStream" uid="uid://cnxettyh2yq6q" path="res://assets/sounds/knight/sword_3.wav" id="138_644av"]
+[ext_resource type="AudioStream" uid="uid://d10u2wlrddq2k" path="res://assets/sounds/knight/sword_4.wav" id="139_5kktd"]
+[ext_resource type="AudioStream" uid="uid://buuflxxxwtp8y" path="res://assets/sounds/hornet/Hornet_Final_Boss_yell_02.wav" id="140_w8y6q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy1a"]
 radius = 29.0
@@ -609,9 +617,7 @@ script = ExtResource("1_vxu5b")
 script = ExtResource("1_yhpfl")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.6
 texture = ExtResource("3_m8sk1")
-texture_scale = 0.76
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 32
@@ -710,6 +716,36 @@ position = Vector2(-9, -59)
 
 [node name="CameraPosition" type="Marker2D" parent="Markers"]
 position = Vector2(100, 0)
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("133_yyw6a")
+volume_db = -9.033
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("134_hj23j")
+volume_db = -12.339
+
+[node name="Land" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("135_4liof")
+volume_db = -7.416
+
+[node name="AttackNormal" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("136_k0bhs")
+
+[node name="AttackAlt" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("137_4l63g")
+
+[node name="AttackUp" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("138_644av")
+
+[node name="AttackDown" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("139_5kktd")
+
+[node name="GG" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("140_w8y6q")
+volume_db = -4.701
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

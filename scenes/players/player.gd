@@ -44,6 +44,13 @@ var targets = []
 @onready var standard_slash_marker: Marker2D = $Markers/StandardSlashMarker
 @onready var down_slash_marker: Marker2D = $Markers/DownSlashMarker
 
+@onready var walk_audio = $Audio/Walk
+@onready var jump_audio = $Audio/Jump
+@onready var land_audio = $Audio/Land
+@onready var attack_normal_audio = $Audio/AttackNormal
+@onready var attack_alt_audio = $Audio/AttackAlt
+@onready var attack_up_audio = $Audio/AttackUp
+@onready var attack_down_audio = $Audio/AttackDown
 
 func _ready():
 	gravity = 2.0 * max_jump_height / pow(jump_duration, 2)
@@ -129,7 +136,7 @@ func _on_enemy_detection_area_body_entered(body):
 	var direction = body.global_position.direction_to(global_position)
 	var force = Vector2(direction.x * knockback_strength_x, direction.y * knockback_strength_y)
 	knockback = force
-
+	$Audio/GG.play()
 
 func _on_attack_area_body_entered(body):
 	if "hit" in body:

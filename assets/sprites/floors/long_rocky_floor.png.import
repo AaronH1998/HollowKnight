@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcns73sfcoyv6"
-path="res://.godot/imported/SpriteAtlasTexture-Tut_Start (Group 1)-128x128-fmt10.png-d9eb6ffb208891fbc5d35cb2e3b6c07b.ctex"
+uid="uid://bfn67bdc2mu2r"
+path="res://.godot/imported/long_rocky_floor.png-19120bc7bed9b13b6fbcb73ef59f5dd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/backgrounds/Kings Pass/SpriteAtlasTexture-Tut_Start (Group 1)-128x128-fmt10.png"
-dest_files=["res://.godot/imported/SpriteAtlasTexture-Tut_Start (Group 1)-128x128-fmt10.png-d9eb6ffb208891fbc5d35cb2e3b6c07b.ctex"]
+source_file="res://assets/sprites/floors/long_rocky_floor.png"
+dest_files=["res://.godot/imported/long_rocky_floor.png-19120bc7bed9b13b6fbcb73ef59f5dd9.ctex"]
 
 [params]
 
