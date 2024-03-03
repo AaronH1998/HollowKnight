@@ -1,16 +1,81 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn81e8kugttma"]
+[gd_scene load_steps=20 format=3 uid="uid://cn81e8kugttma"]
 
 [ext_resource type="Script" path="res://scenes/enemies/crawlid.gd" id="1_2bkdx"]
+[ext_resource type="Script" path="res://scenes/enemies/CrawlidStateMachine.gd" id="2_bvqb2"]
 [ext_resource type="Texture2D" uid="uid://xjrxheuankao" path="res://assets/animations/crawlid/walk/walk_000.png" id="2_rfr1d"]
+[ext_resource type="Texture2D" uid="uid://b8sp6w2i3loyn" path="res://assets/animations/crawlid/death air/Death Air_000.png" id="3_adxvp"]
 [ext_resource type="Texture2D" uid="uid://cj1kd00wpy6dk" path="res://assets/animations/crawlid/walk/walk_001.png" id="3_j6nw7"]
+[ext_resource type="Texture2D" uid="uid://b42uuaxlu5cem" path="res://assets/animations/crawlid/idle/idle_000.png" id="3_v8foq"]
+[ext_resource type="Texture2D" uid="uid://3oj2dlxq1pnm" path="res://assets/animations/crawlid/death air/Death Air_001.png" id="4_d4isp"]
+[ext_resource type="Texture2D" uid="uid://c78ei05i5qplg" path="res://assets/animations/crawlid/idle/idle_001.png" id="4_hsoi6"]
 [ext_resource type="Texture2D" uid="uid://c3uxyuqvryqlt" path="res://assets/animations/crawlid/walk/walk_002.png" id="4_mon8f"]
+[ext_resource type="Texture2D" uid="uid://boeehd7y2ptvo" path="res://assets/animations/crawlid/idle/idle_002.png" id="5_h0tmv"]
 [ext_resource type="Texture2D" uid="uid://eu3hfw5kw1jk" path="res://assets/animations/crawlid/walk/walk_003.png" id="5_w83wd"]
+[ext_resource type="Texture2D" uid="uid://cus32i7y74t04" path="res://assets/animations/crawlid/death air/Death Air_002.png" id="5_ytua0"]
+[ext_resource type="Texture2D" uid="uid://cwf1p0dxma72m" path="res://assets/animations/crawlid/death land/Death Land_000.png" id="6_243ry"]
+[ext_resource type="Texture2D" uid="uid://jcnhpchdhuov" path="res://assets/animations/crawlid/idle/idle_003.png" id="6_cknpp"]
+[ext_resource type="Texture2D" uid="uid://ck8e7bh4joshe" path="res://assets/animations/crawlid/death land/Death Land_001.png" id="7_gvssn"]
+[ext_resource type="Texture2D" uid="uid://dgwbvs2x8h6r" path="res://assets/animations/crawlid/turn/turn_000.png" id="12_ckw7u"]
+[ext_resource type="Texture2D" uid="uid://dy5ejwca5r7ay" path="res://assets/animations/crawlid/turn/turn_001.png" id="13_3cco6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6t4fr"]
 size = Vector2(53.0001, 75)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyuve"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_adxvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d4isp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ytua0")
+}],
+"loop": false,
+"name": &"death air",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_243ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gvssn")
+}],
+"loop": false,
+"name": &"death land",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_v8foq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hsoi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h0tmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cknpp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ckw7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3cco6")
+}],
+"loop": false,
+"name": &"turn",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_rfr1d")
@@ -34,6 +99,9 @@ collision_layer = 2
 collision_mask = 46
 script = ExtResource("1_2bkdx")
 
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_bvqb2")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.499999, -3.5001)
 rotation = 1.5708
@@ -48,4 +116,4 @@ collision_mask = 4
 position = Vector2(1, -24)
 scale = Vector2(-0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_wyuve")
-animation = &"walk"
+animation = &"death land"

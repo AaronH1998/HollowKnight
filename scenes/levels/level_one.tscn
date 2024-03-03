@@ -109,13 +109,17 @@ texture = ExtResource("8_s2isc")
 position = Vector2(918, 3)
 texture = ExtResource("8_s2isc")
 
-[node name="StartTimer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="StartTimer" type="Timer" parent="Timers"]
 one_shot = true
 autostart = true
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights"]
 color = Color(0.705882, 0.678431, 0.694118, 1)
 energy = 0.77
 blend_mode = 1
 
-[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

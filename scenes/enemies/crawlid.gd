@@ -9,20 +9,27 @@ var knockback_strength_y: float = -1000.0
 var knockback: Vector2 = Vector2.ZERO
 var inital_sprite_scale_x: float
 
+var health: int = 8
+
+var dead: bool = false
+
 @onready var crawlid_animated_sprite: AnimatedSprite2D = $CrawlidAnimatedSprite
 
 func _ready():
 	inital_sprite_scale_x = crawlid_animated_sprite.scale.x
 
-func _physics_process(delta):
+
+func _apply_gravity(delta):
+	if velocity.y < 2000:
+		velocity.y += gravity * delta
+
+
+func _apply_movement():
 	crawlid_animated_sprite.scale.x = move_direction * inital_sprite_scale_x
 	
 	velocity.x = speed * move_direction
 	velocity += knockback
 	
-	if velocity.y < 2000:
-		velocity.y += gravity * delta
-		
 	move_and_slide()
 	
 	knockback = lerp(knockback, Vector2.ZERO, 0.6)
@@ -31,12 +38,22 @@ func _physics_process(delta):
 		move_direction *= -1
 		$RayCast2D.position.x *= -1.0
 
-	crawlid_animated_sprite.play("walk")
 
+func hit(pos, damage):
+	health -= damage
 
-func hit(pos):
 	var direction = pos.direction_to(global_position)
 	var force = Vector2(direction.x * knockback_strength_x, knockback_strength_y)
-	
 	knockback = force
-	print(knockback)
+	
+	if(health <= 0):
+		_die()
+		
+func _die():
+	dead = true
+	speed = 0
+	_disable_player_collision()
+	
+func _disable_player_collision():
+	set_collision_layer_value(2, false)
+	set_collision_layer_value(7, true)

@@ -26,6 +26,7 @@ var knockback_strength_y: float = 1000.0
 var knockback: Vector2 = Vector2.ZERO
 
 var targets = []
+var damage: int = 5
 
 @onready var knight_animated_sprite: AnimatedSprite2D = $Visual/KnightAnimatedSprite
 @onready var slash_animated_sprite: AnimatedSprite2D = $Visual/SlashAnimatedSprite
@@ -151,4 +152,4 @@ func _on_attack_area_body_exited(body):
 
 func attack_targets():
 	for body in targets:
-		body.hit(global_position)
+		body.hit(global_position, damage)
