@@ -47,5 +47,5 @@ func _enter_state(new_state, _old_state):
 		states.death_land:
 			parent.crawlid_animated_sprite.play("death land")
 
-func _exit_state(old_state, new_state):
+func _exit_state(_old_state, _new_state):
 	pass
