@@ -85,7 +85,7 @@ func _state_logic(delta):
 	parent._apply_movement()
 	parent.state_label.text = states.find_key(state)
 	
-func _get_transition(delta):
+func _get_transition(_delta):
 	match state:
 		states.idle:
 			if parent.up_attacking:
@@ -207,7 +207,7 @@ func _get_transition(delta):
 				return states.idle
 	return null
 
-func _enter_state(new_state, old_state):
+func _enter_state(new_state, _old_state):
 	match new_state:
 		states.idle:
 			parent.knight_animated_sprite.play("idle")

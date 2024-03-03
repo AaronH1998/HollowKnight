@@ -617,7 +617,9 @@ script = ExtResource("1_vxu5b")
 script = ExtResource("1_yhpfl")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
 texture = ExtResource("3_m8sk1")
+texture_scale = 2.0
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 32
