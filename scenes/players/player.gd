@@ -94,20 +94,18 @@ func _handle_camera():
 
 
 func _handle_move_input():
-	var direction = Input.get_axis("left", "right")
+	var direction = int(Input.get_axis("left", "right"))
 	
-	if direction > 0:
-		if move_direction != 1:
-			move_direction = 1
-			scale.x = -1
-	elif direction < 0:
-		if move_direction != -1:
-			move_direction = -1
-			scale.x = -1
-			
+	if direction != 0 and direction != move_direction:
+		knight_animated_sprite.scale.x *= -1
+		slash_animated_sprite.scale.x *= -1
+		$CollisionShape2D.scale.x *= -1
+		$EnemyDetectionArea.scale.x *= -1
+		$AttackArea.scale.x *= -1
+		move_direction = direction
+	
 	velocity.x = direction * speed
 	velocity += knockback
-
 
 func _apply_gravity(delta):
 	if velocity.y < 2000:
@@ -180,11 +178,11 @@ func _die():
 
 
 func _dead():
-	var death_mask = death_mask_scene.instantiate()
+	var death_mask = death_mask_scene.instantiate() as RigidBody2D
 	death_mask.position = knight_animated_sprite.position
 	knight_animated_sprite.visible = false
-	visual.add_child(death_mask)
-
+	
+	add_child(death_mask)
 
 func _on_attack_area_body_entered(body):
 	if "hit" in body:

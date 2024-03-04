@@ -16,7 +16,7 @@ func _ready():
 	call_deferred("set_state", states.idle)
 
 func _input(event):
-	if Globals.level_preparing:
+	if Globals.level_preparing or parent.dead:
 		return
 		
 	if [states.idle, states.walk, states.attack, states.look_up, states.look_down].has(state) and parent.is_on_floor():
