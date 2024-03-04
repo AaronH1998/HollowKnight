@@ -1,31 +1,17 @@
 extends CanvasLayer
 
-
 @onready var status_details_box: HBoxContainer = $TopLeft/StatusDetails
 @onready var frame_animated_sprite: AnimatedSprite2D = $TopLeft/StatusDetails/Frame/FrameAnimatedSprite
 
 var health_ui_scene: PackedScene = preload("res://scenes/UI/health.tscn")
 
-var health_animated_sprites: Array
-
 func _ready():
-	Globals.connect("health_change", update_health)
 	_animation_to_animation(frame_animated_sprite, "appear", "idle")
 	
 	for i in Globals.max_health:
 		var health_ui = health_ui_scene.instantiate()
+		health_ui.health_indicator = i + 1
 		status_details_box.add_child(health_ui)
-		health_animated_sprites.push_back(health_ui.get_child(0))
-	
-	for animated_sprite in health_animated_sprites:
-		_animation_to_animation(animated_sprite, "appear", "idle")
-
-
-func update_health(old_health, new_health):
-	for index in len(health_animated_sprites):
-		if index > new_health - 1 and index < old_health:
-			_animation_to_animation(health_animated_sprites[index], "break", "empty")
-
 
 func _animation_to_animation(animated_sprite: AnimatedSprite2D, animation_1: String, animation_2: String):
 	animated_sprite.play(animation_1)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=59 format=3 uid="uid://c1hm6drrxd71a"]
+[gd_scene load_steps=60 format=3 uid="uid://c1hm6drrxd71a"]
 
+[ext_resource type="Script" path="res://scenes/UI/health.gd" id="1_2ui34"]
 [ext_resource type="Texture2D" uid="uid://obstah2f83sw" path="res://assets/animations/ui/health/appear/Health Appear_000.png" id="1_rqu1i"]
 [ext_resource type="Texture2D" uid="uid://cbggyx2xu77v2" path="res://assets/animations/ui/health/appear/Health Appear_001.png" id="2_vqu0k"]
 [ext_resource type="Texture2D" uid="uid://1yy5g8ldospk" path="res://assets/animations/ui/health/appear/Health Appear_002.png" id="3_d77ib"]
@@ -252,13 +253,14 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="Health1" type="MarginContainer"]
+[node name="Health" type="MarginContainer"]
 theme_override_constants/margin_left = 53
 theme_override_constants/margin_top = 84
 theme_override_constants/margin_right = 23
 theme_override_constants/margin_bottom = 84
+script = ExtResource("1_2ui34")
 
-[node name="HealthAnimatedSprite1" type="AnimatedSprite2D" parent="."]
+[node name="HealthAnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8yvgl")
 animation = &"appear"
 autoplay = "idle"
