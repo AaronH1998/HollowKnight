@@ -20,7 +20,8 @@ var camera_vertical_locked: bool:
 var can_look_up: bool = true
 var can_look_down: bool = true
 
-var player_health: int = 5:
+var max_health: int = 5
+var player_health: int = max_health:
 	set(value):
 		health_change.emit(player_health, value)
 		player_health = value
