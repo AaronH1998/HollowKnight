@@ -3,6 +3,12 @@ extends Node2D
 var shade_scene: PackedScene = preload("res://scenes/enemies/shade.tscn")
 var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tscn")
 
+@onready var enemies: Node2D = $Enemies
+
+func _process(_delta):
+	if enemies.get_child_count() <= 0:
+		TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
+
 func _on_start_timer_timeout():
 	Globals.level_preparing = false
 
@@ -21,3 +27,7 @@ func _on_player_player_death():
 	
 	await get_tree().create_timer(1).timeout
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
+
+
+func _on_crawlid_crawlid_death():
+	TransitionLayer.change_scene("res://scenes/menus/game_complete.tscn")

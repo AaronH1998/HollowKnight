@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal crawlid_death
+
 var gravity:float = 3848.0
 var speed: float = 2 * Globals.UNIT_SIZE
 var move_direction: int = 1 
@@ -54,6 +56,7 @@ func _die():
 	dead = true
 	speed = 0
 	_disable_player_collision()
+	crawlid_death.emit()
 
 
 func _disable_player_collision():

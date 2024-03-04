@@ -125,5 +125,6 @@ blend_mode = 1
 
 [node name="UI" parent="." instance=ExtResource("12_15xv5")]
 
+[connection signal="crawlid_death" from="Enemies/Crawlid" to="." method="_on_crawlid_crawlid_death"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]
