@@ -70,3 +70,7 @@ sprite_frames = SubResource("SpriteFrames_yj2po")
 animation = &"idle"
 autoplay = "idle"
 centered = false
+
+[node name="HealthIndicators" type="GridContainer" parent="TopLeft/StatusDetails"]
+layout_mode = 2
+columns = 21

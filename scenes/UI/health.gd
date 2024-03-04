@@ -4,7 +4,6 @@ extends MarginContainer
 @onready var health_animated_sprite: AnimatedSprite2D = $HealthAnimatedSprite
 
 func _ready():
-	print(health_indicator)
 	Globals.connect("health_change", update_health)
 	_animation_to_animation(health_animated_sprite, "appear", "idle")
 

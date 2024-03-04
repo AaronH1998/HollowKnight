@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_death
+
 var speed: float = 4 * Globals.UNIT_SIZE
 var min_jump_height: float = 0.8 * Globals.UNIT_SIZE
 var max_jump_height: float = 3 * Globals.UNIT_SIZE
@@ -178,11 +180,8 @@ func _die():
 
 
 func _dead():
-	var death_mask = death_mask_scene.instantiate() as RigidBody2D
-	death_mask.position = knight_animated_sprite.position
 	knight_animated_sprite.visible = false
-	
-	add_child(death_mask)
+	player_death.emit()
 
 func _on_attack_area_body_entered(body):
 	if "hit" in body:
