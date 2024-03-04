@@ -18,3 +18,6 @@ func _on_player_player_death():
 	$Items.add_child(death_mask)
 	
 	death_mask.apply_force(Vector2(-30000,0), Vector2.LEFT)
+	
+	await get_tree().create_timer(1).timeout
+	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")

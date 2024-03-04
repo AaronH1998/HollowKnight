@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "Mobile")
 [autoload]
 
 Globals="*res://globals/globals.gd"
+TransitionLayer="*res://globals/transition_layer.tscn"
 
 [display]
 
