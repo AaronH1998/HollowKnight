@@ -5,7 +5,7 @@ var speed: float = 2 * Globals.UNIT_SIZE
 var move_direction: int = 1 
 
 var knockback_strength_x: float = 9000.0
-var knockback_strength_y: float = -1000.0
+var knockback_strength_y: float = -750.0
 var knockback: Vector2 = Vector2.ZERO
 var inital_sprite_scale_x: float
 
@@ -48,12 +48,14 @@ func hit(pos, damage):
 	
 	if(health <= 0):
 		_die()
-		
+
+
 func _die():
 	dead = true
 	speed = 0
 	_disable_player_collision()
-	
+
+
 func _disable_player_collision():
 	set_collision_layer_value(2, false)
 	set_collision_layer_value(7, true)

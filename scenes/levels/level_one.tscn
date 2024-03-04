@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=14 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cw8wfitl8qa2i" path="res://scenes/objects/camera_lock_area.tscn" id="6_rv3fu"]
 [ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/floors/long_rocky_floor.png" id="8_s2isc"]
 [ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="11_qnn2d"]
+[ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="12_15xv5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yndj3"]
 shader = ExtResource("3_vu53h")
@@ -121,5 +122,7 @@ autostart = true
 color = Color(0.705882, 0.678431, 0.694118, 1)
 energy = 0.77
 blend_mode = 1
+
+[node name="UI" parent="." instance=ExtResource("12_15xv5")]
 
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

@@ -1,5 +1,7 @@
 extends Node
 
+signal health_change(old_health, new_health)
+
 var near_floor: bool = false
 var near_ceiling: bool = false
 
@@ -17,3 +19,9 @@ var camera_vertical_locked: bool:
 		
 var can_look_up: bool = true
 var can_look_down: bool = true
+
+var player_health: int = 5:
+	set(value):
+		health_change.emit(player_health, value)
+		player_health = value
+		

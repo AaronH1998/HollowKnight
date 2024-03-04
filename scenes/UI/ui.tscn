@@ -1,0 +1,388 @@
+[gd_scene load_steps=68 format=3 uid="uid://chwvd05ndg0ki"]
+
+[ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_qq0ct"]
+[ext_resource type="Texture2D" uid="uid://sk3lai1twgj3" path="res://assets/animations/ui/frame/appear/HUD Frame_000.png" id="1_tvfk6"]
+[ext_resource type="Texture2D" uid="uid://rxaqlu6xggsq" path="res://assets/animations/ui/frame/appear/HUD Frame_001.png" id="2_7hyw1"]
+[ext_resource type="Texture2D" uid="uid://dh3i6kwwci00r" path="res://assets/animations/ui/frame/appear/HUD Frame_002.png" id="3_j6ud8"]
+[ext_resource type="Texture2D" uid="uid://cto0dcxcje6ws" path="res://assets/animations/ui/frame/appear/HUD Frame_003.png" id="4_olpk1"]
+[ext_resource type="Texture2D" uid="uid://bfw6vnv67tk3u" path="res://assets/animations/ui/frame/appear/HUD Frame_004.png" id="5_tw6yd"]
+[ext_resource type="Texture2D" uid="uid://bdhvlbftdokkq" path="res://assets/animations/ui/frame/appear/HUD Frame_005.png" id="6_h2ixc"]
+[ext_resource type="Texture2D" uid="uid://bsnxtee8xtqsl" path="res://assets/animations/ui/frame/idle/HUD Frame Idle_000.png" id="7_coc5p"]
+[ext_resource type="Texture2D" uid="uid://obstah2f83sw" path="res://assets/animations/ui/health/appear/Health Appear_000.png" id="9_mhvjf"]
+[ext_resource type="Texture2D" uid="uid://cbggyx2xu77v2" path="res://assets/animations/ui/health/appear/Health Appear_001.png" id="10_sqbjl"]
+[ext_resource type="Texture2D" uid="uid://1yy5g8ldospk" path="res://assets/animations/ui/health/appear/Health Appear_002.png" id="11_ilos2"]
+[ext_resource type="Texture2D" uid="uid://cix21s3yv6cr1" path="res://assets/animations/ui/health/appear/Health Appear_003.png" id="12_4fjnw"]
+[ext_resource type="Texture2D" uid="uid://db6rvng0dta7g" path="res://assets/animations/ui/health/appear/Health Appear_004.png" id="13_w5w2d"]
+[ext_resource type="Texture2D" uid="uid://b33net5wbfgpp" path="res://assets/animations/ui/health/break/Health Break_000.png" id="14_245k5"]
+[ext_resource type="Texture2D" uid="uid://d2yv3nkbs711q" path="res://assets/animations/ui/health/break/Health Break_001.png" id="15_cn2wg"]
+[ext_resource type="Texture2D" uid="uid://dr6qrj8ijepn8" path="res://assets/animations/ui/health/break/Health Break_002.png" id="16_7v86h"]
+[ext_resource type="Texture2D" uid="uid://njeodw0q17ny" path="res://assets/animations/ui/health/break/Health Break_003.png" id="17_uhh5d"]
+[ext_resource type="Texture2D" uid="uid://bo8wlcioot5da" path="res://assets/animations/ui/health/break/Health Break_004.png" id="18_e0x43"]
+[ext_resource type="Texture2D" uid="uid://bdi3nkjordg5i" path="res://assets/animations/ui/health/break/Health Break_005.png" id="19_sbda8"]
+[ext_resource type="Texture2D" uid="uid://b73lwngyfh3rf" path="res://assets/animations/ui/health/empty/Health Empty_000.png" id="20_m5d4x"]
+[ext_resource type="Texture2D" uid="uid://dv1lftemxksa8" path="res://assets/animations/ui/health/idle/Health Idle_000.png" id="21_w7hnc"]
+[ext_resource type="Texture2D" uid="uid://cqdj3wliioem5" path="res://assets/animations/ui/health/idle/Health Idle_001.png" id="22_bgtto"]
+[ext_resource type="Texture2D" uid="uid://cr2sxqokrif1g" path="res://assets/animations/ui/health/idle/Health Idle_002.png" id="23_g8mlf"]
+[ext_resource type="Texture2D" uid="uid://iwuot3gr0dcp" path="res://assets/animations/ui/health/idle/Health Idle_003.png" id="24_3miuk"]
+[ext_resource type="Texture2D" uid="uid://bhqigslcorsqc" path="res://assets/animations/ui/health/idle/Health Idle_004.png" id="25_x4afi"]
+[ext_resource type="Texture2D" uid="uid://b5txkwco3g5fp" path="res://assets/animations/ui/health/idle/Health Idle_005.png" id="26_jp3vf"]
+[ext_resource type="Texture2D" uid="uid://yb8hyky8buug" path="res://assets/animations/ui/health/idle/Health Idle_006.png" id="27_unwac"]
+[ext_resource type="Texture2D" uid="uid://4gcjser40y4" path="res://assets/animations/ui/health/idle/Health Idle_007.png" id="28_jm8ck"]
+[ext_resource type="Texture2D" uid="uid://b0bc71na35x14" path="res://assets/animations/ui/health/idle/Health Idle_008.png" id="29_4nh6n"]
+[ext_resource type="Texture2D" uid="uid://dhkjjo0n0n785" path="res://assets/animations/ui/health/idle/Health Idle_009.png" id="30_g33o5"]
+[ext_resource type="Texture2D" uid="uid://cdi1ti1yvl0v" path="res://assets/animations/ui/health/idle/Health Idle_010.png" id="31_1vvb7"]
+[ext_resource type="Texture2D" uid="uid://c3njsbotokm7i" path="res://assets/animations/ui/health/idle/Health Idle_011.png" id="32_31opd"]
+[ext_resource type="Texture2D" uid="uid://bvb2c0sydsfo2" path="res://assets/animations/ui/health/idle/Health Idle_012.png" id="33_wyo06"]
+[ext_resource type="Texture2D" uid="uid://cxgtiorqnmcmd" path="res://assets/animations/ui/health/idle/Health Idle_013.png" id="34_d4rxd"]
+[ext_resource type="Texture2D" uid="uid://dgmnw13dlmrhc" path="res://assets/animations/ui/health/idle/Health Idle_014.png" id="35_3ge8s"]
+[ext_resource type="Texture2D" uid="uid://8sbd3loa6e2a" path="res://assets/animations/ui/health/idle/Health Idle_015.png" id="36_q74xh"]
+[ext_resource type="Texture2D" uid="uid://1p838mxlxqjf" path="res://assets/animations/ui/health/idle/Health Idle_016.png" id="37_8veyp"]
+[ext_resource type="Texture2D" uid="uid://od2netu6sj31" path="res://assets/animations/ui/health/idle/Health Idle_017.png" id="38_lrw5x"]
+[ext_resource type="Texture2D" uid="uid://bvf70rknbkrg4" path="res://assets/animations/ui/health/idle/Health Idle_018.png" id="39_d1eg4"]
+[ext_resource type="Texture2D" uid="uid://bl00wfb5nu2yy" path="res://assets/animations/ui/health/idle/Health Idle_019.png" id="40_0kbjc"]
+[ext_resource type="Texture2D" uid="uid://dac6k2ts7ngrb" path="res://assets/animations/ui/health/idle/Health Idle_020.png" id="41_px7o1"]
+[ext_resource type="Texture2D" uid="uid://be1hn4vxclwdx" path="res://assets/animations/ui/health/idle/Health Idle_021.png" id="42_md4ra"]
+[ext_resource type="Texture2D" uid="uid://o6pbtk7gndn4" path="res://assets/animations/ui/health/idle/Health Idle_022.png" id="43_shl6v"]
+[ext_resource type="Texture2D" uid="uid://2fr868jjtmn2" path="res://assets/animations/ui/health/idle/Health Idle_023.png" id="44_ll5bd"]
+[ext_resource type="Texture2D" uid="uid://dqrohs04rvldg" path="res://assets/animations/ui/health/idle/Health Idle_024.png" id="45_nnttc"]
+[ext_resource type="Texture2D" uid="uid://c2luq3h06idig" path="res://assets/animations/ui/health/idle/Health Idle_025.png" id="46_t1x1u"]
+[ext_resource type="Texture2D" uid="uid://d3x1nn8v50aad" path="res://assets/animations/ui/health/idle/Health Idle_026.png" id="47_xvjo4"]
+[ext_resource type="Texture2D" uid="uid://hyxat8qvw4cg" path="res://assets/animations/ui/health/idle/Health Idle_027.png" id="48_v3akh"]
+[ext_resource type="Texture2D" uid="uid://cgwexdud8i4l3" path="res://assets/animations/ui/health/idle/Health Idle_028.png" id="49_pn5td"]
+[ext_resource type="Texture2D" uid="uid://ct3sed4wu781i" path="res://assets/animations/ui/health/idle/Health Idle_029.png" id="50_554ng"]
+[ext_resource type="Texture2D" uid="uid://cnvy5ml1d7a1p" path="res://assets/animations/ui/health/idle/Health Idle_030.png" id="51_wyup1"]
+[ext_resource type="Texture2D" uid="uid://d1ajfyoaq0dxn" path="res://assets/animations/ui/health/idle/Health Idle_031.png" id="52_oa5o4"]
+[ext_resource type="Texture2D" uid="uid://bmxtvgiukvqfo" path="res://assets/animations/ui/health/idle/Health Idle_032.png" id="53_17o12"]
+[ext_resource type="Texture2D" uid="uid://swslj2qr4k61" path="res://assets/animations/ui/health/idle/Health Idle_033.png" id="54_uqjjq"]
+[ext_resource type="Texture2D" uid="uid://cl3c2fyln2m8w" path="res://assets/animations/ui/health/idle/Health Idle_034.png" id="55_jdmrc"]
+[ext_resource type="Texture2D" uid="uid://bk1e4ylqb5cv5" path="res://assets/animations/ui/health/idle/Health Idle_035.png" id="56_ob4v0"]
+[ext_resource type="Texture2D" uid="uid://b60ky3a6da48a" path="res://assets/animations/ui/health/idle/Health Idle_036.png" id="57_epsrq"]
+[ext_resource type="Texture2D" uid="uid://c66j6tbyfn6sj" path="res://assets/animations/ui/health/idle/Health Idle_037.png" id="58_mkjqv"]
+[ext_resource type="Texture2D" uid="uid://x8ffto1ydmer" path="res://assets/animations/ui/health/idle/Health Idle_038.png" id="59_vvehn"]
+[ext_resource type="Texture2D" uid="uid://b1f6ck8v20v84" path="res://assets/animations/ui/health/idle/Health Idle_039.png" id="60_2cgpa"]
+[ext_resource type="Texture2D" uid="uid://d1k3qiiddihrd" path="res://assets/animations/ui/health/idle/Health Idle_040.png" id="61_ycq2d"]
+[ext_resource type="Texture2D" uid="uid://brxsn3clee78w" path="res://assets/animations/ui/health/idle/Health Idle_041.png" id="62_sv6wu"]
+[ext_resource type="Texture2D" uid="uid://c8durmqf4mie0" path="res://assets/animations/ui/health/idle/Health Idle_042.png" id="63_fgcun"]
+[ext_resource type="Texture2D" uid="uid://cccrc6wg3wwmu" path="res://assets/animations/ui/health/idle/Health Idle_043.png" id="64_gp5jj"]
+[ext_resource type="Texture2D" uid="uid://b3mfcrmgiv2dh" path="res://assets/animations/ui/health/idle/Health Idle_044.png" id="65_6231m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yj2po"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tvfk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7hyw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j6ud8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_olpk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tw6yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h2ixc")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_coc5p")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 30.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8yvgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_mhvjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sqbjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ilos2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4fjnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w5w2d")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_245k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cn2wg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7v86h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uhh5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_e0x43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_sbda8")
+}],
+"loop": false,
+"name": &"break",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_m5d4x")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_w7hnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_bgtto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_g8mlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_3miuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_x4afi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_jp3vf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_unwac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_jm8ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_4nh6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_g33o5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1vvb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_31opd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_wyo06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_d4rxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_3ge8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_q74xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_8veyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_lrw5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_d1eg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_0kbjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_px7o1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_md4ra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_shl6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_ll5bd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_nnttc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_t1x1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_xvjo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_v3akh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_pn5td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_554ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_wyup1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_oa5o4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_17o12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_uqjjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_jdmrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_ob4v0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_epsrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_mkjqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_vvehn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2cgpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_ycq2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_sv6wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_fgcun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_gp5jj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_6231m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 30.0
+}]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_qq0ct")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Frame" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 59
+theme_override_constants/margin_top = 82
+theme_override_constants/margin_right = 59
+theme_override_constants/margin_bottom = 82
+
+[node name="FrameAnimatedSprite" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer/Frame"]
+sprite_frames = SubResource("SpriteFrames_yj2po")
+animation = &"idle"
+autoplay = "idle"
+centered = false
+
+[node name="Health1" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 53
+theme_override_constants/margin_top = 84
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 84
+
+[node name="HealthAnimatedSprite1" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer/Health1"]
+sprite_frames = SubResource("SpriteFrames_8yvgl")
+animation = &"appear"
+autoplay = "idle"
+centered = false
+
+[node name="Health2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 53
+theme_override_constants/margin_top = 84
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 84
+
+[node name="HealthAnimatedSprite2" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer/Health2"]
+sprite_frames = SubResource("SpriteFrames_8yvgl")
+animation = &"appear"
+autoplay = "idle"
+centered = false
+
+[node name="Health3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 53
+theme_override_constants/margin_top = 84
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 84
+
+[node name="HealthAnimatedSprite3" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer/Health3"]
+sprite_frames = SubResource("SpriteFrames_8yvgl")
+animation = &"appear"
+autoplay = "idle"
+centered = false
+
+[node name="Health4" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 53
+theme_override_constants/margin_top = 84
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 84
+
+[node name="HealthAnimatedSprite4" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer/Health4"]
+sprite_frames = SubResource("SpriteFrames_8yvgl")
+animation = &"break"
+autoplay = "idle"
+centered = false
+
+[node name="Health5" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 53
+theme_override_constants/margin_top = 84
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 84
+
+[node name="HealthAnimatedSprite5" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer/Health5"]
+sprite_frames = SubResource("SpriteFrames_8yvgl")
+animation = &"break"
+autoplay = "idle"
+centered = false

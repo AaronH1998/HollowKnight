@@ -16,18 +16,17 @@ var alt_attacking: bool = false
 var can_alt_attack: bool = false
 var up_attacking: bool = false
 var down_attacking: bool = false
-var looking_up:bool = false
-var looking_down:bool = false
+var looking_up: bool = false
+var looking_down: bool = false
 var camera_modifier: int
 var camera_reached_lock: bool
 
 var knockback_strength_x: float = 9000.0
-var knockback_strength_y: float = 1000.0
+var knockback_strength_y: float = 750.0
 var knockback: Vector2 = Vector2.ZERO
 
 var targets = []
 var attack_damage: int = 5
-var health: int = 5
 var dead: bool = false
 var damaged: bool = false
 var vulnerable: bool = true
@@ -88,7 +87,6 @@ func _handle_camera():
 			camera.global_position.y = Globals.camera_height + cam_mod
 		else:
 			camera.global_position.y = lerp(camera.global_position.y, Globals.camera_height + cam_mod, 0.002)
-		
 	else:
 		camera.global_position.y = lerp(camera.global_position.y, camera_marker.global_position.y + cam_mod, 0.002)
 	
@@ -153,30 +151,34 @@ func _on_enemy_detection_area_body_entered(body):
 
 
 func hit(pos, damage):
-	if vulnerable == false:
+	if !vulnerable or dead:
 		return
 		
 	damaged = true
 	vulnerable = false
-	hit_timer.start()
+	
 	var direction = pos.direction_to(global_position)
 	var force = Vector2(direction.x * knockback_strength_x, direction.y * knockback_strength_y)
 	knockback = force
 	frame_freeze(0.05, 0.4)
+	hit_timer.start()
 	animation_player.play("invulnerable")
 	
-	health -= damage
-	if health <= 0:
+	Globals.player_health -= damage
+	if Globals.player_health <= 0:
 		_die()
-	
+
+
 func frame_freeze(time_scale, duration):
 	Engine.time_scale = time_scale
 	await(get_tree().create_timer(duration * time_scale).timeout)
 	Engine.time_scale = 1
-	
+
+
 func _die():
 	dead = true
-	
+
+
 func _dead():
 	var death_mask = death_mask_scene.instantiate()
 	death_mask.position = knight_animated_sprite.position

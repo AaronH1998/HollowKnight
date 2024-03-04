@@ -749,7 +749,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nx5ec"]
 resource_name = "invulnerable"
-length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -839,7 +838,7 @@ material = SubResource("ShaderMaterial_kvd1q")
 position = Vector2(2, -38)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_o271f")
-animation = &"recoil"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="SlashAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
@@ -871,7 +870,6 @@ one_shot = true
 one_shot = true
 
 [node name="HitTimer" type="Timer" parent="Timers"]
-wait_time = 2.0
 one_shot = true
 
 [node name="Markers" type="Node2D" parent="."]
