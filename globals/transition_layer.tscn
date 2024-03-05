@@ -31,6 +31,7 @@ script = ExtResource("1_srd3n")
 modulate = Color(0, 0, 0, 0)
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
