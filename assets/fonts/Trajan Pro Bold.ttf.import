@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://1o5m344gd2l7"
+path="res://.godot/imported/Trajan Pro Bold.ttf-33621249e75f5db203993222ff66ea50.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Trajan Pro Bold.ttf"
+dest_files=["res://.godot/imported/Trajan Pro Bold.ttf-33621249e75f5db203993222ff66ea50.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cahymm8yj5v4n" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_008.png" id="23_smyer"]
 [ext_resource type="Texture2D" uid="uid://ec73vkc802mp" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_009.png" id="24_nkakx"]
 [ext_resource type="Texture2D" uid="uid://cx44oo8j7sgu7" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_010.png" id="25_ng2b2"]
-[ext_resource type="Texture2D" uid="uid://ctj2jm41vk2qk" path="res://assets/sprites/menus/team_cherry_logo_main_menu.png" id="27_02mk3"]
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="27_y6xi4"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_a0tfe"]
 file = "res://assets/video/menu/Classic.ogv"
@@ -135,7 +135,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 75.0
@@ -153,6 +153,7 @@ stretch_mode = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 200
 
 [node name="StartGame" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -161,7 +162,8 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 35
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/VBoxContainer/StartGame"]
+[node name="FocusIconLeft" type="MarginContainer" parent="VBoxContainer/VBoxContainer/StartGame"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 50
@@ -169,7 +171,7 @@ theme_override_constants/margin_top = 36
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 36
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/StartGame/MarginContainer2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/StartGame/FocusIconLeft"]
 sprite_frames = SubResource("SpriteFrames_yjeo8")
 animation = &"pointer_down"
 autoplay = "pointer_up"
@@ -179,12 +181,16 @@ centered = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../QuitGame/QuitGameButton")
+focus_neighbor_bottom = NodePath("../../QuitGame/QuitGameButton")
+theme_override_fonts/font = ExtResource("27_y6xi4")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8sglf")
 text = "Start Game"
 flat = true
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/StartGame"]
+[node name="FocusIconRight" type="MarginContainer" parent="VBoxContainer/VBoxContainer/StartGame"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 50
@@ -192,30 +198,68 @@ theme_override_constants/margin_top = 36
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 36
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/StartGame/MarginContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/StartGame/FocusIconRight"]
 sprite_frames = SubResource("SpriteFrames_yjeo8")
 animation = &"pointer_down"
 autoplay = "pointer_up"
 centered = false
 flip_h = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -203.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.61, 0.61)
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 10
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="QuitGame" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("27_02mk3")
-stretch_mode = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 35
 
+[node name="FocusIconLeft" type="MarginContainer" parent="VBoxContainer/VBoxContainer/QuitGame"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 36
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/QuitGame/FocusIconLeft"]
+sprite_frames = SubResource("SpriteFrames_yjeo8")
+animation = &"pointer_down"
+autoplay = "pointer_up"
+centered = false
+
+[node name="QuitGameButton" type="Button" parent="VBoxContainer/VBoxContainer/QuitGame"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../StartGame/StartGameButton")
+focus_neighbor_bottom = NodePath(".")
+theme_override_fonts/font = ExtResource("27_y6xi4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8sglf")
+text = "Quit Game"
+flat = true
+
+[node name="FocusIconRight" type="MarginContainer" parent="VBoxContainer/VBoxContainer/QuitGame"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 36
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/QuitGame/FocusIconRight"]
+sprite_frames = SubResource("SpriteFrames_yjeo8")
+animation = &"pointer_down"
+autoplay = "pointer_up"
+centered = false
+flip_h = true
+
+[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/StartGame/StartGameButton" to="." method="_on_start_game_button_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/VBoxContainer/StartGame/StartGameButton" to="." method="_on_start_game_button_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/VBoxContainer/StartGame/StartGameButton" to="." method="_on_start_game_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/StartGame/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/QuitGame/QuitGameButton" to="." method="_on_quit_game_button_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/VBoxContainer/QuitGame/QuitGameButton" to="." method="_on_quit_game_button_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/VBoxContainer/QuitGame/QuitGameButton" to="." method="_on_quit_game_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitGame/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
