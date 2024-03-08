@@ -5,6 +5,9 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 
 @onready var enemies: Node2D = $Enemies
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+
 func _process(_delta):
 	if enemies.get_child_count() <= 0:
 		TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
