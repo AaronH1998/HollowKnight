@@ -190,11 +190,24 @@ func stop_attack():
 	normal_attack_mode = true
 	can_attack = true
 
-func _on_front_attack_area_body_entered(body):
-	if "hit" in body:
-		body.hit(global_position, attack_damage)
-
 
 func toggle_normal_attack_mode():
 	normal_attack_mode = !normal_attack_mode
 	can_attack = true
+		
+
+func attack_body(body):
+	if "hit" in body:
+		body.hit(global_position, attack_damage)
+
+
+func _on_front_attack_area_body_entered(body):
+	attack_body(body)
+
+
+func _on_up_attack_area_body_entered(body):
+	attack_body(body)
+
+
+func _on_down_attack_area_body_entered(body):
+	attack_body(body)

@@ -899,6 +899,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DownAttackArea/CollisionPolygon2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ivosl"]
 resource_name = "attack"
@@ -1166,6 +1178,18 @@ tracks/5/keys = {
 "method": &"stop_attack"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DownAttackArea/CollisionPolygon2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_qxory"]
 resource_name = "attack up"
@@ -1267,21 +1291,6 @@ _data = {
 "attack up": SubResource("Animation_qxory")
 }
 
-[sub_resource type="Animation" id="Animation_qwrgw"]
-resource_name = "invulnerable"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_3hwok"]
 length = 0.001
 tracks/0/type = "value"
@@ -1295,6 +1304,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qwrgw"]
+resource_name = "invulnerable"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dhmg2"]
@@ -1319,11 +1343,16 @@ texture_scale = 2.0
 shape = SubResource("CapsuleShape2D_hyy1a")
 
 [node name="DownAttackArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DownAttackArea"]
 polygon = PackedVector2Array(69, -2, 61, 51, 38, 89, 13, 109, -12, 112, -36, 102, -60, 80, -75, 42, -81, 10, -82, -2)
+disabled = true
 
 [node name="UpAttackArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpAttackArea"]
 polygon = PackedVector2Array(-82, -2, -80, -51, -66, -114, -36, -151, -7, -157, 13, -148, 38, -117, 58, -73, 68, -15, 69, -2)
@@ -1494,6 +1523,8 @@ libraries = {
 "": SubResource("AnimationLibrary_dhmg2")
 }
 
+[connection signal="body_entered" from="DownAttackArea" to="." method="_on_down_attack_area_body_entered"]
+[connection signal="body_entered" from="UpAttackArea" to="." method="_on_up_attack_area_body_entered"]
 [connection signal="body_entered" from="FrontAttackArea" to="." method="_on_front_attack_area_body_entered"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="timeout" from="Timers/LookUpTimer" to="." method="_on_look_up_timer_timeout"]
