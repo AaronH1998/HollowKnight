@@ -17,8 +17,6 @@ var looking_down: bool = false
 var camera_modifier: int
 var camera_reached_lock: bool
 
-var knockback_strength_x: float = 9000.0
-var knockback_strength_y: float = 750.0
 var knockback: Vector2 = Vector2.ZERO
 
 var normal_attacking: bool = false
@@ -141,16 +139,16 @@ func _on_enemy_detection_area_body_entered(body):
 	hit(pos, damage)
 
 
-func hit(pos, damage):
+func hit(pos: Vector2, damage: int):
 	if !vulnerable or dead:
 		return
 		
 	damaged = true
 	vulnerable = false
 	
+	var knockback_strength = Vector2(9000.0, 750)
 	var direction = pos.direction_to(global_position)
-	var force = Vector2(direction.x * knockback_strength_x, direction.y * knockback_strength_y)
-	knockback = force
+	apply_knockback(direction, knockback_strength)
 	frame_freeze(0.05, 0.4)
 	hit_timer.start()
 	visual_animation_player.play("invulnerable")
@@ -158,6 +156,11 @@ func hit(pos, damage):
 	Globals.player_health -= damage
 	if Globals.player_health <= 0:
 		_die()
+
+
+func apply_knockback(direction, strength):
+	var force = Vector2(direction.x * strength.x, direction.y * strength.y)
+	knockback = force
 
 
 func frame_freeze(time_scale, duration):
@@ -196,18 +199,22 @@ func toggle_normal_attack_mode():
 	can_attack = true
 		
 
-func attack_body(body):
+func attack_body(body, direction):
 	if "hit" in body:
-		body.hit(global_position, attack_damage)
-
+		body.hit(direction, attack_damage)
 
 func _on_front_attack_area_body_entered(body):
-	attack_body(body)
+	var direction = Vector2.RIGHT * move_direction
+	attack_body(body, direction)
+	apply_knockback(-direction, Vector2(1000, 0))
 
 
 func _on_up_attack_area_body_entered(body):
-	attack_body(body)
+	var direction = Vector2.UP
+	attack_body(body, direction)
 
 
 func _on_down_attack_area_body_entered(body):
-	attack_body(body)
+	var direction = Vector2.DOWN
+	attack_body(body, direction)
+	velocity.y = max_jump_velocity

@@ -7,11 +7,11 @@ var speed: float = 2 * Globals.UNIT_SIZE
 var move_direction: int = 1 
 
 var knockback_strength_x: float = 9000.0
-var knockback_strength_y: float = -750.0
+var knockback_strength_y: float = 750.0
 var knockback: Vector2 = Vector2.ZERO
 var inital_sprite_scale_x: float
 
-var health: int = 8
+var health: int = 2000
 
 var dead: bool = false
 
@@ -41,11 +41,10 @@ func _apply_movement():
 		$RayCast2D.position.x *= -1.0
 
 
-func hit(pos, damage):
+func hit(direction, damage):
 	health -= damage
 
-	var direction = pos.direction_to(global_position)
-	var force = Vector2(direction.x * knockback_strength_x, knockback_strength_y)
+	var force = Vector2(direction.x * knockback_strength_x, direction.y * knockback_strength_y)
 	knockback = force
 	
 	if(health <= 0):

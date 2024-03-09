@@ -1352,7 +1352,7 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FrontAttackArea"]
 scale = Vector2(0.658044, 0.590247)
-polygon = PackedVector2Array(30, 83, 188, 82, 272.018, 79.6277, 276.577, 0, 278, -36, 221.87, -94.8756, 139.808, -132.148, 30.3931, -162.644, 26, -136, 26, 83)
+polygon = PackedVector2Array(30, 83, 188, 82, 272.018, 79.6277, 276.577, 0, 278, -36, 221.87, -94.8756, 139.808, -132.148, 24.3145, -159.255, 24.3145, -135.536, 26, 83)
 disabled = true
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
