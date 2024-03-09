@@ -62,7 +62,7 @@ centered = false
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Crawlid" parent="Enemies" instance=ExtResource("11_qnn2d")]
-position = Vector2(1001, -35)
+position = Vector2(1157, -23)
 
 [node name="Obstacles" type="Node2D" parent="."]
 

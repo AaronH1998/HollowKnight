@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d32lyx0xop77y"
-path="res://.godot/imported/Slash_000.png-b193c9e0a211edfffd6e24b12bb7acba.ctex"
+uid="uid://bp3xck716k425"
+path="res://.godot/imported/SlashAlt_007.png-23e4a001a55deeb6875eadf994283c0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/animations/knight/slash/Slash_000.png"
-dest_files=["res://.godot/imported/Slash_000.png-b193c9e0a211edfffd6e24b12bb7acba.ctex"]
+source_file="res://assets/animations/knight/slash/SlashAlt_007.png"
+dest_files=["res://.godot/imported/SlashAlt_007.png-23e4a001a55deeb6875eadf994283c0a.ctex"]
 
 [params]
 

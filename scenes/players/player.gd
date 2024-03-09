@@ -12,12 +12,6 @@ var gravity: float
 var move_direction: int = 1
 
 var jumping: bool = false
-var normal_attacking: bool = false
-var can_normal_attack: bool = true
-var alt_attacking: bool = false
-var can_alt_attack: bool = false
-var up_attacking: bool = false
-var down_attacking: bool = false
 var looking_up: bool = false
 var looking_down: bool = false
 var camera_modifier: int
@@ -27,7 +21,13 @@ var knockback_strength_x: float = 9000.0
 var knockback_strength_y: float = 750.0
 var knockback: Vector2 = Vector2.ZERO
 
-var targets = []
+var normal_attacking: bool = false
+var alt_attacking: bool = false
+var up_attacking: bool = false
+var down_attacking: bool = false
+var normal_attack_mode: bool = true
+var can_attack: bool = true
+
 var attack_damage: int = 5
 var dead: bool = false
 var damaged: bool = false
@@ -38,12 +38,12 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var visual = $Visual
 @onready var knight_animated_sprite: AnimatedSprite2D = $Visual/KnightAnimatedSprite
 @onready var slash_animated_sprite: AnimatedSprite2D = $Visual/SlashAnimatedSprite
+@onready var alt_slash_animated_sprite: AnimatedSprite2D = $Visual/AltSlashAnimatedSprite
+@onready var up_slash_animated_sprite: AnimatedSprite2D = $Visual/UpSlashAnimatedSprite
+@onready var down_slash_animated_sprite: AnimatedSprite2D = $Visual/DownSlashAnimatedSprite
 
-@onready var normal_attack_timer: Timer = $Timers/NormalAttackTimer
-@onready var alt_attack_timer: Timer = $Timers/AltAttackTimer
-@onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var look_up_timer: Timer = $Timers/LookUpTimer
-@onready var look_down_timer: Timer = $Timers/LookDownTimer
+@onready var look_down_timer: Timer = $Timers/LookDownTimer	
 @onready var hit_timer: Timer = $Timers/HitTimer
 
 @onready var camera: Camera2D = $Visual/Camera2D
@@ -65,7 +65,12 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var damage_audio = $Audio/Damage
 @onready var death_audio = $Audio/Death
 
-@onready var animation_player = $AnimationPlayer
+@onready var action_animation_player = $ActionAnimationPlayer
+@onready var visual_animation_player = $VisualAnimationPlayer
+
+@onready var collision_shape = $CollisionShape2D
+@onready var enemy_detection_area = $EnemyDetectionArea
+@onready var front_attack_area = $FrontAttackArea
 
 func _ready():
 	gravity = 2.0 * max_jump_height / pow(jump_duration, 2)
@@ -101,13 +106,17 @@ func _handle_move_input():
 	if direction != 0 and direction != move_direction:
 		knight_animated_sprite.scale.x *= -1
 		slash_animated_sprite.scale.x *= -1
-		$CollisionShape2D.scale.x *= -1
-		$EnemyDetectionArea.scale.x *= -1
-		$AttackArea.scale.x *= -1
+		collision_shape.scale.x *= -1
+		enemy_detection_area.scale.x *= -1
+		front_attack_area.scale.x *= -1
+		alt_slash_animated_sprite.scale.x *= -1
+		up_slash_animated_sprite.scale.x *= -1
+		down_slash_animated_sprite.scale.x *= -1
 		move_direction = direction
 	
 	velocity.x = direction * speed
 	velocity += knockback
+
 
 func _apply_gravity(delta):
 	if velocity.y < 2000:
@@ -117,24 +126,6 @@ func _apply_gravity(delta):
 func _apply_movement():
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.4)
-
-
-func _on_alt_attack_timer_timeout():
-	can_normal_attack = true
-
-
-func _on_normal_attack_timer_timeout():
-	can_alt_attack = true
-
-
-func _on_attack_timer_timeout():
-	normal_attacking = false
-	alt_attacking = false
-	up_attacking = false
-	down_attacking = false
-	can_alt_attack = false
-	can_normal_attack = true
-
 
 func _on_look_up_timer_timeout():
 	camera_modifier = -100
@@ -162,7 +153,7 @@ func hit(pos, damage):
 	knockback = force
 	frame_freeze(0.05, 0.4)
 	hit_timer.start()
-	animation_player.play("invulnerable")
+	visual_animation_player.play("invulnerable")
 	
 	Globals.player_health -= damage
 	if Globals.player_health <= 0:
@@ -183,25 +174,27 @@ func _dead():
 	knight_animated_sprite.visible = false
 	player_death.emit()
 
-func _on_attack_area_body_entered(body):
-	if "hit" in body:
-		targets.append(body)
-
-
-func _on_attack_area_body_exited(body):
-	if "hit" in body:
-		var index = targets.find(body)
-		targets.remove_at(index)
-
-
-func attack_targets():
-	for body in targets:
-		body.hit(global_position, attack_damage)
-
 
 func _on_damaged_timer_timeout():
 	damaged = false
 
-
+	
 func _on_hit_timer_timeout():
 	vulnerable = true
+
+func stop_attack():
+	normal_attacking = false
+	alt_attacking = false
+	up_attacking = false
+	down_attacking = false
+	normal_attack_mode = true
+	can_attack = true
+
+func _on_front_attack_area_body_entered(body):
+	if "hit" in body:
+		body.hit(global_position, attack_damage)
+
+
+func toggle_normal_attack_mode():
+	normal_attack_mode = !normal_attack_mode
+	can_attack = true

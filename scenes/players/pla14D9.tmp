@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=181 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
@@ -661,10 +661,7 @@ animations = [{
 "loop": false,
 "name": &"slash effect",
 "speed": 40.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rsj3l"]
-animations = [{
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("114_7pl03")
@@ -687,10 +684,30 @@ animations = [{
 "loop": false,
 "name": &"slash effect alt",
 "speed": 40.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s7gtd"]
-animations = [{
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("120_d2xj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_xkii5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_wekte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_ixoe8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_a7hna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_jgn2v")
+}],
+"loop": false,
+"name": &"slash effect down",
+"speed": 40.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("120_jo5k6")
@@ -712,32 +729,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"slash effect up",
-"speed": 40.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_w0kdg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("120_d2xj2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("121_xkii5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("122_wekte")
-}, {
-"duration": 1.0,
-"texture": ExtResource("123_ixoe8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("124_a7hna")
-}, {
-"duration": 1.0,
-"texture": ExtResource("125_jgn2v")
-}],
-"loop": true,
-"name": &"slash effect down",
 "speed": 40.0
 }]
 
@@ -776,7 +767,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [&"slash effect"]
 }
 tracks/3/type = "value"
@@ -803,106 +794,10 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Visual/AltSlashAnimatedSprite:frame")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Visual/AltSlashAnimatedSprite:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Visual/KnightAnimatedSprite:frame")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Visual/UpSlashAnimatedSprite:frame")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Visual/UpSlashAnimatedSprite:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("UpAttackArea/CollisionPolygon2D:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Visual/DownSlashAnimatedSprite:frame")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Visual/DownSlashAnimatedSprite:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_ivosl"]
 resource_name = "attack"
-length = 0.3
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -911,7 +806,7 @@ tracks/0/path = NodePath("Visual/KnightAnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 5]
@@ -923,10 +818,10 @@ tracks/1/path = NodePath("Visual/KnightAnimatedSprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"slash"]
+"values": [&"slash", &"slash"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -947,10 +842,10 @@ tracks/3/path = NodePath("Visual/SlashAnimatedSprite:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"slash effect"]
+"values": [&"slash effect", &"slash effect"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -971,7 +866,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
+"times": PackedFloat32Array(0.15, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -994,9 +889,24 @@ tracks/6/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_nx5ec"]
+resource_name = "invulnerable"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_o31gn"]
 resource_name = "attack alt"
-length = 0.3
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1005,7 +915,7 @@ tracks/0/path = NodePath("Visual/KnightAnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 5]
@@ -1017,19 +927,55 @@ tracks/1/path = NodePath("Visual/KnightAnimatedSprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"slash alt"]
+"values": [&"slash alt", &"slash alt"]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("Visual/SlashAnimatedSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
+"times": PackedFloat32Array(0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visual/SlashAnimatedSprite:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"slash effect alt", &"slash effect alt"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visual/SlashAnimatedSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.15, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -1039,216 +985,10 @@ tracks/2/keys = {
 "method": &"stop_attack"
 }]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FrontAttackArea/CollisionPolygon2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/AltSlashAnimatedSprite:animation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"slash effect alt"]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Visual/AltSlashAnimatedSprite:frame")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [2, 4]
-}
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Visual/AltSlashAnimatedSprite:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_d4hep"]
-resource_name = "attack down"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"slash down"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/DownSlashAnimatedSprite:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"slash effect down"]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/DownSlashAnimatedSprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [2, 4]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/DownSlashAnimatedSprite:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop_attack"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_qxory"]
-resource_name = "attack up"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"slash up"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visual/UpSlashAnimatedSprite:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"slash effect up"]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visual/UpSlashAnimatedSprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [2, 4]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visual/UpSlashAnimatedSprite:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop_attack"
-}]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("UpAttackArea/CollisionPolygon2D:disabled")
+tracks/6/path = NodePath("FrontAttackArea/CollisionPolygon2D:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1263,44 +1003,7 @@ _data = {
 "RESET": SubResource("Animation_hc54j"),
 "attack": SubResource("Animation_ivosl"),
 "attack alt": SubResource("Animation_o31gn"),
-"attack down": SubResource("Animation_d4hep"),
-"attack up": SubResource("Animation_qxory")
-}
-
-[sub_resource type="Animation" id="Animation_qwrgw"]
-resource_name = "invulnerable"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_3hwok"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dhmg2"]
-_data = {
-"RESET": SubResource("Animation_3hwok"),
-"invulnerable": SubResource("Animation_qwrgw")
+"invulnerable": SubResource("Animation_nx5ec")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -1315,20 +1018,6 @@ energy = 2.0
 texture = ExtResource("3_m8sk1")
 texture_scale = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_hyy1a")
-
-[node name="DownAttackArea" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DownAttackArea"]
-polygon = PackedVector2Array(69, -2, 61, 51, 38, 89, 13, 109, -12, 112, -36, 102, -60, 80, -75, 42, -81, 10, -82, -2)
-
-[node name="UpAttackArea" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpAttackArea"]
-polygon = PackedVector2Array(-82, -2, -80, -51, -66, -114, -36, -151, -7, -157, 13, -148, 38, -117, 58, -73, 68, -15, 69, -2)
-disabled = true
-
 [node name="FrontAttackArea" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 2
@@ -1337,6 +1026,9 @@ collision_mask = 2
 scale = Vector2(0.658044, 0.590247)
 polygon = PackedVector2Array(30, 83, 188, 82, 272.018, 79.6277, 276.577, 0, 278, -36, 221.87, -94.8756, 139.808, -132.148, 30.3931, -162.644, 26, -136, 26, 83)
 disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hyy1a")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 collision_layer = 32
@@ -1387,37 +1079,15 @@ scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_o271f")
 animation = &"slash"
 autoplay = "idle"
+frame = 5
 
 [node name="SlashAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
 visible = false
-position = Vector2(-13, -48)
+position = Vector2(-9, -59)
 scale = Vector2(-1.56502, 1.63817)
 sprite_frames = SubResource("SpriteFrames_oa3pm")
 animation = &"slash effect"
-frame = 2
-
-[node name="AltSlashAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
-visible = false
-position = Vector2(-18, -49)
-scale = Vector2(-1.33359, 1.48635)
-sprite_frames = SubResource("SpriteFrames_rsj3l")
-animation = &"slash effect alt"
-
-[node name="UpSlashAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
-visible = false
-position = Vector2(-10, -69)
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_s7gtd")
-animation = &"slash effect up"
-frame = 2
-
-[node name="DownSlashAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
-visible = false
-position = Vector2(-3, 17)
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_w0kdg")
-animation = &"slash effect down"
-frame = 2
+frame = 4
 
 [node name="Timers" type="Node" parent="."]
 
@@ -1484,14 +1154,9 @@ stream = ExtResource("160_h2qai")
 [node name="Death" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("161_n88vd")
 
-[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1bypv")
-}
-
-[node name="VisualAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_dhmg2")
 }
 
 [connection signal="body_entered" from="FrontAttackArea" to="." method="_on_front_attack_area_body_entered"]

@@ -116,4 +116,4 @@ collision_mask = 4
 position = Vector2(1, -24)
 scale = Vector2(-0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_wyuve")
-animation = &"death land"
+animation = &"idle"

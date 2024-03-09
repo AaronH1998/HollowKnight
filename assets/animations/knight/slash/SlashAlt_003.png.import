@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6dagkxxouw71"
-path="res://.godot/imported/SlashAlt_003.png-cb6efa47a80b7a64c37af9957210bfc9.ctex"
+path="res://.godot/imported/SlashAlt_003.png-21b6f0ba2e43ba6c0f33b0f2e93b8018.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/animations/knight/slash_alt/SlashAlt_003.png"
-dest_files=["res://.godot/imported/SlashAlt_003.png-cb6efa47a80b7a64c37af9957210bfc9.ctex"]
+source_file="res://assets/animations/knight/slash/SlashAlt_003.png"
+dest_files=["res://.godot/imported/SlashAlt_003.png-21b6f0ba2e43ba6c0f33b0f2e93b8018.ctex"]
 
 [params]
 

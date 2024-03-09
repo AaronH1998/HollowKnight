@@ -27,40 +27,33 @@ func _input(event):
 	if event.is_action_released("jump") and parent.velocity.y < parent.min_jump_velocity:
 		parent.velocity.y = parent.min_jump_velocity
 	
-	if event.is_action_pressed("attack"):
-		if !parent.is_on_floor() and Input.is_action_pressed("down"):
-			if parent.can_normal_attack:
-				parent.attack_timer.stop()
-				parent.down_attacking = true
-				parent.can_normal_attack = false
-				parent.alt_attacking = false
-				parent.attack_timer.start()
-				parent.attack_targets()
-		elif Input.is_action_pressed("up"):
-			if parent.can_normal_attack:
-				parent.attack_timer.stop()
-				parent.up_attacking = true
-				parent.can_normal_attack = false
-				parent.alt_attacking = false
-				parent.attack_timer.start()
-				parent.attack_targets()
-		elif parent.can_normal_attack:
-			parent.attack_timer.stop()
-			parent.normal_attacking = true
-			parent.can_normal_attack = false
+	if event.is_action_pressed("attack") and parent.can_attack:
+		if !parent.is_on_floor() and Input.is_action_pressed("down") and state != states.down_attack:
+			parent.can_attack = false
+			parent.down_attacking = true
+			parent.up_attacking = true
 			parent.alt_attacking = false
-			parent.normal_attack_timer.start()
-			parent.attack_timer.start()
-			parent.attack_targets()
-		elif parent.can_alt_attack:
-			parent.attack_timer.stop()
-			parent.alt_attacking = true
-			parent.can_alt_attack = false
 			parent.normal_attacking = false
-			parent.alt_attack_timer.start()
-			parent.attack_timer.start()
-			parent.attack_targets()
-	
+		elif Input.is_action_pressed("up") and state != states.up_attack:
+			parent.can_attack = false
+			parent.up_attacking = true
+			parent.alt_attacking = false
+			parent.normal_attacking = false
+			parent.down_attacking = false
+		elif state != states.attack and parent.normal_attack_mode:
+			parent.can_attack = false
+			parent.alt_attacking = false
+			parent.normal_attacking = true
+			parent.up_attacking = false
+			parent.down_attacking = false
+		elif state != states.alt_attack and !parent.normal_attack_mode:
+			parent.can_attack = false
+			parent.normal_attacking = false
+			parent.alt_attacking = true
+			parent.down_attacking = false
+			parent.up_attacking = false
+
+
 	if event.is_action_pressed("up") and state == states.idle:
 		parent.looking_up = true
 		parent.look_up_timer.start()
@@ -279,37 +272,17 @@ func _enter_state(new_state, _old_state):
 		states.fall:
 			parent.knight_animated_sprite.play("fall")
 		states.attack:
-			parent.knight_animated_sprite.play("slash")
-			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
-			parent.slash_animated_sprite.show()
-			parent.slash_animated_sprite.play("slash effect")
+			parent.action_animation_player.play("attack")
 			parent.attack_normal_audio.play()
-			await parent.slash_animated_sprite.animation_finished
-			parent.slash_animated_sprite.hide()
 		states.alt_attack:
-			parent.knight_animated_sprite.play("slash alt")
-			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
-			parent.slash_animated_sprite.show()
-			parent.slash_animated_sprite.play("slash effect alt")
+			parent.action_animation_player.play("attack alt")
 			parent.attack_alt_audio.play()
-			await parent.slash_animated_sprite.animation_finished
-			parent.slash_animated_sprite.hide()
 		states.up_attack:
-			parent.knight_animated_sprite.play("slash up")
-			parent.slash_animated_sprite.position = parent.standard_slash_marker.position
-			parent.slash_animated_sprite.show()
-			parent.slash_animated_sprite.play("slash effect up")
+			parent.action_animation_player.play("attack up")
 			parent.attack_up_audio.play()
-			await parent.slash_animated_sprite.animation_finished
-			parent.slash_animated_sprite.hide()
 		states.down_attack:
-			parent.knight_animated_sprite.play("slash down")
-			parent.slash_animated_sprite.position = parent.down_slash_marker.position
-			parent.slash_animated_sprite.show()
-			parent.slash_animated_sprite.play("slash effect down")
+			parent.action_animation_player.play("attack down")
 			parent.attack_down_audio.play()
-			await parent.slash_animated_sprite.animation_finished
-			parent.slash_animated_sprite.hide()
 		states.look_up:
 			parent.knight_animated_sprite.play("look up")
 		states.look_down:
