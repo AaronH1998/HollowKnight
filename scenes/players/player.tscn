@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=188 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://pnuqea280sri" path="res://assets/textures/lights/circle.png" id="3_m8sk1"]
 [ext_resource type="Texture2D" uid="uid://clj25ygq4tvu6" path="res://assets/animations/knight/death/Death_000.png" id="5_4nj00"]
 [ext_resource type="Texture2D" uid="uid://b1o3mgm1v7exo" path="res://assets/animations/knight/idle/Idle_000.png" id="5_31uuw"]
-[ext_resource type="Texture2D" uid="uid://bb8acn1msugjw" path="res://assets/sprites/placeholders/Square/Square-0001.png" id="5_ekcm5"]
 [ext_resource type="Shader" path="res://shaders/invulenerable.gdshader" id="5_qwsj2"]
 [ext_resource type="Texture2D" uid="uid://bp5cty5mew2t4" path="res://assets/animations/knight/fall/Fall_000.png" id="5_v7p8w"]
 [ext_resource type="Texture2D" uid="uid://bnrr3jdig8681" path="res://assets/animations/knight/fall/Fall_001.png" id="6_ecx22"]
@@ -1450,10 +1449,6 @@ one_shot = true
 
 [node name="CameraPosition" type="Marker2D" parent="."]
 position = Vector2(100, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="CameraPosition"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_ekcm5")
 
 [node name="Audio" type="Node2D" parent="."]
 
