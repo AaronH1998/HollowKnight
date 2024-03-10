@@ -8,9 +8,11 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 
+
 func _process(_delta):
 	if enemies.get_child_count() <= 0:
 		TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
+
 
 func _on_start_timer_timeout():
 	Globals.level_preparing = false
@@ -27,7 +29,7 @@ func _on_player_player_death():
 	$Items.add_child(death_mask)
 	
 	death_mask.apply_force(Vector2(-30000,0), Vector2.LEFT)
-	
+
 	await get_tree().create_timer(1).timeout
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
 

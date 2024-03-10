@@ -45,12 +45,9 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var hit_timer: Timer = $Timers/HitTimer
 
 @onready var camera: Camera2D = $Visual/Camera2D
-@onready var camera_marker: Marker2D = $Markers/CameraPosition
+@onready var camera_marker: Marker2D = $CameraPosition
 
 @onready var state_label: Label = $Visual/MarginContainer/Label
-
-@onready var standard_slash_marker: Marker2D = $Markers/StandardSlashMarker
-@onready var down_slash_marker: Marker2D = $Markers/DownSlashMarker
 
 @onready var walk_audio = $Audio/Walk
 @onready var jump_audio = $Audio/Jump
@@ -95,6 +92,7 @@ func _handle_camera():
 	else:
 		camera.global_position.y = lerp(camera.global_position.y, camera_marker.global_position.y + cam_mod, 0.002)
 	
+	camera.position.x = camera_marker.position.x
 	camera_reached_lock = Globals.camera_height - camera.global_position.y  < 1
 
 
@@ -110,6 +108,7 @@ func _handle_move_input():
 		alt_slash_animated_sprite.scale.x *= -1
 		up_slash_animated_sprite.scale.x *= -1
 		down_slash_animated_sprite.scale.x *= -1
+		camera_marker.position.x = -camera_marker.position.x
 		move_direction = direction
 	
 	velocity.x = direction * speed
@@ -124,6 +123,7 @@ func _apply_gravity(delta):
 func _apply_movement():
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.4)
+
 
 func _on_look_up_timer_timeout():
 	camera_modifier = -100
@@ -142,11 +142,11 @@ func _on_enemy_detection_area_body_entered(body):
 func hit(pos: Vector2, damage: int):
 	if !vulnerable or dead:
 		return
-		
+	
 	damaged = true
 	vulnerable = false
 	
-	var knockback_strength = Vector2(9000.0, 750)
+	var knockback_strength = Vector2(9000.0, 750.0)
 	var direction = pos.direction_to(global_position)
 	apply_knockback(direction, knockback_strength)
 	frame_freeze(0.05, 0.4)
@@ -171,11 +171,12 @@ func frame_freeze(time_scale, duration):
 
 func _die():
 	dead = true
-
+	
 
 func _dead():
 	knight_animated_sprite.visible = false
 	player_death.emit()
+	Globals.player_health = Globals.max_health
 
 
 func _on_damaged_timer_timeout():
@@ -184,6 +185,7 @@ func _on_damaged_timer_timeout():
 	
 func _on_hit_timer_timeout():
 	vulnerable = true
+
 
 func stop_attack():
 	normal_attacking = false
@@ -197,11 +199,12 @@ func stop_attack():
 func toggle_normal_attack_mode():
 	normal_attack_mode = !normal_attack_mode
 	can_attack = true
-		
+
 
 func attack_body(body, direction):
 	if "hit" in body:
 		body.hit(direction, attack_damage)
+
 
 func _on_front_attack_area_body_entered(body):
 	var direction = Vector2.RIGHT * move_direction
