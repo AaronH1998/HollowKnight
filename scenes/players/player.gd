@@ -113,6 +113,8 @@ func _handle_move_input():
 	
 	velocity.x = direction * speed
 	velocity += knockback
+	if(velocity.y < max_jump_velocity):
+		velocity.y = max_jump_velocity
 
 
 func _apply_gravity(delta):
