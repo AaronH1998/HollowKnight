@@ -113,8 +113,7 @@ func _handle_move_input():
 	
 	velocity.x = direction * speed
 	velocity += knockback
-	if(velocity.y < max_jump_velocity):
-		velocity.y = max_jump_velocity
+
 
 func _apply_gravity(delta):
 	if velocity.y < 2000:
@@ -221,4 +220,5 @@ func _on_up_attack_area_body_entered(body):
 func _on_down_attack_area_body_entered(body):
 	var direction = Vector2.DOWN
 	attack_body(body, direction)
+	knockback.y = 0
 	velocity.y = max_jump_velocity
