@@ -11,7 +11,7 @@ var knockback_strength_y: float = 750.0
 var knockback: Vector2 = Vector2.ZERO
 var inital_sprite_scale_x: float
 
-var health: int = 2000
+var health: int = 8
 
 var dead: bool = false
 

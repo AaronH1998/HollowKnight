@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal player_death
 
 var speed: float = 4 * Globals.UNIT_SIZE
-var min_jump_height: float = 0.8 * Globals.UNIT_SIZE
+var min_jump_height: float = 0.2 * Globals.UNIT_SIZE
 var max_jump_height: float = 3 * Globals.UNIT_SIZE
 var min_jump_velocity: float
 var max_jump_velocity: float
