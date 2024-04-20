@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 signal player_death
 
+var max_soul: int = 9999
+var current_soul: int = max_soul
+var cast_soul: int = 33
+var healing_power: int = 1
+
 var speed: float = 4 * Globals.UNIT_SIZE
 var min_jump_height: float = 0.2 * Globals.UNIT_SIZE
 var max_jump_height: float = 3 * Globals.UNIT_SIZE
@@ -30,6 +35,7 @@ var attack_damage: int = 5
 var dead: bool = false
 var damaged: bool = false
 var vulnerable: bool = true
+var focussing: bool = false
 
 var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tscn")
 
@@ -59,6 +65,8 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var attack_down_audio = $Audio/AttackDown
 @onready var damage_audio = $Audio/Damage
 @onready var death_audio = $Audio/Death
+@onready var focus_health_charge_audio = $Audio/FocusHealthCharge
+@onready var focus_health_heal_audio = $Audio/FocusHealthHeal
 
 @onready var action_animation_player = $ActionAnimationPlayer
 @onready var secondary_animation_player = $SecondaryAnimationPlayer
@@ -66,6 +74,7 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var collision_shape = $CollisionShape2D
 @onready var enemy_detection_area = $EnemyDetectionArea
 @onready var front_attack_area = $FrontAttackArea
+
 
 func _ready():
 	gravity = 2.0 * max_jump_height / pow(jump_duration, 2)
@@ -173,8 +182,10 @@ func frame_freeze(time_scale, duration):
 func _die():
 	dead = true
 
+
 func _recover():
 	damaged = false
+
 
 func _dead():
 	knight_animated_sprite.visible = false
@@ -225,3 +236,13 @@ func _on_down_attack_area_body_entered(body):
 	attack_body(body, direction)
 	knockback.y = 0
 	velocity.y = max_jump_velocity
+
+func _heal():
+	if Globals.player_health < Globals.max_health and current_soul >= cast_soul:
+		Globals.player_health += healing_power
+		current_soul -= cast_soul
+		print(" ---- heal ----")
+		print(current_soul)
+		focus_health_heal_audio.play()
+		if current_soul < cast_soul or Globals.player_health == Globals.max_health:
+			focussing = false

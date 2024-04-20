@@ -1,4 +1,4 @@
-[gd_scene load_steps=206 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=204 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
@@ -177,8 +177,6 @@
 [ext_resource type="AudioStream" uid="uid://bj5ol755c77v7" path="res://assets/sounds/knight/hero_falling.wav" id="153_1rl1h"]
 [ext_resource type="AudioStream" uid="uid://c245s7nxqatpa" path="res://assets/sounds/knight/hero_damage_less_harsh.wav" id="160_h2qai"]
 [ext_resource type="AudioStream" uid="uid://dh08hqnhhyye" path="res://assets/sounds/knight/hero_death_extra_details.wav" id="161_n88vd"]
-[ext_resource type="AudioStream" uid="uid://bn06vjcjw5d1n" path="res://assets/sounds/spells_charms_abilities/focus_health_charging.wav" id="178_msoou"]
-[ext_resource type="AudioStream" uid="uid://gm3wtw5jkyv1" path="res://assets/sounds/spells_charms_abilities/focus_health_heal.wav" id="179_4i7jf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy1a"]
 radius = 29.0
@@ -1568,7 +1566,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_dlami"]
 resource_name = "focus"
 length = 0.500008
-loop_mode = 2
+loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1601,12 +1599,9 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_heal"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bypv"]
@@ -1728,6 +1723,7 @@ target = NodePath("..")
 flags = 15
 
 [node name="MarginContainer" type="MarginContainer" parent="Visual"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1855,12 +1851,8 @@ stream = ExtResource("160_h2qai")
 stream = ExtResource("161_n88vd")
 
 [node name="FocusHealthCharge" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("178_msoou")
-volume_db = -10.0
 
 [node name="FocusHealthHeal" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("179_4i7jf")
-volume_db = -10.0
 
 [node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

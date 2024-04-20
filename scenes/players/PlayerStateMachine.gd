@@ -13,17 +13,18 @@ func _ready():
 	add_state("look_down")
 	add_state("damaged")
 	add_state("dead")
+	add_state("focus")
 	call_deferred("set_state", states.idle)
 
 func _input(event):
 	if Globals.level_preparing or parent.dead:
 		return
-		
+	
 	if [states.idle, states.walk, states.attack, states.look_up, states.look_down].has(state) and parent.is_on_floor():
 		if event.is_action_pressed("jump"):
 			parent.velocity.y = parent.max_jump_velocity
 			parent.jumping = true
-
+	
 	if event.is_action_released("jump") and parent.velocity.y < parent.min_jump_velocity:
 		parent.velocity.y = parent.min_jump_velocity
 	
@@ -52,8 +53,15 @@ func _input(event):
 			parent.alt_attacking = true
 			parent.down_attacking = false
 			parent.up_attacking = false
-
-
+	
+	if event.is_action_pressed("cast") and Globals.player_health < Globals.max_health and parent.current_soul >= parent.cast_soul and [states.idle, states.walk].has(state):
+		print(" ---- charge ----")
+		print(parent.current_soul)
+		parent.focussing = true
+		
+	if event.is_action_released("cast"):
+		parent.focussing = false
+	
 	if event.is_action_pressed("up") and state == states.idle:
 		parent.looking_up = true
 		parent.look_up_timer.start()
@@ -65,11 +73,11 @@ func _input(event):
 	if event.is_action_released("up") or not [states.idle, states.look_up].has(state):
 		parent.looking_up = false
 		parent.look_up_timer.stop()
-		
+	
 	if event.is_action_released("down") or not [states.idle, states.look_down].has(state):
 		parent.looking_down = false
 		parent.look_down_timer.stop()
-		
+	
 	if !parent.looking_up and !parent.looking_down:
 		parent.camera_modifier = 0
 
@@ -88,6 +96,8 @@ func _get_transition(_delta):
 				return states.damaged
 			elif parent.dead:
 				return states.dead
+			elif parent.focussing:
+				return states.focus
 			elif parent.up_attacking:
 				return states.up_attack
 			elif parent.normal_attacking:
@@ -244,7 +254,25 @@ func _get_transition(_delta):
 		states.damaged:
 			if parent.dead:
 				return states.dead
-			if !parent.damaged:
+			elif !parent.damaged:
+				if parent.down_attacking:
+					return states.down_attack
+				elif parent.up_attacking:
+					return states.up_attack
+				elif parent.normal_attacking:
+					return states.attack
+				elif parent.is_on_floor():
+					return states.idle
+				elif parent.velocity.y > 0:
+					return states.fall
+				elif parent.velocity.y < 0:
+					return states.jump
+		states.focus:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif !parent.focussing:
 				if parent.down_attacking:
 					return states.down_attack
 				elif parent.up_attacking:
@@ -297,9 +325,13 @@ func _enter_state(new_state, _old_state):
 		states.dead:
 			parent.action_animation_player.play("death")
 			parent.death_audio.play()
+		states.focus:
+			parent.action_animation_player.play("focus")
+			parent.focus_health_charge_audio.play()
 	
 func _exit_state(old_state, new_state):
 	parent.walk_audio.stop()
 	parent.fall_audio.stop()
+	parent.focus_health_charge_audio.stop()
 	if(old_state == states.fall and new_state == states.idle):
 		parent.land_audio.play()
