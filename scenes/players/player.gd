@@ -61,7 +61,7 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var death_audio = $Audio/Death
 
 @onready var action_animation_player = $ActionAnimationPlayer
-@onready var visual_animation_player = $VisualAnimationPlayer
+@onready var secondary_animation_player = $SecondaryAnimationPlayer
 
 @onready var collision_shape = $CollisionShape2D
 @onready var enemy_detection_area = $EnemyDetectionArea
@@ -153,7 +153,6 @@ func hit(pos: Vector2, damage: int):
 	apply_knockback(direction, knockback_strength)
 	frame_freeze(0.05, 0.4)
 	hit_timer.start()
-	visual_animation_player.play("invulnerable")
 	
 	Globals.player_health -= damage
 	if Globals.player_health <= 0:

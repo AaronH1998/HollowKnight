@@ -293,7 +293,7 @@ func _enter_state(new_state, _old_state):
 		states.damaged:
 			parent.damage_audio.play()
 			parent.action_animation_player.play("recoil")
-			parent.damaged = false
+			parent.secondary_animation_player.play("invulnerable")
 		states.dead:
 			parent.action_animation_player.play("death")
 			parent.death_audio.play()

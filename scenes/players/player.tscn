@@ -1468,7 +1468,7 @@ tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0412541, 0.0825083, 0.123762, 0.165017, 0.206271, 0.247525, 0.288779),
+"times": PackedFloat32Array(0, 0.0412541, 0.0825001, 0.123762, 0.165017, 0.206271, 0.247525, 0.288779),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
@@ -1575,6 +1575,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyDetectionArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dhmg2"]
@@ -1768,7 +1780,7 @@ libraries = {
 "": SubResource("AnimationLibrary_1bypv")
 }
 
-[node name="VisualAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SecondaryAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_dhmg2")
 }
