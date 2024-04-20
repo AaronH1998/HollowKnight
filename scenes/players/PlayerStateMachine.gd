@@ -260,17 +260,20 @@ func _get_transition(_delta):
 	return null
 
 func _enter_state(new_state, _old_state):
+	# Player animation = sprites in animatedsprite2d played by animationplayer.
+	# Animation Player has an fps snap which makes this easier
+	# Looped animations need an extra frame to return to the original frame.
 	match new_state:
 		states.idle:
-			parent.knight_animated_sprite.play("idle")
+			parent.action_animation_player.play("idle")
 		states.walk:
-			parent.knight_animated_sprite.play("walk")
+			parent.action_animation_player.play("walk")
 			parent.walk_audio.play()
 		states.jump:
-			parent.knight_animated_sprite.play("jump")
+			parent.action_animation_player.play("jump")
 			parent.jump_audio.play()
 		states.fall:
-			parent.knight_animated_sprite.play("fall")
+			parent.action_animation_player.play("fall")
 		states.attack:
 			parent.action_animation_player.play("attack")
 			parent.attack_normal_audio.play()
@@ -284,19 +287,16 @@ func _enter_state(new_state, _old_state):
 			parent.action_animation_player.play("attack down")
 			parent.attack_down_audio.play()
 		states.look_up:
-			parent.knight_animated_sprite.play("look up")
+			parent.action_animation_player.play("look up")
 		states.look_down:
-			parent.knight_animated_sprite.play("look down")
+			parent.action_animation_player.play("look down")
 		states.damaged:
 			parent.damage_audio.play()
-			parent.knight_animated_sprite.play("recoil")
-			await parent.knight_animated_sprite.animation_finished
+			parent.action_animation_player.play("recoil")
 			parent.damaged = false
 		states.dead:
-			parent.knight_animated_sprite.play("death")
+			parent.action_animation_player.play("death")
 			parent.death_audio.play()
-			await parent.knight_animated_sprite.animation_finished
-			parent._dead()
 	
 func _exit_state(old_state, new_state):
 	parent.walk_audio.stop()

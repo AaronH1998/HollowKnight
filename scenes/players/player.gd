@@ -173,7 +173,9 @@ func frame_freeze(time_scale, duration):
 
 func _die():
 	dead = true
-	
+
+func _recover():
+	damaged = false
 
 func _dead():
 	knight_animated_sprite.visible = false
