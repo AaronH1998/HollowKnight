@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 signal player_death
 
-var max_soul: int = 9999
-var current_soul: int = max_soul
 var cast_soul: int = 33
 var healing_power: int = 1
+var healing: bool = false
+var focussing: bool = false
+var is_right_click: bool = false
 
 var speed: float = 4 * Globals.UNIT_SIZE
 var min_jump_height: float = 0.2 * Globals.UNIT_SIZE
@@ -35,7 +36,6 @@ var attack_damage: int = 5
 var dead: bool = false
 var damaged: bool = false
 var vulnerable: bool = true
-var focussing: bool = false
 
 var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tscn")
 
@@ -218,6 +218,7 @@ func toggle_normal_attack_mode():
 func attack_body(body, direction):
 	if "hit" in body:
 		body.hit(direction, attack_damage)
+		Globals.player_soul += Globals.soul_gain
 
 
 func _on_front_attack_area_body_entered(body):
@@ -237,12 +238,17 @@ func _on_down_attack_area_body_entered(body):
 	knockback.y = 0
 	velocity.y = max_jump_velocity
 
+
 func _heal():
-	if Globals.player_health < Globals.max_health and current_soul >= cast_soul:
-		Globals.player_health += healing_power
-		current_soul -= cast_soul
-		print(" ---- heal ----")
-		print(current_soul)
-		focus_health_heal_audio.play()
-		if current_soul < cast_soul or Globals.player_health == Globals.max_health:
-			focussing = false
+	if Globals.player_soul >= cast_soul:
+		Globals.player_soul -= cast_soul
+		healing = true
+		focussing = false
+		if Globals.player_health < Globals.max_health:
+			Globals.player_health += healing_power
+
+
+func _finish_heal():
+	healing = false
+	if Globals.player_soul >= cast_soul and is_right_click:
+		focussing = true

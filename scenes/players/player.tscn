@@ -1,4 +1,4 @@
-[gd_scene load_steps=206 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=212 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
@@ -81,10 +81,15 @@
 [ext_resource type="Texture2D" uid="uid://erac5iyksvl8" path="res://assets/animations/knight/look up/LookUp_005.png" id="35_tryc2"]
 [ext_resource type="Texture2D" uid="uid://go5kx22t7t3d" path="res://assets/animations/knight/slash_alt/Slash_006.png" id="36_2bnii"]
 [ext_resource type="Texture2D" uid="uid://dww3ydggl5t88" path="res://assets/animations/knight/focus/Focus_006.png" id="36_bsgsd"]
+[ext_resource type="Texture2D" uid="uid://clq7owuenkj2d" path="res://assets/animations/knight/focus_get_once/Focus Get Once_000.png" id="37_aibly"]
 [ext_resource type="Texture2D" uid="uid://bywg50bcudn5w" path="res://assets/animations/knight/slash_alt/Slash_007.png" id="37_gp17w"]
+[ext_resource type="Texture2D" uid="uid://b2tr3y7u880fh" path="res://assets/animations/knight/focus_get_once/Focus Get Once_001.png" id="38_3x2c7"]
 [ext_resource type="Texture2D" uid="uid://njgedi5xs82e" path="res://assets/animations/knight/slash_alt/Slash_008.png" id="38_87h4w"]
 [ext_resource type="Texture2D" uid="uid://da56u5vun3nti" path="res://assets/animations/knight/slash_alt/Slash_009.png" id="39_kaie7"]
+[ext_resource type="Texture2D" uid="uid://b3lnmrku1myab" path="res://assets/animations/knight/focus_get_once/Focus Get Once_002.png" id="39_wwp55"]
+[ext_resource type="Texture2D" uid="uid://d1hyvyef84qwx" path="res://assets/animations/knight/focus_get_once/Focus Get Once_003.png" id="40_1jkww"]
 [ext_resource type="Texture2D" uid="uid://bc3tj4hsbsjtm" path="res://assets/animations/knight/slash_alt/Slash_010.png" id="40_gmhwv"]
+[ext_resource type="Texture2D" uid="uid://cmw744e2s3802" path="res://assets/animations/knight/focus_get_once/Focus Get Once_004.png" id="41_5cewu"]
 [ext_resource type="Texture2D" uid="uid://bvm5x60h4ylgm" path="res://assets/animations/knight/slash_alt/Slash_011.png" id="41_41wsb"]
 [ext_resource type="Texture2D" uid="uid://cxac0gxysvpko" path="res://assets/animations/knight/slash_alt/Slash_012.png" id="42_majuu"]
 [ext_resource type="Texture2D" uid="uid://b0rm06whj3x8c" path="res://assets/animations/knight/slash_alt/Slash_013.png" id="43_1a0eo"]
@@ -301,6 +306,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"focus",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_aibly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_3x2c7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_wwp55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_1jkww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_5cewu")
+}],
+"loop": false,
+"name": &"focus get once",
 "speed": 12.0
 }, {
 "frames": [{
@@ -1305,11 +1330,9 @@ tracks/6/keys = {
 "values": [true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_5hvui"]
-resource_name = "idle"
-length = 0.750008
-loop_mode = 1
-step = 0.0833333
+[sub_resource type="Animation" id="Animation_3lim3"]
+resource_name = "death"
+length = 1.70001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1320,7 +1343,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"idle"]
+"values": [&"death"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1329,67 +1352,24 @@ tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 0]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
-
-[sub_resource type="Animation" id="Animation_wkrx2"]
-resource_name = "walk"
-length = 0.70001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.7),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 0]
-}
-
-[sub_resource type="Animation" id="Animation_e315v"]
-resource_name = "jump"
-length = 0.90001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"jump"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 5, 4, 5, 6, 7, 8, 9]
+"values": [{
+"args": [],
+"method": &"_dead"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_pu5to"]
@@ -1422,9 +1402,9 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 0]
 }
 
-[sub_resource type="Animation" id="Animation_4uqvj"]
-resource_name = "look up"
-length = 0.416675
+[sub_resource type="Animation" id="Animation_dlami"]
+resource_name = "focus"
+length = 2.66667
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1436,7 +1416,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"look up"]
+"values": [&"focus"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1445,10 +1425,136 @@ tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666666, 0.75, 0.833333, 0.916666, 1, 1.08333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [0, 1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.16667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_heal"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/FocusHealthHeal:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.16667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6fl4k"]
+resource_name = "focus get once"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"focus get once"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_finish_heal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5hvui"]
+resource_name = "idle"
+length = 0.750008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 0]
+}
+
+[sub_resource type="Animation" id="Animation_e315v"]
+resource_name = "jump"
+length = 0.90001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 5, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_dtnv8"]
@@ -1466,6 +1572,35 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"look down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_4uqvj"]
+resource_name = "look up"
+length = 0.416675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"look up"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1523,9 +1658,10 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_3lim3"]
-resource_name = "death"
-length = 1.70001
+[sub_resource type="Animation" id="Animation_wkrx2"]
+resource_name = "walk"
+length = 0.70001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1536,7 +1672,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"death"]
+"values": [&"walk"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1545,68 +1681,10 @@ tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.7),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_dead"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_dlami"]
-resource_name = "focus"
-length = 0.500008
-loop_mode = 2
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/KnightAnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"focus"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual/KnightAnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_heal"
-}]
+"values": [0, 1, 2, 3, 4, 5, 6, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bypv"]
@@ -1619,6 +1697,7 @@ _data = {
 "death": SubResource("Animation_3lim3"),
 "fall": SubResource("Animation_pu5to"),
 "focus": SubResource("Animation_dlami"),
+"focus get once": SubResource("Animation_6fl4k"),
 "idle": SubResource("Animation_5hvui"),
 "jump": SubResource("Animation_e315v"),
 "look down": SubResource("Animation_dtnv8"),

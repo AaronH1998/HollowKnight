@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://chwvd05ndg0ki"]
+[gd_scene load_steps=20 format=3 uid="uid://chwvd05ndg0ki"]
 
 [ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_qq0ct"]
 [ext_resource type="Texture2D" uid="uid://sk3lai1twgj3" path="res://assets/animations/ui/frame/appear/HUD Frame_000.png" id="1_tvfk6"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bfw6vnv67tk3u" path="res://assets/animations/ui/frame/appear/HUD Frame_004.png" id="5_tw6yd"]
 [ext_resource type="Texture2D" uid="uid://bdhvlbftdokkq" path="res://assets/animations/ui/frame/appear/HUD Frame_005.png" id="6_h2ixc"]
 [ext_resource type="Texture2D" uid="uid://bsnxtee8xtqsl" path="res://assets/animations/ui/frame/idle/HUD Frame Idle_000.png" id="7_coc5p"]
+[ext_resource type="Texture2D" uid="uid://dhhvht2dptng8" path="res://assets/animations/ui/soul/idle/Idle_000.png" id="10_hficy"]
+[ext_resource type="Texture2D" uid="uid://bfocm2qxi0lcv" path="res://assets/sprites/ui/hud/soul_orb_full_v020000.png" id="10_qcssw"]
+[ext_resource type="Texture2D" uid="uid://c4gqhk8kw1dbh" path="res://assets/animations/ui/soul/idle/Idle_001.png" id="11_1v0y7"]
+[ext_resource type="Texture2D" uid="uid://bv8lvc0i1jf8o" path="res://assets/animations/ui/soul/idle/Idle_002.png" id="12_qhxo6"]
+[ext_resource type="Texture2D" uid="uid://dgvu5i61pvoag" path="res://assets/animations/ui/soul/idle/Idle_003.png" id="13_gd6bh"]
+[ext_resource type="Texture2D" uid="uid://mum7qri13bib" path="res://assets/animations/ui/soul/idle/Idle_004.png" id="14_83d6o"]
+[ext_resource type="Texture2D" uid="uid://b5qdxvacbrves" path="res://assets/animations/ui/soul/idle/Idle_005.png" id="15_3qsn8"]
+[ext_resource type="Shader" path="res://scenes/UI/animation_mask.gdshader" id="17_vffyu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yj2po"]
 animations = [{
@@ -43,12 +51,33 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_1v13u"]
+frames = 6
+frame_0/texture = ExtResource("10_hficy")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("11_1v0y7")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("12_qhxo6")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("13_gd6bh")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("14_83d6o")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("15_3qsn8")
+frame_5/duration = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_856ui"]
+shader = ExtResource("17_vffyu")
+shader_parameter/mask_translation = 1.0
+shader_parameter/enabled = false
+shader_parameter/mask = SubResource("AnimatedTexture_1v13u")
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_qq0ct")
 
 [node name="TopLeft" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 218.0
+offset_bottom = 224.0
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 60
 
@@ -66,10 +95,26 @@ theme_override_constants/margin_right = 59
 theme_override_constants/margin_bottom = 82
 
 [node name="FrameAnimatedSprite" type="AnimatedSprite2D" parent="TopLeft/StatusDetails/Frame"]
+clip_children = 2
 sprite_frames = SubResource("SpriteFrames_yj2po")
 animation = &"idle"
 autoplay = "idle"
 centered = false
+
+[node name="SoulMargin" type="MarginContainer" parent="TopLeft/StatusDetails/Frame"]
+layout_mode = 2
+theme_override_constants/margin_left = -48
+theme_override_constants/margin_top = -47
+
+[node name="FillingSoul" type="TextureRect" parent="TopLeft/StatusDetails/Frame/SoulMargin"]
+material = SubResource("ShaderMaterial_856ui")
+layout_mode = 2
+texture = ExtResource("10_qcssw")
+
+[node name="FullSoul" type="TextureRect" parent="TopLeft/StatusDetails/Frame/SoulMargin"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_qcssw")
 
 [node name="HealthIndicators" type="GridContainer" parent="TopLeft/StatusDetails"]
 layout_mode = 2

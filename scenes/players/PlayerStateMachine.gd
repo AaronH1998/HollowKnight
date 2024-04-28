@@ -14,6 +14,7 @@ func _ready():
 	add_state("damaged")
 	add_state("dead")
 	add_state("focus")
+	add_state("healing")
 	call_deferred("set_state", states.idle)
 
 func _input(event):
@@ -54,14 +55,14 @@ func _input(event):
 			parent.down_attacking = false
 			parent.up_attacking = false
 	
-	if event.is_action_pressed("cast") and Globals.player_health < Globals.max_health and parent.current_soul >= parent.cast_soul and [states.idle, states.walk].has(state):
-		print(" ---- charge ----")
-		print(parent.current_soul)
+	if event.is_action_pressed("cast") and Globals.player_soul >= parent.cast_soul and [states.idle, states.walk].has(state):
 		parent.focussing = true
+		parent.is_right_click = true
 		
 	if event.is_action_released("cast"):
+		parent.is_right_click = false
 		parent.focussing = false
-	
+		
 	if event.is_action_pressed("up") and state == states.idle:
 		parent.looking_up = true
 		parent.look_up_timer.start()
@@ -272,7 +273,29 @@ func _get_transition(_delta):
 				return states.damaged
 			elif parent.dead:
 				return states.dead
+			elif parent.healing:
+				return states.healing
 			elif !parent.focussing:
+				if parent.down_attacking:
+					return states.down_attack
+				elif parent.up_attacking:
+					return states.up_attack
+				elif parent.normal_attacking:
+					return states.attack
+				elif parent.is_on_floor():
+					return states.idle
+				elif parent.velocity.y > 0:
+					return states.fall
+				elif parent.velocity.y < 0:
+					return states.jump
+		states.healing:
+			if parent.damaged:
+				return states.damaged
+			elif parent.dead:
+				return states.dead
+			elif !parent.healing:
+				if parent.focussing:
+					return states.focus
 				if parent.down_attacking:
 					return states.down_attack
 				elif parent.up_attacking:
@@ -328,10 +351,22 @@ func _enter_state(new_state, _old_state):
 		states.focus:
 			parent.action_animation_player.play("focus")
 			parent.focus_health_charge_audio.play()
+		states.healing:
+			parent.action_animation_player.play("focus get once")
 	
 func _exit_state(old_state, new_state):
 	parent.walk_audio.stop()
 	parent.fall_audio.stop()
 	parent.focus_health_charge_audio.stop()
+	
+	# Set focus to false if interrupted
+	if(old_state == states.focus):
+		parent.focussing = false
+	
+	# Set healing to false if interrupted
+	if(old_state == states.healing):
+		parent.healing = false
+		
+	#Play land audio when you land
 	if(old_state == states.fall and new_state == states.idle):
 		parent.land_audio.play()
