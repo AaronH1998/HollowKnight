@@ -31,6 +31,7 @@
 		* Player can use soul to heal self
 
 ### The Enemies
+
 	* Hit:
 		* Takes damage when attacked by knight
 	* Death:
@@ -51,6 +52,7 @@
 			* Apply gravity
 
 ### UI
+
 	* Start Menu:
 		* Hollow knight Main Menu music.
 		* Play and Exit button.
@@ -61,7 +63,8 @@
 		* When enemy is defeated, game will complete, show thank you message and return to main menu.
 		
 ### Levels:
-	* Constructed of:
+	* 1 Level
+	* Levels Contain:
 		* Parallax Background (different layers moving and different speeds)
 		* Obstacles - Floors, ceilings.
 		* Enemies
