@@ -96,12 +96,10 @@ modulate = Color(0, 0, 0, 1)
 scale = Vector2(88.7668, 13.675)
 
 [node name="Ceiling" parent="Obstacles" instance=ExtResource("3_h3rff")]
-visible = false
 position = Vector2(1700, -700)
 scale = Vector2(58.529, 1000)
 
 [node name="Ceiling2" parent="Obstacles" instance=ExtResource("3_h3rff")]
-visible = false
 position = Vector2(-1700, -700)
 scale = Vector2(58.529, 1000)
 
@@ -110,7 +108,7 @@ scale = Vector2(58.529, 1000)
 [node name="Drops" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
-position = Vector2(0, -50)
+position = Vector2(-82, -60)
 
 [node name="Foreground" type="Node2D" parent="."]
 
@@ -128,13 +126,14 @@ texture = ExtResource("8_s2isc")
 [node name="Timers" type="Node" parent="."]
 
 [node name="StartTimer" type="Timer" parent="Timers"]
+wait_time = 10.0
 one_shot = true
 autostart = true
 
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights"]
-color = Color(0.705882, 0.678431, 0.694118, 1)
+color = Color(0.730061, 0.703985, 0.718873, 1)
 energy = 0.77
 blend_mode = 1
 
