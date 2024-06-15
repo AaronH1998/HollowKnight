@@ -96,7 +96,7 @@ animations = [{
 
 [node name="Crawlid" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 46
+collision_mask = 44
 script = ExtResource("1_2bkdx")
 
 [node name="StateMachine" type="Node" parent="."]

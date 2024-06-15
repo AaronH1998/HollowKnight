@@ -134,6 +134,7 @@ func _apply_gravity(delta):
 func _apply_movement():
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.4)
+	Globals.player_pos = global_position
 
 
 func _on_look_up_timer_timeout():

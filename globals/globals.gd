@@ -40,6 +40,8 @@ var player_soul: int = max_soul:
 			new_soul = max_soul
 		elif value < player_soul and value < 0:
 			new_soul = 0
-			
+		
 		soul_change.emit(new_soul)
 		player_soul = new_soul
+
+var player_pos: Vector2

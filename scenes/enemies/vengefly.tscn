@@ -1,0 +1,127 @@
+[gd_scene load_steps=21 format=3 uid="uid://co5edir6pe305"]
+
+[ext_resource type="Script" path="res://scenes/enemies/vengefly.gd" id="1_dtmph"]
+[ext_resource type="Script" path="res://scenes/enemies/VengeflyStateMachine.gd" id="2_0375r"]
+[ext_resource type="Texture2D" uid="uid://bqqo6ju2d4msb" path="res://assets/animations/vengefly/idle/Idle_000.png" id="2_mste7"]
+[ext_resource type="Texture2D" uid="uid://cwt7g6ydluk82" path="res://assets/animations/vengefly/death air/Death Air_000.png" id="3_522n3"]
+[ext_resource type="Texture2D" uid="uid://csewgnkhgr72f" path="res://assets/animations/vengefly/idle/Idle_001.png" id="3_d7fat"]
+[ext_resource type="Texture2D" uid="uid://s1icqnvyw6j6" path="res://assets/animations/vengefly/idle/Idle_002.png" id="4_1i3pc"]
+[ext_resource type="Texture2D" uid="uid://bktc0sic71tb5" path="res://assets/animations/vengefly/death air/Death Air_001.png" id="4_tpfep"]
+[ext_resource type="Texture2D" uid="uid://b050wcngut71m" path="res://assets/animations/vengefly/idle/Idle_003.png" id="5_cwnlr"]
+[ext_resource type="Texture2D" uid="uid://diw5v0eow01nc" path="res://assets/animations/vengefly/death air/Death Air_002.png" id="5_l2qgn"]
+[ext_resource type="Texture2D" uid="uid://b3ox5af7bywx1" path="res://assets/animations/vengefly/death land/Death Land_000.png" id="6_dk2jl"]
+[ext_resource type="Texture2D" uid="uid://bemkks33ijvti" path="res://assets/animations/vengefly/idle/Idle_004.png" id="6_mgb4g"]
+[ext_resource type="Texture2D" uid="uid://y6jux0lkgmy0" path="res://assets/animations/vengefly/death land/Death Land_001.png" id="7_dv8hc"]
+[ext_resource type="Texture2D" uid="uid://blqa01smxry6p" path="res://assets/animations/vengefly/death land/Death Land_002.png" id="8_4lug3"]
+[ext_resource type="Texture2D" uid="uid://bebuwwyj67lfq" path="res://assets/animations/vengefly/fly/Fly_000.png" id="9_65qor"]
+[ext_resource type="Texture2D" uid="uid://db0kasd1mmc0u" path="res://assets/animations/vengefly/fly/Fly_001.png" id="10_3elfg"]
+[ext_resource type="Texture2D" uid="uid://cdls44amp33sy" path="res://assets/animations/vengefly/fly/Fly_002.png" id="11_dulcs"]
+[ext_resource type="Texture2D" uid="uid://o03eq1sy33e5" path="res://assets/animations/vengefly/fly/Fly_003.png" id="12_rcjca"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxhbl"]
+radius = 1205.59
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khs88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_522n3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tpfep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l2qgn")
+}],
+"loop": false,
+"name": &"death air",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dk2jl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dv8hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4lug3")
+}],
+"loop": false,
+"name": &"death land",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_65qor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3elfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dulcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rcjca")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mste7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d7fat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1i3pc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cwnlr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mgb4g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfcrv"]
+radius = 25.02
+
+[node name="Vengefly" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_dtmph")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_0375r")
+
+[node name="AggroRange" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+shape = SubResource("CircleShape2D_yxhbl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -12)
+sprite_frames = SubResource("SpriteFrames_khs88")
+animation = &"fly"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="NavigationTimer" type="Timer" parent="Timer"]
+wait_time = 0.75
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nfcrv")
+
+[connection signal="body_entered" from="AggroRange" to="." method="_on_aggro_range_body_entered"]
+[connection signal="body_exited" from="AggroRange" to="." method="_on_aggro_range_body_exited"]
+[connection signal="timeout" from="Timer/NavigationTimer" to="." method="_on_navigation_timer_timeout"]

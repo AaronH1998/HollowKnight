@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=17 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
@@ -13,6 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="11_qnn2d"]
 [ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="12_15xv5"]
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="13_1l0oj"]
+[ext_resource type="PackedScene" uid="uid://co5edir6pe305" path="res://scenes/enemies/vengefly.tscn" id="14_tyg8v"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wqlv8"]
+vertices = PackedVector2Array(1425, -690, 1417, -14, -758, -16, -758, -691)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-768, -7, -768, -702, 1436, -700, 1427, -4)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yndj3"]
 shader = ExtResource("3_vu53h")
@@ -20,6 +27,21 @@ shader_parameter/lod = 2.887
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_e8soq")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-5, 10)
+navigation_polygon = SubResource("NavigationPolygon_wqlv8")
+
+[node name="CameraLockAreas" type="Node2D" parent="."]
+
+[node name="CameraLockArea2" parent="CameraLockAreas" instance=ExtResource("6_rv3fu")]
+position = Vector2(752, -2)
+scale = Vector2(73.9013, 34.8371)
+
+[node name="CameraLockArea" parent="CameraLockAreas" instance=ExtResource("6_rv3fu")]
+position = Vector2(-765, -4)
+scale = Vector2(75.8481, 34.8464)
+can_look_down = false
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -64,6 +86,9 @@ centered = false
 [node name="Crawlid" parent="Enemies" instance=ExtResource("11_qnn2d")]
 position = Vector2(1157, -23)
 
+[node name="Vengefly" parent="Enemies" instance=ExtResource("14_tyg8v")]
+position = Vector2(1197, -430)
+
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Floor" parent="Obstacles" instance=ExtResource("2_aij7w")]
@@ -79,17 +104,6 @@ scale = Vector2(58.529, 1000)
 visible = false
 position = Vector2(-1700, -700)
 scale = Vector2(58.529, 1000)
-
-[node name="CameraLockAreas" type="Node2D" parent="."]
-
-[node name="CameraLockArea2" parent="CameraLockAreas" instance=ExtResource("6_rv3fu")]
-position = Vector2(752, -2)
-scale = Vector2(73.9013, 34.8371)
-
-[node name="CameraLockArea" parent="CameraLockAreas" instance=ExtResource("6_rv3fu")]
-position = Vector2(-765, -4)
-scale = Vector2(75.8481, 34.8464)
-can_look_down = false
 
 [node name="Items" type="Node2D" parent="."]
 
