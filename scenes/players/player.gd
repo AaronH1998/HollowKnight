@@ -158,7 +158,7 @@ func hit(pos: Vector2, damage: int):
 	damaged = true
 	vulnerable = false
 	
-	var knockback_strength = Vector2(9000.0, 750.0)
+	var knockback_strength = Vector2(9000.0, 400.0)
 	var direction = pos.direction_to(global_position)
 	apply_knockback(direction, knockback_strength)
 	frame_freeze(0.05, 0.4)
@@ -170,7 +170,8 @@ func hit(pos: Vector2, damage: int):
 
 
 func apply_knockback(direction, strength):
-	var force = Vector2(direction.x * strength.x, direction.y * strength.y)
+	var force = Vector2(direction.x * strength.x, -strength.y)
+	print(force)
 	knockback = force
 
 
