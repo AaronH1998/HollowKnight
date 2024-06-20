@@ -151,12 +151,24 @@ func _on_enemy_detection_area_body_entered(body):
 	hit(pos, damage)
 
 
+func reset_state():
+	$FrontAttackArea/CollisionPolygon2D.call_deferred("set_disabled", true)
+	$UpAttackArea/CollisionPolygon2D.call_deferred("set_disabled", true)
+	$DownAttackArea/CollisionPolygon2D.call_deferred("set_disabled", true)
+	up_attacking = false
+	down_attacking = false
+	normal_attacking = false
+	healing = false
+	can_attack = true
+	
+
 func hit(pos: Vector2, damage: int):
 	if !vulnerable or dead:
 		return
 	
-	damaged = true
 	vulnerable = false
+	damaged = true
+	reset_state()
 	
 	var knockback_strength = Vector2(9000.0, 400.0)
 	var direction = pos.direction_to(global_position)
@@ -171,7 +183,6 @@ func hit(pos: Vector2, damage: int):
 
 func apply_knockback(direction, strength):
 	var force = Vector2(direction.x * strength.x, -strength.y)
-	print(force)
 	knockback = force
 
 

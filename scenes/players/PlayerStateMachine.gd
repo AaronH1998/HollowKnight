@@ -355,6 +355,7 @@ func _enter_state(new_state, _old_state):
 			parent.action_animation_player.play("focus get once")
 	
 func _exit_state(old_state, new_state):
+	parent.action_animation_player.stop()
 	parent.walk_audio.stop()
 	parent.fall_audio.stop()
 	parent.focus_health_charge_audio.stop()
