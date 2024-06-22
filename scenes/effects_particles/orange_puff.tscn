@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqo8vwp4bn1qr"]
+
+[ext_resource type="Script" path="res://scenes/effects_particles/orange_puff.gd" id="1_fl4sn"]
+[ext_resource type="Texture2D" uid="uid://b4dssmvro31uw" path="res://assets/animations/effects_particles/orange_puff_animated.png" id="1_jcbp3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_twcj7"]
+radius = 38.1182
+
+[sub_resource type="Animation" id="Animation_8vgqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2wvs0"]
+resource_name = "puff"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vyfr"]
+_data = {
+"RESET": SubResource("Animation_8vgqg"),
+"puff": SubResource("Animation_2wvs0")
+}
+
+[node name="OrangePuff" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_fl4sn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_twcj7")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jcbp3")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7vyfr")
+}

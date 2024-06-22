@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal crawlid_death
+signal crawlid_hit
 
 var gravity:float = 3848.0
 var speed: float = 2 * Globals.UNIT_SIZE
@@ -11,11 +12,15 @@ var knockback_strength_y: float = 750.0
 var knockback: Vector2 = Vector2.ZERO
 var inital_sprite_scale_x: float
 
-var health: int = 8
+var health: int = 8888
 
 var dead: bool = false
 
 @onready var crawlid_animated_sprite: AnimatedSprite2D = $CrawlidAnimatedSprite
+@onready var walk_audio: AudioStreamPlayer2D = $Audio/Walk
+@onready var hit_audio: AudioStreamPlayer2D = $Audio/Hit
+@onready var die_audio: AudioStreamPlayer2D = $Audio/Die
+
 
 func _ready():
 	inital_sprite_scale_x = crawlid_animated_sprite.scale.x
@@ -46,6 +51,8 @@ func hit(direction, damage):
 
 	var force = Vector2(direction.x * knockback_strength_x, direction.y * knockback_strength_y)
 	knockback = force
+	hit_audio.play()
+	crawlid_hit.emit(global_position, direction)
 	
 	if(health <= 0):
 		_die()
@@ -54,6 +61,7 @@ func hit(direction, damage):
 func _die():
 	dead = true
 	speed = 0
+	die_audio.play()
 	_disable_player_collision()
 	crawlid_death.emit()
 

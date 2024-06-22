@@ -42,10 +42,11 @@ func _enter_state(new_state, _old_state):
 			parent.crawlid_animated_sprite.play("idle")
 		states.walk:
 			parent.crawlid_animated_sprite.play("walk")
+			parent.walk_audio.play()
 		states.death_air:
 			parent.crawlid_animated_sprite.play("death air")
 		states.death_land:
 			parent.crawlid_animated_sprite.play("death land")
 
 func _exit_state(_old_state, _new_state):
-	pass
+	parent.walk_audio.stop()

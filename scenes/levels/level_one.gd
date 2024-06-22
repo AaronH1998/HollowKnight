@@ -2,6 +2,7 @@ extends Node2D
 
 var shade_scene: PackedScene = preload("res://scenes/enemies/shade.tscn")
 var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tscn")
+var puff_scene: PackedScene = preload("res://scenes/effects_particles/orange_puff.tscn")
 
 @onready var enemies: Node2D = $Enemies
 
@@ -36,3 +37,11 @@ func _on_player_player_death():
 
 func _on_crawlid_crawlid_death():
 	TransitionLayer.change_scene("res://scenes/menus/game_complete.tscn")
+
+
+func _on_crawlid_crawlid_hit(pos, dir):
+	for i in randi_range(3,10):
+		var puff = puff_scene.instantiate() as RigidBody2D
+		puff.position = pos
+		puff.linear_velocity = Vector2(dir.x + randf_range(-0.5,0.5), dir.y + randf_range(-0.5, 0.5))  * puff.speed
+		$Effects.call_deferred("add_child", puff)

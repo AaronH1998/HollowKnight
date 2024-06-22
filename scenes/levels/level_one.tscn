@@ -81,14 +81,6 @@ scale = Vector2(60, 33.75)
 texture = ExtResource("5_y76de")
 centered = false
 
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="Crawlid" parent="Enemies" instance=ExtResource("11_qnn2d")]
-position = Vector2(1157, -23)
-
-[node name="Vengefly" parent="Enemies" instance=ExtResource("14_tyg8v")]
-position = Vector2(1197, -430)
-
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Floor" parent="Obstacles" instance=ExtResource("2_aij7w")]
@@ -107,6 +99,14 @@ scale = Vector2(58.529, 1000)
 
 [node name="Drops" type="Node2D" parent="."]
 
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Crawlid" parent="Enemies" instance=ExtResource("11_qnn2d")]
+position = Vector2(1157, -23)
+
+[node name="Vengefly" parent="Enemies" instance=ExtResource("14_tyg8v")]
+position = Vector2(1197, -430)
+
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
 position = Vector2(-82, -60)
 
@@ -122,6 +122,8 @@ texture = ExtResource("8_s2isc")
 [node name="Sprite2D2" type="Sprite2D" parent="Foreground"]
 position = Vector2(918, 3)
 texture = ExtResource("8_s2isc")
+
+[node name="Effects" type="Node2D" parent="."]
 
 [node name="Timers" type="Node" parent="."]
 
@@ -144,5 +146,6 @@ volume_db = -10.0
 autoplay = true
 
 [connection signal="crawlid_death" from="Enemies/Crawlid" to="." method="_on_crawlid_crawlid_death"]
+[connection signal="crawlid_hit" from="Enemies/Crawlid" to="." method="_on_crawlid_crawlid_hit"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

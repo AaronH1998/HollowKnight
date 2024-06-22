@@ -18,6 +18,7 @@ var dead: bool = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
+
 func _ready():
 	inital_sprite_scale_x = animated_sprite.scale.x
 	navigation_agent.path_desired_distance = 20.0
@@ -31,7 +32,6 @@ func _apply_gravity(delta):
 
 
 func _apply_movement():
-	
 	if dead:
 		velocity.x = 0
 	elif !is_target_in_aggro_range:
