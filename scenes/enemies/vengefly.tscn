@@ -112,11 +112,11 @@ sprite_frames = SubResource("SpriteFrames_khs88")
 animation = &"fly"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 
 [node name="Timer" type="Node" parent="."]
 
 [node name="NavigationTimer" type="Timer" parent="Timer"]
-wait_time = 0.75
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

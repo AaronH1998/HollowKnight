@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://co5edir6pe305" path="res://scenes/enemies/vengefly.tscn" id="14_tyg8v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wqlv8"]
-vertices = PackedVector2Array(1425, -690, 1417, -14, -758, -16, -758, -691)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-768, -7, -768, -702, 1436, -700, 1427, -4)])
+vertices = PackedVector2Array(-758, -16, -758, -688, 277, -426, 1417, -14, 1425, -687)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-768, -7, -768, -702, 277, -436, 1436, -700, 1427, -4)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yndj3"]

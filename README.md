@@ -11,7 +11,7 @@
 * Attacks:
 	* Normal and alt side attacks
 	* Up Attack
-	* Down Attack
+	* Down Attack with bounce
 * Camera:
 	* Soft follow camera
 	* Look up
@@ -49,7 +49,7 @@
 		* Fly towards player if in range
 		* Recalculate directin on timer.
 	* Death:
-		* Apply gravity
+		* Apply gravity and stop moving
 
 ### UI
 
