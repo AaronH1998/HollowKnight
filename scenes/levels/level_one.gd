@@ -7,6 +7,11 @@ var enemies_count: int
 
 @onready var enemies: Node2D = $Enemies
 
+func _input(_event):
+	if Input.is_action_just_pressed("menu"):
+		get_tree().paused = true
+		$PauseMenu.pause()
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	for enemy in get_tree().get_nodes_in_group("Enemies"):

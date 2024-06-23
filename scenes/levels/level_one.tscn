@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=22 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="12_15xv5"]
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="13_1l0oj"]
 [ext_resource type="PackedScene" uid="uid://co5edir6pe305" path="res://scenes/enemies/vengefly.tscn" id="14_tyg8v"]
+[ext_resource type="PackedScene" uid="uid://cudxrbju5mf3o" path="res://scenes/UI/pause_menu.tscn" id="15_k0x80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcx3k"]
 size = Vector2(9290, 782)
@@ -188,6 +189,8 @@ blend_mode = 1
 stream = ExtResource("13_1l0oj")
 volume_db = -10.0
 autoplay = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("15_k0x80")]
 
 [connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
