@@ -24,6 +24,7 @@ _data = {
 }
 
 [node name="TransitionLayer" type="CanvasLayer"]
+process_mode = 3
 layer = 128
 script = ExtResource("1_srd3n")
 
