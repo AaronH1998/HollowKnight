@@ -56,5 +56,4 @@ func _on_enemy_death():
 
 func _on_kill_box_body_entered(body):
 	if "kill" in body:
-		print(body)
 		body.kill()

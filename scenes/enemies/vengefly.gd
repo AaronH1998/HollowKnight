@@ -1,11 +1,11 @@
 extends Enemy
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var vengefly_health: int = 8
 var is_target_in_aggro_range: bool = false
 var previous_direction: int = 0
+
 
 func _ready():
 	super()
@@ -13,6 +13,7 @@ func _ready():
 	navigation_agent.target_desired_distance = 10.0
 	navigation_agent.target_position = Globals.player_pos
 	health = vengefly_health
+
 
 func _apply_movement():
 	if dead:

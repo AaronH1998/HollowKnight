@@ -19,6 +19,7 @@ var dead: bool = false
 
 @onready var hit_audio: AudioStreamPlayer2D = $Audio/Hit
 @onready var die_audio: AudioStreamPlayer2D = $Audio/Die
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
 	inital_sprite_scale_x = $AnimatedSprite2D.scale.x
@@ -51,7 +52,9 @@ func _die():
 func _disable_player_collision():
 	set_collision_layer_value(2, false)
 	set_collision_layer_value(7, true)
-	
+
+
 func kill():
-	health = 0
-	_die()
+	if !dead:
+		health = 0
+		_die()

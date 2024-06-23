@@ -266,6 +266,8 @@ func _finish_heal():
 	if Globals.player_soul >= cast_soul and is_right_click:
 		focussing = true
 
+
 func kill():
-	Globals.player_health = 0
-	_die()
+	if(!dead):
+		Globals.player_health = 0
+		_die()

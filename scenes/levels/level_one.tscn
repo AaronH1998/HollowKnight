@@ -39,6 +39,7 @@ shader_parameter/lod = 2.887
 script = ExtResource("1_e8soq")
 
 [node name="KillBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 3
 
@@ -138,8 +139,17 @@ scale = Vector2(58.529, 1000)
 [node name="Crawlid" parent="Enemies" instance=ExtResource("10_p2xj5")]
 position = Vector2(847, -42)
 
+[node name="Vengefly4" parent="Enemies" instance=ExtResource("14_tyg8v")]
+position = Vector2(-1258, -345)
+
 [node name="Vengefly" parent="Enemies" instance=ExtResource("14_tyg8v")]
 position = Vector2(1124, -524)
+
+[node name="Vengefly2" parent="Enemies" instance=ExtResource("14_tyg8v")]
+position = Vector2(-440, -486)
+
+[node name="Vengefly3" parent="Enemies" instance=ExtResource("14_tyg8v")]
+position = Vector2(618, -380)
 
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
 position = Vector2(-84, -57)

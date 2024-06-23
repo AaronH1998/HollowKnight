@@ -1,9 +1,8 @@
 extends Enemy
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var walk_audio: AudioStreamPlayer2D = $Audio/Walk
 
-var crawlid_health = 8888
+var crawlid_health = 8
 
 func _ready():
 	super()
