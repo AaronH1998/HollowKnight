@@ -51,3 +51,7 @@ func _die():
 func _disable_player_collision():
 	set_collision_layer_value(2, false)
 	set_collision_layer_value(7, true)
+	
+func kill():
+	health = 0
+	_die()

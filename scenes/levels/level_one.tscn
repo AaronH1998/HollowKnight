@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=21 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
@@ -15,6 +15,16 @@
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="13_1l0oj"]
 [ext_resource type="PackedScene" uid="uid://co5edir6pe305" path="res://scenes/enemies/vengefly.tscn" id="14_tyg8v"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcx3k"]
+size = Vector2(9290, 782)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcu80"]
+size = Vector2(20, 41.8575)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr2rt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed63b"]
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wqlv8"]
 vertices = PackedVector2Array(-758, -16, -758, -688, 277, -426, 1417, -14, 1425, -687)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4)])
@@ -27,6 +37,30 @@ shader_parameter/lod = 2.887
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_e8soq")
+
+[node name="KillBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
+position = Vector2(75, 951)
+scale = Vector2(4.09409, 1.56593)
+shape = SubResource("RectangleShape2D_xcx3k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KillBox"]
+position = Vector2(-3963, -12867.3)
+scale = Vector2(164.188, 1118.73)
+shape = SubResource("RectangleShape2D_pcu80")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="KillBox"]
+position = Vector2(3951, -13003)
+scale = Vector2(-192.771, -2409.58)
+shape = SubResource("RectangleShape2D_dr2rt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="KillBox"]
+position = Vector2(3840, -35200)
+scale = Vector2(4249.88, -292.843)
+shape = SubResource("RectangleShape2D_ed63b")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-5, 10)
@@ -145,5 +179,6 @@ stream = ExtResource("13_1l0oj")
 volume_db = -10.0
 autoplay = true
 
+[connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

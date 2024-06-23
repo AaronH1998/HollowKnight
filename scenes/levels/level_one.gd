@@ -47,7 +47,14 @@ func _on_enemy_hit(pos, dir):
 		puff.linear_velocity = Vector2(dir.x + randf_range(-0.5,0.5), dir.y + randf_range(-0.5, 0.5))  * puff.speed
 		$Effects.call_deferred("add_child", puff)
 
+
 func _on_enemy_death():
 	enemies_count -= 1 
 	if(enemies_count == 0):
 		TransitionLayer.change_scene("res://scenes/menus/game_complete.tscn")
+
+
+func _on_kill_box_body_entered(body):
+	if "kill" in body:
+		print(body)
+		body.kill()
