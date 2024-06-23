@@ -1,120 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://bmujy7uvasd54"]
+[gd_scene load_steps=7 format=3 uid="uid://bmujy7uvasd54"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_7qlmg"]
 [ext_resource type="Texture2D" uid="uid://meqevyf8h6yw" path="res://assets/sprites/ui/menus/HollowKnightTitle.png" id="2_ex6gr"]
 [ext_resource type="AudioStream" uid="uid://cj4duay5vmcbw" path="res://assets/music/Main menu theme - Title.wav" id="2_gm8mr"]
-[ext_resource type="Texture2D" uid="uid://cdvxkys4sry3u" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_000.png" id="3_a456x"]
-[ext_resource type="Texture2D" uid="uid://bjpspjvoc5ucn" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_001.png" id="4_urkkc"]
-[ext_resource type="Texture2D" uid="uid://xu2ggvbrn6vu" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_002.png" id="5_q3t5x"]
-[ext_resource type="Texture2D" uid="uid://br5lyk7wb6lhf" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_003.png" id="6_qruwx"]
-[ext_resource type="Texture2D" uid="uid://c82nnf7qfvgsf" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_004.png" id="7_ku6ya"]
-[ext_resource type="Texture2D" uid="uid://b7jvgu35r8kn8" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_005.png" id="8_bbto4"]
-[ext_resource type="Texture2D" uid="uid://wkt1aqhkvtib" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_006.png" id="9_7dqm8"]
-[ext_resource type="Texture2D" uid="uid://bk4ty4vraiql6" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_007.png" id="10_ry05r"]
-[ext_resource type="Texture2D" uid="uid://dejo6ko1gcvub" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_008.png" id="11_l0dqr"]
-[ext_resource type="Texture2D" uid="uid://kpr2ukqu3j42" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_009.png" id="12_o28lc"]
-[ext_resource type="Texture2D" uid="uid://dsvvsibhcs7b5" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_010.png" id="13_aitua"]
-[ext_resource type="Texture2D" uid="uid://e52ru1ow7tm4" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_011.png" id="14_ekvr7"]
-[ext_resource type="Texture2D" uid="uid://bqx3mino7ah7d" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_000.png" id="15_c0nsn"]
-[ext_resource type="Texture2D" uid="uid://b530ort78x575" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_001.png" id="16_1u37o"]
-[ext_resource type="Texture2D" uid="uid://cskojj878oa12" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_002.png" id="17_oxwpb"]
-[ext_resource type="Texture2D" uid="uid://bb8es2mousv6d" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_003.png" id="18_o846j"]
-[ext_resource type="Texture2D" uid="uid://cjrwb1iiqes0l" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_004.png" id="19_2gwvr"]
-[ext_resource type="Texture2D" uid="uid://c717utikkm4yd" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_005.png" id="20_rg4sn"]
-[ext_resource type="Texture2D" uid="uid://bi01bwtirb31m" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_006.png" id="21_35l6o"]
-[ext_resource type="Texture2D" uid="uid://j6pvo5mr3iq0" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_007.png" id="22_6d0m1"]
-[ext_resource type="Texture2D" uid="uid://cahymm8yj5v4n" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_008.png" id="23_smyer"]
-[ext_resource type="Texture2D" uid="uid://ec73vkc802mp" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_009.png" id="24_nkakx"]
-[ext_resource type="Texture2D" uid="uid://cx44oo8j7sgu7" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_010.png" id="25_ng2b2"]
-[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="27_y6xi4"]
+[ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="4_vtr0j"]
 [ext_resource type="Texture2D" uid="uid://ctj2jm41vk2qk" path="res://assets/sprites/menus/team_cherry_logo_main_menu.png" id="28_tuttm"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_a0tfe"]
 file = "res://assets/video/menu/Classic.ogv"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yjeo8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_a456x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_urkkc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_q3t5x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_qruwx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_ku6ya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_bbto4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_7dqm8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ry05r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_l0dqr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_o28lc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_aitua")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_ekvr7")
-}],
-"loop": false,
-"name": &"pointer_down",
-"speed": 60.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_c0nsn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_1u37o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_oxwpb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_o846j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_2gwvr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_rg4sn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_35l6o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_6d0m1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_smyer")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_nkakx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_ng2b2")
-}],
-"loop": false,
-"name": &"pointer_up",
-"speed": 60.0
-}]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8sglf"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_7qlmg")
@@ -154,108 +47,20 @@ stretch_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 200
 
-[node name="StartGame" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+[node name="StartButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("4_vtr0j")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/separation = 35
-
-[node name="FocusIconLeft" type="MarginContainer" parent="VBoxContainer/VBoxContainer/StartGame"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 36
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/StartGame/FocusIconLeft"]
-sprite_frames = SubResource("SpriteFrames_yjeo8")
-animation = &"pointer_down"
-frame = 11
-centered = false
-
-[node name="StartGameButton" type="Button" parent="VBoxContainer/VBoxContainer/StartGame"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../../QuitGame/QuitGameButton")
-focus_neighbor_bottom = NodePath("../../QuitGame/QuitGameButton")
-focus_next = NodePath("../../QuitGame/QuitGameButton")
-focus_previous = NodePath("../../QuitGame/QuitGameButton")
-theme_override_fonts/font = ExtResource("27_y6xi4")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8sglf")
 text = "Start Game"
-flat = true
 
-[node name="FocusIconRight" type="MarginContainer" parent="VBoxContainer/VBoxContainer/StartGame"]
+[node name="QuitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("4_vtr0j")]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 36
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/StartGame/FocusIconRight"]
-sprite_frames = SubResource("SpriteFrames_yjeo8")
-animation = &"pointer_down"
-frame = 11
-centered = false
-flip_h = true
-
-[node name="QuitGame" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/separation = 35
-
-[node name="FocusIconLeft" type="MarginContainer" parent="VBoxContainer/VBoxContainer/QuitGame"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 36
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/QuitGame/FocusIconLeft"]
-sprite_frames = SubResource("SpriteFrames_yjeo8")
-animation = &"pointer_down"
-frame = 11
-centered = false
-
-[node name="QuitGameButton" type="Button" parent="VBoxContainer/VBoxContainer/QuitGame"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../../StartGame/StartGameButton")
-focus_neighbor_bottom = NodePath("../../StartGame/StartGameButton")
-focus_next = NodePath("../../StartGame/StartGameButton")
-focus_previous = NodePath("../../StartGame/StartGameButton")
-theme_override_fonts/font = ExtResource("27_y6xi4")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8sglf")
-text = "Quit Game"
-flat = true
-
-[node name="FocusIconRight" type="MarginContainer" parent="VBoxContainer/VBoxContainer/QuitGame"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 36
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/QuitGame/FocusIconRight"]
-sprite_frames = SubResource("SpriteFrames_yjeo8")
-animation = &"pointer_down"
-frame = 11
-centered = false
-flip_h = true
+text = "Exit Game"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 3
@@ -277,11 +82,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("28_tuttm")
 
-[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/StartGame/StartGameButton" to="." method="_on_start_game_button_focus_entered"]
-[connection signal="focus_exited" from="VBoxContainer/VBoxContainer/StartGame/StartGameButton" to="." method="_on_start_game_button_focus_exited"]
-[connection signal="mouse_entered" from="VBoxContainer/VBoxContainer/StartGame/StartGameButton" to="." method="_on_start_game_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/StartGame/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="focus_entered" from="VBoxContainer/VBoxContainer/QuitGame/QuitGameButton" to="." method="_on_quit_game_button_focus_entered"]
-[connection signal="focus_exited" from="VBoxContainer/VBoxContainer/QuitGame/QuitGameButton" to="." method="_on_quit_game_button_focus_exited"]
-[connection signal="mouse_entered" from="VBoxContainer/VBoxContainer/QuitGame/QuitGameButton" to="." method="_on_quit_game_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitGame/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

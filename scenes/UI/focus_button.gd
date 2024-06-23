@@ -13,10 +13,6 @@ func focus():
 	button.grab_focus()
 
 
-func unfocus():
-	button.focus_exited.emit()
-
-
 func _ready():
 	focus_icon_left.visible = false
 	focus_icon_right.visible = false
