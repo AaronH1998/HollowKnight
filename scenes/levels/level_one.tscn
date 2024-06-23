@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bdm3im67i5bg4" path="res://assets/sprites/placeholders/Circle/Circle-0002.png" id="5_y76de"]
 [ext_resource type="PackedScene" uid="uid://cw8wfitl8qa2i" path="res://scenes/objects/camera_lock_area.tscn" id="6_rv3fu"]
 [ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/floors/long_rocky_floor.png" id="8_s2isc"]
-[ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="11_qnn2d"]
+[ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="10_p2xj5"]
 [ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="12_15xv5"]
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="13_1l0oj"]
 [ext_resource type="PackedScene" uid="uid://co5edir6pe305" path="res://scenes/enemies/vengefly.tscn" id="14_tyg8v"]
@@ -101,14 +101,13 @@ scale = Vector2(58.529, 1000)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Crawlid" parent="Enemies" instance=ExtResource("11_qnn2d")]
-position = Vector2(1157, -23)
-
 [node name="Vengefly" parent="Enemies" instance=ExtResource("14_tyg8v")]
 position = Vector2(1197, -430)
 
+[node name="Crawlid" parent="Enemies" instance=ExtResource("10_p2xj5")]
+
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
-position = Vector2(-82, -60)
+position = Vector2(-84, -57)
 
 [node name="Foreground" type="Node2D" parent="."]
 
@@ -145,7 +144,5 @@ stream = ExtResource("13_1l0oj")
 volume_db = -10.0
 autoplay = true
 
-[connection signal="crawlid_death" from="Enemies/Crawlid" to="." method="_on_crawlid_crawlid_death"]
-[connection signal="crawlid_hit" from="Enemies/Crawlid" to="." method="_on_crawlid_crawlid_hit"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

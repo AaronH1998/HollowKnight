@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://detelx6bb7bog"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_k3vuf"]
+[ext_resource type="AudioStream" uid="uid://he44be4tq4u0" path="res://assets/sounds/enemies/enemy_damage.wav" id="2_a5tqd"]
+[ext_resource type="AudioStream" uid="uid://bu41iggps80fn" path="res://assets/sounds/enemies/enemy_death_sword.wav" id="3_5etln"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 44
+script = ExtResource("1_k3vuf")
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("2_a5tqd")
+volume_db = -10.0
+
+[node name="Die" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_5etln")
+volume_db = -10.0

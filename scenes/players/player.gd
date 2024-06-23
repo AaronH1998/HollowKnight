@@ -47,7 +47,7 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 @onready var down_slash_animated_sprite: AnimatedSprite2D = $Visual/DownSlashAnimatedSprite
 
 @onready var look_up_timer: Timer = $Timers/LookUpTimer
-@onready var look_down_timer: Timer = $Timers/LookDownTimer	
+@onready var look_down_timer: Timer = $Timers/LookDownTimer
 @onready var hit_timer: Timer = $Timers/HitTimer
 
 @onready var camera: Camera2D = $Visual/Camera2D

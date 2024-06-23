@@ -8,6 +8,8 @@ var puff_scene: PackedScene = preload("res://scenes/effects_particles/orange_puf
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		enemy.connect("enemy_hit", _on_enemy_hit)
 
 
 func _process(_delta):
@@ -39,7 +41,7 @@ func _on_crawlid_crawlid_death():
 	TransitionLayer.change_scene("res://scenes/menus/game_complete.tscn")
 
 
-func _on_crawlid_crawlid_hit(pos, dir):
+func _on_enemy_hit(pos, dir):
 	for i in randi_range(3,10):
 		var puff = puff_scene.instantiate() as RigidBody2D
 		puff.position = pos

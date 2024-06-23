@@ -39,14 +39,14 @@ func _get_transition(_delta):
 func _enter_state(new_state, _old_state):
 	match new_state:
 		states.idle:
-			parent.crawlid_animated_sprite.play("idle")
+			parent.animated_sprite.play("idle")
 		states.walk:
-			parent.crawlid_animated_sprite.play("walk")
+			parent.animated_sprite.play("walk")
 			parent.walk_audio.play()
 		states.death_air:
-			parent.crawlid_animated_sprite.play("death air")
+			parent.animated_sprite.play("death air")
 		states.death_land:
-			parent.crawlid_animated_sprite.play("death land")
+			parent.animated_sprite.play("death land")
 
 func _exit_state(_old_state, _new_state):
 	parent.walk_audio.stop()
