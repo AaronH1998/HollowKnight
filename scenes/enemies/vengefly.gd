@@ -1,35 +1,18 @@
-extends CharacterBody2D
+extends Enemy
 
-var speed: float = 2 * Globals.UNIT_SIZE
-var previous_direction = 0
-
-var knockback_strength_x: float = 9000.0
-var knockback_strength_y: float = 750.0
-var knockback: Vector2 = Vector2.ZERO
-var inital_sprite_scale_x: float
-var is_target_in_aggro_range: bool = false
-var move_direction: int = 1
-var gravity:float = 3848.0
-
-var health: int = 8
-
-var dead: bool = false
-
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var vengefly_health: int = 8
+var is_target_in_aggro_range: bool = false
+var previous_direction: int = 0
 
 func _ready():
-	inital_sprite_scale_x = animated_sprite.scale.x
+	super()
 	navigation_agent.path_desired_distance = 20.0
 	navigation_agent.target_desired_distance = 10.0
 	navigation_agent.target_position = Globals.player_pos
-
-
-func _apply_gravity(delta):
-	if velocity.y < 2000:
-		velocity.y += gravity * delta
-
+	health = vengefly_health
 
 func _apply_movement():
 	if dead:
@@ -63,25 +46,4 @@ func _on_aggro_range_body_exited(_body):
 
 func _on_navigation_timer_timeout():
 	if is_target_in_aggro_range:
-		$NavigationAgent2D.target_position = Globals.player_pos
-
-
-func hit(direction, damage):
-	health -= damage
-
-	var force = Vector2(direction.x * knockback_strength_x, direction.y * knockback_strength_y)
-	knockback = force
-	
-	if(health <= 0):
-		_die()
-
-
-func _die():
-	dead = true
-	speed = 0
-	_disable_player_collision()
-	
-
-func _disable_player_collision():
-	set_collision_layer_value(2, false)
-	set_collision_layer_value(7, true)
+		navigation_agent.target_position = Globals.player_pos

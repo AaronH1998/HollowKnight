@@ -45,6 +45,7 @@ func _die():
 	speed = 0
 	die_audio.play()
 	_disable_player_collision()
+	death.emit()
 
 
 func _disable_player_collision():

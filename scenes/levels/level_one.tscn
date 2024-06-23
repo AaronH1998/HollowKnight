@@ -101,10 +101,11 @@ scale = Vector2(58.529, 1000)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Vengefly" parent="Enemies" instance=ExtResource("14_tyg8v")]
-position = Vector2(1197, -430)
-
 [node name="Crawlid" parent="Enemies" instance=ExtResource("10_p2xj5")]
+position = Vector2(847, -42)
+
+[node name="Vengefly" parent="Enemies" instance=ExtResource("14_tyg8v")]
+position = Vector2(1124, -524)
 
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
 position = Vector2(-84, -57)
