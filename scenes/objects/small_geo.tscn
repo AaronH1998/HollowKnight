@@ -1,0 +1,122 @@
+[gd_scene load_steps=23 format=3 uid="uid://c3kxckx8krbx7"]
+
+[ext_resource type="Texture2D" uid="uid://d2xi83mmddcr7" path="res://assets/animations/objects/geo/small_air/Small Air_000.png" id="1_odudd"]
+[ext_resource type="Script" path="res://scenes/objects/small_geo.gd" id="1_syect"]
+[ext_resource type="Texture2D" uid="uid://dqgkkaw0jvav4" path="res://assets/animations/objects/geo/small_air/Small Air_001.png" id="2_gjo3l"]
+[ext_resource type="Texture2D" uid="uid://c21km4ocand3g" path="res://assets/animations/objects/geo/small_air/Small Air_002.png" id="3_evovm"]
+[ext_resource type="Texture2D" uid="uid://b785euhunflwv" path="res://assets/animations/objects/geo/small_air/Small Air_003.png" id="4_fwqed"]
+[ext_resource type="Texture2D" uid="uid://dv42ygliksomu" path="res://assets/animations/objects/geo/small_air/Small Air_004.png" id="5_cd168"]
+[ext_resource type="Texture2D" uid="uid://c75tcodf4jfe0" path="res://assets/animations/objects/geo/small_air/Small Air_005.png" id="6_64qg1"]
+[ext_resource type="Texture2D" uid="uid://b8r3mb3nbo1ne" path="res://assets/animations/objects/geo/small_air/Small Air_006.png" id="7_dkfqe"]
+[ext_resource type="Texture2D" uid="uid://cgf0gxpfcf1rn" path="res://assets/animations/objects/geo/small_air/Small Air_007.png" id="8_pbwrq"]
+[ext_resource type="Texture2D" uid="uid://bbdkbd21201u4" path="res://assets/animations/objects/geo/small_air/Small Air_008.png" id="9_pbjha"]
+[ext_resource type="Texture2D" uid="uid://3yxe8csgxyq7" path="res://assets/animations/objects/geo/small_idle/Small Idle_000.png" id="10_qqkyi"]
+[ext_resource type="Texture2D" uid="uid://bc756nh8i7cas" path="res://assets/animations/objects/geo/small_idle/Small Idle_001.png" id="11_4muta"]
+[ext_resource type="Texture2D" uid="uid://bdfw2t63i0oqc" path="res://assets/animations/objects/geo/small_idle/Small Idle_002.png" id="12_alru0"]
+[ext_resource type="Texture2D" uid="uid://drwwaud8wsybk" path="res://assets/animations/objects/geo/small_idle/Small Idle_003.png" id="13_2vkpa"]
+[ext_resource type="Texture2D" uid="uid://bxkju87knv2k6" path="res://assets/animations/objects/geo/small_idle/Small Idle_004.png" id="14_eslef"]
+[ext_resource type="Texture2D" uid="uid://cyhrfnugpubr6" path="res://assets/animations/objects/geo/small_idle/Small Idle_005.png" id="15_t6tov"]
+[ext_resource type="Texture2D" uid="uid://div8o42njg4r7" path="res://assets/animations/objects/geo/small_idle/Small Idle_006.png" id="16_fw7ct"]
+[ext_resource type="Texture2D" uid="uid://c3t1mllhmwehi" path="res://assets/animations/objects/geo/small_idle/Small Idle_007.png" id="17_5bdc2"]
+[ext_resource type="AudioStream" uid="uid://23au7gokegg4" path="res://assets/sounds/effects/geo/geo_small_collect_2.wav" id="19_5td0j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0kib"]
+radius = 12.0416
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1sof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_odudd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gjo3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_evovm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fwqed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cd168")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_64qg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dkfqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pbwrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbjha")
+}],
+"loop": true,
+"name": &"air",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_qqkyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4muta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_alru0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2vkpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_eslef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_t6tov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fw7ct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5bdc2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6rd2"]
+radius = 12.0
+
+[node name="SmallGeo" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 4
+script = ExtResource("1_syect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e0kib")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_y1sof")
+animation = &"idle"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 17)
+collision_mask = 4
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+shape = SubResource("CircleShape2D_y6rd2")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("19_5td0j")
+volume_db = -10.0
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_area_2d_body_entered"]

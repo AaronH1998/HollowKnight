@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 signal enemy_hit(pos, dir)
-signal death
+signal death(pos, dir, geo)
 
 var gravity: float = 3848.0
 var speed: float = 2 * Globals.UNIT_SIZE
@@ -16,6 +16,8 @@ var inital_sprite_scale_x: float
 var health: int = 8;
 
 var dead: bool = false
+
+var geo: int = 2
 
 @onready var hit_audio: AudioStreamPlayer2D = $Audio/Hit
 @onready var die_audio: AudioStreamPlayer2D = $Audio/Die
@@ -38,15 +40,15 @@ func hit(direction, damage):
 	enemy_hit.emit(global_position, direction)
 	
 	if(health <= 0):
-		_die()
+		_die(direction)
 
 
-func _die():
+func _die(dir):
 	dead = true
 	speed = 0
-	die_audio.play()
+	die_audio.play()	
 	_disable_player_collision()
-	death.emit()
+	death.emit(global_position, dir, geo)
 
 
 func _disable_player_collision():
@@ -57,4 +59,4 @@ func _disable_player_collision():
 func kill():
 	if !dead:
 		health = 0
-		_die()
+		_die(Vector2.ZERO)

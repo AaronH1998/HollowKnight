@@ -137,7 +137,8 @@ menu={
 2d_physics/layer_4="Projectiles"
 2d_physics/layer_5="Areas and Zones"
 2d_physics/layer_6="Player Enemy Detection"
-2d_physics/layer_7="Dead Enemies"
+2d_physics/layer_7="No Player Collision"
+2d_physics/layer_8="Drops"
 
 [physics]
 

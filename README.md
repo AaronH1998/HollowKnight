@@ -34,10 +34,12 @@
 
 * Hit:
 	* Takes damage when attacked by knight
+	* Visual and Audio Effect on hit
 * Death:
 	* Stops moving
 	* Plays death animation
 	* Becomes uncollidable by player
+	* Drop Geo which can be collected by player
 * Damage:
 	* Has collision boxes that collide with player's enemy detection area.
 	* Knockback
@@ -59,6 +61,9 @@
 * Game:
 	* Soul meter
 	* Health Indicators
+* Pause Menu:
+	* Pause scene
+	* Resume and Exit to menu buttons
 * Game Complete:
 	* When enemy is defeated, game will complete, show thank you message and return to main menu.
 		
@@ -71,6 +76,7 @@
 	* Player
 	* Light
 	* Background Music
+	* Killbox to prevent out of bounds
 * Start Timer:
 	* Player is restricted at start of level for X amount of time.
 * Fades:

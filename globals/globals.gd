@@ -2,6 +2,7 @@ extends Node
 
 signal health_change(old_health, new_health)
 signal soul_change(new_soul)
+signal geo_change(geo)
 
 var near_floor: bool = false
 var near_ceiling: bool = false
@@ -45,3 +46,8 @@ var player_soul: int = max_soul:
 		player_soul = new_soul
 
 var player_pos: Vector2
+
+var geo: int = 0:
+	set(value):
+		geo_change.emit(value)
+		geo = value

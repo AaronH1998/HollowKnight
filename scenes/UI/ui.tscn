@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://chwvd05ndg0ki"]
+[gd_scene load_steps=30 format=3 uid="uid://chwvd05ndg0ki"]
 
 [ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_qq0ct"]
 [ext_resource type="Texture2D" uid="uid://sk3lai1twgj3" path="res://assets/animations/ui/frame/appear/HUD Frame_000.png" id="1_tvfk6"]
@@ -15,7 +15,16 @@
 [ext_resource type="Texture2D" uid="uid://dgvu5i61pvoag" path="res://assets/animations/ui/soul/idle/Idle_003.png" id="13_gd6bh"]
 [ext_resource type="Texture2D" uid="uid://mum7qri13bib" path="res://assets/animations/ui/soul/idle/Idle_004.png" id="14_83d6o"]
 [ext_resource type="Texture2D" uid="uid://b5qdxvacbrves" path="res://assets/animations/ui/soul/idle/Idle_005.png" id="15_3qsn8"]
+[ext_resource type="Texture2D" uid="uid://3yxe8csgxyq7" path="res://assets/animations/objects/geo/small_idle/Small Idle_000.png" id="17_j3y2a"]
 [ext_resource type="Shader" path="res://scenes/UI/animation_mask.gdshader" id="17_vffyu"]
+[ext_resource type="Texture2D" uid="uid://bc756nh8i7cas" path="res://assets/animations/objects/geo/small_idle/Small Idle_001.png" id="18_1bomn"]
+[ext_resource type="Texture2D" uid="uid://bdfw2t63i0oqc" path="res://assets/animations/objects/geo/small_idle/Small Idle_002.png" id="19_ywp0d"]
+[ext_resource type="Texture2D" uid="uid://drwwaud8wsybk" path="res://assets/animations/objects/geo/small_idle/Small Idle_003.png" id="20_j4883"]
+[ext_resource type="Texture2D" uid="uid://bxkju87knv2k6" path="res://assets/animations/objects/geo/small_idle/Small Idle_004.png" id="21_uxj3p"]
+[ext_resource type="Texture2D" uid="uid://cyhrfnugpubr6" path="res://assets/animations/objects/geo/small_idle/Small Idle_005.png" id="22_gg7md"]
+[ext_resource type="Texture2D" uid="uid://div8o42njg4r7" path="res://assets/animations/objects/geo/small_idle/Small Idle_006.png" id="23_kvy6a"]
+[ext_resource type="Texture2D" uid="uid://c3t1mllhmwehi" path="res://assets/animations/objects/geo/small_idle/Small Idle_007.png" id="24_k1hge"]
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="25_qt6ah"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yj2po"]
 animations = [{
@@ -72,6 +81,38 @@ shader_parameter/mask_translation = 1.0
 shader_parameter/enabled = false
 shader_parameter/mask = SubResource("AnimatedTexture_1v13u")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_832ah"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_j3y2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1bomn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ywp0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_j4883")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_uxj3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_gg7md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_kvy6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_k1hge")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_qq0ct")
 
@@ -81,11 +122,15 @@ offset_bottom = 224.0
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 60
 
-[node name="StatusDetails" type="HBoxContainer" parent="TopLeft"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TopLeft"]
+layout_mode = 2
+theme_override_constants/separation = -70
+
+[node name="StatusDetails" type="HBoxContainer" parent="TopLeft/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Frame" type="MarginContainer" parent="TopLeft/StatusDetails"]
+[node name="Frame" type="MarginContainer" parent="TopLeft/VBoxContainer/StatusDetails"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -94,28 +139,54 @@ theme_override_constants/margin_top = 82
 theme_override_constants/margin_right = 59
 theme_override_constants/margin_bottom = 82
 
-[node name="FrameAnimatedSprite" type="AnimatedSprite2D" parent="TopLeft/StatusDetails/Frame"]
+[node name="FrameAnimatedSprite" type="AnimatedSprite2D" parent="TopLeft/VBoxContainer/StatusDetails/Frame"]
 clip_children = 2
 sprite_frames = SubResource("SpriteFrames_yj2po")
 animation = &"idle"
 autoplay = "idle"
 centered = false
 
-[node name="SoulMargin" type="MarginContainer" parent="TopLeft/StatusDetails/Frame"]
+[node name="SoulMargin" type="MarginContainer" parent="TopLeft/VBoxContainer/StatusDetails/Frame"]
 layout_mode = 2
 theme_override_constants/margin_left = -48
 theme_override_constants/margin_top = -47
 
-[node name="FillingSoul" type="TextureRect" parent="TopLeft/StatusDetails/Frame/SoulMargin"]
+[node name="FillingSoul" type="TextureRect" parent="TopLeft/VBoxContainer/StatusDetails/Frame/SoulMargin"]
 material = SubResource("ShaderMaterial_856ui")
 layout_mode = 2
 texture = ExtResource("10_qcssw")
 
-[node name="FullSoul" type="TextureRect" parent="TopLeft/StatusDetails/Frame/SoulMargin"]
+[node name="FullSoul" type="TextureRect" parent="TopLeft/VBoxContainer/StatusDetails/Frame/SoulMargin"]
 visible = false
 layout_mode = 2
 texture = ExtResource("10_qcssw")
 
-[node name="HealthIndicators" type="GridContainer" parent="TopLeft/StatusDetails"]
+[node name="HealthIndicators" type="GridContainer" parent="TopLeft/VBoxContainer/StatusDetails"]
 layout_mode = 2
 columns = 21
+
+[node name="MarginContainer" type="MarginContainer" parent="TopLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 170
+
+[node name="GeoIndicator" type="HBoxContainer" parent="TopLeft/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="TopLeft/VBoxContainer/MarginContainer/GeoIndicator"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TopLeft/VBoxContainer/MarginContainer/GeoIndicator/Control"]
+position = Vector2(-14, 0)
+sprite_frames = SubResource("SpriteFrames_832ah")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="TopLeft/VBoxContainer/MarginContainer/GeoIndicator"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("25_qt6ah")
+theme_override_font_sizes/font_size = 30
+text = "0"
