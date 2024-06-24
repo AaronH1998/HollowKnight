@@ -4,6 +4,10 @@
 	
 ### The Knight
 
+
+https://github.com/AaronH1998/HollowKnight/assets/53660334/8525dff6-c84b-4e98-9877-ddb22227ab25
+
+
 * Basic movement:
 	* Walk
 	* Jump
