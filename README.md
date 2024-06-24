@@ -1,5 +1,18 @@
 # This is a recreation of Hollow Knight in Godot
 
+## Demos
+
+### Gameplay
+
+https://github.com/AaronH1998/HollowKnight/assets/53660334/41b013ca-2bc0-4407-8a60-9c244c73858e
+
+### UI and Menus
+
+
+https://github.com/AaronH1998/HollowKnight/assets/53660334/1e42a820-c1a3-4e56-8b5a-f02f59e065b5
+
+
+
 ## Current features:
 	
 ### The Knight
