@@ -5,16 +5,13 @@
 ### Gameplay
 
 
-
-https://github.com/AaronH1998/HollowKnight/assets/53660334/1acc3525-debc-43a8-84e9-1b9956190e1b
-
+https://github.com/AaronH1998/HollowKnight/assets/53660334/1f329510-2e9d-46a5-9ca6-a232335764f1
 
 
 ### UI and Menus
 
 
 https://github.com/AaronH1998/HollowKnight/assets/53660334/1e42a820-c1a3-4e56-8b5a-f02f59e065b5
-
 
 
 ## Current features:
