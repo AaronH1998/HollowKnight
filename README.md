@@ -1,7 +1,5 @@
 # This is a recreation of Hollow Knight in Godot
 
-<video src="demos/demo_2.mp4"></video>
-
 ## Current features:
 	
 ### The Knight
