@@ -271,3 +271,13 @@ func kill():
 	if(!dead):
 		Globals.player_health = 0
 		_die()
+
+
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"geo": Globals.geo
+	}
+	
+	return save_dict

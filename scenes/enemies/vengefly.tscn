@@ -114,7 +114,6 @@ sprite_frames = SubResource("SpriteFrames_41vxy")
 animation = &"fly"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5"]
-debug_enabled = true
 
 [node name="Timer" type="Node" parent="." index="6"]
 
