@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://bd8dgwj5p25uk"]
+
+[ext_resource type="Script" path="res://scenes/UI/load_game_row.gd" id="1_a0xcp"]
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_ei0yn"]
+[ext_resource type="Texture2D" uid="uid://3yxe8csgxyq7" path="res://assets/animations/objects/geo/small_idle/Small Idle_000.png" id="2_h8ksn"]
+[ext_resource type="Texture2D" uid="uid://bc756nh8i7cas" path="res://assets/animations/objects/geo/small_idle/Small Idle_001.png" id="3_cbxcc"]
+[ext_resource type="Texture2D" uid="uid://bdfw2t63i0oqc" path="res://assets/animations/objects/geo/small_idle/Small Idle_002.png" id="4_6kcy1"]
+[ext_resource type="Texture2D" uid="uid://drwwaud8wsybk" path="res://assets/animations/objects/geo/small_idle/Small Idle_003.png" id="5_cbm1p"]
+[ext_resource type="Texture2D" uid="uid://bxkju87knv2k6" path="res://assets/animations/objects/geo/small_idle/Small Idle_004.png" id="6_hu4io"]
+[ext_resource type="Texture2D" uid="uid://cyhrfnugpubr6" path="res://assets/animations/objects/geo/small_idle/Small Idle_005.png" id="7_2li4y"]
+[ext_resource type="Texture2D" uid="uid://div8o42njg4r7" path="res://assets/animations/objects/geo/small_idle/Small Idle_006.png" id="8_tv5p2"]
+[ext_resource type="Texture2D" uid="uid://c3t1mllhmwehi" path="res://assets/animations/objects/geo/small_idle/Small Idle_007.png" id="9_o18k5"]
+[ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="10_4vvng"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_doyf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h8ksn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cbxcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6kcy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cbm1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hu4io")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2li4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tv5p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o18k5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="LoadGameRow" type="HBoxContainer"]
+theme_override_constants/separation = 160
+script = ExtResource("1_a0xcp")
+
+[node name="LoadGameButton" type="Button" parent="."]
+custom_minimum_size = Vector2(1000, 150)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ei0yn")
+theme_override_font_sizes/font_size = 60
+text = "Save Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadGameButton"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="GeoNumber" type="Label" parent="LoadGameButton/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_ei0yn")
+theme_override_font_sizes/font_size = 20
+text = "20"
+
+[node name="Control" type="Control" parent="LoadGameButton/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GeoSprite" type="AnimatedSprite2D" parent="LoadGameButton/HBoxContainer/Control"]
+position = Vector2(-23, 0)
+sprite_frames = SubResource("SpriteFrames_doyf0")
+autoplay = "default"
+
+[node name="ClearSaveButton" parent="." instance=ExtResource("10_4vvng")]
+layout_mode = 2
+text = "Clear Save"
+
+[connection signal="pressed" from="LoadGameButton" to="." method="_on_load_game_button_pressed"]

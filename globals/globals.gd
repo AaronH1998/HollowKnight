@@ -4,6 +4,8 @@ signal health_change(old_health, new_health)
 signal soul_change(new_soul)
 signal geo_change(geo)
 
+var save_file: String
+
 var near_floor: bool = false
 var near_ceiling: bool = false
 

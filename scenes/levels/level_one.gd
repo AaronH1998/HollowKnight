@@ -16,7 +16,7 @@ func _ready():
 		enemy.connect("enemy_hit", _on_enemy_hit)
 		enemy.connect("death", _on_enemy_death)
 		enemies_count += 1
-		
+
 
 func _process(_delta):
 	if enemies.get_child_count() <= 0:

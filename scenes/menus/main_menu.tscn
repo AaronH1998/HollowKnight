@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmujy7uvasd54"]
+[gd_scene load_steps=8 format=3 uid="uid://bmujy7uvasd54"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_7qlmg"]
 [ext_resource type="Texture2D" uid="uid://meqevyf8h6yw" path="res://assets/sprites/ui/menus/HollowKnightTitle.png" id="2_ex6gr"]
 [ext_resource type="AudioStream" uid="uid://cj4duay5vmcbw" path="res://assets/music/Main menu theme - Title.wav" id="2_gm8mr"]
 [ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="4_vtr0j"]
+[ext_resource type="PackedScene" uid="uid://bd8dgwj5p25uk" path="res://scenes/UI/load_game_row.tscn" id="6_ufhvb"]
 [ext_resource type="Texture2D" uid="uid://ctj2jm41vk2qk" path="res://assets/sprites/menus/team_cherry_logo_main_menu.png" id="28_tuttm"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_a0tfe"]
@@ -29,58 +30,108 @@ stream = ExtResource("2_gm8mr")
 volume_db = -10.0
 autoplay = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="DefaultMenu" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DefaultMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_constants/separation = 75
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="DefaultMenu/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_ex6gr")
 stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DefaultMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 200
 
-[node name="StartButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("4_vtr0j")]
+[node name="StartButton" parent="DefaultMenu/VBoxContainer/VBoxContainer" instance=ExtResource("4_vtr0j")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Start Game"
 
-[node name="QuitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("4_vtr0j")]
+[node name="QuitButton" parent="DefaultMenu/VBoxContainer/VBoxContainer" instance=ExtResource("4_vtr0j")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Exit Game"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="DefaultMenu"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -270.0
-offset_top = -248.0
+offset_left = -250.0
+offset_top = -203.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = -180
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="DefaultMenu/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 texture = ExtResource("28_tuttm")
 
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="StartGameMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartGameMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="LoadGame1" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
+layout_mode = 2
+save_file = "user://game1.save"
+save_name = "Game 1"
+
+[node name="LoadGame2" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
+layout_mode = 2
+save_file = "user://game2.save"
+save_name = "Game 2"
+
+[node name="LoadGame3" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
+layout_mode = 2
+save_file = "user://game3.save"
+save_name = "Game 3"
+
+[node name="LoadGame4" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
+layout_mode = 2
+save_file = "user://game4.save"
+save_name = "Game 4"
+
+[connection signal="pressed" from="DefaultMenu/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="DefaultMenu/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
