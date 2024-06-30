@@ -6,16 +6,32 @@ extends HBoxContainer
 @onready var load_button: Button = $LoadGameButton
 @onready var geo_label: Label = $LoadGameButton/HBoxContainer/GeoNumber
 
+var game_data: Array
+
 
 func _ready():
 	load_button.text = save_name
+	
+	if not FileAccess.file_exists(save_file):
+		print("save file: " + save_file + " doesn't exist, not loading game info")
+		geo_label.text = "0"
+	else:
+		print("loading game info for save: " + save_file)
+		game_data = get_game_data(save_file)
+		var geo_count = get_geo_count(game_data)
+		geo_label.text = str(geo_count)
 
 
-func load_game(filename):
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for i in save_nodes:
-		i.queue_free()
+func get_geo_count(data: Array) -> int:
+	for item in data:
+		if(item.has("geo")):
+			return item["geo"]
+	return 0
 
+
+func get_game_data(filename: String) -> Array:
+	var parsed_data = []
+	
 	var read_stream = FileAccess.open(filename, FileAccess.READ)
 	while read_stream.get_position() < read_stream.get_length():
 		var json_string = read_stream.get_line()
@@ -26,12 +42,18 @@ func load_game(filename):
 		if not parse_result == OK:
 			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 			continue
-		var node_data = json.get_data()
+		parsed_data.append(json.get_data())
+		
+	read_stream.close()
+	return parsed_data
 
-		for i in node_data.keys():
+
+func load_game():
+	for item in game_data:
+		for i in item.keys():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
-			Globals.set(i, node_data[i])
+			Globals.set(i, item[i])
 
 
 func save_game(filename):
@@ -64,7 +86,7 @@ func _on_load_game_button_pressed():
 		save_game(save_file)
 	else:
 		print("loading save from: " + save_file)
-		load_game(save_file)
+		load_game()
 	
 	Globals.save_file = save_file
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
