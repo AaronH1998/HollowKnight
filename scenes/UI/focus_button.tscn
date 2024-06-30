@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d253gkdskygut"]
+[gd_scene load_steps=30 format=3 uid="uid://d253gkdskygut"]
 
 [ext_resource type="Texture2D" uid="uid://cdvxkys4sry3u" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_000.png" id="1_4mx2x"]
 [ext_resource type="Script" path="res://scenes/UI/focus_button.gd" id="1_oy1oj"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://ec73vkc802mp" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_009.png" id="22_wg85a"]
 [ext_resource type="Texture2D" uid="uid://cx44oo8j7sgu7" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_010.png" id="23_5ta2x"]
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="24_ftl0j"]
+[ext_resource type="AudioStream" uid="uid://cuh05l3p0gfey" path="res://assets/sounds/ui/ui_change_selection.wav" id="26_tl1jr"]
+[ext_resource type="AudioStream" uid="uid://c0ebtuu5yq1hy" path="res://assets/sounds/ui/ui_button_confirm.wav" id="27_2xi8e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u3grw"]
 animations = [{
@@ -153,6 +155,16 @@ sprite_frames = SubResource("SpriteFrames_u3grw")
 animation = &"pointer_down"
 centered = false
 flip_h = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="FocusChange" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("26_tl1jr")
+volume_db = -10.0
+
+[node name="Confirm" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("27_2xi8e")
+volume_db = -10.0
 
 [connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
 [connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]

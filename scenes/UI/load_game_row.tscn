@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bd8dgwj5p25uk"]
+[gd_scene load_steps=40 format=3 uid="uid://bd8dgwj5p25uk"]
 
 [ext_resource type="Script" path="res://scenes/UI/load_game_row.gd" id="1_a0xcp"]
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_ei0yn"]
@@ -34,6 +34,8 @@
 [ext_resource type="Texture2D" uid="uid://cahymm8yj5v4n" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_008.png" id="22_t4f8j"]
 [ext_resource type="Texture2D" uid="uid://ec73vkc802mp" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_009.png" id="23_5qnox"]
 [ext_resource type="Texture2D" uid="uid://cx44oo8j7sgu7" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_010.png" id="24_uwywl"]
+[ext_resource type="AudioStream" uid="uid://cuh05l3p0gfey" path="res://assets/sounds/ui/ui_change_selection.wav" id="35_6ydr6"]
+[ext_resource type="AudioStream" uid="uid://c0ebtuu5yq1hy" path="res://assets/sounds/ui/ui_button_confirm.wav" id="36_ophtt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsjuq"]
 animations = [{
@@ -358,6 +360,16 @@ flip_h = true
 [node name="ClearSaveButton" parent="." instance=ExtResource("10_4vvng")]
 layout_mode = 2
 text = "Clear Save"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="FocusChange" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("35_6ydr6")
+volume_db = -10.0
+
+[node name="Confirm" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("36_ophtt")
+volume_db = -10.0
 
 [connection signal="focus_entered" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_focus_entered"]
 [connection signal="focus_exited" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_focus_exited"]

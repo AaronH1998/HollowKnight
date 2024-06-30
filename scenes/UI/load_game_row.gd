@@ -7,11 +7,13 @@ signal clear_save(filepath)
 
 @onready var geo_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/GeoDisplay/HBoxContainer/GeoNumber
 @onready var main_display: Control = $LoadGameFocus/LoadGameButton/MainDisplay
-@onready var confirmation_display = $LoadGameFocus/LoadGameButton/ConfirmationDisplay
-@onready var game_label = $LoadGameFocus/LoadGameButton/MainDisplay/Label
-@onready var focus_icon_left = $LoadGameFocus/FocusIconLeft/AnimatedSprite2D
-@onready var focus_icon_right = $LoadGameFocus/FocusIconRight/AnimatedSprite2D
-@onready var load_game_button = $LoadGameFocus/LoadGameButton
+@onready var confirmation_display: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay
+@onready var game_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/Label
+@onready var focus_icon_left: AnimatedSprite2D = $LoadGameFocus/FocusIconLeft/AnimatedSprite2D
+@onready var focus_icon_right: AnimatedSprite2D = $LoadGameFocus/FocusIconRight/AnimatedSprite2D
+@onready var load_game_button: Button = $LoadGameFocus/LoadGameButton
+@onready var focus_change_audio: AudioStreamPlayer = $Audio/FocusChange
+@onready var confirm_audio: AudioStreamPlayer = $Audio/Confirm
 
 var game_data: Array
 
@@ -92,6 +94,7 @@ func save_game(filename):
 
 
 func _on_load_game_button_pressed():
+	confirm_audio.play()
 	if not FileAccess.file_exists(save_file):
 		print("file doesn't exist, creating fresh save")
 		save_game(save_file)
@@ -121,12 +124,18 @@ func _on_deny_button_pressed():
 	confirmation_display.visible = false
 
 
-func _on_load_game_button_focus_entered():
+func focus():
 	focus_icon_left.visible = true
 	focus_icon_right.visible = true
 	focus_icon_left.play("pointer_up")
 	focus_icon_right.play("pointer_up")
 	load_game_button.grab_focus()
+
+
+func _on_load_game_button_focus_entered():
+	if !load_game_button.has_focus():
+		focus_change_audio.play()
+		focus()
 
 
 func _on_load_game_button_focus_exited():
@@ -138,4 +147,3 @@ func _on_load_game_button_focus_exited():
 
 func _on_load_game_button_mouse_entered():
 	load_game_button.focus_entered.emit()
-	load_game_button.grab_focus()
