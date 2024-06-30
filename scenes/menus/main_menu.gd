@@ -19,4 +19,8 @@ func _on_start_button_pressed():
 func _on_quit_button_pressed():
 	Globals.queue_free()
 	get_tree().quit()
-	
+
+
+func _on_back_button_pressed():
+	default_menu.visible = true
+	start_menu.visible = false

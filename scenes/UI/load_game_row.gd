@@ -90,3 +90,9 @@ func _on_load_game_button_pressed():
 	
 	Globals.save_file = save_file
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
+
+
+func _on_clear_save_button_pressed():
+	DirAccess.remove_absolute(save_file)
+	game_data = []
+	geo_label.text = "0"

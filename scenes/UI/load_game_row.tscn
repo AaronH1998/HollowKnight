@@ -91,3 +91,4 @@ layout_mode = 2
 text = "Clear Save"
 
 [connection signal="pressed" from="LoadGameButton" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="ClearSaveButton" to="." method="_on_clear_save_button_pressed"]

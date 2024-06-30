@@ -31,6 +31,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="DefaultMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +91,6 @@ size_flags_horizontal = 4
 texture = ExtResource("28_tuttm")
 
 [node name="StartGameMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,5 +133,11 @@ layout_mode = 2
 save_file = "user://game4.save"
 save_name = "Game 4"
 
+[node name="BackButton" parent="StartGameMenu/VBoxContainer" instance=ExtResource("4_vtr0j")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
 [connection signal="pressed" from="DefaultMenu/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="DefaultMenu/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="StartGameMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
