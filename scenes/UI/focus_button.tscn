@@ -111,15 +111,16 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sdyl"]
 
 [node name="FocusButton" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 0
+offset_right = 574.0
+offset_bottom = 72.0
+size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_oy1oj")
 
 [node name="FocusIconLeft" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 36
 theme_override_constants/margin_right = 50
@@ -137,7 +138,6 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("24_ftl0j")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5sdyl")
-text = "Button text"
 flat = true
 
 [node name="FocusIconRight" type="MarginContainer" parent="."]

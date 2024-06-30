@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmujy7uvasd54"]
+[gd_scene load_steps=9 format=3 uid="uid://bmujy7uvasd54"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_7qlmg"]
 [ext_resource type="Texture2D" uid="uid://meqevyf8h6yw" path="res://assets/sprites/ui/menus/HollowKnightTitle.png" id="2_ex6gr"]
 [ext_resource type="AudioStream" uid="uid://cj4duay5vmcbw" path="res://assets/music/Main menu theme - Title.wav" id="2_gm8mr"]
 [ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="4_vtr0j"]
 [ext_resource type="PackedScene" uid="uid://bd8dgwj5p25uk" path="res://scenes/UI/load_game_row.tscn" id="6_ufhvb"]
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="7_u30xy"]
 [ext_resource type="Texture2D" uid="uid://ctj2jm41vk2qk" path="res://assets/sprites/menus/team_cherry_logo_main_menu.png" id="28_tuttm"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_a0tfe"]
@@ -64,12 +65,10 @@ theme_override_constants/separation = 200
 
 [node name="StartButton" parent="DefaultMenu/VBoxContainer/VBoxContainer" instance=ExtResource("4_vtr0j")]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Start Game"
 
 [node name="QuitButton" parent="DefaultMenu/VBoxContainer/VBoxContainer" instance=ExtResource("4_vtr0j")]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Exit Game"
 
 [node name="MarginContainer" type="MarginContainer" parent="DefaultMenu"]
@@ -97,6 +96,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StartGameMenu"]
 layout_mode = 1
@@ -105,37 +106,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -688.0
+offset_top = -428.5
+offset_right = 688.0
+offset_bottom = 428.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 70
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="StartGameMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_u30xy")
+theme_override_font_sizes/font_size = 60
+text = "Select Profile"
+horizontal_alignment = 1
 
 [node name="LoadGame1" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
 layout_mode = 2
 save_file = "user://game1.save"
-save_name = "Game 1"
+save_name = "1."
 
 [node name="LoadGame2" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
 layout_mode = 2
 save_file = "user://game2.save"
-save_name = "Game 2"
+save_name = "2."
 
 [node name="LoadGame3" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
 layout_mode = 2
 save_file = "user://game3.save"
-save_name = "Game 3"
+save_name = "3."
 
 [node name="LoadGame4" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
 layout_mode = 2
 save_file = "user://game4.save"
-save_name = "Game 4"
+save_name = "4."
 
 [node name="BackButton" parent="StartGameMenu/VBoxContainer" instance=ExtResource("4_vtr0j")]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Back"
 
 [connection signal="pressed" from="DefaultMenu/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

@@ -1,16 +1,27 @@
 extends HBoxContainer
 
+signal clear_save(filepath)
+
 @export var save_file: String
 @export var save_name: String
 
-@onready var load_button: Button = $LoadGameButton
-@onready var geo_label: Label = $LoadGameButton/HBoxContainer/GeoNumber
+@onready var geo_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/GeoDisplay/HBoxContainer/GeoNumber
+@onready var main_display: Control = $LoadGameFocus/LoadGameButton/MainDisplay
+@onready var confirmation_display = $LoadGameFocus/LoadGameButton/ConfirmationDisplay
+@onready var game_label = $LoadGameFocus/LoadGameButton/MainDisplay/Label
+@onready var focus_icon_left = $LoadGameFocus/FocusIconLeft/AnimatedSprite2D
+@onready var focus_icon_right = $LoadGameFocus/FocusIconRight/AnimatedSprite2D
+@onready var load_game_button = $LoadGameFocus/LoadGameButton
 
 var game_data: Array
 
 
 func _ready():
-	load_button.text = save_name
+	main_display.visible = true
+	confirmation_display.visible = false
+	game_label.text = save_name
+	focus_icon_left.visible = false
+	focus_icon_right.visible = false
 	
 	if not FileAccess.file_exists(save_file):
 		print("save file: " + save_file + " doesn't exist, not loading game info")
@@ -93,6 +104,38 @@ func _on_load_game_button_pressed():
 
 
 func _on_clear_save_button_pressed():
+	main_display.visible = false
+	confirmation_display.visible = true
+
+
+func _on_confirm_button_pressed():
 	DirAccess.remove_absolute(save_file)
 	game_data = []
 	geo_label.text = "0"
+	main_display.visible = true
+	confirmation_display.visible = false
+
+
+func _on_deny_button_pressed():
+	main_display.visible = true
+	confirmation_display.visible = false
+
+
+func _on_load_game_button_focus_entered():
+	focus_icon_left.visible = true
+	focus_icon_right.visible = true
+	focus_icon_left.play("pointer_up")
+	focus_icon_right.play("pointer_up")
+	load_game_button.grab_focus()
+
+
+func _on_load_game_button_focus_exited():
+	focus_icon_left.play("pointer_down")
+	focus_icon_right.play("pointer_down")
+	focus_icon_left.visible = false
+	focus_icon_right.visible = false
+
+
+func _on_load_game_button_mouse_entered():
+	load_game_button.focus_entered.emit()
+	load_game_button.grab_focus()

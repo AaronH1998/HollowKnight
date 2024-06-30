@@ -43,7 +43,6 @@ theme_override_constants/separation = 200
 
 [node name="ResumeButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_ewaye")]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Resume"
 
