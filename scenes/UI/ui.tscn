@@ -60,7 +60,7 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_1v13u"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_d6fro"]
 frames = 6
 frame_0/texture = ExtResource("10_hficy")
 frame_0/duration = 0.1
@@ -79,7 +79,7 @@ frame_5/duration = 0.1
 shader = ExtResource("17_vffyu")
 shader_parameter/mask_translation = 1.0
 shader_parameter/enabled = false
-shader_parameter/mask = SubResource("AnimatedTexture_1v13u")
+shader_parameter/mask = SubResource("AnimatedTexture_d6fro")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_832ah"]
 animations = [{

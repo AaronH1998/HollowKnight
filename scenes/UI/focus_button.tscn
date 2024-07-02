@@ -118,7 +118,6 @@ offset_bottom = 72.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_oy1oj")
-text = null
 
 [node name="FocusIconLeft" type="MarginContainer" parent="."]
 layout_mode = 2

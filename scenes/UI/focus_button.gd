@@ -68,4 +68,4 @@ func _on_button_mouse_entered():
 
 
 func _on_audio_timer_timeout():
-	focus_change_audio.volume_db = original_audio
+	focus_change_audio.volume_db = original_audio_volume

@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://bism2h27dolkx"]
+
+[ext_resource type="Script" path="res://scenes/UI/player_details.gd" id="1_mkw5h"]
+[ext_resource type="Texture2D" uid="uid://sk3lai1twgj3" path="res://assets/animations/ui/frame/appear/HUD Frame_000.png" id="1_xg7n8"]
+[ext_resource type="Texture2D" uid="uid://rxaqlu6xggsq" path="res://assets/animations/ui/frame/appear/HUD Frame_001.png" id="2_qaoxf"]
+[ext_resource type="Texture2D" uid="uid://dh3i6kwwci00r" path="res://assets/animations/ui/frame/appear/HUD Frame_002.png" id="3_fk2oi"]
+[ext_resource type="Texture2D" uid="uid://cto0dcxcje6ws" path="res://assets/animations/ui/frame/appear/HUD Frame_003.png" id="4_ee2is"]
+[ext_resource type="Texture2D" uid="uid://bfw6vnv67tk3u" path="res://assets/animations/ui/frame/appear/HUD Frame_004.png" id="5_p6hil"]
+[ext_resource type="Texture2D" uid="uid://bdhvlbftdokkq" path="res://assets/animations/ui/frame/appear/HUD Frame_005.png" id="6_eniiw"]
+[ext_resource type="Texture2D" uid="uid://bsnxtee8xtqsl" path="res://assets/animations/ui/frame/idle/HUD Frame Idle_000.png" id="7_7clhg"]
+[ext_resource type="Texture2D" uid="uid://bfocm2qxi0lcv" path="res://assets/sprites/ui/hud/soul_orb_full_v020000.png" id="8_iq5um"]
+[ext_resource type="Texture2D" uid="uid://3yxe8csgxyq7" path="res://assets/animations/objects/geo/small_idle/Small Idle_000.png" id="9_y427f"]
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="17_854ko"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_evrd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xg7n8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qaoxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fk2oi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ee2is")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p6hil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eniiw")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_7clhg")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 30.0
+}]
+
+[node name="PlayerDetails" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = -85
+script = ExtResource("1_mkw5h")
+
+[node name="StatusDetails" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Frame" type="MarginContainer" parent="StatusDetails"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 59
+theme_override_constants/margin_top = 82
+theme_override_constants/margin_right = 59
+theme_override_constants/margin_bottom = 82
+
+[node name="FrameAnimatedSprite" type="AnimatedSprite2D" parent="StatusDetails/Frame"]
+clip_children = 2
+sprite_frames = SubResource("SpriteFrames_evrd1")
+animation = &"idle"
+autoplay = "idle"
+centered = false
+
+[node name="SoulMargin" type="MarginContainer" parent="StatusDetails/Frame"]
+layout_mode = 2
+theme_override_constants/margin_left = -48
+theme_override_constants/margin_top = -47
+
+[node name="FullSoul" type="TextureRect" parent="StatusDetails/Frame/SoulMargin"]
+layout_mode = 2
+texture = ExtResource("8_iq5um")
+
+[node name="HealthIndicators" type="GridContainer" parent="StatusDetails"]
+layout_mode = 2
+columns = 21
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 170
+
+[node name="GeoIndicator" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 35
+
+[node name="Control" type="MarginContainer" parent="MarginContainer/GeoIndicator"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_top = -5
+
+[node name="Control" type="Control" parent="MarginContainer/GeoIndicator/Control"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/GeoIndicator/Control/Control"]
+texture = ExtResource("9_y427f")
+centered = false
+
+[node name="Label" type="Label" parent="MarginContainer/GeoIndicator"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("17_854ko")
+theme_override_font_sizes/font_size = 30
+text = "0"

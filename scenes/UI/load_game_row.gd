@@ -3,7 +3,6 @@ extends HBoxContainer
 @export var save_file: String
 @export var save_name: String
 
-@onready var geo_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/GeoDisplay/HBoxContainer/GeoNumber
 @onready var main_display: Control = $LoadGameFocus/LoadGameButton/MainDisplay
 @onready var confirmation_display: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay
 @onready var game_label: Label = $LoadGameFocus/LoadGameButton/GameLabel
@@ -16,6 +15,7 @@ extends HBoxContainer
 @onready var clear_save_button: HBoxContainer = $ClearSaveButton
 @onready var deny_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/DenyButton
 @onready var confirm_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/ConfirmButton
+@onready var player_details: VBoxContainer = $LoadGameFocus/LoadGameButton/MainDisplay/MarginContainer/PlayerDetails
 
 var world_stats: WorldStats
 
@@ -38,7 +38,9 @@ func _ready():
 	else:
 		print("loading game info for save: " + save_file)
 		var game_data = Persistence.get_game_data(save_file)
-		geo_label.text = str(game_data["geo"])
+		player_details.geo = game_data["geo"]
+		player_details.max_health = game_data["max_health"]
+		player_details.display()
 
 
 func _on_load_game_button_pressed():
