@@ -10,9 +10,9 @@ var health_ui_scene: PackedScene = preload("res://scenes/UI/health.tscn")
 
 func _ready():
 	Globals.connect("soul_change", update_soul)
-	Globals.connect("geo_change", update_geo)
+	Persistence.connect("geo_change", update_geo)
 	_animation_to_animation(frame_animated_sprite, "appear", "idle")
-	update_geo(Globals.geo)
+	update_geo(Persistence.world_stats.geo)
 	
 	for i in Globals.max_health:
 		var health_ui = health_ui_scene.instantiate()

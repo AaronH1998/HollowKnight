@@ -49,7 +49,7 @@ var player_soul: int = max_soul:
 
 var player_pos: Vector2
 
-var geo: int = 0:
-	set(value):
-		geo_change.emit(value)
-		geo = value
+
+func reset():
+	player_health = max_health
+	player_soul = max_soul

@@ -1,15 +1,59 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmujy7uvasd54"]
+[gd_scene load_steps=19 format=3 uid="uid://bmujy7uvasd54"]
 
 [ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_7qlmg"]
 [ext_resource type="Texture2D" uid="uid://meqevyf8h6yw" path="res://assets/sprites/ui/menus/HollowKnightTitle.png" id="2_ex6gr"]
 [ext_resource type="AudioStream" uid="uid://cj4duay5vmcbw" path="res://assets/music/Main menu theme - Title.wav" id="2_gm8mr"]
 [ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="4_vtr0j"]
 [ext_resource type="PackedScene" uid="uid://bd8dgwj5p25uk" path="res://scenes/UI/load_game_row.tscn" id="6_ufhvb"]
+[ext_resource type="Texture2D" uid="uid://ck8qr2l113u80" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0000.png" id="7_8lw1b"]
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="7_u30xy"]
+[ext_resource type="Texture2D" uid="uid://5nsokes51tf8" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0001.png" id="8_vlyh0"]
+[ext_resource type="Texture2D" uid="uid://kmqelbwj02bl" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0002.png" id="9_784jc"]
+[ext_resource type="Texture2D" uid="uid://45kev641r4sx" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0003.png" id="10_yfflt"]
+[ext_resource type="Texture2D" uid="uid://dcy8ulhwkynj7" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0004.png" id="11_s0bh3"]
+[ext_resource type="Texture2D" uid="uid://prfvkwmgs5gs" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0005.png" id="12_wslbm"]
+[ext_resource type="Texture2D" uid="uid://drwf81tr8gsqg" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0006.png" id="13_6h1mm"]
+[ext_resource type="Texture2D" uid="uid://c3a2hcc6ry52a" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0007.png" id="14_fjr6f"]
+[ext_resource type="Texture2D" uid="uid://bu5obhnxx25x4" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0008.png" id="15_65act"]
 [ext_resource type="Texture2D" uid="uid://ctj2jm41vk2qk" path="res://assets/sprites/menus/team_cherry_logo_main_menu.png" id="28_tuttm"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_a0tfe"]
 file = "res://assets/video/menu/Classic.ogv"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4x5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8lw1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vlyh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_784jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yfflt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s0bh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wslbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6h1mm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fjr6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_65act")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_7qlmg")
@@ -32,6 +76,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="DefaultMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,7 +134,6 @@ size_flags_horizontal = 4
 texture = ExtResource("28_tuttm")
 
 [node name="StartGameMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,10 +150,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -688.0
-offset_top = -428.5
-offset_right = 688.0
-offset_bottom = 428.5
+offset_left = -717.0
+offset_top = -516.0
+offset_right = 717.0
+offset_bottom = 516.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -120,6 +164,16 @@ theme_override_fonts/font = ExtResource("7_u30xy")
 theme_override_font_sizes/font_size = 60
 text = "Select Profile"
 horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="StartGameMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StartGameMenu/VBoxContainer/Control"]
+sprite_frames = SubResource("SpriteFrames_g4x5y")
+autoplay = "default"
+frame = 8
+frame_progress = 1.0
 
 [node name="LoadGame1" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
 layout_mode = 2

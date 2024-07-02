@@ -9,6 +9,7 @@ func _ready():
 	default_menu.visible = true
 	start_menu.visible = false
 	start_game_button.focus()
+	Globals.reset()
 
 
 func _on_start_button_pressed():
@@ -17,7 +18,6 @@ func _on_start_button_pressed():
 
 
 func _on_quit_button_pressed():
-	Globals.queue_free()
 	get_tree().quit()
 
 
