@@ -341,17 +341,45 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("26_q1n1q")
 
-[node name="MarginContainer" type="MarginContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay"]
+[node name="Left" type="MarginContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.61, 0.61)
 theme_override_constants/margin_left = 140
 
-[node name="PlayerDetails" parent="LoadGameFocus/LoadGameButton/MainDisplay/MarginContainer" instance=ExtResource("26_w7nh8")]
+[node name="PlayerDetails" parent="LoadGameFocus/LoadGameButton/MainDisplay/Left" instance=ExtResource("26_w7nh8")]
 layout_mode = 2
 
+[node name="Right" type="MarginContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 45
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay/Right"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="ZoneLabel" type="Label" parent="LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ei0yn")
+theme_override_font_sizes/font_size = 25
+text = "My very long zone name"
+horizontal_alignment = 2
+
+[node name="TimeLabel" type="Label" parent="LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ei0yn")
+theme_override_font_sizes/font_size = 20
+text = "2000h 40m"
+horizontal_alignment = 2
+
 [node name="ConfirmationDisplay" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

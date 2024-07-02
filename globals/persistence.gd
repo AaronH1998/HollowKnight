@@ -6,12 +6,17 @@ var save_file_path: String
 
 var world_stats: WorldStats = WorldStats.new()
 
+var time_start
+var time_on_save
 
 func reset():
 	world_stats = WorldStats.new()
 
 
 func save_game():
+	if(time_start):
+		time_on_save = Time.get_ticks_usec()
+		world_stats.time_elapsed += time_on_save - time_start
 	var write_stream = FileAccess.open(save_file_path, FileAccess.WRITE)
 	var json_object = world_stats.to_dict()
 	var json_string = JSON.stringify(json_object)
@@ -25,7 +30,8 @@ func load_game():
 		if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 			continue
 		world_stats.set(i, game_data[i])
-	
+	time_start = Time.get_ticks_usec()
+
 
 func new_game():
 	reset()
@@ -58,55 +64,4 @@ func get_game_data(file_path) -> Variant:
 		
 	read_stream.close()
 	
-	print(json_object)
 	return json_object
-
-#func load_game() -> void:
-	#Globals.queue_free()
-	#add_child(Globals)
-		#
-	#var game_data = get_game_data()
-	#for item in game_data:
-		#for i in item.keys():
-			#if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-				#continue
-			#Globals.set(i, item[i])
-#
-#
-#func save_game() -> void:
-	#var write_stream = FileAccess.open(save_file_path, FileAccess.WRITE)
-	#var save_nodes = get_tree().get_nodes_in_group("Persist")
-	#for node in save_nodes:
-		## Check the node is an instanced scene so it can be instanced again during load.
-		#if node.scene_file_path.is_empty():
-			#print("persistent node '%s' is not an instanced scene, skipped" % node.name)
-			#continue
-#
-		## Check the node has a save function.
-		#if !node.has_method("save"):
-			#print("persistent node '%s' is missing a save() function, skipped" % node.name)
-			#continue
-#
-		## Call the node's save function.
-		#var node_data = node.call("save")
-#
-		## JSON provides a static method to serialized JSON string.
-		#var json_string = JSON.stringify(node_data)
-#
-		## Store the save dictionary as a new line in the save file.
-		#write_stream.store_line(json_string)
-#
-#
-#func delete_save() -> void:
-	#DirAccess.remove_absolute(save_file_path)
-	#
-	#
-#func new_game() -> void:
-	#var write_stream = FileAccess.open(save_file_path, FileAccess.WRITE)
-	#var json_object = {
-		#"geo": 0
-	#}
-	#
-	#var json_string = JSON.stringify(json_object)
-	#
-	#write_stream.store_line(json_string)

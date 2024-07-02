@@ -12,6 +12,7 @@ var enemies_count: int
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	Persistence.world_stats.zone = "King's Pass"
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
 		enemy.connect("enemy_hit", _on_enemy_hit)
 		enemy.connect("death", _on_enemy_death)

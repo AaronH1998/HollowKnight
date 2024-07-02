@@ -15,7 +15,9 @@ extends HBoxContainer
 @onready var clear_save_button: HBoxContainer = $ClearSaveButton
 @onready var deny_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/DenyButton
 @onready var confirm_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/ConfirmButton
-@onready var player_details: VBoxContainer = $LoadGameFocus/LoadGameButton/MainDisplay/MarginContainer/PlayerDetails
+@onready var player_details: VBoxContainer = $LoadGameFocus/LoadGameButton/MainDisplay/Left/PlayerDetails
+@onready var zone_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer/ZoneLabel
+@onready var time_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer/TimeLabel
 
 var world_stats: WorldStats
 
@@ -41,6 +43,17 @@ func _ready():
 		player_details.geo = game_data["geo"]
 		player_details.max_health = game_data["max_health"]
 		player_details.display()
+		zone_label.text = game_data["zone"]
+		var time_elapsed = game_data["time_elapsed"]
+		var seconds = time_elapsed / 1000000
+		var hours = int(seconds / 3600)
+		var minutes = int(float(int(seconds) % 3600) / 60)
+		var time_string = ""
+		if(hours > 0):
+			time_string += str(hours) + "H "
+		time_string += str(minutes) + "M"
+		time_label.text = time_string
+		
 
 
 func _on_load_game_button_pressed():
