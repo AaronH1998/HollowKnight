@@ -1,6 +1,7 @@
 extends HBoxContainer
 
 signal pressed
+signal confirm_audio_finished
 
 @onready var focus_icon_left: AnimatedSprite2D = $FocusIconLeft/AnimatedSprite2D
 @onready var focus_icon_right: AnimatedSprite2D = $FocusIconRight/AnimatedSprite2D
@@ -49,6 +50,8 @@ func _ready():
 func _on_button_pressed():
 	confirm_audio.play()
 	pressed.emit()
+	
+	
 
 
 func _on_button_focus_entered():
@@ -69,3 +72,7 @@ func _on_button_mouse_entered():
 
 func _on_audio_timer_timeout():
 	focus_change_audio.volume_db = original_audio_volume
+
+
+func _on_confirm_finished():
+	confirm_audio_finished.emit()

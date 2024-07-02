@@ -1,26 +1,27 @@
 extends CanvasLayer
 
-@onready var start_game_button: HBoxContainer = $DefaultMenu/VBoxContainer/VBoxContainer/StartButton
-@onready var default_menu: Control = $DefaultMenu
-@onready var start_menu: Control = $StartGameMenu
+var start_menu_scene: PackedScene = preload("res://scenes/UI/start_game_menu.tscn")
+var start_menu
+
+var default_menu_scene: PackedScene = preload("res://scenes/UI/default_menu.tscn")
+var default_menu
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	default_menu.visible = true
-	start_menu.visible = false
-	start_game_button.quiet_focus()
 	Globals.reset()
+	
+	default_menu = default_menu_scene.instantiate()
+	add_child(default_menu)
+	default_menu.connect("start", _on_start_button_pressed)
 
 
 func _on_start_button_pressed():
-	default_menu.visible = false
-	start_menu.visible = true
-
-
-func _on_quit_button_pressed():
-	get_tree().quit()
+	start_menu = start_menu_scene.instantiate()
+	add_child(start_menu)
+	start_menu.connect("back", _on_back_button_pressed)
 
 
 func _on_back_button_pressed():
-	default_menu.visible = true
-	start_menu.visible = false
+	default_menu = default_menu_scene.instantiate()
+	add_child(default_menu)
+	default_menu.connect("start", _on_start_button_pressed)

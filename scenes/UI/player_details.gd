@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal back
+
 @onready var health_indicators_container: GridContainer = $StatusDetails/HealthIndicators
 @onready var geo_label: Label = $MarginContainer/GeoIndicator/Label
 

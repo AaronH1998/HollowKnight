@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=3 uid="uid://guydad0nsg1f"]
+
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_trxyt"]
+[ext_resource type="Script" path="res://scenes/UI/start_game_menu.gd" id="1_ydrv3"]
+[ext_resource type="Texture2D" uid="uid://ck8qr2l113u80" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0000.png" id="2_cnx5u"]
+[ext_resource type="Texture2D" uid="uid://5nsokes51tf8" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0001.png" id="3_bmgit"]
+[ext_resource type="Texture2D" uid="uid://kmqelbwj02bl" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0002.png" id="4_56frg"]
+[ext_resource type="Texture2D" uid="uid://45kev641r4sx" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0003.png" id="5_udtbb"]
+[ext_resource type="Texture2D" uid="uid://dcy8ulhwkynj7" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0004.png" id="6_d43bo"]
+[ext_resource type="Texture2D" uid="uid://prfvkwmgs5gs" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0005.png" id="7_mmvfh"]
+[ext_resource type="Texture2D" uid="uid://drwf81tr8gsqg" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0006.png" id="8_3gg53"]
+[ext_resource type="Texture2D" uid="uid://c3a2hcc6ry52a" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0007.png" id="9_tmooi"]
+[ext_resource type="Texture2D" uid="uid://bu5obhnxx25x4" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0008.png" id="10_mhltv"]
+[ext_resource type="PackedScene" uid="uid://bd8dgwj5p25uk" path="res://scenes/UI/load_game_row.tscn" id="11_7ylrd"]
+[ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="12_p421h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4x5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cnx5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bmgit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_56frg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_udtbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d43bo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mmvfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3gg53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tmooi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mhltv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="StartGameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ydrv3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -717.0
+offset_top = -516.0
+offset_right = 717.0
+offset_bottom = 516.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_trxyt")
+theme_override_font_sizes/font_size = 60
+text = "Select Profile"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Control"]
+sprite_frames = SubResource("SpriteFrames_g4x5y")
+autoplay = "default"
+frame = 8
+frame_progress = 1.0
+
+[node name="LoadGame1" parent="VBoxContainer" instance=ExtResource("11_7ylrd")]
+layout_mode = 2
+size_flags_vertical = 0
+save_file = "user://game1.save"
+save_name = "1."
+
+[node name="LoadGame2" parent="VBoxContainer" instance=ExtResource("11_7ylrd")]
+layout_mode = 2
+save_file = "user://game2.save"
+save_name = "2."
+
+[node name="LoadGame3" parent="VBoxContainer" instance=ExtResource("11_7ylrd")]
+layout_mode = 2
+save_file = "user://game3.save"
+save_name = "3."
+
+[node name="LoadGame4" parent="VBoxContainer" instance=ExtResource("11_7ylrd")]
+layout_mode = 2
+save_file = "user://game4.save"
+save_name = "4."
+
+[node name="BackButton" parent="VBoxContainer" instance=ExtResource("12_p421h")]
+layout_mode = 2
+text = "Back"
+
+[connection signal="confirm_audio_finished" from="VBoxContainer/BackButton" to="." method="_on_back_button_confirm_audio_finished"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -176,4 +176,5 @@ one_shot = true
 [connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="Audio/Confirm" to="." method="_on_confirm_finished"]
 [connection signal="timeout" from="Timers/AudioTimer" to="." method="_on_audio_timer_timeout"]
