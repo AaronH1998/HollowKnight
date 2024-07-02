@@ -234,6 +234,9 @@ animations = [{
 }]
 
 [node name="LoadGameRow" type="HBoxContainer"]
+offset_right = 1434.0
+offset_bottom = 150.0
+size_flags_horizontal = 4
 theme_override_constants/separation = 10
 script = ExtResource("1_a0xcp")
 
@@ -262,26 +265,30 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ei0yn")
 theme_override_font_sizes/font_size = 60
 
-[node name="MarginContainer" type="MarginContainer" parent="LoadGameFocus/LoadGameButton"]
+[node name="GameLabel" type="Label" parent="LoadGameFocus/LoadGameButton"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ei0yn")
+theme_override_font_sizes/font_size = 60
+text = "1. "
+
+[node name="MainDisplay" type="Control" parent="LoadGameFocus/LoadGameButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-
-[node name="GameLabel" type="Label" parent="LoadGameFocus/LoadGameButton/MarginContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ei0yn")
-theme_override_font_sizes/font_size = 60
-text = "1. "
-
-[node name="MainDisplay" type="Control" parent="LoadGameFocus/LoadGameButton/MarginContainer"]
-layout_mode = 2
 mouse_filter = 2
 
-[node name="GeoDisplay" type="MarginContainer" parent="LoadGameFocus/LoadGameButton/MarginContainer/MainDisplay"]
+[node name="GeoDisplay" type="MarginContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -292,58 +299,70 @@ grow_vertical = 0
 theme_override_constants/margin_left = 145
 theme_override_constants/margin_bottom = 30
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/MarginContainer/MainDisplay/GeoDisplay"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay/GeoDisplay"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 45
 
-[node name="GeoNumber" type="Label" parent="LoadGameFocus/LoadGameButton/MarginContainer/MainDisplay/GeoDisplay/HBoxContainer"]
+[node name="GeoNumber" type="Label" parent="LoadGameFocus/LoadGameButton/MainDisplay/GeoDisplay/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("1_ei0yn")
 theme_override_font_sizes/font_size = 20
 text = "20"
 
-[node name="Control" type="Control" parent="LoadGameFocus/LoadGameButton/MarginContainer/MainDisplay/GeoDisplay/HBoxContainer"]
+[node name="Control" type="Control" parent="LoadGameFocus/LoadGameButton/MainDisplay/GeoDisplay/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="GeoSprite" type="AnimatedSprite2D" parent="LoadGameFocus/LoadGameButton/MarginContainer/MainDisplay/GeoDisplay/HBoxContainer/Control"]
+[node name="GeoSprite" type="AnimatedSprite2D" parent="LoadGameFocus/LoadGameButton/MainDisplay/GeoDisplay/HBoxContainer/Control"]
 position = Vector2(-23, 0)
 sprite_frames = SubResource("SpriteFrames_doyf0")
 autoplay = "default"
 
-[node name="ConfirmationDisplay" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/MarginContainer"]
-layout_mode = 2
+[node name="ConfirmationDisplay" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
 theme_override_constants/separation = 25
 
-[node name="Label" type="Label" parent="LoadGameFocus/LoadGameButton/MarginContainer/ConfirmationDisplay"]
+[node name="Label" type="Label" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ei0yn")
 theme_override_font_sizes/font_size = 50
 text = "Clear Save?"
 
-[node name="ConfirmationButtons" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/MarginContainer/ConfirmationDisplay"]
+[node name="ConfirmationButtons" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_constants/separation = 20
 
-[node name="ConfirmButton" parent="LoadGameFocus/LoadGameButton/MarginContainer/ConfirmationDisplay/ConfirmationButtons" instance=ExtResource("10_4vvng")]
+[node name="ConfirmButton" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons" instance=ExtResource("10_4vvng")]
 layout_mode = 2
 text = "Yes"
 
-[node name="DenyButton" parent="LoadGameFocus/LoadGameButton/MarginContainer/ConfirmationDisplay/ConfirmationButtons" instance=ExtResource("10_4vvng")]
+[node name="DenyButton" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons" instance=ExtResource("10_4vvng")]
 layout_mode = 2
 text = "No"
 
-[node name="NewGameDisplay" type="MarginContainer" parent="LoadGameFocus/LoadGameButton/MarginContainer"]
+[node name="NewGameDisplay" type="MarginContainer" parent="LoadGameFocus/LoadGameButton"]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 95
 
-[node name="Label" type="Label" parent="LoadGameFocus/LoadGameButton/MarginContainer/NewGameDisplay"]
+[node name="Label" type="Label" parent="LoadGameFocus/LoadGameButton/NewGameDisplay"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ei0yn")
 theme_override_font_sizes/font_size = 50
@@ -382,6 +401,6 @@ volume_db = -10.0
 [connection signal="focus_exited" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_focus_exited"]
 [connection signal="mouse_entered" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_mouse_entered"]
 [connection signal="pressed" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_pressed"]
-[connection signal="pressed" from="LoadGameFocus/LoadGameButton/MarginContainer/ConfirmationDisplay/ConfirmationButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
-[connection signal="pressed" from="LoadGameFocus/LoadGameButton/MarginContainer/ConfirmationDisplay/ConfirmationButtons/DenyButton" to="." method="_on_deny_button_pressed"]
+[connection signal="pressed" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/DenyButton" to="." method="_on_deny_button_pressed"]
 [connection signal="pressed" from="ClearSaveButton" to="." method="_on_clear_save_button_pressed"]

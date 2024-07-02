@@ -3,24 +3,27 @@ extends HBoxContainer
 @export var save_file: String
 @export var save_name: String
 
-@onready var geo_label: Label = $LoadGameFocus/LoadGameButton/MarginContainer/MainDisplay/GeoDisplay/HBoxContainer/GeoNumber
-@onready var main_display: Control = $LoadGameFocus/LoadGameButton/MarginContainer/MainDisplay
-@onready var confirmation_display: HBoxContainer = $LoadGameFocus/LoadGameButton/MarginContainer/ConfirmationDisplay
-@onready var game_label: Label = $LoadGameFocus/LoadGameButton/MarginContainer/GameLabel
+@onready var geo_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/GeoDisplay/HBoxContainer/GeoNumber
+@onready var main_display: Control = $LoadGameFocus/LoadGameButton/MainDisplay
+@onready var confirmation_display: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay
+@onready var game_label: Label = $LoadGameFocus/LoadGameButton/GameLabel
 @onready var focus_icon_left: AnimatedSprite2D = $LoadGameFocus/FocusIconLeft/AnimatedSprite2D
 @onready var focus_icon_right: AnimatedSprite2D = $LoadGameFocus/FocusIconRight/AnimatedSprite2D
 @onready var load_game_button: Button = $LoadGameFocus/LoadGameButton
 @onready var focus_change_audio: AudioStreamPlayer = $Audio/FocusChange
 @onready var confirm_audio: AudioStreamPlayer = $Audio/Confirm
-@onready var new_game_display: MarginContainer = $LoadGameFocus/LoadGameButton/MarginContainer/NewGameDisplay
+@onready var new_game_display: MarginContainer = $LoadGameFocus/LoadGameButton/NewGameDisplay
 @onready var clear_save_button: HBoxContainer = $ClearSaveButton
+@onready var deny_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/DenyButton
 
 var world_stats: WorldStats
 
 
 func _ready():
+	custom_minimum_size = size
 	main_display.visible = true
 	confirmation_display.visible = false
+	new_game_display.visible = false
 	game_label.visible = true
 	game_label.text = save_name
 	focus_icon_left.visible = false
@@ -55,6 +58,7 @@ func _on_clear_save_button_pressed():
 	game_label.visible = false
 	clear_save_button.visible = false
 	confirmation_display.visible = true
+	deny_button.focus()
 
 
 func _on_confirm_button_pressed():
@@ -81,9 +85,8 @@ func focus():
 
 
 func _on_load_game_button_focus_entered():
-	if !load_game_button.has_focus():
-		focus_change_audio.play()
-		focus()
+	focus_change_audio.play()
+	focus()
 
 
 func _on_load_game_button_focus_exited():
@@ -94,4 +97,5 @@ func _on_load_game_button_focus_exited():
 
 
 func _on_load_game_button_mouse_entered():
-	load_game_button.focus_entered.emit()
+	if !load_game_button.has_focus():
+		load_game_button.focus_entered.emit()

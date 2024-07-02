@@ -31,9 +31,8 @@ func _on_button_pressed():
 
 
 func _on_button_focus_entered():
-	if !button.has_focus():
-		focus_change_audio.play()
-		focus()
+	focus_change_audio.play()
+	focus()
 
 
 func _on_button_focus_exited():
@@ -44,4 +43,5 @@ func _on_button_focus_exited():
 
 
 func _on_button_mouse_entered():
-	button.focus_entered.emit()
+	if !button.has_focus():
+		button.focus_entered.emit()

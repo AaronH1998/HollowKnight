@@ -177,6 +177,7 @@ frame_progress = 1.0
 
 [node name="LoadGame1" parent="StartGameMenu/VBoxContainer" instance=ExtResource("6_ufhvb")]
 layout_mode = 2
+size_flags_vertical = 0
 save_file = "user://game1.save"
 save_name = "1."
 
