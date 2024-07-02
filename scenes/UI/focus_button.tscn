@@ -118,6 +118,7 @@ offset_bottom = 72.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_oy1oj")
+text = null
 
 [node name="FocusIconLeft" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -133,7 +134,7 @@ sprite_frames = SubResource("SpriteFrames_u3grw")
 animation = &"pointer_down"
 centered = false
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." groups=["Button"]]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -166,7 +167,14 @@ volume_db = -10.0
 stream = ExtResource("27_2xi8e")
 volume_db = -10.0
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="AudioTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
 [connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timers/AudioTimer" to="." method="_on_audio_timer_timeout"]

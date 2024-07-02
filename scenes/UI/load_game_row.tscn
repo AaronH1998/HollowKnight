@@ -259,7 +259,7 @@ sprite_frames = SubResource("SpriteFrames_vsjuq")
 animation = &"pointer_down"
 centered = false
 
-[node name="LoadGameButton" type="Button" parent="LoadGameFocus"]
+[node name="LoadGameButton" type="Button" parent="LoadGameFocus" groups=["Button"]]
 custom_minimum_size = Vector2(1000, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ei0yn")
@@ -340,6 +340,7 @@ theme_override_font_sizes/font_size = 50
 text = "Clear Save?"
 
 [node name="ConfirmationButtons" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay"]
+visible = false
 layout_mode = 2
 mouse_filter = 0
 theme_override_constants/separation = 20

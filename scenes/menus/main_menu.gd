@@ -8,7 +8,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	default_menu.visible = true
 	start_menu.visible = false
-	start_game_button.focus()
+	start_game_button.quiet_focus()
 	Globals.reset()
 
 

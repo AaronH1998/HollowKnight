@@ -15,6 +15,7 @@ extends HBoxContainer
 @onready var new_game_display: MarginContainer = $LoadGameFocus/LoadGameButton/NewGameDisplay
 @onready var clear_save_button: HBoxContainer = $ClearSaveButton
 @onready var deny_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/DenyButton
+@onready var confirm_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/ConfirmButton
 
 var world_stats: WorldStats
 
@@ -53,7 +54,25 @@ func _on_load_game_button_pressed():
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
 
 
+func enable_buttons():
+	var buttons = get_tree().get_nodes_in_group("Button")
+	for button in buttons:
+		button.mouse_filter = Control.MOUSE_FILTER_STOP
+		button.focus_mode = Control.FOCUS_ALL
+
+
+func disable_buttons():
+	var buttons = get_tree().get_nodes_in_group("Button")
+	for button in buttons:
+		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		button.focus_mode = Control.FOCUS_NONE
+
+
 func _on_clear_save_button_pressed():
+	disable_buttons()
+	confirm_button.enable()
+	deny_button.enable()
+	
 	main_display.visible = false
 	game_label.visible = false
 	clear_save_button.visible = false
@@ -62,6 +81,7 @@ func _on_clear_save_button_pressed():
 
 
 func _on_confirm_button_pressed():
+	enable_buttons()
 	Persistence.delete_save(save_file)
 	new_game_display.visible = true
 	game_label.visible = true
@@ -70,6 +90,7 @@ func _on_confirm_button_pressed():
 
 
 func _on_deny_button_pressed():
+	enable_buttons()
 	main_display.visible = true
 	game_label.visible = true
 	clear_save_button.visible = true
@@ -97,5 +118,5 @@ func _on_load_game_button_focus_exited():
 
 
 func _on_load_game_button_mouse_entered():
-	if !load_game_button.has_focus():
+	if !load_game_button.has_focus() and !load_game_button.disabled:
 		load_game_button.focus_entered.emit()
