@@ -4,15 +4,15 @@ extends HBoxContainer
 @export var save_name: String
 
 @onready var main_display: Control = $LoadGameButton/MarginContainer/MainDisplay
-@onready var confirmation_display: MarginContainer = $LoadGameButton/MarginContainer/ConfirmationDisplay
+@onready var confirmation_display: MarginContainer = $ConfirmationDisplay
 @onready var game_label: Label = $LoadGameButton/MarginContainer/MarginContainer/GameLabel
 @onready var load_game_button: Button = $LoadGameButton
 @onready var focus_change_audio: AudioStreamPlayer = $Audio/FocusChange
 @onready var confirm_audio: AudioStreamPlayer = $Audio/Confirm
 @onready var new_game_display: MarginContainer = $LoadGameButton/MarginContainer/NewGameDisplay
 @onready var clear_save_button: Button = $ClearSaveButton
-@onready var deny_button: Button = $LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton
-@onready var confirm_button: Button = $LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton
+@onready var deny_button: Button = $ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton
+@onready var confirm_button: Button = $ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton
 @onready var player_details: VBoxContainer = $LoadGameButton/MarginContainer/MainDisplay/Left/PlayerDetails
 @onready var zone_label: Label = $LoadGameButton/MarginContainer/MainDisplay/Right/VBoxContainer/ZoneLabel
 @onready var time_label: Label = $LoadGameButton/MarginContainer/MainDisplay/Right/VBoxContainer/TimeLabel
