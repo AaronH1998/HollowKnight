@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://b81ymn53eah66"]
+
+[ext_resource type="Script" path="res://scenes/menus/quit_pause_menu.gd" id="1_udhfg"]
+[ext_resource type="Texture2D" uid="uid://ck8qr2l113u80" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0000.png" id="2_tonnu"]
+[ext_resource type="Texture2D" uid="uid://5nsokes51tf8" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0001.png" id="3_5k384"]
+[ext_resource type="Texture2D" uid="uid://kmqelbwj02bl" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0002.png" id="4_7nsjl"]
+[ext_resource type="Texture2D" uid="uid://45kev641r4sx" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0003.png" id="5_nf4c0"]
+[ext_resource type="Texture2D" uid="uid://dcy8ulhwkynj7" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0004.png" id="6_0aqtm"]
+[ext_resource type="Texture2D" uid="uid://prfvkwmgs5gs" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0005.png" id="7_mqq1f"]
+[ext_resource type="Texture2D" uid="uid://drwf81tr8gsqg" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0006.png" id="8_a5u1y"]
+[ext_resource type="Texture2D" uid="uid://c3a2hcc6ry52a" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0007.png" id="9_xbttx"]
+[ext_resource type="Texture2D" uid="uid://bu5obhnxx25x4" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0008.png" id="10_2xv21"]
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="11_d22c6"]
+[ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="12_g1v0w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ajhh5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tonnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5k384")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7nsjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nf4c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0aqtm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mqq1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a5u1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xbttx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2xv21")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="QuitPauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_udhfg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -165.5
+offset_right = 175.0
+offset_bottom = 165.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Control"]
+sprite_frames = SubResource("SpriteFrames_ajhh5")
+autoplay = "default"
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_d22c6")
+theme_override_font_sizes/font_size = 50
+text = "Quit To Menu?"
+horizontal_alignment = 1
+
+[node name="SaveLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_d22c6")
+theme_override_font_sizes/font_size = 30
+text = "Progress will be saved"
+horizontal_alignment = 1
+
+[node name="ConfirmButton" parent="VBoxContainer" instance=ExtResource("12_g1v0w")]
+custom_minimum_size = Vector2(225, 50)
+layout_mode = 2
+text = "Yes"
+
+[node name="DenyButton" parent="VBoxContainer" instance=ExtResource("12_g1v0w")]
+custom_minimum_size = Vector2(225, 50)
+layout_mode = 2
+text = "No"
+
+[connection signal="pressed" from="VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="confirm_audio_finished" from="VBoxContainer/DenyButton" to="." method="_on_deny_button_confirm_audio_finished"]
+[connection signal="pressed" from="VBoxContainer/DenyButton" to="." method="_on_deny_button_pressed"]

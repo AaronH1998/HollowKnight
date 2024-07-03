@@ -1,0 +1,23 @@
+extends Control
+
+signal quit
+signal resume
+
+@onready var resume_button: Button = $VBoxContainer/VBoxContainer/ResumeButton
+
+
+func _ready():
+	resume_button.quiet_focus()
+
+
+func _on_main_menu_button_pressed():
+	hide()
+	quit.emit()
+
+
+func _on_main_menu_button_confirm_audio_finished():
+	queue_free()
+
+
+func _on_resume_button_pressed():
+	resume.emit()

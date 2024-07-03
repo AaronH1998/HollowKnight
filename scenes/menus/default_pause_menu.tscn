@@ -1,0 +1,153 @@
+[gd_scene load_steps=23 format=3 uid="uid://cp4ievgdq05t1"]
+
+[ext_resource type="Script" path="res://scenes/menus/default_pause_menu.gd" id="1_3plto"]
+[ext_resource type="Texture2D" uid="uid://5yxuaflg2ml5" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0000.png" id="1_ledpi"]
+[ext_resource type="Texture2D" uid="uid://cd7yew7u5ox4u" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0001.png" id="2_b8rnu"]
+[ext_resource type="Texture2D" uid="uid://bp2d1ma6fabd7" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0002.png" id="3_admla"]
+[ext_resource type="Texture2D" uid="uid://hvcn52ynqqsd" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0003.png" id="4_q80ry"]
+[ext_resource type="Texture2D" uid="uid://bukc3aphmgecp" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0004.png" id="5_1lflf"]
+[ext_resource type="Texture2D" uid="uid://63o26oxixoaa" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0005.png" id="6_ehwoj"]
+[ext_resource type="Texture2D" uid="uid://bvr4byuilica1" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0006.png" id="7_wshgh"]
+[ext_resource type="Texture2D" uid="uid://d1886ncji1rsj" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0007.png" id="8_ss7me"]
+[ext_resource type="Texture2D" uid="uid://pehhpx1odm85" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0008.png" id="9_yd6tv"]
+[ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="10_61dk2"]
+[ext_resource type="Texture2D" uid="uid://cai65uajt7aca" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0000.png" id="11_42ivc"]
+[ext_resource type="Texture2D" uid="uid://kfaclbphh6os" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0001.png" id="12_wefsk"]
+[ext_resource type="Texture2D" uid="uid://chjpn6sbedino" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0002.png" id="13_c2wje"]
+[ext_resource type="Texture2D" uid="uid://ce5awwsjvemvr" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0003.png" id="14_5v2ul"]
+[ext_resource type="Texture2D" uid="uid://da28sxmfao5hc" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0004.png" id="15_wplc6"]
+[ext_resource type="Texture2D" uid="uid://beij8obm24b7g" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0005.png" id="16_vqkiq"]
+[ext_resource type="Texture2D" uid="uid://b7kynhumhguu4" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0006.png" id="17_pb1uk"]
+[ext_resource type="Texture2D" uid="uid://cf2u042r2q3rc" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0007.png" id="18_68a5e"]
+[ext_resource type="Texture2D" uid="uid://bag2l0gwvev4n" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0008.png" id="19_8yefh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4juc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ledpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b8rnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_admla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q80ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1lflf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ehwoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wshgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ss7me")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yd6tv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wu0sk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_42ivc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wefsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c2wje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5v2ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wplc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vqkiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pb1uk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_68a5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8yefh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="DefaultPauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3plto")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -250.0
+offset_right = 175.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 75
+
+[node name="Top" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Top"]
+sprite_frames = SubResource("SpriteFrames_t4juc")
+autoplay = "default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="ResumeButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("10_61dk2")]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+text = "Resume"
+
+[node name="MainMenuButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("10_61dk2")]
+custom_minimum_size = Vector2(475, 50)
+layout_mode = 2
+text = "Quit to Main Menu"
+
+[node name="Bottom" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Bottom"]
+sprite_frames = SubResource("SpriteFrames_wu0sk")
+autoplay = "default"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_confirm_audio_finished"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
