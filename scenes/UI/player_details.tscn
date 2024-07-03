@@ -49,12 +49,12 @@ animations = [{
 [node name="PlayerDetails" type="VBoxContainer"]
 offset_right = 265.0
 offset_bottom = 154.0
-theme_override_constants/separation = -15
+theme_override_constants/separation = -70
 script = ExtResource("1_mkw5h")
 
 [node name="StatusDetails" type="HBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 92
+theme_override_constants/separation = 14
 
 [node name="Frame" type="MarginContainer" parent="StatusDetails"]
 layout_mode = 2
@@ -67,7 +67,6 @@ theme_override_constants/margin_bottom = 82
 
 [node name="FrameAnimatedSprite" type="AnimatedSprite2D" parent="StatusDetails/Frame"]
 clip_children = 2
-scale = Vector2(1.375, 1.375)
 sprite_frames = SubResource("SpriteFrames_evrd1")
 animation = &"idle"
 autoplay = "idle"
@@ -88,32 +87,32 @@ texture = ExtResource("8_iq5um")
 [node name="HealthIndicators" type="GridContainer" parent="StatusDetails"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 0
+theme_override_constants/h_separation = 75
 columns = 21
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/margin_left = 235
+theme_override_constants/margin_left = 150
 
 [node name="GeoIndicator" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/separation = 71
+theme_override_constants/separation = 46
 
 [node name="Control" type="MarginContainer" parent="MarginContainer/GeoIndicator"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_constants/margin_top = -15
+theme_override_constants/margin_top = -6
 
 [node name="Control" type="Control" parent="MarginContainer/GeoIndicator/Control"]
 layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/GeoIndicator/Control/Control"]
-scale = Vector2(1.63, 1.63)
 texture = ExtResource("9_y427f")
 centered = false
 
@@ -122,5 +121,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("17_854ko")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "0"

@@ -3,42 +3,41 @@ extends HBoxContainer
 @export var save_file: String
 @export var save_name: String
 
-@onready var main_display: Control = $LoadGameFocus/LoadGameButton/MainDisplay
-@onready var confirmation_display: MarginContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay
-@onready var game_label: Label = $LoadGameFocus/LoadGameButton/GameLabel
-@onready var focus_icon_left: AnimatedSprite2D = $LoadGameFocus/FocusIconLeft/AnimatedSprite2D
-@onready var focus_icon_right: AnimatedSprite2D = $LoadGameFocus/FocusIconRight/AnimatedSprite2D
-@onready var load_game_button: Button = $LoadGameFocus/LoadGameButton
+@onready var main_display: Control = $LoadGameButton/MarginContainer/MainDisplay
+@onready var confirmation_display: MarginContainer = $LoadGameButton/MarginContainer/ConfirmationDisplay
+@onready var game_label: Label = $LoadGameButton/MarginContainer/MarginContainer/GameLabel
+@onready var load_game_button: Button = $LoadGameButton
 @onready var focus_change_audio: AudioStreamPlayer = $Audio/FocusChange
 @onready var confirm_audio: AudioStreamPlayer = $Audio/Confirm
-@onready var new_game_display: MarginContainer = $LoadGameFocus/LoadGameButton/NewGameDisplay
+@onready var new_game_display: MarginContainer = $LoadGameButton/MarginContainer/NewGameDisplay
 @onready var clear_save_button: Button = $ClearSaveButton
-@onready var deny_button: Button = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton
-@onready var confirm_button: Button = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton
-@onready var player_details: VBoxContainer = $LoadGameFocus/LoadGameButton/MainDisplay/Left/PlayerDetails
-@onready var zone_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer/ZoneLabel
-@onready var time_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer/TimeLabel
+@onready var deny_button: Button = $LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton
+@onready var confirm_button: Button = $LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton
+@onready var player_details: VBoxContainer = $LoadGameButton/MarginContainer/MainDisplay/Left/PlayerDetails
+@onready var zone_label: Label = $LoadGameButton/MarginContainer/MainDisplay/Right/VBoxContainer/ZoneLabel
+@onready var time_label: Label = $LoadGameButton/MarginContainer/MainDisplay/Right/VBoxContainer/TimeLabel
 
 var world_stats: WorldStats
 
 
 func _ready():
 	custom_minimum_size = size
-	main_display.visible = true
-	confirmation_display.visible = false
-	new_game_display.visible = false
-	game_label.visible = true
 	game_label.text = save_name
-	focus_icon_left.visible = false
-	focus_icon_right.visible = false
+	confirmation_display.visible = false
 	
 	if not FileAccess.file_exists(save_file):
 		print("save file: " + save_file + " doesn't exist, not loading game info")
 		new_game_display.visible = true
 		main_display.visible = false
 		clear_save_button.visible = false
+		game_label.visible = false
 	else:
+		main_display.visible = true
+		new_game_display.visible = false
+		game_label.visible = true
+		
 		print("loading game info for save: " + save_file)
+
 		var game_data = Persistence.get_game_data(save_file)
 		player_details.geo = game_data["geo"]
 		player_details.max_health = game_data["max_health"]
@@ -111,31 +110,3 @@ func _on_deny_button_pressed():
 	clear_save_button.visible = true
 	confirmation_display.visible = false
 
-
-func focus():
-	focus_icon_left.visible = true
-	focus_icon_right.visible = true
-	focus_icon_left.play("pointer_up")
-	focus_icon_right.play("pointer_up")
-	load_game_button.grab_focus()
-
-
-func _on_load_game_button_focus_entered():
-	focus_change_audio.play()
-	focus()
-
-
-func _on_load_game_button_focus_exited():
-	focus_icon_left.play("pointer_down")
-	focus_icon_right.play("pointer_down")
-	focus_icon_left.visible = false
-	focus_icon_right.visible = false
-
-
-func _on_load_game_button_mouse_entered():
-	if !load_game_button.has_focus() and !load_game_button.disabled:
-		load_game_button.focus_entered.emit()
-
-
-func _on_deny_button_confirm_audio_finished():
-	pass # Replace with function body.

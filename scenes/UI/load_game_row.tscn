@@ -1,30 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://bd8dgwj5p25uk"]
+[gd_scene load_steps=22 format=3 uid="uid://bd8dgwj5p25uk"]
 
 [ext_resource type="Script" path="res://scenes/UI/load_game_row.gd" id="1_a0xcp"]
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_ei0yn"]
-[ext_resource type="Texture2D" uid="uid://cdvxkys4sry3u" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_000.png" id="2_ptdab"]
-[ext_resource type="Texture2D" uid="uid://bjpspjvoc5ucn" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_001.png" id="3_t0nl2"]
-[ext_resource type="Texture2D" uid="uid://xu2ggvbrn6vu" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_002.png" id="4_kf0se"]
-[ext_resource type="Texture2D" uid="uid://br5lyk7wb6lhf" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_003.png" id="5_sfsav"]
-[ext_resource type="Texture2D" uid="uid://c82nnf7qfvgsf" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_004.png" id="6_0sj23"]
-[ext_resource type="Texture2D" uid="uid://b7jvgu35r8kn8" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_005.png" id="7_8mmyn"]
-[ext_resource type="Texture2D" uid="uid://wkt1aqhkvtib" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_006.png" id="8_vma2d"]
-[ext_resource type="Texture2D" uid="uid://bk4ty4vraiql6" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_007.png" id="9_kt18k"]
-[ext_resource type="Texture2D" uid="uid://dejo6ko1gcvub" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_008.png" id="10_lga6c"]
-[ext_resource type="Texture2D" uid="uid://kpr2ukqu3j42" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_009.png" id="11_006w6"]
-[ext_resource type="Texture2D" uid="uid://dsvvsibhcs7b5" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_010.png" id="12_rb56o"]
-[ext_resource type="Texture2D" uid="uid://e52ru1ow7tm4" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_011.png" id="13_18kfm"]
-[ext_resource type="Texture2D" uid="uid://bqx3mino7ah7d" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_000.png" id="14_2ia7n"]
-[ext_resource type="Texture2D" uid="uid://b530ort78x575" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_001.png" id="15_dy18y"]
-[ext_resource type="Texture2D" uid="uid://cskojj878oa12" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_002.png" id="16_6sa5r"]
-[ext_resource type="Texture2D" uid="uid://bb8es2mousv6d" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_003.png" id="17_gb2ti"]
-[ext_resource type="Texture2D" uid="uid://cjrwb1iiqes0l" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_004.png" id="18_np3lc"]
-[ext_resource type="Texture2D" uid="uid://c717utikkm4yd" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_005.png" id="19_bth41"]
-[ext_resource type="Texture2D" uid="uid://bi01bwtirb31m" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_006.png" id="20_es2wj"]
-[ext_resource type="Texture2D" uid="uid://j6pvo5mr3iq0" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_007.png" id="21_cosxv"]
-[ext_resource type="Texture2D" uid="uid://cahymm8yj5v4n" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_008.png" id="22_t4f8j"]
-[ext_resource type="Texture2D" uid="uid://ec73vkc802mp" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_009.png" id="23_5qnox"]
-[ext_resource type="Texture2D" uid="uid://cx44oo8j7sgu7" path="res://assets/animations/ui/menus/pointer_up/Pointer Up_010.png" id="24_uwywl"]
 [ext_resource type="Texture2D" uid="uid://d1gax2mgcdfxf" path="res://assets/animations/ui/menus/area_save_art/Area_Kings_Pass.png" id="26_q1n1q"]
 [ext_resource type="PackedScene" uid="uid://bism2h27dolkx" path="res://scenes/UI/player_details.tscn" id="26_w7nh8"]
 [ext_resource type="Texture2D" uid="uid://wr0vd8rassr4" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0000.png" id="29_ldy5k"]
@@ -43,97 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://cxe0tx3i6hlws" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0011.png" id="40_v1xuw"]
 [ext_resource type="Texture2D" uid="uid://bsx0vh2qna8s7" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0012.png" id="41_el2xo"]
 [ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="44_2mjia"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vsjuq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ptdab")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_t0nl2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kf0se")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_sfsav")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_0sj23")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_8mmyn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_vma2d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_kt18k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_lga6c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_006w6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_rb56o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_18kfm")
-}],
-"loop": false,
-"name": &"pointer_down",
-"speed": 60.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_2ia7n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_dy18y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_6sa5r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_gb2ti")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_np3lc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_bth41")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_es2wj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_cosxv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_t4f8j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_5qnox")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_uwywl")
-}],
-"loop": false,
-"name": &"pointer_up",
-"speed": 60.0
-}]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7r636"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5oi7"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbb62"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcf6o"]
-bg_color = Color(1, 1, 1, 0.0392157)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jauaw"]
 animations = [{
@@ -182,88 +68,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ysh08"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ptdab")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_t0nl2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kf0se")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_sfsav")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_0sj23")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_8mmyn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_vma2d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_kt18k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_lga6c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_006w6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_rb56o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_18kfm")
-}],
-"loop": false,
-"name": &"pointer_down",
-"speed": 60.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_2ia7n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_dy18y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_6sa5r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_gb2ti")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_np3lc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_bth41")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_es2wj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_cosxv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_t4f8j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_5qnox")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_uwywl")
-}],
-"loop": false,
-"name": &"pointer_up",
-"speed": 60.0
-}]
-
 [node name="LoadGameRow" type="HBoxContainer"]
 offset_right = 1434.0
 offset_bottom = 150.0
@@ -271,184 +75,145 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 10
 script = ExtResource("1_a0xcp")
 
-[node name="LoadGameFocus" type="HBoxContainer" parent="."]
+[node name="LoadGameButton" parent="." instance=ExtResource("44_2mjia")]
+custom_minimum_size = Vector2(1000.91, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 40
+text = ""
 
-[node name="FocusIconLeft" type="MarginContainer" parent="LoadGameFocus"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 36
+[node name="Fleur" type="MarginContainer" parent="LoadGameButton"]
+layout_mode = 0
+offset_bottom = 115.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = -155
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadGameFocus/FocusIconLeft"]
-sprite_frames = SubResource("SpriteFrames_vsjuq")
-animation = &"pointer_down"
-centered = false
-
-[node name="LoadGameButton" type="Button" parent="LoadGameFocus" groups=["Button"]]
-custom_minimum_size = Vector2(1000, 150)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ei0yn")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7r636")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_o5oi7")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_wbb62")
-theme_override_styles/focus = SubResource("StyleBoxFlat_hcf6o")
-
-[node name="Fleur" type="MarginContainer" parent="LoadGameFocus/LoadGameButton"]
-layout_mode = 1
-theme_override_constants/margin_left = -35
-theme_override_constants/margin_top = -15
-theme_override_constants/margin_bottom = 0
-
-[node name="Control" type="Control" parent="LoadGameFocus/LoadGameButton/Fleur"]
+[node name="Control" type="Control" parent="LoadGameButton/Fleur"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadGameFocus/LoadGameButton/Fleur/Control"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadGameButton/Fleur/Control"]
 sprite_frames = SubResource("SpriteFrames_jauaw")
 autoplay = "default"
+frame = 12
 centered = false
 
-[node name="GameLabel" type="Label" parent="LoadGameFocus/LoadGameButton"]
-visible = false
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ei0yn")
-theme_override_font_sizes/font_size = 60
-text = "1. "
-
-[node name="MainDisplay" type="TextureRect" parent="LoadGameFocus/LoadGameButton"]
-visible = false
+[node name="MarginContainer" type="MarginContainer" parent="LoadGameButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 75
+
+[node name="MainDisplay" type="TextureRect" parent="LoadGameButton/MarginContainer"]
+layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("26_q1n1q")
 
-[node name="Left" type="MarginContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay"]
+[node name="Left" type="MarginContainer" parent="LoadGameButton/MarginContainer/MainDisplay"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.61, 0.61)
-theme_override_constants/margin_left = 140
+theme_override_constants/margin_left = 215
 
-[node name="PlayerDetails" parent="LoadGameFocus/LoadGameButton/MainDisplay/Left" instance=ExtResource("26_w7nh8")]
+[node name="PlayerDetails" parent="LoadGameButton/MarginContainer/MainDisplay/Left" instance=ExtResource("26_w7nh8")]
 layout_mode = 2
 
-[node name="Right" type="MarginContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay"]
+[node name="Right" type="MarginContainer" parent="LoadGameButton/MarginContainer/MainDisplay"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
-theme_override_constants/margin_top = 35
+theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 45
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LoadGameFocus/LoadGameButton/MainDisplay/Right"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadGameButton/MarginContainer/MainDisplay/Right"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 50
 
-[node name="ZoneLabel" type="Label" parent="LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ei0yn")
-theme_override_font_sizes/font_size = 25
-text = "My very long zone name"
-horizontal_alignment = 2
-
-[node name="TimeLabel" type="Label" parent="LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer"]
+[node name="ZoneLabel" type="Label" parent="LoadGameButton/MarginContainer/MainDisplay/Right/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ei0yn")
 theme_override_font_sizes/font_size = 20
+text = "My very long zone name"
+horizontal_alignment = 2
+
+[node name="TimeLabel" type="Label" parent="LoadGameButton/MarginContainer/MainDisplay/Right/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ei0yn")
+theme_override_font_sizes/font_size = 15
 text = "2000h 40m"
 horizontal_alignment = 2
 
-[node name="ConfirmationDisplay" type="MarginContainer" parent="LoadGameFocus/LoadGameButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ConfirmationDisplay" type="MarginContainer" parent="LoadGameButton/MarginContainer"]
+visible = false
+layout_mode = 2
 theme_override_constants/margin_left = 95
 
-[node name="VBoxContainer" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay"]
+[node name="VBoxContainer" type="HBoxContainer" parent="LoadGameButton/MarginContainer/ConfirmationDisplay"]
 layout_mode = 2
 mouse_filter = 0
 theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer"]
+[node name="Label" type="Label" parent="LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ei0yn")
 theme_override_font_sizes/font_size = 50
 text = "Clear Save?"
 
-[node name="ConfirmationButtons" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer"]
+[node name="ConfirmationButtons" type="HBoxContainer" parent="LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 0
 theme_override_constants/separation = 15
 
-[node name="ConfirmButton" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons" instance=ExtResource("44_2mjia")]
+[node name="ConfirmButton" parent="LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer/ConfirmationButtons" instance=ExtResource("44_2mjia")]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Yes"
 
-[node name="DenyButton" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons" instance=ExtResource("44_2mjia")]
+[node name="DenyButton" parent="LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer/ConfirmationButtons" instance=ExtResource("44_2mjia")]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_vertical = 4
 text = "No"
 
-[node name="NewGameDisplay" type="MarginContainer" parent="LoadGameFocus/LoadGameButton"]
+[node name="NewGameDisplay" type="MarginContainer" parent="LoadGameButton/MarginContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 95
 
-[node name="Label" type="Label" parent="LoadGameFocus/LoadGameButton/NewGameDisplay"]
+[node name="Label" type="Label" parent="LoadGameButton/MarginContainer/NewGameDisplay"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ei0yn")
 theme_override_font_sizes/font_size = 50
 text = "New Game"
 
-[node name="FocusIconRight" type="MarginContainer" parent="LoadGameFocus"]
+[node name="MarginContainer" type="MarginContainer" parent="LoadGameButton/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 65
+
+[node name="GameLabel" type="Label" parent="LoadGameButton/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_ei0yn")
+theme_override_font_sizes/font_size = 60
+text = "1. "
+
+[node name="ClearSaveButton" parent="." instance=ExtResource("44_2mjia")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 36
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadGameFocus/FocusIconRight"]
-sprite_frames = SubResource("SpriteFrames_ysh08")
-animation = &"pointer_down"
-centered = false
-flip_h = true
+text = "Clear Save"
 
 [node name="Audio" type="Node" parent="."]
 
@@ -460,17 +225,6 @@ volume_db = -10.0
 stream = ExtResource("36_ophtt")
 volume_db = -10.0
 
-[node name="ClearSaveButton" parent="." instance=ExtResource("44_2mjia")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Clear Save"
-
-[connection signal="focus_entered" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_focus_entered"]
-[connection signal="focus_exited" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_focus_exited"]
-[connection signal="mouse_entered" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_mouse_entered"]
-[connection signal="pressed" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_pressed"]
-[connection signal="pressed" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
-[connection signal="confirm_audio_finished" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton" to="." method="_on_deny_button_confirm_audio_finished"]
-[connection signal="pressed" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton" to="." method="_on_deny_button_pressed"]
+[connection signal="pressed" from="LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="LoadGameButton/MarginContainer/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton" to="." method="_on_deny_button_pressed"]
 [connection signal="pressed" from="ClearSaveButton" to="." method="_on_clear_save_button_pressed"]

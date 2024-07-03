@@ -219,14 +219,17 @@ script = ExtResource("1_johb2")
 
 [node name="TopLeftMargin" type="MarginContainer" parent="."]
 layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -18.0
+offset_bottom = 18.0
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_constants/margin_top = 7
 
 [node name="Control" type="Control" parent="TopLeftMargin"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="FocusIconLeft" type="AnimatedSprite2D" parent="TopLeftMargin/Control"]
 scale = Vector2(0.41, 0.41)
@@ -236,18 +239,20 @@ centered = false
 
 [node name="TopRightMargin" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
+anchor_bottom = 0.5
 offset_left = -40.0
-offset_bottom = 40.0
+offset_top = -20.0
+offset_bottom = 20.0
 grow_horizontal = 0
-theme_override_constants/margin_top = 7
+grow_vertical = 2
+theme_override_constants/margin_top = 0
 
 [node name="Control" type="Control" parent="TopRightMargin"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 
 [node name="FocusIconRight" type="AnimatedSprite2D" parent="TopRightMargin/Control"]
 scale = Vector2(0.41, 0.41)

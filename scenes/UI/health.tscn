@@ -254,6 +254,8 @@ animations = [{
 }]
 
 [node name="Health" type="MarginContainer"]
+offset_right = 76.0
+offset_bottom = 168.0
 theme_override_constants/margin_left = 53
 theme_override_constants/margin_top = 84
 theme_override_constants/margin_right = 23
@@ -262,6 +264,6 @@ script = ExtResource("1_2ui34")
 
 [node name="HealthAnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8yvgl")
-animation = &"appear"
+animation = &"idle"
 autoplay = "idle"
 centered = false
