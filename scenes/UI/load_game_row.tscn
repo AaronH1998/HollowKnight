@@ -155,7 +155,7 @@ horizontal_alignment = 2
 [node name="NewGameDisplay" type="MarginContainer" parent="LoadGameButton/MarginContainer"]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 95
+theme_override_constants/margin_left = 130
 
 [node name="Label" type="Label" parent="LoadGameButton/MarginContainer/NewGameDisplay"]
 layout_mode = 2

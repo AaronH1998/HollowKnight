@@ -24,17 +24,16 @@ func _ready():
 	custom_minimum_size = size
 	game_label.text = save_name
 	confirmation_display.visible = false
+	game_label.visible = true
 	
 	if not FileAccess.file_exists(save_file):
 		print("save file: " + save_file + " doesn't exist, not loading game info")
 		new_game_display.visible = true
 		main_display.visible = false
 		clear_save_button.visible = false
-		game_label.visible = false
 	else:
 		main_display.visible = true
 		new_game_display.visible = false
-		game_label.visible = true
 		
 		print("loading game info for save: " + save_file)
 
