@@ -1,8 +1,95 @@
-[gd_scene load_steps=4 format=3 uid="uid://cudxrbju5mf3o"]
+[gd_scene load_steps=23 format=3 uid="uid://cudxrbju5mf3o"]
 
 [ext_resource type="Script" path="res://scenes/UI/pause_menu.gd" id="1_tpg7f"]
-[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_tqn5r"]
+[ext_resource type="Texture2D" uid="uid://5yxuaflg2ml5" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0000.png" id="2_eri48"]
+[ext_resource type="Texture2D" uid="uid://cd7yew7u5ox4u" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0001.png" id="3_aoxot"]
 [ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="3_qm1c8"]
+[ext_resource type="Texture2D" uid="uid://bp2d1ma6fabd7" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0002.png" id="4_13n5c"]
+[ext_resource type="Texture2D" uid="uid://hvcn52ynqqsd" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0003.png" id="5_f4y36"]
+[ext_resource type="Texture2D" uid="uid://bukc3aphmgecp" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0004.png" id="6_irk77"]
+[ext_resource type="Texture2D" uid="uid://63o26oxixoaa" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0005.png" id="7_gndjl"]
+[ext_resource type="Texture2D" uid="uid://bvr4byuilica1" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0006.png" id="8_05bsj"]
+[ext_resource type="Texture2D" uid="uid://d1886ncji1rsj" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0007.png" id="9_ndcaq"]
+[ext_resource type="Texture2D" uid="uid://pehhpx1odm85" path="res://assets/animations/ui/menus/fleurs/pause_top_fleur/pause_top_fleur0008.png" id="10_eyvrs"]
+[ext_resource type="Texture2D" uid="uid://cai65uajt7aca" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0000.png" id="12_dae42"]
+[ext_resource type="Texture2D" uid="uid://kfaclbphh6os" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0001.png" id="13_oyauv"]
+[ext_resource type="Texture2D" uid="uid://chjpn6sbedino" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0002.png" id="14_7n6b6"]
+[ext_resource type="Texture2D" uid="uid://ce5awwsjvemvr" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0003.png" id="15_qxshc"]
+[ext_resource type="Texture2D" uid="uid://da28sxmfao5hc" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0004.png" id="16_ess34"]
+[ext_resource type="Texture2D" uid="uid://beij8obm24b7g" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0005.png" id="17_w4xpw"]
+[ext_resource type="Texture2D" uid="uid://b7kynhumhguu4" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0006.png" id="18_4kh6f"]
+[ext_resource type="Texture2D" uid="uid://cf2u042r2q3rc" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0007.png" id="19_dx2fg"]
+[ext_resource type="Texture2D" uid="uid://bag2l0gwvev4n" path="res://assets/animations/ui/menus/fleurs/bottom_fleur/bottom_fleur0008.png" id="20_ee6ke"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4juc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eri48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aoxot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_13n5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f4y36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_irk77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gndjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_05bsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ndcaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eyvrs")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wu0sk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_dae42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_oyauv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7n6b6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qxshc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ess34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_w4xpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4kh6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dx2fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ee6ke")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -16,38 +103,63 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.380392)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -250.0
+offset_right = 175.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 75
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_tqn5r")
-theme_override_font_sizes/font_size = 60
-text = "PAUSED"
-horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Top" type="Control" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
-mouse_filter = 2
-theme_override_constants/separation = 200
 
-[node name="ResumeButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_qm1c8")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/VBoxContainer/Top"]
+sprite_frames = SubResource("SpriteFrames_t4juc")
+autoplay = "default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="ResumeButton" parent="Control/VBoxContainer/VBoxContainer" instance=ExtResource("3_qm1c8")]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 text = "Resume"
 
-[node name="MainMenuButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_qm1c8")]
+[node name="MainMenuButton" parent="Control/VBoxContainer/VBoxContainer" instance=ExtResource("3_qm1c8")]
+custom_minimum_size = Vector2(475, 50)
 layout_mode = 2
-text = "Main menu"
+size_flags_horizontal = 4
+text = "Quit to Main Menu"
 
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[node name="Bottom" type="Control" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/VBoxContainer/Bottom"]
+sprite_frames = SubResource("SpriteFrames_wu0sk")
+autoplay = "default"
+
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

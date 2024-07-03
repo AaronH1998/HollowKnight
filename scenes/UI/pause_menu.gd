@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var resume_button: Button = $VBoxContainer/VBoxContainer/ResumeButton
+@onready var resume_button: Button = $Control/VBoxContainer/VBoxContainer/ResumeButton
 
 var paused: bool = false
 

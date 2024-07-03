@@ -6,13 +6,22 @@ var start_menu
 var default_menu_scene: PackedScene = preload("res://scenes/UI/default_menu.tscn")
 var default_menu
 
+var quit_menu_scene: PackedScene = preload("res://scenes/menus/quit_menu.tscn")
+var quit_menu
+
+
+func _show_default_menu():
+	default_menu = default_menu_scene.instantiate()
+	add_child(default_menu)
+	default_menu.connect("start", _on_start_button_pressed)
+	default_menu.connect("quit", _on_quit_button_pressed)
+
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Globals.reset()
 	
-	default_menu = default_menu_scene.instantiate()
-	add_child(default_menu)
-	default_menu.connect("start", _on_start_button_pressed)
+	_show_default_menu()
 
 
 func _on_start_button_pressed():
@@ -22,6 +31,13 @@ func _on_start_button_pressed():
 
 
 func _on_back_button_pressed():
-	default_menu = default_menu_scene.instantiate()
-	add_child(default_menu)
-	default_menu.connect("start", _on_start_button_pressed)
+	_show_default_menu()
+
+func _on_quit_button_pressed():
+	quit_menu = quit_menu_scene.instantiate()
+	add_child(quit_menu)
+	quit_menu.connect("no_quit", _on_no_quit_button_pressed)
+
+
+func _on_no_quit_button_pressed():
+	_show_default_menu()

@@ -1,6 +1,7 @@
 extends Control
 
 signal start
+signal quit
 
 @onready var start_game_button: Button = $VBoxContainer/VBoxContainer/StartButton
 
@@ -19,4 +20,9 @@ func _on_start_button_confirm_audio_finished():
 
 
 func _on_exit_button_pressed():
-	get_tree().quit()
+	hide()
+	quit.emit()
+
+
+func _on_quit_button_confirm_audio_finished():
+	queue_free()

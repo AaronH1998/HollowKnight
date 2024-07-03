@@ -48,9 +48,9 @@ theme_override_constants/separation = 200
 layout_mode = 2
 text = "Start Game"
 
-[node name="ExitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_8ibmj")]
+[node name="QuitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_8ibmj")]
 layout_mode = 2
-text = "Exit Game"
+text = "Quit Game"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -72,4 +72,5 @@ texture = ExtResource("3_47p48")
 
 [connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_confirm_audio_finished"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_confirm_audio_finished"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_exit_button_pressed"]

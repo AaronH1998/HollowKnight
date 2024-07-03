@@ -78,7 +78,6 @@ script = ExtResource("1_a0xcp")
 [node name="LoadGameButton" parent="." instance=ExtResource("44_2mjia")]
 custom_minimum_size = Vector2(1000.91, 100)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 text = ""
 
@@ -96,7 +95,6 @@ size_flags_vertical = 4
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadGameButton/Fleur/Control"]
 sprite_frames = SubResource("SpriteFrames_jauaw")
 autoplay = "default"
-frame = 12
 centered = false
 
 [node name="MarginContainer" type="MarginContainer" parent="LoadGameButton"]
@@ -210,7 +208,6 @@ text = "No"
 
 [node name="ClearSaveButton" parent="." instance=ExtResource("44_2mjia")]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Clear Save"
 
