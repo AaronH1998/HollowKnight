@@ -75,56 +75,65 @@ offset_right = 717.0
 offset_bottom = 516.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 85
+theme_override_constants/separation = 110
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Header" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="VBoxContainer/Header"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_trxyt")
 theme_override_font_sizes/font_size = 60
 text = "Select Profile"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/Header"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Control"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Header/Control"]
 sprite_frames = SubResource("SpriteFrames_g4x5y")
 autoplay = "default"
 frame = 8
 frame_progress = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Content" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 40
 
-[node name="LoadGame1" parent="VBoxContainer/VBoxContainer" instance=ExtResource("11_7ylrd")]
+[node name="Profiles" type="VBoxContainer" parent="VBoxContainer/Content"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="LoadGame1" parent="VBoxContainer/Content/Profiles" instance=ExtResource("11_7ylrd")]
 layout_mode = 2
 size_flags_vertical = 0
 save_file = "user://game1.save"
 save_name = "1."
 
-[node name="LoadGame2" parent="VBoxContainer/VBoxContainer" instance=ExtResource("11_7ylrd")]
+[node name="LoadGame2" parent="VBoxContainer/Content/Profiles" instance=ExtResource("11_7ylrd")]
 layout_mode = 2
 save_file = "user://game2.save"
 save_name = "2."
 
-[node name="LoadGame3" parent="VBoxContainer/VBoxContainer" instance=ExtResource("11_7ylrd")]
+[node name="LoadGame3" parent="VBoxContainer/Content/Profiles" instance=ExtResource("11_7ylrd")]
 layout_mode = 2
 save_file = "user://game3.save"
 save_name = "3."
 
-[node name="LoadGame4" parent="VBoxContainer/VBoxContainer" instance=ExtResource("11_7ylrd")]
+[node name="LoadGame4" parent="VBoxContainer/Content/Profiles" instance=ExtResource("11_7ylrd")]
 layout_mode = 2
 save_file = "user://game4.save"
 save_name = "4."
 
-[node name="BackButton" parent="VBoxContainer" instance=ExtResource("13_vxbkm")]
+[node name="BackButton" parent="VBoxContainer/Content" instance=ExtResource("13_vxbkm")]
+custom_minimum_size = Vector2(225, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
 
-[connection signal="confirm_audio_finished" from="VBoxContainer/BackButton" to="." method="_on_back_button_confirm_audio_finished"]
-[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="confirm_audio_finished" from="VBoxContainer/Content/BackButton" to="." method="_on_back_button_confirm_audio_finished"]
+[connection signal="pressed" from="VBoxContainer/Content/BackButton" to="." method="_on_back_button_pressed"]
