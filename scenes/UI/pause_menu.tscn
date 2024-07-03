@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/UI/pause_menu.gd" id="1_tpg7f"]
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_tqn5r"]
-[ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="3_ewaye"]
+[ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="3_qm1c8"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -41,14 +41,13 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 200
 
-[node name="ResumeButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_ewaye")]
+[node name="ResumeButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_qm1c8")]
 layout_mode = 2
-size_flags_vertical = 8
 text = "Resume"
 
-[node name="MainMenuButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_ewaye")]
+[node name="MainMenuButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_qm1c8")]
 layout_mode = 2
-text = "Quit to Main Menu"
+text = "Main menu"
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

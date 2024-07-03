@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c3a2hcc6ry52a" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0007.png" id="9_tmooi"]
 [ext_resource type="Texture2D" uid="uid://bu5obhnxx25x4" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0008.png" id="10_mhltv"]
 [ext_resource type="PackedScene" uid="uid://bd8dgwj5p25uk" path="res://scenes/UI/load_game_row.tscn" id="11_7ylrd"]
-[ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="12_p421h"]
+[ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="13_vxbkm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4x5y"]
 animations = [{
@@ -113,8 +113,10 @@ layout_mode = 2
 save_file = "user://game4.save"
 save_name = "4."
 
-[node name="BackButton" parent="VBoxContainer" instance=ExtResource("12_p421h")]
+[node name="BackButton" parent="VBoxContainer" instance=ExtResource("13_vxbkm")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Back"
 
 [connection signal="confirm_audio_finished" from="VBoxContainer/BackButton" to="." method="_on_back_button_confirm_audio_finished"]

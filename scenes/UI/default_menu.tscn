@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/UI/default_menu.gd" id="1_2nbnt"]
 [ext_resource type="Texture2D" uid="uid://meqevyf8h6yw" path="res://assets/sprites/ui/menus/HollowKnightTitle.png" id="1_mkpt2"]
-[ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="2_ao7dl"]
+[ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="3_8ibmj"]
 [ext_resource type="Texture2D" uid="uid://ctj2jm41vk2qk" path="res://assets/sprites/menus/team_cherry_logo_main_menu.png" id="3_47p48"]
 
 [node name="DefaultMenu" type="Control"]
@@ -16,11 +16,18 @@ script = ExtResource("1_2nbnt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -595.0
+offset_top = -436.5
+offset_right = 595.0
+offset_bottom = 436.5
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -5.10915e-05
 size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_constants/separation = 75
@@ -37,11 +44,11 @@ size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 200
 
-[node name="StartButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("2_ao7dl")]
+[node name="StartButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_8ibmj")]
 layout_mode = 2
 text = "Start Game"
 
-[node name="QuitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("2_ao7dl")]
+[node name="ExitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_8ibmj")]
 layout_mode = 2
 text = "Exit Game"
 
@@ -65,4 +72,4 @@ texture = ExtResource("3_47p48")
 
 [connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_confirm_audio_finished"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

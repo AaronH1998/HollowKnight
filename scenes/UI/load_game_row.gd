@@ -4,7 +4,7 @@ extends HBoxContainer
 @export var save_name: String
 
 @onready var main_display: Control = $LoadGameFocus/LoadGameButton/MainDisplay
-@onready var confirmation_display: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay
+@onready var confirmation_display: MarginContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay
 @onready var game_label: Label = $LoadGameFocus/LoadGameButton/GameLabel
 @onready var focus_icon_left: AnimatedSprite2D = $LoadGameFocus/FocusIconLeft/AnimatedSprite2D
 @onready var focus_icon_right: AnimatedSprite2D = $LoadGameFocus/FocusIconRight/AnimatedSprite2D
@@ -12,9 +12,9 @@ extends HBoxContainer
 @onready var focus_change_audio: AudioStreamPlayer = $Audio/FocusChange
 @onready var confirm_audio: AudioStreamPlayer = $Audio/Confirm
 @onready var new_game_display: MarginContainer = $LoadGameFocus/LoadGameButton/NewGameDisplay
-@onready var clear_save_button: HBoxContainer = $ClearSaveButton
-@onready var deny_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/DenyButton
-@onready var confirm_button: HBoxContainer = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/ConfirmButton
+@onready var clear_save_button: Button = $ClearSaveButton
+@onready var deny_button: Button = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton
+@onready var confirm_button: Button = $LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton
 @onready var player_details: VBoxContainer = $LoadGameFocus/LoadGameButton/MainDisplay/Left/PlayerDetails
 @onready var zone_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer/ZoneLabel
 @onready var time_label: Label = $LoadGameFocus/LoadGameButton/MainDisplay/Right/VBoxContainer/TimeLabel
@@ -135,3 +135,7 @@ func _on_load_game_button_focus_exited():
 func _on_load_game_button_mouse_entered():
 	if !load_game_button.has_focus() and !load_game_button.disabled:
 		load_game_button.focus_entered.emit()
+
+
+func _on_deny_button_confirm_audio_finished():
+	pass # Replace with function body.

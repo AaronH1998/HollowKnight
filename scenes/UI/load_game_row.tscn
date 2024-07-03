@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b7jvgu35r8kn8" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_005.png" id="7_8mmyn"]
 [ext_resource type="Texture2D" uid="uid://wkt1aqhkvtib" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_006.png" id="8_vma2d"]
 [ext_resource type="Texture2D" uid="uid://bk4ty4vraiql6" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_007.png" id="9_kt18k"]
-[ext_resource type="PackedScene" uid="uid://d253gkdskygut" path="res://scenes/UI/focus_button.tscn" id="10_4vvng"]
 [ext_resource type="Texture2D" uid="uid://dejo6ko1gcvub" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_008.png" id="10_lga6c"]
 [ext_resource type="Texture2D" uid="uid://kpr2ukqu3j42" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_009.png" id="11_006w6"]
 [ext_resource type="Texture2D" uid="uid://dsvvsibhcs7b5" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_010.png" id="12_rb56o"]
@@ -43,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://ykdi0hkwb0yv" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0010.png" id="39_ydgwm"]
 [ext_resource type="Texture2D" uid="uid://cxe0tx3i6hlws" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0011.png" id="40_v1xuw"]
 [ext_resource type="Texture2D" uid="uid://bsx0vh2qna8s7" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0012.png" id="41_el2xo"]
+[ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="44_2mjia"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsjuq"]
 animations = [{
@@ -318,6 +318,7 @@ autoplay = "default"
 centered = false
 
 [node name="GameLabel" type="Label" parent="LoadGameFocus/LoadGameButton"]
+visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -332,6 +333,7 @@ theme_override_font_sizes/font_size = 60
 text = "1. "
 
 [node name="MainDisplay" type="TextureRect" parent="LoadGameFocus/LoadGameButton"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -378,34 +380,43 @@ theme_override_font_sizes/font_size = 20
 text = "2000h 40m"
 horizontal_alignment = 2
 
-[node name="ConfirmationDisplay" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton"]
-visible = false
+[node name="ConfirmationDisplay" type="MarginContainer" parent="LoadGameFocus/LoadGameButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
-theme_override_constants/separation = 25
+theme_override_constants/margin_left = 95
 
-[node name="Label" type="Label" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay"]
+[node name="VBoxContainer" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ei0yn")
 theme_override_font_sizes/font_size = 50
 text = "Clear Save?"
 
-[node name="ConfirmationButtons" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay"]
+[node name="ConfirmationButtons" type="HBoxContainer" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 0
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
-[node name="ConfirmButton" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons" instance=ExtResource("10_4vvng")]
+[node name="ConfirmButton" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons" instance=ExtResource("44_2mjia")]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+size_flags_vertical = 4
 text = "Yes"
 
-[node name="DenyButton" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons" instance=ExtResource("10_4vvng")]
+[node name="DenyButton" parent="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons" instance=ExtResource("44_2mjia")]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+size_flags_vertical = 4
 text = "No"
 
 [node name="NewGameDisplay" type="MarginContainer" parent="LoadGameFocus/LoadGameButton"]
@@ -439,10 +450,6 @@ animation = &"pointer_down"
 centered = false
 flip_h = true
 
-[node name="ClearSaveButton" parent="." instance=ExtResource("10_4vvng")]
-layout_mode = 2
-text = "Clear Save"
-
 [node name="Audio" type="Node" parent="."]
 
 [node name="FocusChange" type="AudioStreamPlayer" parent="Audio"]
@@ -453,10 +460,17 @@ volume_db = -10.0
 stream = ExtResource("36_ophtt")
 volume_db = -10.0
 
+[node name="ClearSaveButton" parent="." instance=ExtResource("44_2mjia")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Clear Save"
+
 [connection signal="focus_entered" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_focus_entered"]
 [connection signal="focus_exited" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_focus_exited"]
 [connection signal="mouse_entered" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_mouse_entered"]
 [connection signal="pressed" from="LoadGameFocus/LoadGameButton" to="." method="_on_load_game_button_pressed"]
-[connection signal="pressed" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
-[connection signal="pressed" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/ConfirmationButtons/DenyButton" to="." method="_on_deny_button_pressed"]
+[connection signal="pressed" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="confirm_audio_finished" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton" to="." method="_on_deny_button_confirm_audio_finished"]
+[connection signal="pressed" from="LoadGameFocus/LoadGameButton/ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton" to="." method="_on_deny_button_pressed"]
 [connection signal="pressed" from="ClearSaveButton" to="." method="_on_clear_save_button_pressed"]
