@@ -1,0 +1,131 @@
+[gd_scene load_steps=15 format=3 uid="uid://ct6wp57jwjynr"]
+
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_y1nmj"]
+[ext_resource type="Script" path="res://scenes/menus/audio_settings_menu.gd" id="1_ycqvp"]
+[ext_resource type="Texture2D" uid="uid://ck8qr2l113u80" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0000.png" id="2_qqn0d"]
+[ext_resource type="Texture2D" uid="uid://5nsokes51tf8" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0001.png" id="3_3ewgh"]
+[ext_resource type="Texture2D" uid="uid://kmqelbwj02bl" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0002.png" id="4_r4xdl"]
+[ext_resource type="Texture2D" uid="uid://45kev641r4sx" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0003.png" id="5_luh4a"]
+[ext_resource type="Texture2D" uid="uid://dcy8ulhwkynj7" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0004.png" id="6_5h2vn"]
+[ext_resource type="Texture2D" uid="uid://prfvkwmgs5gs" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0005.png" id="7_g6ohs"]
+[ext_resource type="Texture2D" uid="uid://drwf81tr8gsqg" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0006.png" id="8_iwvw4"]
+[ext_resource type="Texture2D" uid="uid://c3a2hcc6ry52a" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0007.png" id="9_i3ckx"]
+[ext_resource type="Texture2D" uid="uid://bu5obhnxx25x4" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0008.png" id="10_5siot"]
+[ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="11_0tuvs"]
+[ext_resource type="PackedScene" uid="uid://wmbaf4o1rspp" path="res://scenes/menus/volume_slider.tscn" id="12_io7fn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bfl5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qqn0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3ewgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r4xdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_luh4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5h2vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g6ohs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iwvw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i3ckx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5siot")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="AudioSettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ycqvp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -167.0
+offset_right = 350.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 365
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 85
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y1nmj")
+theme_override_font_sizes/font_size = 60
+text = "AUDIO"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/VBoxContainer/VBoxContainer/Control"]
+sprite_frames = SubResource("SpriteFrames_5bfl5")
+autoplay = "default"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("12_io7fn")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="MusicSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("12_io7fn")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="SoundsSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("12_io7fn")]
+layout_mode = 2
+bus_name = "Sound"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="ResetButton" parent="VBoxContainer/VBoxContainer2" instance=ExtResource("11_0tuvs")]
+custom_minimum_size = Vector2(375, 50)
+layout_mode = 2
+text = "Reset Defaults"
+
+[node name="BackButton" parent="VBoxContainer/VBoxContainer2" instance=ExtResource("11_0tuvs")]
+custom_minimum_size = Vector2(275, 50)
+layout_mode = 2
+text = "Back
+"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer2/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer2/BackButton" to="." method="_on_back_button_confirm_audio_finished"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer2/BackButton" to="." method="_on_back_button_pressed"]

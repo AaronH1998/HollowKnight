@@ -113,7 +113,7 @@ animation = &"walk"
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="Audio" index="2"]
 stream = ExtResource("4_1ulu1")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="4"]
 position = Vector2(56, 18)

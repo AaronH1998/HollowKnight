@@ -266,11 +266,11 @@ flip_h = true
 
 [node name="FocusChange" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("26_wvaf7")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="Confirm" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("27_dswu7")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="Timers" type="Node" parent="."]
 

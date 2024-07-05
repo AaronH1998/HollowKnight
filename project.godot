@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.2", "Mobile")
 Globals="*res://globals/globals.gd"
 TransitionLayer="*res://globals/transition_layer.tscn"
 Persistence="*res://globals/persistence.gd"
+Settings="*res://globals/settings.gd"
 
 [display]
 

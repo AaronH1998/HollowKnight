@@ -19,8 +19,8 @@ script = ExtResource("1_k3vuf")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("2_a5tqd")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="Die" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("3_5etln")
-volume_db = -10.0
+bus = &"Sound"

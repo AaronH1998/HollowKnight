@@ -1,4 +1,5 @@
 extends Button
+class_name FocusMenuButton
 
 signal confirm_audio_finished
 

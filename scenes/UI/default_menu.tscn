@@ -42,11 +42,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_filter = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 30
 
 [node name="StartButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_8ibmj")]
 layout_mode = 2
 text = "Start Game"
+
+[node name="AudioButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_8ibmj")]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+text = "Audio"
 
 [node name="QuitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("3_8ibmj")]
 layout_mode = 2
@@ -72,5 +77,7 @@ texture = ExtResource("3_47p48")
 
 [connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_confirm_audio_finished"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_confirm_audio_finished"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_confirm_audio_finished"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_exit_button_pressed"]

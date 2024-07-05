@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://wmbaf4o1rspp"]
+
+[ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="1_6qspn"]
+[ext_resource type="Script" path="res://scenes/menus/volume_slider.gd" id="2_ehwlr"]
+[ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="3_dfqyc"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_oxcm8"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+
+[node name="VolumeSlider" instance=ExtResource("1_6qspn")]
+custom_minimum_size = Vector2(1000, 50)
+offset_right = 1000.0
+text = ""
+script = ExtResource("2_ehwlr")
+bus_name = ""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 260
+
+[node name="BusLabelContainer" type="MarginContainer" parent="." index="5"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 270.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/margin_left = 65
+
+[node name="BusLabel" type="Label" parent="BusLabelContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_dfqyc")
+theme_override_font_sizes/font_size = 30
+text = "Master Volume:"
+
+[node name="SliderContainer" type="MarginContainer" parent="." index="6"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 110
+
+[node name="HSlider" type="HSlider" parent="SliderContainer" index="0"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_oxcm8")
+max_value = 1.0
+step = 0.1
+
+[node name="VolumeLabelContainer" type="MarginContainer" parent="." index="7"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 50
+
+[node name="VolumeLabel" type="Label" parent="VolumeLabelContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_dfqyc")
+theme_override_font_sizes/font_size = 30
+text = "10
+"
+
+[connection signal="value_changed" from="SliderContainer/HSlider" to="." method="_on_h_slider_value_changed"]

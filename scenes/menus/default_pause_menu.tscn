@@ -135,6 +135,12 @@ custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 text = "Resume"
 
+[node name="AudioButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("10_61dk2")]
+clip_contents = true
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+text = "Audio"
+
 [node name="MainMenuButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("10_61dk2")]
 custom_minimum_size = Vector2(475, 50)
 layout_mode = 2
@@ -149,5 +155,7 @@ sprite_frames = SubResource("SpriteFrames_wu0sk")
 autoplay = "default"
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_confirm_audio_finished"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_confirm_audio_finished"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

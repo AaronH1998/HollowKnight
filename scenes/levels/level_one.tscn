@@ -187,8 +187,8 @@ blend_mode = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_1l0oj")
-volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [node name="PauseMenu" parent="." instance=ExtResource("15_k0x80")]
 

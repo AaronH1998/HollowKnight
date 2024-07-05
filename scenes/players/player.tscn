@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=211 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
@@ -178,7 +178,6 @@
 [ext_resource type="AudioStream" uid="uid://ulvddjruqixj" path="res://assets/sounds/knight/sword_2.wav" id="137_4l63g"]
 [ext_resource type="AudioStream" uid="uid://cnxettyh2yq6q" path="res://assets/sounds/knight/sword_3.wav" id="138_644av"]
 [ext_resource type="AudioStream" uid="uid://d10u2wlrddq2k" path="res://assets/sounds/knight/sword_4.wav" id="139_5kktd"]
-[ext_resource type="AudioStream" uid="uid://buuflxxxwtp8y" path="res://assets/sounds/hornet/Hornet_Final_Boss_yell_02.wav" id="140_w8y6q"]
 [ext_resource type="AudioStream" uid="uid://bj5ol755c77v7" path="res://assets/sounds/knight/hero_falling.wav" id="153_1rl1h"]
 [ext_resource type="AudioStream" uid="uid://c245s7nxqatpa" path="res://assets/sounds/knight/hero_damage_less_harsh.wav" id="160_h2qai"]
 [ext_resource type="AudioStream" uid="uid://dh08hqnhhyye" path="res://assets/sounds/knight/hero_death_extra_details.wav" id="161_n88vd"]
@@ -1893,53 +1892,51 @@ position = Vector2(100, 0)
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("133_yyw6a")
-volume_db = -9.033
+bus = &"Sound"
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("134_hj23j")
-volume_db = -12.339
+bus = &"Sound"
 
 [node name="Fall" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("153_1rl1h")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="Land" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("135_4liof")
-volume_db = -7.416
+bus = &"Sound"
 
 [node name="AttackNormal" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("136_k0bhs")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="AttackAlt" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("137_4l63g")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="AttackUp" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("138_644av")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="AttackDown" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("139_5kktd")
-volume_db = -10.0
-
-[node name="GG" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("140_w8y6q")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="Damage" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("160_h2qai")
+bus = &"Sound"
 
 [node name="Death" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("161_n88vd")
+bus = &"Sound"
 
 [node name="FocusHealthCharge" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("178_msoou")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="FocusHealthHeal" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("179_4i7jf")
-volume_db = -10.0
+bus = &"Sound"
 
 [node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
