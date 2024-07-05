@@ -5,12 +5,20 @@ extends FocusMenuButton
 @onready var volume_label = $VolumeLabelContainer/VolumeLabel
 @onready var slider = $SliderContainer/HSlider
 @onready var bus_label = $BusLabelContainer/BusLabel
+@onready var auto_slide_timer = $Timers/AutoSlideTimer
+
+var can_auto_slide: bool = true
 
 func _input(_event):
-	if focussed and Input.is_action_just_pressed("ui_left"):
+	if focussed and can_auto_slide and Input.is_action_pressed("ui_left"):
 		Settings.down_volume(bus_name)
-	if focussed and Input.is_action_just_pressed("ui_right"):
+		can_auto_slide = false
+		auto_slide_timer.start()
+		
+	if focussed and can_auto_slide and Input.is_action_pressed("ui_right"):
 		Settings.up_volume(bus_name)
+		can_auto_slide = false
+		auto_slide_timer.start()
 
 
 func _ready():
@@ -37,3 +45,7 @@ func _update_visual(updated_bus_name, value):
 
 func _on_h_slider_mouse_entered():
 	focus()
+
+
+func _on_auto_slide_timer_timeout():
+	can_auto_slide = true
