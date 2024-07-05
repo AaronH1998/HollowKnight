@@ -39,7 +39,9 @@ func _pause():
 func _unpause():
 	hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	if quit_pause_menu:
+	if default_pause_menu != null: 
+		default_pause_menu.queue_free()
+	if quit_pause_menu != null:
 		quit_pause_menu.queue_free()
 	get_tree().paused = false
 
