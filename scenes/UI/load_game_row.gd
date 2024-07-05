@@ -51,7 +51,6 @@ func _ready():
 			time_string += str(hours) + "H "
 		time_string += str(minutes) + "M"
 		time_label.text = time_string
-		
 
 
 func _on_load_game_button_pressed():

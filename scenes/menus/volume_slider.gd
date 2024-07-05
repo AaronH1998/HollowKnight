@@ -6,6 +6,13 @@ extends FocusMenuButton
 @onready var slider = $SliderContainer/HSlider
 @onready var bus_label = $BusLabelContainer/BusLabel
 
+func _input(_event):
+	if focussed and Input.is_action_just_pressed("ui_left"):
+		Settings.down_volume(bus_name)
+	if focussed and Input.is_action_just_pressed("ui_right"):
+		Settings.up_volume(bus_name)
+
+
 func _ready():
 	super()
 	confirm_audio.volume_db = -100

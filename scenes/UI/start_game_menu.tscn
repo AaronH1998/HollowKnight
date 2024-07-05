@@ -131,7 +131,6 @@ save_name = "4."
 [node name="BackButton" parent="VBoxContainer/Content" instance=ExtResource("13_vxbkm")]
 custom_minimum_size = Vector2(225, 50)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
 

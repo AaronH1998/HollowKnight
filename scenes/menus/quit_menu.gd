@@ -2,6 +2,11 @@ extends Control
 
 signal no_quit
 
+@onready var deny_button: FocusMenuButton = $VBoxContainer/DenyButton
+
+func _ready():
+	deny_button.quiet_focus()
+
 func _on_confirm_button_pressed():
 	get_tree().quit()
 

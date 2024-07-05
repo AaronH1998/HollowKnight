@@ -26,7 +26,7 @@ func _on_resume_button_pressed():
 
 func _on_audio_button_pressed():
 	hide()
-	quit.emit()
+	audio.emit()
 
 
 func _on_audio_button_confirm_audio_finished():

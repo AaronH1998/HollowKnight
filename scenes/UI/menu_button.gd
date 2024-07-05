@@ -10,6 +10,7 @@ signal confirm_audio_finished
 @onready var audio_timer: Timer = $Timers/AudioTimer
 
 var focus_original_volume: float
+var focussed: bool = false
 
 
 func _ready():
@@ -40,6 +41,7 @@ func focus():
 	focus_icon_right.visible = true
 	focus_icon_left.play("pointer up")
 	focus_icon_right.play("pointer up")
+	focussed = true
 	grab_focus()
 
 
@@ -52,6 +54,7 @@ func _on_focus_exited():
 	focus_icon_right.play("pointer down")
 	focus_icon_left.visible = false
 	focus_icon_right.visible = false
+	focussed = false
 
 
 func _on_mouse_entered():
