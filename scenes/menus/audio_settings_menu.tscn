@@ -71,7 +71,7 @@ offset_right = 350.0
 offset_bottom = 167.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 365
+theme_override_constants/separation = 300
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -98,18 +98,19 @@ autoplay = "default"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="MasterSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("12_io7fn")]
 layout_mode = 2
 bus_name = "Master"
 
+[node name="SoundSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("12_io7fn")]
+layout_mode = 2
+bus_name = "Sound"
+
 [node name="MusicSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("12_io7fn")]
 layout_mode = 2
 bus_name = "Music"
-
-[node name="SoundsSlider" parent="VBoxContainer/VBoxContainer/VBoxContainer2" instance=ExtResource("12_io7fn")]
-layout_mode = 2
-bus_name = "Sound"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

@@ -8,6 +8,7 @@ extends FocusMenuButton
 
 func _ready():
 	super()
+	confirm_audio.volume_db = -100
 	var volume = Settings.get_volume(bus_name)
 	slider.value = volume
 	volume_label.text = str(volume * 10)
@@ -25,3 +26,7 @@ func _update_visual(updated_bus_name, value):
 		slider.value = value
 		volume_label.text = str(value * 10)
 	
+
+
+func _on_h_slider_mouse_entered():
+	focus()
