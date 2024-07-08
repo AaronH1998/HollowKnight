@@ -1786,7 +1786,7 @@ disabled = true
 
 [node name="FrontAttackArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FrontAttackArea"]
 scale = Vector2(0.658044, 0.590247)

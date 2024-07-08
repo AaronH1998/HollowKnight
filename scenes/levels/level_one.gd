@@ -8,7 +8,7 @@ var enemies_count: int
 
 
 @onready var enemies: Node2D = $Enemies
-
+@onready var behind_door_1_obstruction: Sprite2D = $OcclusionLayer/ParallaxObstruction/ParallaxLayer/BehindDoor1
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
@@ -68,3 +68,7 @@ func _on_enemy_death(pos, dir, geo):
 func _on_kill_box_body_entered(body):
 	if "kill" in body:
 		body.kill()
+
+
+func _on_breakable_door_broken():
+	behind_door_1_obstruction.hide()

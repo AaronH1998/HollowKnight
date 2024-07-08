@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=26 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
@@ -9,22 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://dhmttpr42027r" path="res://scenes/players/player.tscn" id="4_mqvlf"]
 [ext_resource type="Texture2D" uid="uid://bdm3im67i5bg4" path="res://assets/sprites/placeholders/Circle/Circle-0002.png" id="5_y76de"]
 [ext_resource type="PackedScene" uid="uid://cw8wfitl8qa2i" path="res://scenes/objects/camera_lock_area.tscn" id="6_rv3fu"]
+[ext_resource type="Texture2D" uid="uid://ivmwfkocva5d" path="res://assets/sprites/environment/tut/tut_wall_l_0007_02.png" id="7_lneph"]
 [ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/environment/tut/long_rocky_floor.png" id="8_s2isc"]
+[ext_resource type="PackedScene" uid="uid://cqaxlx2n8emsb" path="res://scenes/levels/environment/tut/breakable_door.tscn" id="9_w8ty8"]
 [ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="12_15xv5"]
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="13_1l0oj"]
 [ext_resource type="Texture2D" uid="uid://c3jgkw36qcngj" path="res://assets/sprites/environment/tut/tut_land_floor_0002_02.png" id="13_8ugqn"]
 [ext_resource type="Texture2D" uid="uid://rf34qrdmtrlq" path="res://assets/sprites/environment/tut/tut_rocks_0004_05.png" id="13_hc0wr"]
+[ext_resource type="Texture2D" uid="uid://bjfi7n7gpwai6" path="res://assets/sprites/environment/tut/tut_wall_l_0003_06.png" id="13_ojsm1"]
 [ext_resource type="Texture2D" uid="uid://w05ibjblw6td" path="res://assets/sprites/environment/tut/tut_land_floor_0001_03.png" id="14_eq63b"]
 [ext_resource type="Texture2D" uid="uid://ccv6s45tngf8y" path="res://assets/sprites/environment/tut/tut_rocks_0007_02.png" id="14_x40qq"]
 [ext_resource type="PackedScene" uid="uid://cudxrbju5mf3o" path="res://scenes/UI/pause_menu.tscn" id="15_k0x80"]
+[ext_resource type="Texture2D" uid="uid://ddcale0ve6q8g" path="res://assets/sprites/placeholders/Square/Square-0002.png" id="18_mn68o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcx3k"]
 size = Vector2(9290, 782)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcu80"]
-size = Vector2(20, 41.8575)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr2rt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ed63b"]
 
@@ -42,7 +41,6 @@ shader_parameter/lod = 2.887
 script = ExtResource("1_e8soq")
 
 [node name="KillBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 collision_mask = 3
 
@@ -50,16 +48,6 @@ collision_mask = 3
 position = Vector2(75, 951)
 scale = Vector2(4.09409, 1.56593)
 shape = SubResource("RectangleShape2D_xcx3k")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="KillBox"]
-position = Vector2(-3963, -12867.3)
-scale = Vector2(164.188, 1118.73)
-shape = SubResource("RectangleShape2D_pcu80")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="KillBox"]
-position = Vector2(3951, -13003)
-scale = Vector2(-192.771, -2409.58)
-shape = SubResource("RectangleShape2D_dr2rt")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="KillBox"]
 position = Vector2(3840, -35200)
@@ -85,22 +73,22 @@ can_look_down = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+[node name="Layer_0_7" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2(0.7, 0.7)
 motion_mirroring = Vector2(1876, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/Layer_0_7"]
 position = Vector2(-16, -207)
 scale = Vector2(4.41, 4.41)
 texture = ExtResource("2_l3wnv")
 centered = false
 region_rect = Rect2(0, 0, 150, 150)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+[node name="Layer_0_8" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(5850, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/Layer_0_8"]
 texture_repeat = 2
 position = Vector2(-696, -375)
 scale = Vector2(3.25, 3.25)
@@ -109,30 +97,66 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 1800, 300)
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+[node name="Layer_1" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 motion_mirroring = Vector2(1920, 1080)
 
-[node name="Blur" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer3"]
+[node name="Blur" type="Sprite2D" parent="Background/ParallaxBackground/Layer_1"]
 material = SubResource("ShaderMaterial_yndj3")
 position = Vector2(0, -2.38419e-07)
 scale = Vector2(60, 33.75)
 texture = ExtResource("5_y76de")
 centered = false
 
+[node name="Forebackground" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Forebackground"]
+layer = -99
+
+[node name="Layer_1_0" type="ParallaxLayer" parent="Forebackground/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Forebackground/ParallaxBackground/Layer_1_0"]
+position = Vector2(1364, -139)
+texture = ExtResource("7_lneph")
+
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Floor" parent="Obstacles" instance=ExtResource("2_aij7w")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-22, 5)
-scale = Vector2(95.5338, 14.615)
+position = Vector2(-646, 0)
+scale = Vector2(155.352, 15.9407)
+
+[node name="Floor2" parent="Obstacles" instance=ExtResource("2_aij7w")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-4676, 0)
+scale = Vector2(135.11, 17.192)
 
 [node name="Ceiling" parent="Obstacles" instance=ExtResource("3_h3rff")]
-position = Vector2(1700, -700)
+position = Vector2(939, -693)
 scale = Vector2(58.529, 1000)
 
 [node name="Ceiling2" parent="Obstacles" instance=ExtResource("3_h3rff")]
-position = Vector2(-1700, -700)
+position = Vector2(-2632, -682)
 scale = Vector2(58.529, 1000)
+
+[node name="BreakableDoor" parent="Obstacles" instance=ExtResource("9_w8ty8")]
+position = Vector2(1383, -111)
+
+[node name="BreakableDoor2" parent="Obstacles" instance=ExtResource("9_w8ty8")]
+position = Vector2(2303, -111)
+
+[node name="BreakableDoor3" parent="Obstacles" instance=ExtResource("9_w8ty8")]
+position = Vector2(3223, -111)
+
+[node name="BreakableDoor4" parent="Obstacles" instance=ExtResource("9_w8ty8")]
+position = Vector2(4143, -111)
+
+[node name="Ceiling3" parent="Obstacles" instance=ExtResource("3_h3rff")]
+position = Vector2(939, -238)
+scale = Vector2(105.666, 14.2143)
+
+[node name="Ceiling4" parent="Obstacles" instance=ExtResource("3_h3rff")]
+position = Vector2(-2133, -238)
+scale = Vector2(23.461, 14.214)
 
 [node name="Items" type="Node2D" parent="."]
 
@@ -145,40 +169,44 @@ position = Vector2(-84, -57)
 
 [node name="Foreground" type="Node2D" parent="."]
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="Foreground"]
+[node name="ParallaxForeground" type="ParallaxBackground" parent="Foreground"]
 layer = 0
 
-[node name="Layer1" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+[node name="Layer_1_0" type="ParallaxLayer" parent="Foreground/ParallaxForeground"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer1"]
+[node name="Ground" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_1_0"]
 texture = ExtResource("8_s2isc")
 
-[node name="Layer2" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
-motion_scale = Vector2(1.06, 1.06)
+[node name="Layer_!_03" type="ParallaxLayer" parent="Foreground/ParallaxForeground"]
+motion_scale = Vector2(1.03, 1.03)
 
-[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer2"]
-position = Vector2(-59, 16)
+[node name="GroundUnder" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_!_03"]
+position = Vector2(-33, 40)
 texture = ExtResource("13_8ugqn")
 
-[node name="Layer3" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+[node name="FrontOfDoor" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_!_03"]
+position = Vector2(1475, -198)
+texture = ExtResource("13_ojsm1")
+
+[node name="Layer_1_15" type="ParallaxLayer" parent="Foreground/ParallaxForeground"]
 motion_scale = Vector2(1.15, 1.15)
 
-[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer3"]
-position = Vector2(-177, -16)
+[node name="GroundBelow" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_1_15"]
+position = Vector2(-179, -19)
 texture = ExtResource("14_eq63b")
 
-[node name="Layer4" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+[node name="Layer_1_2" type="ParallaxLayer" parent="Foreground/ParallaxForeground"]
 motion_scale = Vector2(1.2, 1.2)
 
-[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer4"]
-position = Vector2(385, -111)
+[node name="RibbedEgg" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_1_2"]
+position = Vector2(381, -117)
 texture = ExtResource("14_x40qq")
 
-[node name="Layer5" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+[node name="Layer_1_3" type="ParallaxLayer" parent="Foreground/ParallaxForeground"]
 motion_scale = Vector2(1.3, 1.3)
 
-[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer5"]
-position = Vector2(-484, -163)
+[node name="SmoothEgg" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_1_3"]
+position = Vector2(-492, -163)
 texture = ExtResource("13_hc0wr")
 
 [node name="Effects" type="Node2D" parent="."]
@@ -195,6 +223,21 @@ autostart = true
 color = Color(0.58171, 0.427423, 0.271974, 1)
 blend_mode = 1
 
+[node name="OcclusionLayer" type="Node2D" parent="."]
+
+[node name="ParallaxObstruction" type="ParallaxBackground" parent="OcclusionLayer"]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="OcclusionLayer/ParallaxObstruction"]
+
+[node name="BehindDoor1" type="Sprite2D" parent="OcclusionLayer/ParallaxObstruction/ParallaxLayer"]
+modulate = Color(0, 0, 0, 1)
+z_index = 101
+position = Vector2(1467, -509)
+scale = Vector2(42.0279, 16.1212)
+texture = ExtResource("18_mn68o")
+centered = false
+
 [node name="UI" parent="." instance=ExtResource("12_15xv5")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -206,5 +249,6 @@ bus = &"Music"
 [node name="PauseMenu" parent="." instance=ExtResource("15_k0x80")]
 
 [connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]
+[connection signal="broken" from="Obstacles/BreakableDoor" to="." method="_on_breakable_door_broken"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

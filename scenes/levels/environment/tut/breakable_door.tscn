@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqaxlx2n8emsb"]
+
+[ext_resource type="Texture2D" uid="uid://b5wd05f4fftyf" path="res://assets/sprites/environment/tut/tut_wall_l_0005_04.png" id="1_iesbo"]
+[ext_resource type="Script" path="res://scenes/levels/environment/tut/breakable_door.gd" id="1_ysclp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4dik"]
+size = Vector2(94, 286)
+
+[node name="BreakableDoor" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_ysclp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("1_iesbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q4dik")

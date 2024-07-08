@@ -199,4 +199,4 @@ common/physics_jitter_fix=0.0
 [rendering]
 
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.306923, 0.306923, 0.306923, 1)
