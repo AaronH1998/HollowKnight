@@ -21,6 +21,7 @@ func _on_main_menu_button_confirm_audio_finished():
 
 
 func _on_resume_button_pressed():
+	hide()
 	resume.emit()
 
 
@@ -30,4 +31,8 @@ func _on_audio_button_pressed():
 
 
 func _on_audio_button_confirm_audio_finished():
+	queue_free()
+
+
+func _on_resume_button_confirm_audio_finished():
 	queue_free()

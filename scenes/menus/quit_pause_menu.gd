@@ -1,8 +1,15 @@
 extends Control
 
-signal no_quit()
+signal no_quit
 
 @onready var deny_button: Button = $VBoxContainer/DenyButton
+
+
+func _input(_event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		no_quit.emit()
+		queue_free()
+
 
 func _ready():
 	deny_button.quiet_focus()

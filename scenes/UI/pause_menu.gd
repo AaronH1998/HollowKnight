@@ -13,10 +13,13 @@ var audio_menu
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_menu"):
-		paused = !paused
-		if paused:
+		if !paused:
 			_pause()
 		else:
+			if default_pause_menu != null: 
+				default_pause_menu.queue_free()
+			if quit_pause_menu != null:
+				quit_pause_menu.queue_free()
 			_unpause()
 
 
@@ -33,6 +36,7 @@ func _ready():
 
 
 func _pause():
+	paused = true
 	get_tree().paused = true
 	show()
 	_show_default_menu()
@@ -40,12 +44,9 @@ func _pause():
 
 
 func _unpause():
+	paused = false
 	hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	if default_pause_menu != null: 
-		default_pause_menu.queue_free()
-	if quit_pause_menu != null:
-		quit_pause_menu.queue_free()
 	get_tree().paused = false
 
 

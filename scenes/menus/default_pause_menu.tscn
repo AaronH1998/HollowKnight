@@ -154,6 +154,7 @@ size_flags_horizontal = 4
 sprite_frames = SubResource("SpriteFrames_wu0sk")
 autoplay = "default"
 
+[connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_confirm_audio_finished"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="confirm_audio_finished" from="VBoxContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_confirm_audio_finished"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
