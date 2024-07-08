@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfn67bdc2mu2r"
-path="res://.godot/imported/long_rocky_floor.png-19120bc7bed9b13b6fbcb73ef59f5dd9.ctex"
+uid="uid://w05ibjblw6td"
+path="res://.godot/imported/tut_land_floor_0001_03.png-2918e2c94eca3d8d712d3bfd99cce067.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/floors/long_rocky_floor.png"
-dest_files=["res://.godot/imported/long_rocky_floor.png-19120bc7bed9b13b6fbcb73ef59f5dd9.ctex"]
+source_file="res://assets/sprites/environment/tut/tut_land_floor_0001_03.png"
+dest_files=["res://.godot/imported/tut_land_floor_0001_03.png-2918e2c94eca3d8d712d3bfd99cce067.ctex"]
 
 [params]
 

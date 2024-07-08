@@ -12,7 +12,7 @@ var audio_menu_scene: PackedScene = preload("res://scenes/menus/audio_settings_m
 var audio_menu
 
 func _input(_event):
-	if Input.is_action_just_pressed("menu"):
+	if Input.is_action_just_pressed("ui_menu"):
 		paused = !paused
 		if paused:
 			_pause()

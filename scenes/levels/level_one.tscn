@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=24 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
@@ -9,11 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://dhmttpr42027r" path="res://scenes/players/player.tscn" id="4_mqvlf"]
 [ext_resource type="Texture2D" uid="uid://bdm3im67i5bg4" path="res://assets/sprites/placeholders/Circle/Circle-0002.png" id="5_y76de"]
 [ext_resource type="PackedScene" uid="uid://cw8wfitl8qa2i" path="res://scenes/objects/camera_lock_area.tscn" id="6_rv3fu"]
-[ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/floors/long_rocky_floor.png" id="8_s2isc"]
-[ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="10_p2xj5"]
+[ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/environment/tut/long_rocky_floor.png" id="8_s2isc"]
 [ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="12_15xv5"]
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="13_1l0oj"]
-[ext_resource type="PackedScene" uid="uid://co5edir6pe305" path="res://scenes/enemies/vengefly.tscn" id="14_tyg8v"]
+[ext_resource type="Texture2D" uid="uid://c3jgkw36qcngj" path="res://assets/sprites/environment/tut/tut_land_floor_0002_02.png" id="13_8ugqn"]
+[ext_resource type="Texture2D" uid="uid://rf34qrdmtrlq" path="res://assets/sprites/environment/tut/tut_rocks_0004_05.png" id="13_hc0wr"]
+[ext_resource type="Texture2D" uid="uid://w05ibjblw6td" path="res://assets/sprites/environment/tut/tut_land_floor_0001_03.png" id="14_eq63b"]
+[ext_resource type="Texture2D" uid="uid://ccv6s45tngf8y" path="res://assets/sprites/environment/tut/tut_rocks_0007_02.png" id="14_x40qq"]
 [ext_resource type="PackedScene" uid="uid://cudxrbju5mf3o" path="res://scenes/UI/pause_menu.tscn" id="15_k0x80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcx3k"]
@@ -71,12 +73,12 @@ navigation_polygon = SubResource("NavigationPolygon_wqlv8")
 [node name="CameraLockAreas" type="Node2D" parent="."]
 
 [node name="CameraLockArea2" parent="CameraLockAreas" instance=ExtResource("6_rv3fu")]
-position = Vector2(752, -2)
+position = Vector2(640, 0)
 scale = Vector2(73.9013, 34.8371)
 
 [node name="CameraLockArea" parent="CameraLockAreas" instance=ExtResource("6_rv3fu")]
-position = Vector2(-765, -4)
-scale = Vector2(75.8481, 34.8464)
+position = Vector2(-1758, 0)
+scale = Vector2(119.919, 33.9765)
 can_look_down = false
 
 [node name="Background" type="Node2D" parent="."]
@@ -121,7 +123,8 @@ centered = false
 
 [node name="Floor" parent="Obstacles" instance=ExtResource("2_aij7w")]
 modulate = Color(0, 0, 0, 1)
-scale = Vector2(88.7668, 13.675)
+position = Vector2(-22, 5)
+scale = Vector2(95.5338, 14.615)
 
 [node name="Ceiling" parent="Obstacles" instance=ExtResource("3_h3rff")]
 position = Vector2(1700, -700)
@@ -137,36 +140,46 @@ scale = Vector2(58.529, 1000)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Crawlid" parent="Enemies" instance=ExtResource("10_p2xj5")]
-position = Vector2(847, -42)
-
-[node name="Vengefly4" parent="Enemies" instance=ExtResource("14_tyg8v")]
-position = Vector2(-1258, -345)
-
-[node name="Vengefly" parent="Enemies" instance=ExtResource("14_tyg8v")]
-position = Vector2(1124, -524)
-
-[node name="Vengefly2" parent="Enemies" instance=ExtResource("14_tyg8v")]
-position = Vector2(-440, -486)
-
-[node name="Vengefly3" parent="Enemies" instance=ExtResource("14_tyg8v")]
-position = Vector2(618, -380)
-
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
 position = Vector2(-84, -57)
 
 [node name="Foreground" type="Node2D" parent="."]
 
-[node name="Sprite2D3" type="Sprite2D" parent="Foreground"]
-position = Vector2(-865, 4)
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="Foreground"]
+layer = 0
+
+[node name="Layer1" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer1"]
 texture = ExtResource("8_s2isc")
 
-[node name="Sprite2D" type="Sprite2D" parent="Foreground"]
-texture = ExtResource("8_s2isc")
+[node name="Layer2" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+motion_scale = Vector2(1.06, 1.06)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Foreground"]
-position = Vector2(918, 3)
-texture = ExtResource("8_s2isc")
+[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer2"]
+position = Vector2(-59, 16)
+texture = ExtResource("13_8ugqn")
+
+[node name="Layer3" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+motion_scale = Vector2(1.15, 1.15)
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer3"]
+position = Vector2(-177, -16)
+texture = ExtResource("14_eq63b")
+
+[node name="Layer4" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+motion_scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer4"]
+position = Vector2(385, -111)
+texture = ExtResource("14_x40qq")
+
+[node name="Layer5" type="ParallaxLayer" parent="Foreground/ParallaxBackground2"]
+motion_scale = Vector2(1.3, 1.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxBackground2/Layer5"]
+position = Vector2(-484, -163)
+texture = ExtResource("13_hc0wr")
 
 [node name="Effects" type="Node2D" parent="."]
 
@@ -179,13 +192,13 @@ autostart = true
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights"]
-color = Color(0.730061, 0.703985, 0.718873, 1)
-energy = 0.77
+color = Color(0.58171, 0.427423, 0.271974, 1)
 blend_mode = 1
 
 [node name="UI" parent="." instance=ExtResource("12_15xv5")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("13_1l0oj")
 autoplay = true
 bus = &"Music"

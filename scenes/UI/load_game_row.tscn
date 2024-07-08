@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bd8dgwj5p25uk"]
+[gd_scene load_steps=20 format=3 uid="uid://bd8dgwj5p25uk"]
 
 [ext_resource type="Script" path="res://scenes/UI/load_game_row.gd" id="1_a0xcp"]
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_ei0yn"]
@@ -11,8 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://cm75c5b66c2dt" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0004.png" id="33_lqg7r"]
 [ext_resource type="Texture2D" uid="uid://cwgatw3rphb46" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0005.png" id="34_42ull"]
 [ext_resource type="Texture2D" uid="uid://bwq7l04qr0kh8" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0006.png" id="35_6oy1b"]
-[ext_resource type="AudioStream" uid="uid://cuh05l3p0gfey" path="res://assets/sounds/ui/ui_change_selection.wav" id="35_6ydr6"]
-[ext_resource type="AudioStream" uid="uid://c0ebtuu5yq1hy" path="res://assets/sounds/ui/ui_button_confirm.wav" id="36_ophtt"]
 [ext_resource type="Texture2D" uid="uid://cx23dsfot87xw" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0007.png" id="36_wus0r"]
 [ext_resource type="Texture2D" uid="uid://by1xuhyg1ln2e" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0008.png" id="37_fd014"]
 [ext_resource type="Texture2D" uid="uid://wmmfu1g8d01c" path="res://assets/animations/ui/menus/fleurs/profile_fleur/profile_fleur0009.png" id="38_ixj7a"]
@@ -210,16 +208,6 @@ text = "No"
 layout_mode = 2
 size_flags_vertical = 4
 text = "Clear Save"
-
-[node name="Audio" type="Node" parent="."]
-
-[node name="FocusChange" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("35_6ydr6")
-volume_db = -10.0
-
-[node name="Confirm" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("36_ophtt")
-volume_db = -10.0
 
 [connection signal="pressed" from="LoadGameButton" to="." method="_on_load_game_button_pressed"]
 [connection signal="pressed" from="ConfirmationDisplay/VBoxContainer/ConfirmationButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]

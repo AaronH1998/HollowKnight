@@ -7,8 +7,6 @@ extends HBoxContainer
 @onready var confirmation_display: MarginContainer = $ConfirmationDisplay
 @onready var game_label: Label = $LoadGameButton/MarginContainer/MarginContainer/GameLabel
 @onready var load_game_button: Button = $LoadGameButton
-@onready var focus_change_audio: AudioStreamPlayer = $Audio/FocusChange
-@onready var confirm_audio: AudioStreamPlayer = $Audio/Confirm
 @onready var new_game_display: MarginContainer = $LoadGameButton/MarginContainer/NewGameDisplay
 @onready var clear_save_button: Button = $ClearSaveButton
 @onready var deny_button: Button = $ConfirmationDisplay/VBoxContainer/ConfirmationButtons/DenyButton
@@ -62,7 +60,6 @@ func _on_load_game_button_pressed():
 		print("loading save from: " + save_file)
 		Persistence.load_game()
 	
-	confirm_audio.play()
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
 
 

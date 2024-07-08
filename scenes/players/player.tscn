@@ -186,11 +186,11 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyy1a"]
 radius = 29.0
-height = 100.0
+height = 108.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfv70"]
 radius = 29.0
-height = 100.0
+height = 108.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kvd1q"]
 shader = ExtResource("5_qwsj2")
@@ -1806,6 +1806,7 @@ target = NodePath("..")
 flags = 15
 
 [node name="MarginContainer" type="MarginContainer" parent="Visual"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1831,9 +1832,8 @@ theme_override_font_sizes/font_size = 20
 [node name="Camera2D" type="Camera2D" parent="Visual"]
 position = Vector2(100, 0)
 scale = Vector2(1.5, 1.5)
-zoom = Vector2(1.2, 1.2)
+offset = Vector2(-27.585, -13.195)
 position_smoothing_enabled = true
-position_smoothing_speed = 6.0
 
 [node name="KnightAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
 material = SubResource("ShaderMaterial_kvd1q")

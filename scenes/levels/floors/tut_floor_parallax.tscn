@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://5isly0mqy0fm"]
+
+[ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/environment/tut/long_rocky_floor.png" id="1_lsb7x"]
+[ext_resource type="Texture2D" uid="uid://c3jgkw36qcngj" path="res://assets/sprites/environment/tut/tut_land_floor_0002_02.png" id="2_6m47w"]
+[ext_resource type="Texture2D" uid="uid://w05ibjblw6td" path="res://assets/sprites/environment/tut/tut_land_floor_0001_03.png" id="3_xl8mo"]
+
+[node name="TutFloor" type="ParallaxBackground"]
+layer = 0
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_lsb7x")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1.06, 1.06)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(-46, 20)
+texture = ExtResource("2_6m47w")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1.15, 1.15)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(-151, -5)
+texture = ExtResource("3_xl8mo")

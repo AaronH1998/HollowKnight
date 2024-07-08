@@ -20,8 +20,9 @@ func _ready():
 
 
 func _process(_delta):
-	if enemies.get_child_count() <= 0:
-		TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
+	pass
+	#if enemies.get_child_count() <= 0:
+		#TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
 
 
 func _on_start_timer_timeout():
