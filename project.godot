@@ -26,6 +26,7 @@ Settings="*res://globals/settings.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://assets/sprites/cursor/cursor.png"
 
@@ -199,4 +200,4 @@ common/physics_jitter_fix=0.0
 [rendering]
 
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0.306923, 0.306923, 0.306923, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

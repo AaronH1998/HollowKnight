@@ -1,20 +1,21 @@
-[gd_scene load_steps=26 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=27 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
 [ext_resource type="Texture2D" uid="uid://bcumr6iwhf4tg" path="res://assets/sprites/backgrounds/shell_medium_center_cracked.png" id="2_l3wnv"]
 [ext_resource type="PackedScene" uid="uid://oynlk5akiwwh" path="res://scenes/objects/ceiling.tscn" id="3_h3rff"]
+[ext_resource type="PackedScene" uid="uid://dhpmpth3gvolm" path="res://scenes/objects/camera_lock_area.tscn" id="3_lggyi"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="3_vu53h"]
 [ext_resource type="Texture2D" uid="uid://ljrgqw2vusd6" path="res://assets/sprites/backgrounds/two_shells.png" id="3_we16k"]
 [ext_resource type="PackedScene" uid="uid://dhmttpr42027r" path="res://scenes/players/player.tscn" id="4_mqvlf"]
 [ext_resource type="Texture2D" uid="uid://bdm3im67i5bg4" path="res://assets/sprites/placeholders/Circle/Circle-0002.png" id="5_y76de"]
-[ext_resource type="PackedScene" uid="uid://cw8wfitl8qa2i" path="res://scenes/objects/camera_lock_area.tscn" id="6_rv3fu"]
 [ext_resource type="Texture2D" uid="uid://ivmwfkocva5d" path="res://assets/sprites/environment/tut/tut_wall_l_0007_02.png" id="7_lneph"]
 [ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/environment/tut/long_rocky_floor.png" id="8_s2isc"]
 [ext_resource type="PackedScene" uid="uid://cqaxlx2n8emsb" path="res://scenes/levels/environment/tut/breakable_door.tscn" id="9_w8ty8"]
 [ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="12_15xv5"]
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="13_1l0oj"]
 [ext_resource type="Texture2D" uid="uid://c3jgkw36qcngj" path="res://assets/sprites/environment/tut/tut_land_floor_0002_02.png" id="13_8ugqn"]
+[ext_resource type="Texture2D" uid="uid://bdwxfra0ljsko" path="res://assets/sprites/placeholders/Square/Square-0003.png" id="13_clbt0"]
 [ext_resource type="Texture2D" uid="uid://rf34qrdmtrlq" path="res://assets/sprites/environment/tut/tut_rocks_0004_05.png" id="13_hc0wr"]
 [ext_resource type="Texture2D" uid="uid://bjfi7n7gpwai6" path="res://assets/sprites/environment/tut/tut_wall_l_0003_06.png" id="13_ojsm1"]
 [ext_resource type="Texture2D" uid="uid://w05ibjblw6td" path="res://assets/sprites/environment/tut/tut_land_floor_0001_03.png" id="14_eq63b"]
@@ -58,16 +59,37 @@ shape = SubResource("RectangleShape2D_ed63b")
 position = Vector2(-5, 10)
 navigation_polygon = SubResource("NavigationPolygon_wqlv8")
 
-[node name="CameraLockAreas" type="Node2D" parent="."]
+[node name="CameraLock" type="Node2D" parent="."]
 
-[node name="CameraLockArea2" parent="CameraLockAreas" instance=ExtResource("6_rv3fu")]
-position = Vector2(640, 0)
-scale = Vector2(73.9013, 34.8371)
+[node name="Areas" type="Node2D" parent="CameraLock"]
 
-[node name="CameraLockArea" parent="CameraLockAreas" instance=ExtResource("6_rv3fu")]
-position = Vector2(-1758, 0)
-scale = Vector2(119.919, 33.9765)
-can_look_down = false
+[node name="FirstCameraLock" parent="CameraLock/Areas" node_paths=PackedStringArray("vertical_lock_marker") instance=ExtResource("3_lggyi")]
+position = Vector2(-377, -8)
+scale = Vector2(234.467, 34.1038)
+vertical_lock_marker = NodePath("../../Markers/InitialVertical")
+
+[node name="CaveWallCameraLock" parent="CameraLock/Areas" node_paths=PackedStringArray("horizontal_lock_marker", "vertical_lock_marker") instance=ExtResource("3_lggyi")]
+position = Vector2(-1125, 4)
+scale = Vector2(37.3256, 34.6673)
+horizontal_lock_marker = NodePath("../../Markers/CaveWallXLock")
+vertical_lock_marker = NodePath("../../Markers/InitialVertical")
+
+[node name="CaveCameraLock" parent="CameraLock/Areas" node_paths=PackedStringArray("horizontal_lock_marker", "vertical_lock_marker") instance=ExtResource("3_lggyi")]
+position = Vector2(-3181, -5)
+scale = Vector2(102.655, 33.8159)
+horizontal_lock_marker = NodePath("../../Markers/CaveLock")
+vertical_lock_marker = NodePath("../../Markers/InitialVertical")
+
+[node name="Markers" type="Node2D" parent="CameraLock"]
+
+[node name="InitialVertical" type="Marker2D" parent="CameraLock/Markers"]
+position = Vector2(-1, -246)
+
+[node name="CaveWallXLock" type="Marker2D" parent="CameraLock/Markers"]
+position = Vector2(-377, -252)
+
+[node name="CaveLock" type="Marker2D" parent="CameraLock/Markers"]
+position = Vector2(-2006, -321)
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -135,8 +157,8 @@ position = Vector2(939, -693)
 scale = Vector2(58.529, 1000)
 
 [node name="Ceiling2" parent="Obstacles" instance=ExtResource("3_h3rff")]
-position = Vector2(-2632, -682)
-scale = Vector2(58.529, 1000)
+position = Vector2(-3184, -682)
+scale = Vector2(78.0705, 960.235)
 
 [node name="BreakableDoor" parent="Obstacles" instance=ExtResource("9_w8ty8")]
 position = Vector2(1383, -111)
@@ -154,9 +176,9 @@ position = Vector2(4143, -111)
 position = Vector2(939, -238)
 scale = Vector2(105.666, 14.2143)
 
-[node name="Ceiling4" parent="Obstacles" instance=ExtResource("3_h3rff")]
-position = Vector2(-2133, -238)
-scale = Vector2(23.461, 14.214)
+[node name="Ceiling5" parent="Obstacles" instance=ExtResource("3_h3rff")]
+position = Vector2(-2726, -3)
+scale = Vector2(-109.095, 71.854)
 
 [node name="Items" type="Node2D" parent="."]
 
@@ -165,17 +187,24 @@ scale = Vector2(23.461, 14.214)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
-position = Vector2(-84, -57)
+position = Vector2(-31, -103)
 
 [node name="Foreground" type="Node2D" parent="."]
+z_index = 1
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="Foreground"]
 layer = 0
 
 [node name="Layer_1_0" type="ParallaxLayer" parent="Foreground/ParallaxForeground"]
+light_mask = 2
 
 [node name="Ground" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_1_0"]
 texture = ExtResource("8_s2isc")
+
+[node name="CaveOcclusion" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_1_0"]
+position = Vector2(-1033, -442)
+scale = Vector2(21.897, 31.9635)
+texture = ExtResource("13_clbt0")
 
 [node name="Layer_!_03" type="ParallaxLayer" parent="Foreground/ParallaxForeground"]
 motion_scale = Vector2(1.03, 1.03)
@@ -240,15 +269,16 @@ centered = false
 
 [node name="UI" parent="." instance=ExtResource("12_15xv5")]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
+[node name="PauseMenu" parent="." instance=ExtResource("15_k0x80")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_1l0oj")
 autoplay = true
 bus = &"Music"
 
-[node name="PauseMenu" parent="." instance=ExtResource("15_k0x80")]
-
 [connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]
+[connection signal="body_entered" from="CameraLock/Areas/CaveCameraLock" to="." method="_on_cave_camera_lock_body_entered"]
+[connection signal="body_exited" from="CameraLock/Areas/CaveCameraLock" to="." method="_on_cave_camera_lock_body_exited"]
 [connection signal="broken" from="Obstacles/BreakableDoor" to="." method="_on_breakable_door_broken"]
 [connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

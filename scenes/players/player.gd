@@ -92,18 +92,26 @@ func _handle_camera():
 		cam_mod = camera_modifier
 	elif Globals.can_look_down and camera_modifier > 0:
 		cam_mod = camera_modifier
-
-	if Globals.camera_vertical_locked:
-		if camera_reached_lock:
-			camera.global_position.y = Globals.camera_height + cam_mod
-		else:
-			camera.global_position.y = lerp(camera.global_position.y, Globals.camera_height + cam_mod, 0.002)
-	else:
-		camera.global_position.y = lerp(camera.global_position.y, camera_marker.global_position.y + cam_mod, 0.002)
 	
-	camera.position.x = camera_marker.position.x
-	camera_reached_lock = Globals.camera_height - camera.global_position.y  < 1
-
+	if !Globals.vertical_locks.is_empty():
+		camera.global_position.y = Globals.vertical_locks.back() + cam_mod
+	else:
+		camera.global_position.y = camera_marker.global_position.y + cam_mod
+	
+	if !Globals.horizontal_locks.is_empty():
+		camera.global_position.x = Globals.horizontal_locks.back() + cam_mod
+	else:
+		camera.global_position.x = camera_marker.global_position.x
+	
+	#if Globals.camera_vertical_locked:
+		#if camera_reached_lock:
+			#camera.global_position.y = Globals.camera_height + cam_mod
+		#else:
+			#camera.global_position.y = lerp(camera.global_position.y, Globals.camera_height + cam_mod, 0.002)
+	#else:
+		#camera.global_position.y = lerp(camera.global_position.y, camera_marker.global_position.y + cam_mod, 0.002)
+	#
+	#camera_reached_lock = Globals.camera_height - camera.global_position.y  < 1
 
 func _handle_move_input():
 	var direction = int(Input.get_axis("left", "right"))

@@ -1,14 +1,17 @@
 extends Area2D
 
-@export var can_look_up: bool = true
-@export var can_look_down: bool = true
+@export var horizontal_lock_marker: Marker2D
+@export var vertical_lock_marker: Marker2D
 
 func _on_body_entered(_body):
-	Globals.can_look_up = can_look_up
-	Globals.can_look_down = can_look_down
-	Globals.camera_lock_areas += 1
-	Globals.camera_height = global_position.y + Globals.CAMERA_LOCK_HEIGHT
+	if(horizontal_lock_marker != null):
+		Globals.horizontal_locks.append(horizontal_lock_marker.global_position.x)
+	if(vertical_lock_marker != null):
+		Globals.vertical_locks.append(vertical_lock_marker.global_position.y)
+
 
 func _on_body_exited(_body):
-	Globals.camera_vertical_locked = false
-	Globals.camera_lock_areas -= 1
+	if(horizontal_lock_marker != null):
+		Globals.horizontal_locks.erase(horizontal_lock_marker.global_position.x)
+	if(vertical_lock_marker != null):
+		Globals.vertical_locks.erase(vertical_lock_marker.global_position.y)

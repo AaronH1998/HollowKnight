@@ -9,6 +9,7 @@ var enemies_count: int
 
 @onready var enemies: Node2D = $Enemies
 @onready var behind_door_1_obstruction: Sprite2D = $OcclusionLayer/ParallaxObstruction/ParallaxLayer/BehindDoor1
+@onready var light: DirectionalLight2D = $Lights/DirectionalLight2D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
@@ -72,3 +73,13 @@ func _on_kill_box_body_entered(body):
 
 func _on_breakable_door_broken():
 	behind_door_1_obstruction.hide()
+
+
+func _on_cave_camera_lock_body_entered(_body):
+	var tween = create_tween()
+	tween.tween_property(light, "energy", 3.0, 2.0)
+
+
+func _on_cave_camera_lock_body_exited(_body):
+	var tween = create_tween()
+	tween.tween_property(light, "energy", 1.0, 2.0)

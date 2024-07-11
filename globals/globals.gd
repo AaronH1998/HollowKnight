@@ -20,7 +20,10 @@ var camera_lock_areas: int = 0
 var camera_vertical_locked: bool:
 	get:
 		return camera_lock_areas > 0
-		
+
+var horizontal_locks: Array[float]
+var vertical_locks: Array[float]
+
 var can_look_up: bool = true
 var can_look_down: bool = true
 
