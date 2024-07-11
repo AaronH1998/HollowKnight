@@ -85,12 +85,17 @@ func _ready():
 func _process(_delta):
 	_handle_camera()
 
+func is_true(obj):
+	return obj == true
+	
+func is_false(obj):
+	return obj == false
 
 func _handle_camera():
 	var cam_mod: float
-	if Globals.can_look_up and camera_modifier < 0:
+	if Globals.look_ups.has(true) and camera_modifier < 0:
 		cam_mod = camera_modifier
-	elif Globals.can_look_down and camera_modifier > 0:
+	elif Globals.look_downs.has(true) and camera_modifier > 0:
 		cam_mod = camera_modifier
 	
 	if !Globals.vertical_locks.is_empty():

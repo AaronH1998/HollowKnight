@@ -63,10 +63,11 @@ navigation_polygon = SubResource("NavigationPolygon_wqlv8")
 
 [node name="Areas" type="Node2D" parent="CameraLock"]
 
-[node name="FirstCameraLock" parent="CameraLock/Areas" node_paths=PackedStringArray("vertical_lock_marker") instance=ExtResource("3_lggyi")]
+[node name="OuterCameraLock" parent="CameraLock/Areas" node_paths=PackedStringArray("vertical_lock_marker") instance=ExtResource("3_lggyi")]
 position = Vector2(-377, -8)
-scale = Vector2(234.467, 34.1038)
+scale = Vector2(65.9641, 34.1038)
 vertical_lock_marker = NodePath("../../Markers/InitialVertical")
+can_look_up = true
 
 [node name="CaveWallCameraLock" parent="CameraLock/Areas" node_paths=PackedStringArray("horizontal_lock_marker", "vertical_lock_marker") instance=ExtResource("3_lggyi")]
 position = Vector2(-1125, 4)
@@ -78,6 +79,11 @@ vertical_lock_marker = NodePath("../../Markers/InitialVertical")
 position = Vector2(-3181, -5)
 scale = Vector2(102.655, 33.8159)
 horizontal_lock_marker = NodePath("../../Markers/CaveLock")
+vertical_lock_marker = NodePath("../../Markers/InitialVertical")
+
+[node name="CameraLockArea" parent="CameraLock/Areas" node_paths=PackedStringArray("vertical_lock_marker") instance=ExtResource("3_lggyi")]
+position = Vector2(943, -5)
+scale = Vector2(168.726, 23.9663)
 vertical_lock_marker = NodePath("../../Markers/InitialVertical")
 
 [node name="Markers" type="Node2D" parent="CameraLock"]

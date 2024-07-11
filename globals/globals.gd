@@ -24,8 +24,8 @@ var camera_vertical_locked: bool:
 var horizontal_locks: Array[float]
 var vertical_locks: Array[float]
 
-var can_look_up: bool = true
-var can_look_down: bool = true
+var look_ups: Array[bool]
+var look_downs: Array[bool]
 
 var max_health: int = 5
 var player_health: int = max_health:
