@@ -20,12 +20,6 @@ func _ready():
 		enemies_count += 1
 
 
-func _process(_delta):
-	pass
-	#if enemies.get_child_count() <= 0:
-		#TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
-
-
 func _on_start_timer_timeout():
 	Globals.level_preparing = false
 
