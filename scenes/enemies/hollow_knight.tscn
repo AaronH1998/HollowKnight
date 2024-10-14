@@ -1,0 +1,334 @@
+[gd_scene load_steps=51 format=3 uid="uid://csi2bpfjyl5so"]
+
+[ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
+[ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
+[ext_resource type="Script" path="res://scenes/enemies/hollow_knight_state_machine.gd" id="3_2kgyv"]
+[ext_resource type="Texture2D" uid="uid://be1hibcncwi7a" path="res://assets/animations/hollow_knight/idle/Idle_000.png" id="3_ff8xf"]
+[ext_resource type="Texture2D" uid="uid://cspv5mut5bebm" path="res://assets/animations/hollow_knight/idle/Idle_001.png" id="4_1fnti"]
+[ext_resource type="Texture2D" uid="uid://dfp2p04u602j3" path="res://assets/animations/hollow_knight/idle/Idle_002.png" id="5_vx8mo"]
+[ext_resource type="Texture2D" uid="uid://3elv52lfl5pn" path="res://assets/animations/hollow_knight/idle/Idle_003.png" id="6_ps3l7"]
+[ext_resource type="Texture2D" uid="uid://bn3akcsonp3se" path="res://assets/animations/hollow_knight/idle/Idle_004.png" id="7_0o5jp"]
+[ext_resource type="Texture2D" uid="uid://na2qq25e8htm" path="res://assets/animations/hollow_knight/idle/Idle_005.png" id="8_1jg1a"]
+[ext_resource type="Texture2D" uid="uid://cq332diufh5kp" path="res://assets/animations/hollow_knight/idle/Idle_006.png" id="9_bhgfv"]
+[ext_resource type="Texture2D" uid="uid://cmgmjv1qwa00p" path="res://assets/animations/hollow_knight/walk/Walk_000.png" id="11_6swcl"]
+[ext_resource type="Texture2D" uid="uid://0hjivl7st71j" path="res://assets/animations/hollow_knight/slashes/Slashes_000.png" id="11_mo4h8"]
+[ext_resource type="Texture2D" uid="uid://b5mee1b2vsist" path="res://assets/animations/hollow_knight/recover/Recover_000.png" id="11_q1lwe"]
+[ext_resource type="Texture2D" uid="uid://6ywc1fddteyn" path="res://assets/animations/hollow_knight/walk/Walk_001.png" id="12_iljni"]
+[ext_resource type="Texture2D" uid="uid://c08lmx0v0q6hj" path="res://assets/animations/hollow_knight/recover/Recover_001.png" id="12_nednr"]
+[ext_resource type="Texture2D" uid="uid://dl76bjq46wa8g" path="res://assets/animations/hollow_knight/slashes/Slashes_001.png" id="12_vx33n"]
+[ext_resource type="Texture2D" uid="uid://dq3tn0xr23nhb" path="res://assets/animations/hollow_knight/slashes/Slashes_002.png" id="13_hrxqt"]
+[ext_resource type="Texture2D" uid="uid://8yyulaug6gub" path="res://assets/animations/hollow_knight/recover/Recover_002.png" id="13_kpt7u"]
+[ext_resource type="Texture2D" uid="uid://7nvh6tcqf3yd" path="res://assets/animations/hollow_knight/walk/Walk_002.png" id="13_xkslo"]
+[ext_resource type="Texture2D" uid="uid://bsw7ajbqcwtcd" path="res://assets/animations/hollow_knight/recover/Recover_003.png" id="14_0kjbk"]
+[ext_resource type="Texture2D" uid="uid://bogejavl3bb7" path="res://assets/animations/hollow_knight/walk/Walk_003.png" id="14_o4ai2"]
+[ext_resource type="Texture2D" uid="uid://cb5q3xw8r6pox" path="res://assets/animations/hollow_knight/slashes/Slashes_003.png" id="14_u01gn"]
+[ext_resource type="Texture2D" uid="uid://b5the8e6dt5p" path="res://assets/animations/hollow_knight/slashes/Slashes_004.png" id="15_5k6cy"]
+[ext_resource type="Texture2D" uid="uid://drii4gi5l0c5u" path="res://assets/animations/hollow_knight/walk/Walk_004.png" id="15_wtews"]
+[ext_resource type="Texture2D" uid="uid://ctun8fjouvxns" path="res://assets/animations/hollow_knight/slashes/Slashes_005.png" id="16_44wp6"]
+[ext_resource type="Texture2D" uid="uid://j3i6i83m5yk0" path="res://assets/animations/hollow_knight/walk/Walk_005.png" id="16_pj3pf"]
+[ext_resource type="Texture2D" uid="uid://blnw2nc1se15e" path="res://assets/animations/hollow_knight/slashes/Slashes_006.png" id="17_uj6hm"]
+[ext_resource type="Texture2D" uid="uid://cld3vox37qcth" path="res://assets/animations/hollow_knight/walk/Walk_006.png" id="17_y53qr"]
+[ext_resource type="Texture2D" uid="uid://wtij8aem8guo" path="res://assets/animations/hollow_knight/slashes/Slashes_007.png" id="18_odoju"]
+[ext_resource type="Texture2D" uid="uid://chep6p5wqnqkt" path="res://assets/animations/hollow_knight/walk/Walk_007.png" id="18_qmkwo"]
+[ext_resource type="Texture2D" uid="uid://deyogh7yb4jup" path="res://assets/animations/hollow_knight/walk/Walk_008.png" id="19_600n5"]
+[ext_resource type="Texture2D" uid="uid://jfvbjpfnwjg0" path="res://assets/animations/hollow_knight/slashes/Slashes_008.png" id="19_ionar"]
+[ext_resource type="Texture2D" uid="uid://biwlh076tgpqw" path="res://assets/animations/hollow_knight/walk/Walk_009.png" id="20_4mnec"]
+[ext_resource type="Texture2D" uid="uid://clwkfobe5nljq" path="res://assets/animations/hollow_knight/slashes/Slashes_009.png" id="20_8qtsm"]
+[ext_resource type="Texture2D" uid="uid://cvu6pogyncgbj" path="res://assets/animations/hollow_knight/slashes/Slashes_010.png" id="21_b0pdf"]
+[ext_resource type="Texture2D" uid="uid://b514q5u31lh17" path="res://assets/animations/hollow_knight/walk/Walk_010.png" id="21_t8ib1"]
+[ext_resource type="Texture2D" uid="uid://c3gnp1r0wanvw" path="res://assets/animations/hollow_knight/slashes/Slashes_011.png" id="22_2g26q"]
+[ext_resource type="Texture2D" uid="uid://cphjwood8j2ir" path="res://assets/animations/hollow_knight/walk/Walk_011.png" id="22_y35e6"]
+[ext_resource type="Texture2D" uid="uid://cruxa5bqdt8du" path="res://assets/animations/hollow_knight/slashes/Slashes_012.png" id="23_b1m0d"]
+[ext_resource type="Texture2D" uid="uid://bybjluiy0yb0f" path="res://assets/animations/hollow_knight/walk/Walk_012.png" id="23_th3r1"]
+[ext_resource type="Texture2D" uid="uid://ysffm5f8hxyc" path="res://assets/animations/hollow_knight/slashes/Slashes_013.png" id="24_nqgk2"]
+[ext_resource type="Texture2D" uid="uid://bp0nvth2f8tjp" path="res://assets/animations/hollow_knight/slashes/Slashes_014.png" id="25_6dly2"]
+[ext_resource type="Texture2D" uid="uid://c2c2v1lvxyung" path="res://assets/animations/hollow_knight/slashes/Slashes_015.png" id="26_r5luq"]
+[ext_resource type="Texture2D" uid="uid://b60gmsh2r5lx0" path="res://assets/animations/hollow_knight/slashes/Slashes_016.png" id="27_46q24"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ji4xr"]
+radius = 56.0
+height = 310.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6hpq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ff8xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1fnti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vx8mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ps3l7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0o5jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1jg1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bhgfv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_q1lwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nednr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kpt7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0kjbk")
+}],
+"loop": false,
+"name": &"recover",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_mo4h8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vx33n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hrxqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_u01gn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5k6cy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_44wp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uj6hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_odoju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ionar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_8qtsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_b0pdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_2g26q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_b1m0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nqgk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_6dly2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r5luq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_46q24")
+}],
+"loop": false,
+"name": &"slashes",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_6swcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iljni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xkslo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_o4ai2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wtews")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pj3pf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_y53qr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qmkwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_600n5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_4mnec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_t8ib1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_y35e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_th3r1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70jv5"]
+radius = 333.53
+
+[sub_resource type="Animation" id="Animation_g2s1k"]
+resource_name = "slashes"
+length = 1.66668
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.41667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"slashes", &"recover"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 0, 1, 2, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.666667, 0.833333, 1, 1.08333, 1.25, 1.33333, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"slash"
+}, {
+"args": [],
+"method": &"stop_slash"
+}, {
+"args": [],
+"method": &"slash"
+}, {
+"args": [],
+"method": &"stop_slash"
+}, {
+"args": [],
+"method": &"slash"
+}, {
+"args": [],
+"method": &"stop_slash"
+}, {
+"args": [],
+"method": &"start_recover"
+}, {
+"args": [],
+"method": &"end_recover"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hvlqm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"recover"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqiu6"]
+_data = {
+"RESET": SubResource("Animation_hvlqm"),
+"slashes": SubResource("Animation_g2s1k")
+}
+
+[node name="HollowKnight" instance=ExtResource("1_metm4")]
+script = ExtResource("2_m1cco")
+
+[node name="StateMachine" parent="." index="0"]
+script = ExtResource("3_2kgyv")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_ji4xr")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(-11, -115)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_x6hpq")
+animation = &"recover"
+autoplay = "idle"
+
+[node name="AttackRange" type="Area2D" parent="." index="4"]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" index="0"]
+shape = SubResource("CircleShape2D_70jv5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_eqiu6")
+}
+
+[node name="SlashHitBox" type="Area2D" parent="." index="6"]
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SlashHitBox" index="0"]
+polygon = PackedVector2Array(186, -1, -236, -239, -286, -174, -322, -87, -334, -2, -323, 88, -287, 170, -233, 241)
+disabled = true
+
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="body_entered" from="SlashHitBox" to="." method="_on_slash_hit_box_body_entered"]

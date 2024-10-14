@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ct2hi03a7nlaj"]
+[gd_scene load_steps=28 format=3 uid="uid://ct2hi03a7nlaj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="1_e8soq"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="2_aij7w"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/environment/tut/long_rocky_floor.png" id="8_s2isc"]
 [ext_resource type="PackedScene" uid="uid://cqaxlx2n8emsb" path="res://scenes/levels/environment/tut/breakable_door.tscn" id="9_w8ty8"]
 [ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="12_15xv5"]
+[ext_resource type="PackedScene" uid="uid://csi2bpfjyl5so" path="res://scenes/enemies/hollow_knight.tscn" id="12_j1ikf"]
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="13_1l0oj"]
 [ext_resource type="Texture2D" uid="uid://c3jgkw36qcngj" path="res://assets/sprites/environment/tut/tut_land_floor_0002_02.png" id="13_8ugqn"]
 [ext_resource type="Texture2D" uid="uid://bdwxfra0ljsko" path="res://assets/sprites/placeholders/Square/Square-0003.png" id="13_clbt0"]
@@ -191,6 +192,9 @@ scale = Vector2(-109.095, 71.854)
 [node name="Drops" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="HollowKnight" parent="Enemies" instance=ExtResource("12_j1ikf")]
+position = Vector2(682, -169)
 
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
 position = Vector2(-31, -103)

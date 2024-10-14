@@ -104,4 +104,3 @@ func _on_deny_button_pressed():
 	game_label.visible = true
 	clear_save_button.visible = true
 	confirmation_display.visible = false
-

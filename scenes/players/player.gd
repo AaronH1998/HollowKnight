@@ -152,6 +152,7 @@ func _on_look_down_timer_timeout():
 func _on_enemy_detection_area_body_entered(body):
 	var damage = 1
 	var pos = body.global_position
+	print(body)
 	hit(pos, damage)
 
 
