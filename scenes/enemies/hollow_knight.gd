@@ -6,6 +6,8 @@ var previous_direction: int = 0
 var is_recovering: bool = false
 var is_slashing: bool = false
 var attack_damage: int = 1
+var is_attacking: bool = false
+var attack_direction: Vector2 = Vector2.ZERO
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var slash_collion_box: CollisionPolygon2D = $SlashHitBox/CollisionPolygon2D
@@ -17,11 +19,18 @@ func _ready():
 
 
 func _apply_movement():
-	if !is_target_in_aggro_range:
-		var player_direction: Vector2 = (Globals.player_pos - global_position).normalized()
-		velocity.x = player_direction.x * speed
-	elif is_target_in_aggro_range and is_recovering:
+	var player_direction: Vector2 = (Globals.player_pos - global_position).normalized()
+	if is_recovering:
 		velocity.x = 0
+	elif is_slashing:
+		velocity.x = attack_direction.x * speed * 3
+	elif !is_target_in_aggro_range and !is_attacking:
+		velocity.x = player_direction.x * speed
+	else:
+		velocity.x = 0
+		
+	if(!is_slashing):
+		attack_direction = player_direction
 	
 	var current_direction = sign(velocity.x)
 	if current_direction != 0 and current_direction != previous_direction:
@@ -40,8 +49,12 @@ func _on_attack_range_body_exited(_body):
 	is_target_in_aggro_range = false
 
 
+func attack():
+	is_attacking = true
+
 func start_recover():
 	is_recovering = true
+	is_attacking = false
 
 
 func end_recover():

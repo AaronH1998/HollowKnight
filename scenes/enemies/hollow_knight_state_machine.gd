@@ -14,13 +14,15 @@ func _state_logic(delta):
 func _get_transition(_delta):
 	match state:
 		states.idle:
-			if parent.velocity.x != 0:
-				return states.walk
-		states.walk:
-			if parent.velocity.x == 0:
-				return states.idle
 			if parent.is_target_in_aggro_range:
 				return states.slashes
+			elif parent.velocity.x != 0:
+				return states.walk
+		states.walk:
+			if parent.is_target_in_aggro_range:
+				return states.slashes
+			elif parent.velocity.x == 0:
+				return states.idle
 		states.slashes:
 			if parent.is_recovering:
 				return states.recover
