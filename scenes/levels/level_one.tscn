@@ -194,10 +194,10 @@ scale = Vector2(-109.095, 71.854)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="HollowKnight" parent="Enemies" instance=ExtResource("12_j1ikf")]
-position = Vector2(682, -169)
+position = Vector2(383, -161)
 
 [node name="Player" parent="." instance=ExtResource("4_mqvlf")]
-position = Vector2(-31, -103)
+position = Vector2(1080, -67)
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 1

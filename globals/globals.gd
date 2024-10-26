@@ -54,7 +54,8 @@ var player_pos: Vector2
 enum Action{
 	NONE,
 	SLASHES,
-	TELEPORT
+	TELEPORT,
+	DASH
 }
 
 func reset():
