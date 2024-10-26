@@ -5,6 +5,7 @@ func _ready():
 	add_state("walk")
 	add_state("slashes")
 	add_state("recover")
+	add_state("teleport")
 	call_deferred("set_state", states.idle)
 
 func _state_logic(delta):
@@ -14,13 +15,17 @@ func _state_logic(delta):
 func _get_transition(_delta):
 	match state:
 		states.idle:
-			if parent.is_target_in_aggro_range:
+			if parent.action == Globals.Action.SLASHES:
 				return states.slashes
+			elif parent.action == Globals.Action.TELEPORT:
+				return states.teleport
 			elif parent.velocity.x != 0:
 				return states.walk
 		states.walk:
-			if parent.is_target_in_aggro_range:
+			if parent.action == Globals.Action.SLASHES:
 				return states.slashes
+			elif parent.action == Globals.Action.TELEPORT:
+				return states.teleport
 			elif parent.velocity.x == 0:
 				return states.idle
 		states.slashes:
@@ -32,6 +37,9 @@ func _get_transition(_delta):
 					return states.idle
 				if parent.velocity.x != 0:
 					return states.walk
+		states.teleport:
+			if parent.action == Globals.Action.SLASHES:
+				return states.slashes
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -44,6 +52,8 @@ func _enter_state(new_state, _old_state):
 			parent.animation_player.play("slashes")
 		states.recover:
 			parent.animated_sprite.play("recover")
+		states.teleport:
+			parent.animation_player.play("teleport")
 	
 func _exit_state(_old_state, _new_state):
 	pass

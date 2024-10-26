@@ -51,6 +51,11 @@ var player_soul: int = max_soul:
 
 var player_pos: Vector2
 
+enum Action{
+	NONE,
+	SLASHES,
+	TELEPORT
+}
 
 func reset():
 	player_health = max_health
