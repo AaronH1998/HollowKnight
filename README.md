@@ -67,20 +67,20 @@ https://github.com/AaronH1998/HollowKnight/assets/53660334/1e42a820-c1a3-4e56-8b
 * Game Complete when defeating the hollow knight
 
 ### Levels:
-	* Parallax Background (different layers moving and different speeds)
-	* Obstacles - Floors, ceilings.
-	* Enemies
-	* Player
-	* Light
-	* Background Music
-	* Killbox to prevent out of bounds
-	* Occlusion Layers to hide areas behind doors
-	* Transition Layers to enter other levels
-	* Player is restricted at start of level for X amount of time.
-	* Level transitions fade in and out of black
+* Parallax Background (different layers moving and different speeds)
+* Obstacles - Floors, ceilings.
+* Enemies
+* Player
+* Light
+* Background Music
+* Killbox to prevent out of bounds
+* Occlusion Layers to hide areas behind doors
+* Transition Layers to enter other levels
+* Player is restricted at start of level for X amount of time.
+* Level transitions fade in and out of black
 
 ### Game persistence:
-	* 4 save game files.
-	* Save upon exit.
-	* Saves:
-		* Geo count
+* 4 save game files.
+* Save upon exit.
+* Saves:
+	* Geo count
