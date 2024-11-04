@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh7ffbm7ckmfq"]
+
+[ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="1_ig3ka"]
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_th0bb"]
+[ext_resource type="PackedScene" uid="uid://dhmttpr42027r" path="res://scenes/players/player.tscn" id="2_7epvc"]
+[ext_resource type="PackedScene" uid="uid://cudxrbju5mf3o" path="res://scenes/UI/pause_menu.tscn" id="2_blfmg"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_th0bb")
+
+[node name="KillBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="NavigationAreas" type="Node2D" parent="."]
+
+[node name="CameraLock" type="Node2D" parent="."]
+
+[node name="Areas" type="Node2D" parent="CameraLock"]
+
+[node name="Markers" type="Node2D" parent="CameraLock"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Forebackground" type="Node2D" parent="."]
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Drops" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_7epvc")]
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="StartTimer" type="Timer" parent="Timers"]
+one_shot = true
+autostart = true
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="OcclusionLayer" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("1_ig3ka")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_blfmg")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = &"Music"
+
+[connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]
+[connection signal="player_death" from="Player" to="." method="_on_player_player_death"]
+[connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]

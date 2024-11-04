@@ -85,7 +85,7 @@ func _input(event):
 func _state_logic(delta):
 	parent.state_label.text = states.find_key(state)
 	if state != states.dead:
-		if !Globals.level_preparing:
+		if !Globals.level_preparing and state != states.focus:
 			parent._handle_move_input()
 		parent._apply_gravity(delta)
 		parent._apply_movement()
