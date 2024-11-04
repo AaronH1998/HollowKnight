@@ -15,3 +15,7 @@ func _on_cave_camera_lock_body_entered(_body):
 func _on_cave_camera_lock_body_exited(_body):
 	var tween = create_tween()
 	tween.tween_property(light, "energy", 1.0, 2.0)
+
+
+func _on_hollow_knight_level_transition_area_body_entered(_body):
+	TransitionLayer.change_scene("res://scenes/levels/level_hollow_knight.tscn")

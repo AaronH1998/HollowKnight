@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://diqg338m4xrxx"]
+[gd_scene load_steps=28 format=3 uid="uid://diqg338m4xrxx"]
 
 [ext_resource type="PackedScene" uid="uid://dh7ffbm7ckmfq" path="res://scenes/levels/level.tscn" id="1_b17gb"]
 [ext_resource type="Texture2D" uid="uid://bcumr6iwhf4tg" path="res://assets/sprites/backgrounds/shell_medium_center_cracked.png" id="2_d0r4b"]
@@ -20,16 +20,25 @@
 [ext_resource type="Texture2D" uid="uid://ccv6s45tngf8y" path="res://assets/sprites/environment/tut/tut_rocks_0007_02.png" id="12_he2wm"]
 [ext_resource type="Texture2D" uid="uid://rf34qrdmtrlq" path="res://assets/sprites/environment/tut/tut_rocks_0004_05.png" id="13_7a0me"]
 [ext_resource type="Texture2D" uid="uid://ddcale0ve6q8g" path="res://assets/sprites/placeholders/Square/Square-0002.png" id="17_qjvoc"]
-[ext_resource type="PackedScene" uid="uid://csi2bpfjyl5so" path="res://scenes/enemies/hollow_knight.tscn" id="19_7mwcq"]
+[ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="19_p5bgd"]
+[ext_resource type="PackedScene" uid="uid://co5edir6pe305" path="res://scenes/enemies/vengefly.tscn" id="20_n2dt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1bjy"]
 size = Vector2(9290, 782)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lb7vg"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jq7bm"]
+vertices = PackedVector2Array(916.047, -678.023, 919.938, -20.9531, -670.023, -13.0391, -671.969, -681.969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(930, -11, 926, -688, -682, -692, -680, -3)])
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2jyyh"]
 shader = ExtResource("4_cewof")
 shader_parameter/lod = 2.887
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr7de"]
+size = Vector2(21.5593, 20)
 
 [node name="LevelOne" instance=ExtResource("1_b17gb")]
 script = ExtResource("2_ihwnx")
@@ -43,6 +52,9 @@ shape = SubResource("RectangleShape2D_m1bjy")
 position = Vector2(3840, -35200)
 scale = Vector2(4249.88, -292.843)
 shape = SubResource("RectangleShape2D_lb7vg")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="NavigationAreas" index="0"]
+navigation_polygon = SubResource("NavigationPolygon_jq7bm")
 
 [node name="OuterCameraLock" parent="CameraLock/Areas" index="0" node_paths=PackedStringArray("vertical_lock_marker") instance=ExtResource("3_femty")]
 position = Vector2(-377, -8)
@@ -205,15 +217,14 @@ scale = Vector2(105.666, 14.2143)
 position = Vector2(-2726, -3)
 scale = Vector2(-109.095, 71.854)
 
-[node name="HollowKnight" parent="Enemies" index="0" instance=ExtResource("19_7mwcq")]
-position = Vector2(303, -192)
+[node name="Crawlid" parent="Enemies" index="0" instance=ExtResource("19_p5bgd")]
+position = Vector2(1070, -55)
+
+[node name="Vengefly" parent="Enemies" index="1" instance=ExtResource("20_n2dt7")]
+position = Vector2(532, -544)
 
 [node name="Player" parent="." index="10"]
-position = Vector2(1048, -74)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights" index="0"]
-color = Color(0.58171, 0.427423, 0.271974, 1)
-blend_mode = 1
+position = Vector2(-468, -130)
 
 [node name="ParallaxObstruction" type="ParallaxBackground" parent="OcclusionLayer" index="0"]
 layer = 1
@@ -228,9 +239,19 @@ scale = Vector2(42.0279, 16.1212)
 texture = ExtResource("17_qjvoc")
 centered = false
 
-[node name="AudioStreamPlayer" parent="." index="17"]
+[node name="HollowKnightLevelTransitionArea" type="Area2D" parent="LevelTransitions" index="0"]
+position = Vector2(1515, -35)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/HollowKnightLevelTransitionArea" index="0"]
+position = Vector2(776, -105)
+scale = Vector2(83.6812, 15.4853)
+shape = SubResource("RectangleShape2D_xr7de")
+
+[node name="AudioStreamPlayer" parent="." index="18"]
 stream = ExtResource("2_yidja")
 
 [connection signal="body_entered" from="CameraLock/Areas/CaveCameraLock" to="." method="_on_cave_camera_lock_body_entered"]
 [connection signal="body_exited" from="CameraLock/Areas/CaveCameraLock" to="." method="_on_cave_camera_lock_body_exited"]
 [connection signal="broken" from="Obstacles/BreakableDoor" to="." method="_on_breakable_door_broken"]
+[connection signal="body_entered" from="LevelTransitions/HollowKnightLevelTransitionArea" to="." method="_on_hollow_knight_level_transition_area_body_entered"]

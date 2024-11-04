@@ -1,6 +1,6 @@
 extends Enemy
 
-var hollow_knight_health: int = 1250
+var hollow_knight_health: int = 20
 var is_target_in_aggro_range: bool = false
 var previous_direction: int = 0
 var is_recovering: bool = false

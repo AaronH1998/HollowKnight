@@ -5,7 +5,6 @@ var shade_scene: PackedScene = preload("res://scenes/enemies/shade.tscn")
 var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tscn")
 var puff_scene: PackedScene = preload("res://scenes/effects_particles/orange_puff.tscn")
 var small_geo_scene: PackedScene = preload("res://scenes/objects/small_geo.tscn") 
-var enemies_count: int
 
 @onready var enemies: Node2D = $Enemies
 @onready var light: DirectionalLight2D = $Lights/DirectionalLight2D
@@ -17,7 +16,6 @@ func _ready():
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
 		enemy.connect("enemy_hit", _on_enemy_hit)
 		enemy.connect("death", _on_enemy_death)
-		enemies_count += 1
 
 
 func _on_enemy_hit(pos, dir):
@@ -34,10 +32,6 @@ func _on_enemy_death(pos, dir, geo):
 		small_geo_obj.position = pos
 		$Drops.call_deferred("add_child", small_geo_obj)
 		small_geo_obj.apply_force(Vector2(dir.x * 100 * randi_range(5,10),0), pos)
-		
-	enemies_count -= 1 
-	if(enemies_count == 0):
-		TransitionLayer.change_scene("res://scenes/menus/game_complete.tscn")
 
 
 func _on_start_timer_timeout():

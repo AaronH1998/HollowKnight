@@ -46,7 +46,13 @@ autostart = true
 
 [node name="Lights" type="Node2D" parent="."]
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights"]
+color = Color(0.58171, 0.427423, 0.271974, 1)
+blend_mode = 1
+
 [node name="OcclusionLayer" type="Node2D" parent="."]
+
+[node name="LevelTransitions" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("1_ig3ka")]
 
