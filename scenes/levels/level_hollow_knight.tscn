@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://j8sql0akpahy"]
+[gd_scene load_steps=9 format=3 uid="uid://j8sql0akpahy"]
 
 [ext_resource type="PackedScene" uid="uid://dh7ffbm7ckmfq" path="res://scenes/levels/level.tscn" id="1_o832q"]
 [ext_resource type="Script" path="res://scenes/levels/level_hollow_knight.gd" id="2_lc5wl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="3_uwcwv"]
 [ext_resource type="PackedScene" uid="uid://csi2bpfjyl5so" path="res://scenes/enemies/hollow_knight.tscn" id="4_d6ujn"]
 [ext_resource type="PackedScene" uid="uid://oynlk5akiwwh" path="res://scenes/objects/ceiling.tscn" id="5_h260m"]
+[ext_resource type="AudioStream" uid="uid://cg64c1ut2rvf" path="res://assets/music/Sealed Vessel phase 1+2 - S61-216 Hollow Knight.wav" id="7_njcdd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fa651"]
 
@@ -25,7 +26,7 @@ scale = Vector2(91.3887, 11.0372)
 
 [node name="Ceiling" parent="Obstacles" index="1" instance=ExtResource("5_h260m")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(2925, 350)
+position = Vector2(2298, 354)
 scale = Vector2(72.0833, 113.836)
 
 [node name="Ceiling2" parent="Obstacles" index="2" instance=ExtResource("5_h260m")]
@@ -35,7 +36,7 @@ scale = Vector2(68.6756, 126.984)
 
 [node name="Ceiling3" parent="Obstacles" index="3" instance=ExtResource("5_h260m")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-223, 0)
+position = Vector2(-131, 3)
 scale = Vector2(7.72197, 13.4479)
 
 [node name="HollowKnight" parent="Enemies" index="0" instance=ExtResource("4_d6ujn")]
@@ -48,9 +49,12 @@ position = Vector2(284, -63)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelOneTransitionArea" index="0"]
-position = Vector2(117, -216)
+position = Vector2(26, -246)
 scale = Vector2(11.3831, 26.9349)
 shape = SubResource("RectangleShape2D_fa651")
+
+[node name="AudioStreamPlayer" parent="." index="18"]
+stream = ExtResource("7_njcdd")
 
 [connection signal="death" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_death"]
 [connection signal="body_entered" from="LevelTransitions/LevelOneTransitionArea" to="." method="_on_level_one_transition_area_body_entered"]

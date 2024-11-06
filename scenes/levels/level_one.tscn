@@ -143,6 +143,7 @@ light_mask = 2
 texture = ExtResource("7_sxkeh")
 
 [node name="CaveOcclusion" type="Sprite2D" parent="Foreground/ParallaxForeground/Layer_1_0" index="1"]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-1033, -442)
 scale = Vector2(21.897, 31.9635)
 texture = ExtResource("8_k15xn")
@@ -210,11 +211,12 @@ position = Vector2(3223, -111)
 position = Vector2(4143, -111)
 
 [node name="Ceiling3" parent="Obstacles" index="8" instance=ExtResource("8_0lhvu")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(939, -238)
 scale = Vector2(105.666, 14.2143)
 
 [node name="Ceiling5" parent="Obstacles" index="9" instance=ExtResource("8_0lhvu")]
-position = Vector2(-2726, -3)
+position = Vector2(-2726, 6)
 scale = Vector2(-109.095, 71.854)
 
 [node name="Crawlid" parent="Enemies" index="0" instance=ExtResource("19_p5bgd")]
