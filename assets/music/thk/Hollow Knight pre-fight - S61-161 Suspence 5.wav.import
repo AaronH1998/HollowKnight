@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://n8y3n513j666"
+path="res://.godot/imported/Hollow Knight pre-fight - S61-161 Suspence 5.wav-9805046f11d32c5105fd03b3de35ec1b.sample"
+
+[deps]
+
+source_file="res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 5.wav"
+dest_files=["res://.godot/imported/Hollow Knight pre-fight - S61-161 Suspence 5.wav-9805046f11d32c5105fd03b3de35ec1b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

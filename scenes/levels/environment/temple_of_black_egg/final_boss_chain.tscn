@@ -43,5 +43,10 @@ position = Vector2(-360, -471)
 rotation = -0.672167
 texture = ExtResource("1_2nab3")
 
+[node name="Chain3" type="Sprite2D" parent="."]
+position = Vector2(-586, -754)
+rotation = -0.672167
+texture = ExtResource("1_2nab3")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-54, -3, -69, -54, -53, -66, -488, -606, -462, -621, -200, -293, -28, -90, 37, -19, 166, 58, -137, 60, -138, 50, -81, 30, -74, 38, -58, 22)
+polygon = PackedVector2Array(-54, -3, -69, -54, -53, -66, -713, -893, -689, -908, -200, -293, -28, -90, 37, -19, 166, 58, -137, 60, -138, 50, -81, 30, -74, 38, -58, 22)

@@ -24,12 +24,12 @@ var is_player_left: bool = true
 func _ready():
 	super()
 	health = hollow_knight_health
-	sequence_timer.start()
 
 
 func break_free():
 	is_resting = false
 	collision.set_deferred("disabled", false)
+	sequence_timer.start()
 
 
 func notNone(chooseAction: Globals.Action):

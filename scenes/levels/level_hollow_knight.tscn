@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="3_uwcwv"]
 [ext_resource type="PackedScene" uid="uid://csi2bpfjyl5so" path="res://scenes/enemies/hollow_knight.tscn" id="4_d6ujn"]
 [ext_resource type="PackedScene" uid="uid://oynlk5akiwwh" path="res://scenes/objects/ceiling.tscn" id="5_h260m"]
-[ext_resource type="AudioStream" uid="uid://cg64c1ut2rvf" path="res://assets/music/Sealed Vessel phase 1+2 - S61-216 Hollow Knight.wav" id="7_njcdd"]
+[ext_resource type="AudioStream" uid="uid://sglytiveqleq" path="res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 1.wav" id="8_lnef7"]
 [ext_resource type="PackedScene" uid="uid://8vj7tc74frow" path="res://scenes/levels/environment/temple_of_black_egg/final_boss_chain.tscn" id="8_y7371"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fa651"]
@@ -27,7 +27,7 @@ scale = Vector2(91.3887, 11.0372)
 
 [node name="Ceiling" parent="Obstacles" index="1" instance=ExtResource("5_h260m")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(2298, 354)
+position = Vector2(2808, 359)
 scale = Vector2(72.0833, 113.836)
 
 [node name="Ceiling2" parent="Obstacles" index="2" instance=ExtResource("5_h260m")]
@@ -41,27 +41,27 @@ position = Vector2(-131, 3)
 scale = Vector2(7.72197, 13.4479)
 
 [node name="FinalBossChain" parent="Obstacles" index="4" instance=ExtResource("8_y7371")]
-position = Vector2(920, -61)
+position = Vector2(555, -55)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="FinalBossChain2" parent="Obstacles" index="5" instance=ExtResource("8_y7371")]
-position = Vector2(597, -60)
+position = Vector2(975, -58)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="FinalBossChain3" parent="Obstacles" index="6" instance=ExtResource("8_y7371")]
-position = Vector2(1701, -57)
+position = Vector2(2107, -59)
 rotation = 3.14159
 scale = Vector2(-1, -1)
 
 [node name="FinalBossChain4" parent="Obstacles" index="7" instance=ExtResource("8_y7371")]
-position = Vector2(2083, -59)
+position = Vector2(2623, -61)
 rotation = 3.14159
 scale = Vector2(-1, -1)
 
 [node name="HollowKnight" parent="Enemies" index="0" instance=ExtResource("4_d6ujn")]
-position = Vector2(1353, -325)
+position = Vector2(1547, -309)
 
 [node name="Player" parent="." index="10"]
 position = Vector2(284, -63)
@@ -75,7 +75,7 @@ scale = Vector2(11.3831, 26.9349)
 shape = SubResource("RectangleShape2D_fa651")
 
 [node name="AudioStreamPlayer" parent="." index="18"]
-stream = ExtResource("7_njcdd")
+stream = ExtResource("8_lnef7")
 
 [connection signal="broke" from="Obstacles/FinalBossChain" to="." method="_on_final_boss_chain_broke"]
 [connection signal="broke" from="Obstacles/FinalBossChain2" to="." method="_on_final_boss_chain_broke"]
