@@ -10,18 +10,26 @@ var is_attacking: bool = false
 var attack_direction: Vector2 = Vector2.ZERO
 var action: Globals.Action = Globals.Action.NONE
 var is_dashing: bool = false
-var is_dash_recovering = false
+var is_dash_recovering: bool = false
+var is_resting: bool = true
+var is_player_left: bool = true
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var slash_collion_box: CollisionPolygon2D = $SlashHitBox/CollisionPolygon2D
 @onready var slash_area: Area2D = $SlashHitBox
 @onready var sequence_timer: Timer = $Timers/SequenceTimer
 @onready var state_label: Label = $Text/Label
+@onready var collision = $CollisionShape2D
 
 func _ready():
 	super()
 	health = hollow_knight_health
 	sequence_timer.start()
+
+
+func break_free():
+	is_resting = false
+	collision.set_deferred("disabled", false)
 
 
 func notNone(chooseAction: Globals.Action):
@@ -30,6 +38,13 @@ func notNone(chooseAction: Globals.Action):
 
 func choose_next_action():
 	action = Globals.Action.values().filter(notNone).pick_random()
+
+
+func _calculate_player_position():
+	if Globals.player_pos.x < global_position.x:
+		is_player_left = true
+	if Globals.player_pos.x > global_position.x:
+		is_player_left = false
 
 
 func _apply_movement():
@@ -52,7 +67,7 @@ func _apply_movement():
 	
 	var current_direction = sign(velocity.x)
 	if current_direction != 0 and current_direction != previous_direction and !is_slashing and !is_dashing:
-		animated_sprite.flip_h = current_direction > 0
+		animated_sprite.flip_h = current_direction < 0
 		slash_area.scale.x = -current_direction
 		previous_direction = current_direction
 		

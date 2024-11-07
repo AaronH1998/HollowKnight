@@ -1770,7 +1770,7 @@ shape = SubResource("CapsuleShape2D_hyy1a")
 
 [node name="DownAttackArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DownAttackArea"]
 polygon = PackedVector2Array(69, -2, 61, 51, 38, 89, 13, 109, -12, 112, -36, 102, -60, 80, -75, 42, -81, 10, -82, -2)
@@ -1778,7 +1778,7 @@ disabled = true
 
 [node name="UpAttackArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpAttackArea"]
 polygon = PackedVector2Array(-82, -2, -80, -51, -66, -114, -36, -151, -7, -157, 13, -148, 38, -117, 58, -73, 68, -15, 69, -2)
@@ -1786,7 +1786,7 @@ disabled = true
 
 [node name="FrontAttackArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 6
+collision_mask = 262
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FrontAttackArea"]
 scale = Vector2(0.658044, 0.590247)
@@ -1795,7 +1795,7 @@ disabled = true
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CapsuleShape2D_tfv70")

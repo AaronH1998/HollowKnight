@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://j8sql0akpahy"]
+[gd_scene load_steps=10 format=3 uid="uid://j8sql0akpahy"]
 
 [ext_resource type="PackedScene" uid="uid://dh7ffbm7ckmfq" path="res://scenes/levels/level.tscn" id="1_o832q"]
 [ext_resource type="Script" path="res://scenes/levels/level_hollow_knight.gd" id="2_lc5wl"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csi2bpfjyl5so" path="res://scenes/enemies/hollow_knight.tscn" id="4_d6ujn"]
 [ext_resource type="PackedScene" uid="uid://oynlk5akiwwh" path="res://scenes/objects/ceiling.tscn" id="5_h260m"]
 [ext_resource type="AudioStream" uid="uid://cg64c1ut2rvf" path="res://assets/music/Sealed Vessel phase 1+2 - S61-216 Hollow Knight.wav" id="7_njcdd"]
+[ext_resource type="PackedScene" uid="uid://8vj7tc74frow" path="res://scenes/levels/environment/temple_of_black_egg/final_boss_chain.tscn" id="8_y7371"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fa651"]
 
@@ -39,8 +40,28 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(-131, 3)
 scale = Vector2(7.72197, 13.4479)
 
+[node name="FinalBossChain" parent="Obstacles" index="4" instance=ExtResource("8_y7371")]
+position = Vector2(920, -61)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="FinalBossChain2" parent="Obstacles" index="5" instance=ExtResource("8_y7371")]
+position = Vector2(597, -60)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="FinalBossChain3" parent="Obstacles" index="6" instance=ExtResource("8_y7371")]
+position = Vector2(1701, -57)
+rotation = 3.14159
+scale = Vector2(-1, -1)
+
+[node name="FinalBossChain4" parent="Obstacles" index="7" instance=ExtResource("8_y7371")]
+position = Vector2(2083, -59)
+rotation = 3.14159
+scale = Vector2(-1, -1)
+
 [node name="HollowKnight" parent="Enemies" index="0" instance=ExtResource("4_d6ujn")]
-position = Vector2(1577, -172)
+position = Vector2(1353, -325)
 
 [node name="Player" parent="." index="10"]
 position = Vector2(284, -63)
@@ -56,5 +77,9 @@ shape = SubResource("RectangleShape2D_fa651")
 [node name="AudioStreamPlayer" parent="." index="18"]
 stream = ExtResource("7_njcdd")
 
+[connection signal="broke" from="Obstacles/FinalBossChain" to="." method="_on_final_boss_chain_broke"]
+[connection signal="broke" from="Obstacles/FinalBossChain2" to="." method="_on_final_boss_chain_broke"]
+[connection signal="broke" from="Obstacles/FinalBossChain3" to="." method="_on_final_boss_chain_broke"]
+[connection signal="broke" from="Obstacles/FinalBossChain4" to="." method="_on_final_boss_chain_broke"]
 [connection signal="death" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_death"]
 [connection signal="body_entered" from="LevelTransitions/LevelOneTransitionArea" to="." method="_on_level_one_transition_area_body_entered"]

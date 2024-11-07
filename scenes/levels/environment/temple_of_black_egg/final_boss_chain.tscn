@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://8vj7tc74frow"]
+
+[ext_resource type="Script" path="res://scenes/levels/environment/temple_of_black_egg/final_boss_chain.gd" id="1_2d6tr"]
+[ext_resource type="Texture2D" uid="uid://bc6bt0tras2r4" path="res://assets/sprites/environment/temple_of_black_egg/final_boss_chain.png" id="1_2nab3"]
+[ext_resource type="Texture2D" uid="uid://dj66u7uvp588d" path="res://assets/sprites/environment/temple_of_black_egg/chain_base.png" id="2_hvaf4"]
+[ext_resource type="Texture2D" uid="uid://b4jib7ku776hq" path="res://assets/sprites/environment/temple_of_black_egg/chain_base_break_1.png" id="3_qrf5a"]
+[ext_resource type="Texture2D" uid="uid://cc7y4gpkpuvrf" path="res://assets/sprites/environment/temple_of_black_egg/chain_base_break_2.png" id="4_73lk1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4tsk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hvaf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qrf5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_73lk1")
+}],
+"loop": false,
+"name": &"break",
+"speed": 12.0
+}]
+
+[node name="FinalBossChain" type="StaticBody2D"]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("1_2d6tr")
+
+[node name="Chain1" type="Sprite2D" parent="."]
+position = Vector2(-135, -188)
+rotation = -0.672167
+texture = ExtResource("1_2nab3")
+
+[node name="ChainBase" type="AnimatedSprite2D" parent="."]
+position = Vector2(15, -43)
+sprite_frames = SubResource("SpriteFrames_a4tsk")
+animation = &"break"
+
+[node name="Chain2" type="Sprite2D" parent="."]
+position = Vector2(-360, -471)
+rotation = -0.672167
+texture = ExtResource("1_2nab3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-54, -3, -69, -54, -53, -66, -488, -606, -462, -621, -200, -293, -28, -90, 37, -19, 166, 58, -137, 60, -138, 50, -81, 30, -74, 38, -58, 22)

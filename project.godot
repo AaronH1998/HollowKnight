@@ -192,6 +192,7 @@ dash={
 2d_physics/layer_6="Player Enemy Detection"
 2d_physics/layer_7="No Player Collision"
 2d_physics/layer_8="Drops"
+2d_physics/layer_9="Background Destroy"
 
 [physics]
 

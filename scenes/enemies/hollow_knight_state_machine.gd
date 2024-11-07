@@ -1,6 +1,8 @@
 extends StateMachine
 
 func _ready():
+	add_state("rest_look_left")
+	add_state("rest_look_right")
 	add_state("idle")
 	add_state("walk")
 	add_state("slashes")
@@ -9,12 +11,14 @@ func _ready():
 	add_state("dash_antic")
 	add_state("dash")
 	add_state("dash_recover")
-	call_deferred("set_state", states.idle)
+	call_deferred("set_state", states.rest_look_left)
 
 func _state_logic(delta):
 	parent.state_label.text = states.find_key(state)
 	parent._apply_gravity(delta)
-	parent._apply_movement()
+	parent._calculate_player_position()
+	if not parent.is_resting:
+		parent._apply_movement()
 
 func _get_transition(_delta):
 	match state:
@@ -60,6 +64,16 @@ func _get_transition(_delta):
 					return states.idle
 				if parent.velocity.x != 0:
 					return states.walk
+		states.rest_look_left:
+			if !parent.is_resting:
+				return states.idle
+			if !parent.is_player_left:
+				return states.rest_look_right
+		states.rest_look_right:
+			if !parent.is_resting:
+				return states.idle
+			if parent.is_player_left:
+				return states.rest_look_left
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -80,6 +94,13 @@ func _enter_state(new_state, _old_state):
 			parent.animated_sprite.play("dash")
 		states.dash_recover:
 			parent.animation_player.play("dash recover")
+		states.rest_look_left:
+			parent.animated_sprite.play("rest look left")
+		states.rest_look_right:
+			parent.animated_sprite.play("rest look right")
 	
-func _exit_state(_old_state, _new_state):
-	pass
+func _exit_state(old_state, new_state):
+	if old_state == states.rest_look_right and new_state == states.rest_look_left:
+		parent.animated_sprite.play("rest look right return")
+	if old_state == states.rest_look_left and new_state == states.rest_look_right:
+		parent.animated_sprite.play("rest look left return")
