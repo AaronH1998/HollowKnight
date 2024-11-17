@@ -37,10 +37,17 @@ func start_break_free():
 	is_breaking_free = true
 
 
-func stop_resting():
-	Globals.level_preparing = true
-	Globals.shake_camera(10,5)
+func break_chains():
+	Globals.shake_camera(20,2)
+
+
+func fall():
 	is_resting = false
+
+
+func land():
+	Globals.level_preparing = true
+	Globals.shake_camera(10,2)
 
 
 func scream():

@@ -637,11 +637,17 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.41667, 3.08333, 5.08333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.333333, 1.41667, 1.75, 3.08333, 5.08333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [],
-"method": &"stop_resting"
+"method": &"break_chains"
+}, {
+"args": [],
+"method": &"fall"
+}, {
+"args": [],
+"method": &"land"
 }, {
 "args": [],
 "method": &"scream"

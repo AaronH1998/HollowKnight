@@ -81,9 +81,13 @@ shape = SubResource("RectangleShape2D_fa651")
 [node name="AudioStreamPlayer" parent="." index="18"]
 stream = ExtResource("8_lnef7")
 
+[connection signal="breaking" from="Obstacles/FinalBossChain" to="." method="_on_final_boss_chain_breaking"]
 [connection signal="broke" from="Obstacles/FinalBossChain" to="." method="_on_final_boss_chain_broke"]
+[connection signal="breaking" from="Obstacles/FinalBossChain2" to="." method="_on_final_boss_chain_breaking"]
 [connection signal="broke" from="Obstacles/FinalBossChain2" to="." method="_on_final_boss_chain_broke"]
+[connection signal="breaking" from="Obstacles/FinalBossChain3" to="." method="_on_final_boss_chain_breaking"]
 [connection signal="broke" from="Obstacles/FinalBossChain3" to="." method="_on_final_boss_chain_broke"]
+[connection signal="breaking" from="Obstacles/FinalBossChain4" to="." method="_on_final_boss_chain_breaking"]
 [connection signal="broke" from="Obstacles/FinalBossChain4" to="." method="_on_final_boss_chain_broke"]
 [connection signal="death" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_death"]
 [connection signal="start_fight" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_start_fight"]

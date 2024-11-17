@@ -23,25 +23,11 @@ func _on_hollow_knight_death(_pos, _dir, _geo):
 
 
 func _on_final_boss_chain_broke():
-	broken_chains += 1
-	if broken_chains == 1:
-		music.stream = suspence_2
-		Globals.shake_camera(10,5)
-		music.play()
-	if broken_chains == 2:
-		music.stream = suspence_3
-		Globals.shake_camera(10,5)
-		music.play()
-	if broken_chains == 3:
-		music.stream = suspence_4
-		Globals.shake_camera(10,5)
-		music.play()
 	if broken_chains == 4:
-		music.stream = suspence_5
-		music.play()
-		Globals.shake_camera(20,0.8)
-		break_free_timer.start()
-
+		Globals.shake_camera(20, 0.8)
+	else:
+		Globals.shake_camera(10,5)
+	
 
 func _on_break_free_timer_timeout():
 	hollow_knight.start_break_free()
@@ -50,3 +36,20 @@ func _on_break_free_timer_timeout():
 func _on_hollow_knight_start_fight():
 	music.stream = phase_1_2
 	music.play()
+
+
+func _on_final_boss_chain_breaking():
+	broken_chains += 1
+	if broken_chains == 1:
+		music.stream = suspence_2
+		music.play()
+	if broken_chains == 2:
+		music.stream = suspence_3
+		music.play()
+	if broken_chains == 3:
+		music.stream = suspence_4
+		music.play()
+	if broken_chains == 4:
+		music.stream = suspence_5
+		music.play()
+		break_free_timer.start()
