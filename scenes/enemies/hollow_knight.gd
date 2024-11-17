@@ -61,6 +61,7 @@ func notNone(chooseAction: Globals.Action):
 
 func choose_next_action():
 	action = Globals.Action.values().filter(notNone).pick_random()
+	face(-1 if is_player_left else 1)
 
 
 func _calculate_player_position():
@@ -88,12 +89,11 @@ func _handle_movement():
 		velocity.x = 0
 		attack_direction = player_direction
 	
-	var current_direction = sign(velocity.x)
-	if current_direction != 0 and current_direction != previous_direction and !is_slashing and !is_dashing:
-		animated_sprite.flip_h = current_direction < 0
-		slash_area.scale.x = -current_direction
-		previous_direction = current_direction
-
+		
+func face(new_direction):
+	animated_sprite.flip_h = new_direction < 0
+	slash_area.scale.x = -new_direction
+	previous_direction = new_direction
 
 func _apply_movement():
 	move_and_slide()
@@ -149,7 +149,11 @@ func _on_sequence_timer_timeout():
 func teleport():
 	global_position.x += 800 * previous_direction
 	teleport_audio.play()
-	
+
+
+func appear():
+	face(-1 if is_player_left else 1)
+
 
 func teleport_attack():
 	action = Globals.Action.SLASHES
