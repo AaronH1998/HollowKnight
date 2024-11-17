@@ -73,7 +73,7 @@ func _calculate_player_position():
 
 func _handle_movement():
 	var player_direction: Vector2 = (Globals.player_pos - global_position).normalized()
-	if is_recovering:
+	if is_recovering or is_dash_recovering or (is_attacking and !is_slashing):
 		velocity.x = 0
 	elif is_dashing:
 		if is_on_wall():
@@ -83,6 +83,7 @@ func _handle_movement():
 	elif is_slashing:
 		velocity.x = attack_direction.x * speed * 3
 	elif !is_target_in_aggro_range and !is_attacking:
+		face(-1 if is_player_left else 1)
 		velocity.x = player_direction.x * speed
 		attack_direction = player_direction
 	else:

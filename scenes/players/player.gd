@@ -306,7 +306,7 @@ func save():
 func apply_shake(strength, new_shake_fade):
 	current_shake_strength = strength
 	shake_fade = new_shake_fade
-	
+
 
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-current_shake_strength, current_shake_strength), rng.randf_range(-current_shake_strength, current_shake_strength))

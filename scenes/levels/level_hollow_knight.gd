@@ -43,7 +43,6 @@ func _on_final_boss_chain_broke():
 		break_free_timer.start()
 
 
-
 func _on_break_free_timer_timeout():
 	hollow_knight.start_break_free()
 
