@@ -177,7 +177,7 @@ func reset_state():
 	normal_attacking = false
 	healing = false
 	can_attack = true
-	
+
 
 func hit(pos: Vector2, damage: int):
 	if !vulnerable or dead:
@@ -283,7 +283,7 @@ func _heal():
 
 func _finish_heal():
 	healing = false
-	if Globals.player_soul >= cast_soul and is_right_click:
+	if Globals.player_soul >= cast_soul and Globals.player_health < Globals.max_health and is_right_click:
 		focussing = true
 
 

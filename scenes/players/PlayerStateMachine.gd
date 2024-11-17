@@ -55,7 +55,7 @@ func _input(event):
 			parent.down_attacking = false
 			parent.up_attacking = false
 	
-	if event.is_action_pressed("cast") and Globals.player_soul >= parent.cast_soul and [states.idle, states.walk].has(state):
+	if event.is_action_pressed("cast") and Globals.player_soul >= parent.cast_soul and Globals.player_health < Globals.max_health and [states.idle, states.walk].has(state):
 		parent.focussing = true
 		parent.is_right_click = true
 		
