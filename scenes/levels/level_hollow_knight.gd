@@ -1,9 +1,12 @@
 extends Level
 
+
 var broken_chains: int = 0
 
 @onready var hollow_knight: CharacterBody2D = $Enemies/HollowKnight
 @onready var music: AudioStreamPlayer = $AudioStreamPlayer
+@onready var break_free_timer: Timer = $Timers/BreakFreeTimer
+
 const suspence_2: Resource = preload("res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 2.wav")
 const suspence_3: Resource = preload("res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 3.wav")
 const suspence_4: Resource = preload("res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 4.wav")
@@ -33,7 +36,13 @@ func _on_final_boss_chain_broke():
 	if broken_chains == 4:
 		music.stream = suspence_5
 		music.play()
-		await music.finished
-		music.stream = phase_1_2
-		music.play()
-		hollow_knight.break_free()
+		break_free_timer.start()
+
+
+func _on_break_free_timer_timeout():
+	hollow_knight.start_break_free()
+
+
+func _on_hollow_knight_start_fight():
+	music.stream = phase_1_2
+	music.play()

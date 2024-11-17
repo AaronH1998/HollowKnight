@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://csi2bpfjyl5so"]
+[gd_scene load_steps=123 format=3 uid="uid://csi2bpfjyl5so"]
 
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
 [ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
@@ -58,24 +58,60 @@
 [ext_resource type="Texture2D" uid="uid://bp0nvth2f8tjp" path="res://assets/animations/hollow_knight/slashes/Slashes_014.png" id="25_6dly2"]
 [ext_resource type="Texture2D" uid="uid://c2c2v1lvxyung" path="res://assets/animations/hollow_knight/slashes/Slashes_015.png" id="26_r5luq"]
 [ext_resource type="Texture2D" uid="uid://b60gmsh2r5lx0" path="res://assets/animations/hollow_knight/slashes/Slashes_016.png" id="27_46q24"]
+[ext_resource type="Texture2D" uid="uid://q71a34ypltur" path="res://assets/animations/hollow_knight/rest_break/Rest Break_000.png" id="29_bcmwe"]
 [ext_resource type="Texture2D" uid="uid://b7btdp3awxrmh" path="res://assets/animations/hollow_knight/rest_look_left/Rest LookL_002.png" id="29_mcwut"]
+[ext_resource type="Texture2D" uid="uid://w252y74ld7fo" path="res://assets/animations/hollow_knight/rest_break/Rest Break_001.png" id="30_3lj2p"]
 [ext_resource type="Texture2D" uid="uid://c8nona0c15a0m" path="res://assets/animations/hollow_knight/rest_look_left/Rest LookL_001.png" id="30_tah1g"]
 [ext_resource type="Texture2D" uid="uid://cc3bgkvx5ytpe" path="res://assets/animations/hollow_knight/rest_look_left/Rest LookL_000.png" id="31_b00n7"]
+[ext_resource type="Texture2D" uid="uid://b1ha75r5mj37x" path="res://assets/animations/hollow_knight/rest_break/Rest Break_002.png" id="31_udg7t"]
 [ext_resource type="Texture2D" uid="uid://baq0pmibjpk1v" path="res://assets/animations/hollow_knight/rest_look_right/Rest LookR_002.png" id="32_2hbfr"]
 [ext_resource type="Texture2D" uid="uid://bsk77n56l2kjg" path="res://assets/animations/hollow_knight/tele_in/Tele In_000.png" id="32_dolhp"]
+[ext_resource type="Texture2D" uid="uid://rtuqqx0rr2o8" path="res://assets/animations/hollow_knight/rest_break/Rest Break_003.png" id="32_rcpye"]
 [ext_resource type="Texture2D" uid="uid://c6p25qh6nrxrr" path="res://assets/animations/hollow_knight/rest_look_right/Rest LookR_001.png" id="33_7it8x"]
 [ext_resource type="Texture2D" uid="uid://iudbrf0nw32s" path="res://assets/animations/hollow_knight/tele_in/Tele In_001.png" id="33_nm1m2"]
+[ext_resource type="Texture2D" uid="uid://dme55noah6q3" path="res://assets/animations/hollow_knight/rest_break/Rest Break_004.png" id="33_q2gp5"]
 [ext_resource type="Texture2D" uid="uid://c5q378lygdxvn" path="res://assets/animations/hollow_knight/tele_in/Tele In_002.png" id="34_5fgnk"]
 [ext_resource type="Texture2D" uid="uid://c6jh2bt7to0hd" path="res://assets/animations/hollow_knight/rest_look_right/Rest LookR_000.png" id="34_hdu7t"]
+[ext_resource type="Texture2D" uid="uid://b2rhjbj74h5xo" path="res://assets/animations/hollow_knight/rest_break/Rest Break_005.png" id="34_mlx46"]
+[ext_resource type="Texture2D" uid="uid://lcfws7wr31f7" path="res://assets/animations/hollow_knight/rest_break/Rest Break_006.png" id="35_d7u5l"]
 [ext_resource type="Texture2D" uid="uid://o4qqoaibn3tk" path="res://assets/animations/hollow_knight/tele_in/Tele In_003.png" id="35_evt4y"]
 [ext_resource type="Texture2D" uid="uid://cowu7gbhcb4i4" path="res://assets/animations/hollow_knight/tele_in/Tele In_004.png" id="36_5t1u2"]
+[ext_resource type="Texture2D" uid="uid://dd40cej7trvui" path="res://assets/animations/hollow_knight/rest_break/Rest Break_007.png" id="36_n06kb"]
+[ext_resource type="Texture2D" uid="uid://yo0fi4l7amdg" path="res://assets/animations/hollow_knight/rest_fall/Rest Fall_000.png" id="37_04vj6"]
 [ext_resource type="Texture2D" uid="uid://dduvdmdpeqsfb" path="res://assets/animations/hollow_knight/tele_in/Tele In_005.png" id="37_ohmw7"]
+[ext_resource type="Texture2D" uid="uid://btbd8o34vcf0u" path="res://assets/animations/hollow_knight/rest_fall/Rest Fall_001.png" id="38_4c7k8"]
 [ext_resource type="Texture2D" uid="uid://b1wyi53ifaruv" path="res://assets/animations/hollow_knight/tele_out/Tele Out_000.png" id="38_gi5w6"]
 [ext_resource type="Texture2D" uid="uid://b07fipokupdb3" path="res://assets/animations/hollow_knight/tele_out/Tele Out_001.png" id="39_gyshe"]
+[ext_resource type="Texture2D" uid="uid://cj46oc4em8fd0" path="res://assets/animations/hollow_knight/rest_land/Rest Land_000.png" id="39_kgbb4"]
+[ext_resource type="Texture2D" uid="uid://cirn3q703m8hp" path="res://assets/animations/hollow_knight/rest_land/Rest Land_001.png" id="40_01pj7"]
 [ext_resource type="Texture2D" uid="uid://hjv7m7uoyhrj" path="res://assets/animations/hollow_knight/tele_out/Tele Out_002.png" id="40_cl7g4"]
 [ext_resource type="Texture2D" uid="uid://6piyv0k3guo5" path="res://assets/animations/hollow_knight/tele_out/Tele Out_003.png" id="41_rlrdg"]
+[ext_resource type="Texture2D" uid="uid://d01r1cdhodp1q" path="res://assets/animations/hollow_knight/rest_land/Rest Land_002.png" id="41_y2gdm"]
 [ext_resource type="Texture2D" uid="uid://qrctjjj1mqcj" path="res://assets/animations/hollow_knight/tele_out/Tele Out_004.png" id="42_80a1q"]
+[ext_resource type="Texture2D" uid="uid://dam65rtfox8ql" path="res://assets/animations/hollow_knight/rest_land/Rest Land_003.png" id="42_srm7l"]
+[ext_resource type="Texture2D" uid="uid://clah8xnilmliy" path="res://assets/animations/hollow_knight/rest_land/Rest Land_004.png" id="43_an04t"]
 [ext_resource type="Texture2D" uid="uid://60h6u0qtsa8a" path="res://assets/animations/hollow_knight/tele_out/Tele Out_005.png" id="43_ws8xd"]
+[ext_resource type="Texture2D" uid="uid://bmnyvvfxdmrk7" path="res://assets/animations/hollow_knight/roar_init/Roar Init_000.png" id="50_k5tfn"]
+[ext_resource type="Texture2D" uid="uid://b1cmwvee0xinm" path="res://assets/animations/hollow_knight/roar_init/Roar Init_001.png" id="51_j2ii2"]
+[ext_resource type="Texture2D" uid="uid://burqoo5a4vrvs" path="res://assets/animations/hollow_knight/roar_init/Roar Init_002.png" id="52_g65tu"]
+[ext_resource type="Texture2D" uid="uid://ds05wfww7o5oj" path="res://assets/animations/hollow_knight/roar_init/Roar Init_003.png" id="53_resmy"]
+[ext_resource type="Texture2D" uid="uid://sb61hybv8e4v" path="res://assets/animations/hollow_knight/roar_init/Roar Init_004.png" id="54_kt6fb"]
+[ext_resource type="Texture2D" uid="uid://duucsqh81sppw" path="res://assets/animations/hollow_knight/roar_init/Roar Init_005.png" id="55_r0vso"]
+[ext_resource type="Texture2D" uid="uid://c4icn56w78jd2" path="res://assets/animations/hollow_knight/roar_init/Roar Init_006.png" id="56_o6tsr"]
+[ext_resource type="Texture2D" uid="uid://u807w54nqmjv" path="res://assets/animations/hollow_knight/roar_to_idle/RoarToIdle_000.png" id="57_k4h8p"]
+[ext_resource type="Texture2D" uid="uid://pfai3tsmg5bn" path="res://assets/animations/hollow_knight/roar_to_idle/RoarToIdle_001.png" id="58_v4iva"]
+[ext_resource type="Texture2D" uid="uid://b8fapx80mj6bw" path="res://assets/animations/hollow_knight/roar_to_idle/RoarToIdle_002.png" id="59_hckaj"]
+[ext_resource type="Texture2D" uid="uid://uxtk5nsjaajl" path="res://assets/animations/hollow_knight/roar_to_idle/RoarToIdle_003.png" id="60_bwows"]
+[ext_resource type="Texture2D" uid="uid://bnvwwjnyksbwc" path="res://assets/animations/hollow_knight/roar_to_idle/RoarToIdle_004.png" id="61_vktao"]
+[ext_resource type="Texture2D" uid="uid://tsqn5q2oxjfg" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_000.png" id="67_josby"]
+[ext_resource type="Texture2D" uid="uid://cpkhupbmnhxjd" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_001.png" id="68_ajerk"]
+[ext_resource type="Texture2D" uid="uid://bihe4fcjnuxsu" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_002.png" id="69_wixuc"]
+[ext_resource type="Texture2D" uid="uid://dbqjy56e3ewth" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_003.png" id="70_rmanv"]
+[ext_resource type="Texture2D" uid="uid://bfvm2703nd1pc" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_004.png" id="71_mf74s"]
+[ext_resource type="AudioStream" uid="uid://bafogyvwfkj8r" path="res://assets/sounds/bosses/hollow_knight/hollow_knight_scream_v1.wav" id="109_uxqvu"]
+[ext_resource type="AudioStream" uid="uid://cbos2x1ry4tfs" path="res://assets/sounds/knight/sword_1.wav" id="110_rp10n"]
+[ext_resource type="AudioStream" uid="uid://cy4o3pgawdorr" path="res://assets/sounds/knight/hero_shade_dash_2.wav" id="111_5vapu"]
+[ext_resource type="AudioStream" uid="uid://gm3wtw5jkyv1" path="res://assets/sounds/spells_charms_abilities/focus_health_heal.wav" id="112_0rru7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ji4xr"]
 radius = 56.0
@@ -185,6 +221,66 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("29_bcmwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_3lj2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_udg7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_rcpye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_q2gp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_mlx46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_d7u5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_n06kb")
+}],
+"loop": false,
+"name": &"rest break",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_04vj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_4c7k8")
+}],
+"loop": false,
+"name": &"rest fall",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_kgbb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_01pj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_y2gdm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_srm7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_an04t")
+}],
+"loop": false,
+"name": &"rest land",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("31_b00n7")
 }, {
 "duration": 1.0,
@@ -241,6 +337,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("50_k5tfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_j2ii2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_g65tu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_resmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_kt6fb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_r0vso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_o6tsr")
+}],
+"loop": false,
+"name": &"roar init",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("57_k4h8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_v4iva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_hckaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_bwows")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_vktao")
+}],
+"loop": false,
+"name": &"roar to idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("11_mo4h8")
 }, {
 "duration": 1.0,
@@ -293,6 +435,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"slashes",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_josby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_ajerk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_wixuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_rmanv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_mf74s")
+}],
+"loop": false,
+"name": &"stun to idle",
 "speed": 12.0
 }, {
 "frames": [{
@@ -426,6 +588,79 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rsx53"]
+resource_name = "break free"
+length = 5.41668
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.41667, 1.58333, 2.91667, 4.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"rest break", &"rest fall", &"rest land", &"roar init", &"roar to idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2, 2.08333, 2.17134, 2.25, 2.33333, 2.41667, 2.5, 2.58333, 2.66667, 2.75, 2.83333, 2.91667, 3, 3.08333, 3.16667, 3.25, 3.33333, 3.41667, 3.5, 3.58333, 3.66667, 3.75, 3.83333, 3.91667, 4, 4.08333, 4.16667, 4.25, 4.33333, 4.41667, 4.5, 4.58333, 4.66667, 4.75, 4.83333, 4.91667, 5, 5.08333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 5, 6, 7, 5, 6, 7, 5, 6, 7, 0, 1, 0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.41667, 3.08333, 5.08333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stop_resting"
+}, {
+"args": [],
+"method": &"scream"
+}, {
+"args": [],
+"method": &"end_break_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.41667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_tdwfn"]
@@ -642,6 +877,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqiu6"]
 _data = {
 "RESET": SubResource("Animation_hvlqm"),
+"break free": SubResource("Animation_rsx53"),
 "dash antic": SubResource("Animation_tdwfn"),
 "dash recover": SubResource("Animation_a20hf"),
 "slashes": SubResource("Animation_g2s1k"),
@@ -662,7 +898,23 @@ disabled = true
 position = Vector2(-11, -115)
 sprite_frames = SubResource("SpriteFrames_x6hpq")
 animation = &"recover"
-autoplay = "idle"
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="Audio" index="2"]
+stream = ExtResource("109_uxqvu")
+volume_db = 3.805
+bus = &"Sound"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Audio" index="3"]
+stream = ExtResource("110_rp10n")
+bus = &"Sound"
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="Audio" index="4"]
+stream = ExtResource("111_5vapu")
+bus = &"Sound"
+
+[node name="Teleport" type="AudioStreamPlayer2D" parent="Audio" index="5"]
+stream = ExtResource("112_0rru7")
+bus = &"Sound"
 
 [node name="AttackRange" type="Area2D" parent="." index="4"]
 collision_layer = 16
@@ -685,7 +937,7 @@ disabled = true
 [node name="Timers" type="Node" parent="." index="7"]
 
 [node name="SequenceTimer" type="Timer" parent="Timers" index="0"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Text" type="MarginContainer" parent="." index="8"]

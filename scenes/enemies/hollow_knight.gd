@@ -1,5 +1,7 @@
 extends Enemy
 
+signal start_fight
+
 var hollow_knight_health: int = 20
 var is_target_in_aggro_range: bool = false
 var previous_direction: int = 0
@@ -13,22 +15,41 @@ var is_dashing: bool = false
 var is_dash_recovering: bool = false
 var is_resting: bool = true
 var is_player_left: bool = true
+var is_breaking_free: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var slash_collion_box: CollisionPolygon2D = $SlashHitBox/CollisionPolygon2D
 @onready var slash_area: Area2D = $SlashHitBox
 @onready var sequence_timer: Timer = $Timers/SequenceTimer
 @onready var state_label: Label = $Text/Label
-@onready var collision = $CollisionShape2D
+@onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var scream_audio: AudioStreamPlayer2D = $Audio/Scream
+@onready var slash_audio: AudioStreamPlayer2D = $Audio/Attack
+@onready var dash_audio: AudioStreamPlayer2D = $Audio/Dash
+@onready var teleport_audio: AudioStreamPlayer2D = $Audio/Teleport
 
 func _ready():
 	super()
 	health = hollow_knight_health
 
 
-func break_free():
+func start_break_free():
+	is_breaking_free = true
+
+
+func stop_resting():
+	Globals.level_preparing = true
 	is_resting = false
-	collision.set_deferred("disabled", false)
+
+
+func scream():
+	scream_audio.play()
+	start_fight.emit()
+
+
+func end_break_free():
+	Globals.level_preparing = false
+	is_breaking_free = false
 	sequence_timer.start()
 
 
@@ -47,7 +68,7 @@ func _calculate_player_position():
 		is_player_left = false
 
 
-func _apply_movement():
+func _handle_movement():
 	var player_direction: Vector2 = (Globals.player_pos - global_position).normalized()
 	if is_recovering:
 		velocity.x = 0
@@ -70,7 +91,9 @@ func _apply_movement():
 		animated_sprite.flip_h = current_direction < 0
 		slash_area.scale.x = -current_direction
 		previous_direction = current_direction
-		
+
+
+func _apply_movement():
 	move_and_slide()
 
 
@@ -100,6 +123,7 @@ func end_recover():
 func slash():
 	is_slashing = true
 	slash_collion_box.disabled = false
+	slash_audio.play()
 	
 	
 func stop_slash():
@@ -122,6 +146,7 @@ func _on_sequence_timer_timeout():
 
 func teleport():
 	global_position.x += 800 * previous_direction
+	teleport_audio.play()
 	
 
 func teleport_attack():
@@ -130,6 +155,7 @@ func teleport_attack():
 
 func dash():
 	is_dashing = true
+	dash_audio.play()
 
 
 func stop_dash():

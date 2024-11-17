@@ -3,6 +3,7 @@ extends StateMachine
 func _ready():
 	add_state("rest_look_left")
 	add_state("rest_look_right")
+	add_state("break_free")
 	add_state("idle")
 	add_state("walk")
 	add_state("slashes")
@@ -15,10 +16,12 @@ func _ready():
 
 func _state_logic(delta):
 	parent.state_label.text = states.find_key(state)
-	parent._apply_gravity(delta)
 	parent._calculate_player_position()
 	if not parent.is_resting:
-		parent._apply_movement()
+		parent._apply_gravity(delta)
+	if not parent.is_resting and not parent.is_breaking_free:
+		parent._handle_movement()
+	parent._apply_movement()
 
 func _get_transition(_delta):
 	match state:
@@ -65,15 +68,18 @@ func _get_transition(_delta):
 				if parent.velocity.x != 0:
 					return states.walk
 		states.rest_look_left:
-			if !parent.is_resting:
-				return states.idle
+			if parent.is_breaking_free:
+				return states.break_free
 			if !parent.is_player_left:
 				return states.rest_look_right
 		states.rest_look_right:
-			if !parent.is_resting:
-				return states.idle
+			if parent.is_breaking_free:
+				return states.break_free
 			if parent.is_player_left:
 				return states.rest_look_left
+		states.break_free:
+			if !parent.is_breaking_free:
+				return states.idle
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -98,6 +104,8 @@ func _enter_state(new_state, _old_state):
 			parent.animated_sprite.play("rest look left")
 		states.rest_look_right:
 			parent.animated_sprite.play("rest look right")
+		states.break_free:
+			parent.animation_player.play("break free")
 	
 func _exit_state(old_state, new_state):
 	if old_state == states.rest_look_right and new_state == states.rest_look_left:

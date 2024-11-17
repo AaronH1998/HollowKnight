@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://8vj7tc74frow"]
+[gd_scene load_steps=9 format=3 uid="uid://8vj7tc74frow"]
 
 [ext_resource type="Script" path="res://scenes/levels/environment/temple_of_black_egg/final_boss_chain.gd" id="1_2d6tr"]
 [ext_resource type="Texture2D" uid="uid://bc6bt0tras2r4" path="res://assets/sprites/environment/temple_of_black_egg/final_boss_chain.png" id="1_2nab3"]
 [ext_resource type="Texture2D" uid="uid://dj66u7uvp588d" path="res://assets/sprites/environment/temple_of_black_egg/chain_base.png" id="2_hvaf4"]
 [ext_resource type="Texture2D" uid="uid://b4jib7ku776hq" path="res://assets/sprites/environment/temple_of_black_egg/chain_base_break_1.png" id="3_qrf5a"]
 [ext_resource type="Texture2D" uid="uid://cc7y4gpkpuvrf" path="res://assets/sprites/environment/temple_of_black_egg/chain_base_break_2.png" id="4_73lk1"]
+[ext_resource type="AudioStream" uid="uid://ovvvqfjeoudw" path="res://assets/sounds/effects/chain_cut.wav" id="6_56civ"]
+[ext_resource type="AudioStream" uid="uid://wrra8eg25sld" path="res://assets/sounds/bosses/hollow_knight/final_boss_chain_break.wav" id="7_oo5v6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a4tsk"]
 animations = [{
@@ -50,3 +52,13 @@ texture = ExtResource("1_2nab3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-54, -3, -69, -54, -53, -66, -713, -893, -689, -908, -200, -293, -28, -90, 37, -19, 166, 58, -137, 60, -138, 50, -81, 30, -74, 38, -58, 22)
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Cut" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_56civ")
+bus = &"Sound"
+
+[node name="Break" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_oo5v6")
+bus = &"Sound"

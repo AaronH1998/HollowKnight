@@ -64,7 +64,11 @@ scale = Vector2(-1, -1)
 position = Vector2(1547, -309)
 
 [node name="Player" parent="." index="10"]
-position = Vector2(284, -63)
+position = Vector2(238, -58)
+
+[node name="BreakFreeTimer" type="Timer" parent="Timers" index="1"]
+wait_time = 3.0
+one_shot = true
 
 [node name="LevelOneTransitionArea" type="Area2D" parent="LevelTransitions" index="0"]
 collision_layer = 16
@@ -82,4 +86,6 @@ stream = ExtResource("8_lnef7")
 [connection signal="broke" from="Obstacles/FinalBossChain3" to="." method="_on_final_boss_chain_broke"]
 [connection signal="broke" from="Obstacles/FinalBossChain4" to="." method="_on_final_boss_chain_broke"]
 [connection signal="death" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_death"]
+[connection signal="start_fight" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_start_fight"]
+[connection signal="timeout" from="Timers/BreakFreeTimer" to="." method="_on_break_free_timer_timeout"]
 [connection signal="body_entered" from="LevelTransitions/LevelOneTransitionArea" to="." method="_on_level_one_transition_area_body_entered"]
