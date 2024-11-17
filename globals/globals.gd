@@ -2,6 +2,7 @@ extends Node
 
 signal health_change(old_health, new_health)
 signal soul_change(new_soul)
+signal camera_shake(strength, fade_speed)
 
 var save_file: String
 
@@ -61,3 +62,6 @@ enum Action{
 func reset():
 	player_health = max_health
 	player_soul = max_soul
+
+func shake_camera(strength, fadeSpeed):
+	camera_shake.emit(strength, fadeSpeed)

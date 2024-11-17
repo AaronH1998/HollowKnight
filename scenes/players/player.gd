@@ -37,6 +37,12 @@ var dead: bool = false
 var damaged: bool = false
 var vulnerable: bool = true
 
+var shake_range: float
+var shake_fade: float
+var current_shake_strength: float = 0.0
+var camera_inital_offset: Vector2
+var rng = RandomNumberGenerator.new()
+
 var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tscn")
 
 @onready var visual = $Visual
@@ -80,10 +86,12 @@ func _ready():
 	gravity = 2.0 * max_jump_height / pow(jump_duration, 2)
 	max_jump_velocity = -sqrt(2.0 * gravity * max_jump_height)
 	min_jump_velocity = -sqrt(2.0 * gravity * min_jump_height)
+	camera_inital_offset = camera.offset
+	Globals.connect("camera_shake", apply_shake)
 
 
-func _process(_delta):
-	_handle_camera()
+func _process(delta):
+	_handle_camera(delta)
 
 func is_true(obj):
 	return obj == true
@@ -91,7 +99,7 @@ func is_true(obj):
 func is_false(obj):
 	return obj == false
 
-func _handle_camera():
+func _handle_camera(delta):
 	var cam_mod: float
 	if Globals.look_ups.has(true) and camera_modifier < 0:
 		cam_mod = camera_modifier
@@ -107,6 +115,10 @@ func _handle_camera():
 		camera.global_position.x = Globals.horizontal_locks.back() + cam_mod
 	else:
 		camera.global_position.x = camera_marker.global_position.x
+		
+	if current_shake_strength > 0:
+		current_shake_strength = lerp(current_shake_strength, 0.0, shake_fade * delta)
+		camera.offset = camera_inital_offset + randomOffset()
 
 
 func _handle_move_input():
@@ -180,6 +192,7 @@ func hit(pos: Vector2, damage: int):
 	apply_knockback(direction, knockback_strength)
 	frame_freeze(0.05, 0.4)
 	hit_timer.start()
+	Globals.shake_camera(5, 15)
 	
 	Globals.player_health -= damage
 	if Globals.player_health <= 0:
@@ -264,6 +277,8 @@ func _heal():
 		focussing = false
 		if Globals.player_health < Globals.max_health:
 			Globals.player_health += healing_power
+			Globals.shake_camera(5,10)
+			
 
 
 func _finish_heal():
@@ -286,3 +301,12 @@ func save():
 	}
 	
 	return save_dict
+
+
+func apply_shake(strength, new_shake_fade):
+	current_shake_strength = strength
+	shake_fade = new_shake_fade
+	
+
+func randomOffset() -> Vector2:
+	return Vector2(rng.randf_range(-current_shake_strength, current_shake_strength), rng.randf_range(-current_shake_strength, current_shake_strength))

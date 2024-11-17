@@ -14,6 +14,7 @@ var health: int = 12
 func hit(_direction, damage):
 	health -= damage
 	cut_audio.play()
+	Globals.shake_camera(5,5)
 	if health < 0:
 		break_chain()
 

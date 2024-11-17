@@ -39,12 +39,14 @@ func start_break_free():
 
 func stop_resting():
 	Globals.level_preparing = true
+	Globals.shake_camera(10,5)
 	is_resting = false
 
 
 func scream():
 	scream_audio.play()
 	start_fight.emit()
+	Globals.shake_camera(20,2)
 
 
 func end_break_free():
