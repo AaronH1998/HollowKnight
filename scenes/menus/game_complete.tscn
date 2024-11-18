@@ -85,6 +85,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Congratulations" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchor_top = 0.116
 anchor_right = 1.0
@@ -129,6 +130,7 @@ texture = ExtResource("2_5mdm4")
 centered = false
 
 [node name="FromTeamCherry" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchor_top = 0.341
 anchor_right = 1.0
@@ -177,6 +179,7 @@ texture = ExtResource("3_s5tj6")
 centered = false
 
 [node name="Continue" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchor_top = 0.798
 anchor_right = 1.0

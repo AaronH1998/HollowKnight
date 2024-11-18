@@ -21,12 +21,19 @@ func _ready():
 		enemy.connect("death", _on_enemy_death)
 		
 	get_tree().auto_accept_quit = false
-	
+
+func _exit_tree():
+	get_tree().auto_accept_quit = true
 
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		Persistence.save_game()
+		if(!Persistence.save_file_path):
+			print("no save active, not saving")
+		else:
+			print("Saving to file: " + Persistence.save_file_path)
+			Persistence.save_game()
+	
 		get_tree().quit()
 
 

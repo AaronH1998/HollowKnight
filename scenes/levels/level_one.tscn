@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://diqg338m4xrxx"]
+[gd_scene load_steps=29 format=3 uid="uid://diqg338m4xrxx"]
 
 [ext_resource type="PackedScene" uid="uid://dh7ffbm7ckmfq" path="res://scenes/levels/level.tscn" id="1_b17gb"]
 [ext_resource type="Texture2D" uid="uid://bcumr6iwhf4tg" path="res://assets/sprites/backgrounds/shell_medium_center_cracked.png" id="2_d0r4b"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://ddcale0ve6q8g" path="res://assets/sprites/placeholders/Square/Square-0002.png" id="17_qjvoc"]
 [ext_resource type="PackedScene" uid="uid://cn81e8kugttma" path="res://scenes/enemies/crawlid.tscn" id="19_p5bgd"]
 [ext_resource type="PackedScene" uid="uid://co5edir6pe305" path="res://scenes/enemies/vengefly.tscn" id="20_n2dt7"]
+[ext_resource type="PackedScene" uid="uid://bga52l47jflp6" path="res://scenes/players/player_basic.tscn" id="21_fupij"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1bjy"]
 size = Vector2(9290, 782)
@@ -229,6 +230,8 @@ position = Vector2(532, -544)
 [node name="Player" parent="." index="10"]
 position = Vector2(-468, -130)
 
+[node name="PlayerBasic" parent="." index="11" instance=ExtResource("21_fupij")]
+
 [node name="ParallaxObstruction" type="ParallaxBackground" parent="OcclusionLayer" index="0"]
 layer = 1
 
@@ -251,7 +254,7 @@ position = Vector2(776, -105)
 scale = Vector2(83.6812, 15.4853)
 shape = SubResource("RectangleShape2D_xr7de")
 
-[node name="AudioStreamPlayer" parent="." index="18"]
+[node name="AudioStreamPlayer" parent="." index="19"]
 stream = ExtResource("2_yidja")
 
 [connection signal="body_entered" from="CameraLock/Areas/CaveCameraLock" to="." method="_on_cave_camera_lock_body_entered"]
