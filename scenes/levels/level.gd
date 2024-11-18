@@ -9,17 +9,28 @@ var small_geo_scene: PackedScene = preload("res://scenes/objects/small_geo.tscn"
 @onready var enemies: Node2D = $Enemies
 @onready var light: DirectionalLight2D = $Lights/DirectionalLight2D
 
+@export var level = "Base Level Scene"
+
 
 func _ready():
+	Globals.level_preparing = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
-	Persistence.world_stats.zone = "King's Pass"
+	Persistence.world_stats.zone = level
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
 		enemy.connect("enemy_hit", _on_enemy_hit)
 		enemy.connect("death", _on_enemy_death)
+		
+	get_tree().auto_accept_quit = false
+	
+
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		Persistence.save_game()
+		get_tree().quit()
 
 
 func _on_enemy_hit(pos, dir):
-	print("signal")
 	for i in randi_range(3,10):
 		var puff = puff_scene.instantiate() as RigidBody2D
 		puff.position = pos

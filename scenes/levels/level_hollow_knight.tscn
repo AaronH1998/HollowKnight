@@ -13,6 +13,7 @@
 
 [node name="LevelHollowKnight" instance=ExtResource("1_o832q")]
 script = ExtResource("2_lc5wl")
+level = "Temple of the Black Egg"
 
 [node name="CameraLockArea" parent="CameraLock/Areas" index="0" node_paths=PackedStringArray("vertical_lock_marker") instance=ExtResource("3_cmyq3")]
 scale = Vector2(146.212, 44.2736)

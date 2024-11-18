@@ -42,6 +42,7 @@ size = Vector2(21.5593, 20)
 
 [node name="LevelOne" instance=ExtResource("1_b17gb")]
 script = ExtResource("2_ihwnx")
+level = "King's Pass"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox" index="0"]
 position = Vector2(75, 951)
