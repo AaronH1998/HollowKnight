@@ -89,7 +89,7 @@ func _state_logic(delta):
 			parent._handle_move_input()
 		parent._apply_gravity(delta)
 		parent._apply_movement()
-	
+
 func _get_transition(_delta):
 	match state:
 		states.idle:

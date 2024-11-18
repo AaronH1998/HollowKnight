@@ -13,6 +13,18 @@ const suspence_4: Resource = preload("res://assets/music/thk/Hollow Knight pre-f
 const suspence_5: Resource = preload("res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 5.wav")
 
 const phase_1_2 = preload("res://assets/music/thk/Sealed Vessel phase 1+2 - S61-216 Hollow Knight.wav")
+@onready var chain1 = $Obstacles/FinalBossChain
+@onready var chain2 = $Obstacles/FinalBossChain2
+@onready var chain3 = $Obstacles/FinalBossChain3
+@onready var chain4 = $Obstacles/FinalBossChain4
+
+func _ready():
+	super()
+	chain1.break_chain()
+	chain2.break_chain()
+	chain3.break_chain()
+	chain4.break_chain()
+
 
 func _on_level_one_transition_area_body_entered(_body):
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
@@ -27,7 +39,7 @@ func _on_final_boss_chain_broke():
 		Globals.shake_camera(20, 0.8)
 	else:
 		Globals.shake_camera(10,5)
-	
+
 
 func _on_break_free_timer_timeout():
 	hollow_knight.start_break_free()

@@ -16,8 +16,11 @@ var is_dash_recovering: bool = false
 var is_resting: bool = true
 var is_player_left: bool = true
 var is_breaking_free: bool = false
+var is_countering: bool = false
+var is_riposting: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var effect_animation_sprite: AnimatedSprite2D = $EffectAnimatedSprite
 @onready var slash_collion_box: CollisionPolygon2D = $SlashHitBox/CollisionPolygon2D
 @onready var slash_area: Area2D = $SlashHitBox
 @onready var sequence_timer: Timer = $Timers/SequenceTimer
@@ -96,12 +99,13 @@ func _handle_movement():
 	else:
 		velocity.x = 0
 		attack_direction = player_direction
-	
-		
+
+
 func face(new_direction):
 	animated_sprite.flip_h = new_direction < 0
 	slash_area.scale.x = -new_direction
 	previous_direction = new_direction
+
 
 func _apply_movement():
 	move_and_slide()
@@ -175,9 +179,41 @@ func dash():
 func stop_dash():
 	is_dashing = false
 	is_dash_recovering = true
-	
-	
+
+
 func stop_dash_recover():
 	is_dash_recovering = false
+	action = Globals.Action.NONE
+	sequence_timer.start()
+
+
+func counter_ready():
+	is_countering = true
+	effect_animation_sprite.visible = true
+	effect_animation_sprite.play("counter flash")
+	await effect_animation_sprite.animation_finished
+	effect_animation_sprite.visible = false
+
+
+func hit(direction, damage):
+	if is_countering:
+		is_countering = false
+		is_riposting = true
+	else:
+		super(direction, damage)
+
+
+func counter_unready():
+	is_countering = false
+
+
+func stop_counter():
+	action = Globals.Action.NONE
+	sequence_timer.start()
+
+
+func end_riposte():
+	end_recover()
+	is_riposting = false
 	action = Globals.Action.NONE
 	sequence_timer.start()

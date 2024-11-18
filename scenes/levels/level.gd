@@ -19,6 +19,7 @@ func _ready():
 
 
 func _on_enemy_hit(pos, dir):
+	print("signal")
 	for i in randi_range(3,10):
 		var puff = puff_scene.instantiate() as RigidBody2D
 		puff.position = pos

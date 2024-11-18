@@ -46,7 +46,7 @@ func hit(direction, damage):
 func _die(dir):
 	dead = true
 	speed = 0
-	die_audio.play()	
+	die_audio.play()
 	_disable_player_collision()
 	death.emit(global_position, dir, geo)
 
