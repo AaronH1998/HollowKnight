@@ -148,6 +148,8 @@ func _apply_gravity(delta):
 
 
 func _apply_movement():
+	if Globals.level_preparing:
+		velocity.x = 0
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.4)
 	Globals.player_pos = global_position

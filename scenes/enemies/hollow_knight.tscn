@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=3 uid="uid://csi2bpfjyl5so"]
+[gd_scene load_steps=153 format=3 uid="uid://csi2bpfjyl5so"]
 
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
 [ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
@@ -136,6 +136,9 @@
 [ext_resource type="Texture2D" uid="uid://cte2mkrq1yqjy" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_001.png" id="130_gr2xa"]
 [ext_resource type="Texture2D" uid="uid://bmr6n2mopln74" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_002.png" id="131_hti2c"]
 [ext_resource type="Texture2D" uid="uid://5brvl7kuaylx" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_003.png" id="132_jwvbr"]
+[ext_resource type="AudioStream" uid="uid://cgumfwhwksf88" path="res://assets/sounds/bosses/false_knight/false_knight_land_1st_time.wav" id="137_6q42t"]
+[ext_resource type="AudioStream" uid="uid://de21mhq4uwvlj" path="res://assets/sounds/hornet/hornet_parry_prepare.wav" id="138_1c3yc"]
+[ext_resource type="AudioStream" uid="uid://cp0ik511ohgtf" path="res://assets/sounds/knight/sword_hit_reject.wav" id="139_b3wdd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ji4xr"]
 radius = 56.0
@@ -1181,6 +1184,18 @@ bus = &"Sound"
 
 [node name="Teleport" type="AudioStreamPlayer2D" parent="Audio" index="5"]
 stream = ExtResource("112_0rru7")
+bus = &"Sound"
+
+[node name="Land" type="AudioStreamPlayer2D" parent="Audio" index="6"]
+stream = ExtResource("137_6q42t")
+bus = &"Sound"
+
+[node name="Counter" type="AudioStreamPlayer2D" parent="Audio" index="7"]
+stream = ExtResource("138_1c3yc")
+bus = &"Sound"
+
+[node name="Riposte" type="AudioStreamPlayer2D" parent="Audio" index="8"]
+stream = ExtResource("139_b3wdd")
 bus = &"Sound"
 
 [node name="AttackRange" type="Area2D" parent="." index="5"]

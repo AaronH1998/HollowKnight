@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hollow_Knight"
-run/main_scene="res://scenes/levels/level_one.tscn"
+run/main_scene="res://scenes/levels/level_hollow_knight.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://assets/icons/hollow_knight.ico"
 

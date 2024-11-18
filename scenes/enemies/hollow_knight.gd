@@ -30,6 +30,9 @@ var is_riposting: bool = false
 @onready var slash_audio: AudioStreamPlayer2D = $Audio/Attack
 @onready var dash_audio: AudioStreamPlayer2D = $Audio/Dash
 @onready var teleport_audio: AudioStreamPlayer2D = $Audio/Teleport
+@onready var land_audio: AudioStreamPlayer2D = $Audio/Land
+@onready var counter_audio: AudioStreamPlayer2D = $Audio/Counter
+@onready var riposte_audio: AudioStreamPlayer2D = $Audio/Riposte
 
 func _ready():
 	super()
@@ -50,6 +53,7 @@ func fall():
 
 func land():
 	Globals.level_preparing = true
+	land_audio.play()
 	Globals.shake_camera(10,2)
 
 
@@ -191,6 +195,7 @@ func counter_ready():
 	is_countering = true
 	effect_animation_sprite.visible = true
 	effect_animation_sprite.play("counter flash")
+	counter_audio.play()
 	await effect_animation_sprite.animation_finished
 	effect_animation_sprite.visible = false
 
@@ -199,6 +204,7 @@ func hit(direction, damage):
 	if is_countering:
 		is_countering = false
 		is_riposting = true
+		riposte_audio.play()
 	else:
 		super(direction, damage)
 
