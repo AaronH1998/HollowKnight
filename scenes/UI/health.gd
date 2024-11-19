@@ -5,7 +5,7 @@ extends MarginContainer
 
 func _ready():
 	Globals.connect("health_change", update_health)
-	_animation_to_animation(health_animated_sprite, "appear", "idle")
+	update_health(0, Globals.player_health)
 
 func update_health(old_health, new_health):
 	if health_indicator <= old_health and health_indicator > new_health:

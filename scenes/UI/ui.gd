@@ -23,8 +23,8 @@ func _ready():
 		filling_soul.visible = false
 		full_soul.visible = true
 	else:
-		filling_soul.visible = false
-		full_soul.visible = true
+		filling_soul.visible = true
+		full_soul.visible = false
 		var soul_uv_translation = _get_soul_flask_proportion(Globals.player_soul)
 		filling_soul.material.set_shader_parameter("mask_translation", soul_uv_translation)
 
