@@ -9,7 +9,7 @@ var action: Globals.Action = Globals.Action.NONE
 var player_direction: int = -1
 var attack_direction: int = player_direction
 
-var is_target_in_aggro_range: bool = false
+var is_target_in_attack_range: bool = false
 var is_recovering: bool = false
 var is_slashing: bool = false
 var is_attacking: bool = false
@@ -95,7 +95,7 @@ func _handle_movement():
 			velocity.x = attack_direction * speed * 5
 	elif is_slashing:
 		velocity.x = attack_direction * speed * 3
-	elif !is_target_in_aggro_range and !is_attacking and action == Globals.Action.NONE:
+	elif !is_target_in_attack_range and !is_attacking and action == Globals.Action.NONE:
 		face_player()
 		velocity.x = player_direction * speed
 
@@ -111,11 +111,11 @@ func _apply_movement():
 
 
 func _on_attack_range_body_entered(_body):
-	is_target_in_aggro_range = true
+	is_target_in_attack_range = true
 
 
 func _on_attack_range_body_exited(_body):
-	is_target_in_aggro_range = false
+	is_target_in_attack_range = false
 
 
 func attack():
