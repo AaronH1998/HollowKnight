@@ -34,6 +34,7 @@ var is_riposting: bool = false
 @onready var land_audio: AudioStreamPlayer2D = $Audio/Land
 @onready var counter_audio: AudioStreamPlayer2D = $Audio/Counter
 @onready var riposte_audio: AudioStreamPlayer2D = $Audio/Riposte
+@onready var teleport_wall_detection: RayCast2D = $TeleportWallDetection
 
 func _ready():
 	super()
@@ -70,12 +71,18 @@ func end_break_free():
 	sequence_timer.start()
 
 
-func notNone(chooseAction: Globals.Action):
-	return chooseAction != Globals.Action.NONE
-
+func filterActions(act: Globals.Action) -> bool:
+	# Encapsulate all filtering logic here
+	if act == Globals.Action.NONE:
+		return false
+	if act == Globals.Action.TELEPORT and teleport_wall_detection.is_colliding():
+		return false
+	return true
 
 func choose_next_action():
-	action = Globals.Action.values().filter(notNone).pick_random()
+	var actions = Globals.Action.values()
+	var filtered_actions = actions.filter(filterActions)
+	action = filtered_actions.pick_random()
 	face_player()
 
 
@@ -103,6 +110,7 @@ func _handle_movement():
 func face_player():
 	animated_sprite.flip_h = player_direction < 0
 	slash_area.scale.x = player_direction
+	teleport_wall_detection.scale.x = player_direction
 	attack_direction = player_direction
 
 

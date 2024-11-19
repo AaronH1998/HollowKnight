@@ -1234,6 +1234,10 @@ theme_override_constants/margin_top = -510
 layout_mode = 2
 text = "Example"
 
+[node name="TeleportWallDetection" type="RayCast2D" parent="." index="10"]
+target_position = Vector2(800, 0)
+collision_mask = 4
+
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="body_entered" from="SlashHitBox" to="." method="_on_slash_hit_box_body_entered"]
