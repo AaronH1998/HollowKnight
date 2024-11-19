@@ -93,11 +93,6 @@ func _ready():
 func _process(delta):
 	_handle_camera(delta)
 
-func is_true(obj):
-	return obj == true
-	
-func is_false(obj):
-	return obj == false
 
 func _handle_camera(delta):
 	var cam_mod: float

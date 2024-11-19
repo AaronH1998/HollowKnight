@@ -2,19 +2,20 @@ extends Enemy
 
 signal start_fight
 
-var hollow_knight_health: int = 20
+@export var hollow_knight_health: int = 20
+@export var attack_damage: int = 1
+
+var action: Globals.Action = Globals.Action.NONE
+var player_direction: int = -1
+var attack_direction: int = player_direction
+
 var is_target_in_aggro_range: bool = false
-var previous_direction: int = 0
 var is_recovering: bool = false
 var is_slashing: bool = false
-var attack_damage: int = 1
 var is_attacking: bool = false
-var attack_direction: Vector2 = Vector2.ZERO
-var action: Globals.Action = Globals.Action.NONE
 var is_dashing: bool = false
 var is_dash_recovering: bool = false
 var is_resting: bool = true
-var is_player_left: bool = true
 var is_breaking_free: bool = false
 var is_countering: bool = false
 var is_riposting: bool = false
@@ -75,40 +76,34 @@ func notNone(chooseAction: Globals.Action):
 
 func choose_next_action():
 	action = Globals.Action.values().filter(notNone).pick_random()
-	face(-1 if is_player_left else 1)
+	face_player()
 
 
 func _calculate_player_position():
 	if Globals.player_pos.x < global_position.x:
-		is_player_left = true
+		player_direction = -1
 	if Globals.player_pos.x > global_position.x:
-		is_player_left = false
+		player_direction = 1
 
 
 func _handle_movement():
-	var player_direction: Vector2 = (Globals.player_pos - global_position).normalized()
-	if is_recovering or is_dash_recovering or (is_attacking and !is_slashing):
-		velocity.x = 0
-	elif is_dashing:
+	velocity.x = 0
+	if is_dashing:
 		if is_on_wall():
 			stop_dash()
 		else:
-			velocity.x = attack_direction.x * speed * 5
+			velocity.x = attack_direction * speed * 5
 	elif is_slashing:
-		velocity.x = attack_direction.x * speed * 3
-	elif !is_target_in_aggro_range and !is_attacking:
-		face(-1 if is_player_left else 1)
-		velocity.x = player_direction.x * speed
-		attack_direction = player_direction
-	else:
-		velocity.x = 0
-		attack_direction = player_direction
+		velocity.x = attack_direction * speed * 3
+	elif !is_target_in_aggro_range and !is_attacking and action == Globals.Action.NONE:
+		face_player()
+		velocity.x = player_direction * speed
 
 
-func face(new_direction):
-	animated_sprite.flip_h = new_direction < 0
-	slash_area.scale.x = -new_direction
-	previous_direction = new_direction
+func face_player():
+	animated_sprite.flip_h = player_direction < 0
+	slash_area.scale.x = player_direction
+	attack_direction = player_direction
 
 
 func _apply_movement():
@@ -124,7 +119,6 @@ func _on_attack_range_body_exited(_body):
 
 
 func attack():
-	action = Globals.Action.NONE
 	is_attacking = true
 
 
@@ -134,6 +128,7 @@ func start_recover():
 
 
 func end_recover():
+	action = Globals.Action.NONE
 	is_recovering = false
 	start_sequence_timer()
 
@@ -163,12 +158,12 @@ func _on_sequence_timer_timeout():
 
 
 func teleport():
-	global_position.x += 800 * previous_direction
+	global_position.x += 800 * attack_direction
 	teleport_audio.play()
 
 
 func appear():
-	face(-1 if is_player_left else 1)
+	face_player()
 
 
 func teleport_attack():

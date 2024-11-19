@@ -1150,6 +1150,8 @@ _data = {
 
 [node name="HollowKnight" instance=ExtResource("1_metm4")]
 script = ExtResource("2_m1cco")
+hollow_knight_health = 20
+attack_damage = 1
 
 [node name="StateMachine" parent="." index="0"]
 script = ExtResource("3_2kgyv")
@@ -1213,7 +1215,7 @@ libraries = {
 collision_layer = 16
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SlashHitBox" index="0"]
-polygon = PackedVector2Array(186, -1, -286, -174, -322, -87, -334, -2, -323, 88, -287, 170, -233, 241)
+polygon = PackedVector2Array(-104, 0, 289, -170, 324, -84, 334, -3, 320, 92, 289, 165, 236, 232)
 disabled = true
 
 [node name="Timers" type="Node" parent="." index="8"]

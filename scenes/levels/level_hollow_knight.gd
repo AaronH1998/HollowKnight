@@ -18,13 +18,6 @@ const phase_1_2 = preload("res://assets/music/thk/Sealed Vessel phase 1+2 - S61-
 @onready var chain3 = $Obstacles/FinalBossChain3
 @onready var chain4 = $Obstacles/FinalBossChain4
 
-func _ready():
-	super()
-	chain1.break_chain()
-	chain2.break_chain()
-	chain3.break_chain()
-	chain4.break_chain()
-
 
 func _on_level_one_transition_area_body_entered(_body):
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")

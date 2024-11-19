@@ -76,12 +76,12 @@ func _get_transition(_delta):
 		states.rest_look_left:
 			if parent.is_breaking_free:
 				return states.break_free
-			if !parent.is_player_left:
+			if parent.player_direction > 0:
 				return states.rest_look_right
 		states.rest_look_right:
 			if parent.is_breaking_free:
 				return states.break_free
-			if parent.is_player_left:
+			if parent.player_direction < 0:
 				return states.rest_look_left
 		states.break_free:
 			if !parent.is_breaking_free:
