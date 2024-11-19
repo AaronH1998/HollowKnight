@@ -1,6 +1,5 @@
 extends Level
 
-
 var broken_chains: int = 0
 
 @onready var hollow_knight: CharacterBody2D = $Enemies/HollowKnight
@@ -13,10 +12,6 @@ const suspence_4: Resource = preload("res://assets/music/thk/Hollow Knight pre-f
 const suspence_5: Resource = preload("res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 5.wav")
 
 const phase_1_2 = preload("res://assets/music/thk/Sealed Vessel phase 1+2 - S61-216 Hollow Knight.wav")
-@onready var chain1 = $Obstacles/FinalBossChain
-@onready var chain2 = $Obstacles/FinalBossChain2
-@onready var chain3 = $Obstacles/FinalBossChain3
-@onready var chain4 = $Obstacles/FinalBossChain4
 
 
 func _on_level_one_transition_area_body_entered(_body):
