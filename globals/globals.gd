@@ -57,7 +57,8 @@ enum Action{
 	SLASHES,
 	TELEPORT,
 	DASH,
-	COUNTER
+	COUNTER,
+	JUMP
 }
 
 func reset():

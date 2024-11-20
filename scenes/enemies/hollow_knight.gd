@@ -19,6 +19,8 @@ var is_resting: bool = true
 var is_breaking_free: bool = false
 var is_countering: bool = false
 var is_riposting: bool = false
+var can_jump: bool = false
+var is_jumping: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_sprite: AnimatedSprite2D = $EffectAnimatedSprite
@@ -72,7 +74,6 @@ func end_break_free():
 
 
 func filterActions(act: Globals.Action) -> bool:
-	# Encapsulate all filtering logic here
 	if act == Globals.Action.NONE:
 		return false
 	if act == Globals.Action.TELEPORT and teleport_wall_detection.is_colliding():
@@ -80,7 +81,8 @@ func filterActions(act: Globals.Action) -> bool:
 	return true
 
 func choose_next_action():
-	var actions = Globals.Action.values()
+	#var actions = Globals.Action.values()
+	var actions = [Globals.Action.JUMP]
 	var filtered_actions = actions.filter(filterActions)
 	action = filtered_actions.pick_random()
 	face_player()
@@ -95,6 +97,16 @@ func _calculate_player_position():
 
 func _handle_movement():
 	velocity.x = 0
+	
+	if is_jumping:
+		if is_on_floor():
+			stop_jump()
+	elif can_jump:
+		if is_on_floor():
+			velocity.y = -2000
+		else:
+			is_jumping = true
+			can_jump = false
 	if is_dashing:
 		if is_on_wall():
 			stop_dash()
@@ -102,6 +114,8 @@ func _handle_movement():
 			velocity.x = attack_direction * speed * 5
 	elif is_slashing:
 		velocity.x = attack_direction * speed * 3
+	elif is_jumping:
+		velocity.x = attack_direction * speed * -3
 	elif !is_target_in_attack_range and !is_attacking and action == Globals.Action.NONE:
 		face_player()
 		velocity.x = player_direction * speed
@@ -224,5 +238,15 @@ func stop_counter():
 func end_riposte():
 	end_recover()
 	is_riposting = false
+	action = Globals.Action.NONE
+	sequence_timer.start()
+
+
+func jump():
+	can_jump = true
+
+
+func stop_jump():
+	is_jumping = false
 	action = Globals.Action.NONE
 	sequence_timer.start()

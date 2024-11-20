@@ -14,6 +14,8 @@ func _ready():
 	add_state("dash_recover")
 	add_state("counter")
 	add_state("riposte")
+	add_state("jump_antic")
+	add_state("jump")
 	call_deferred("set_state", states.rest_look_left)
 
 func _state_logic(delta):
@@ -36,6 +38,8 @@ func _get_transition(_delta):
 				return states.dash_antic
 			elif parent.action == Globals.Action.COUNTER:
 				return states.counter
+			elif parent.action == Globals.Action.JUMP:
+				return states.jump_antic
 			elif parent.velocity.x != 0:
 				return states.walk
 		states.walk:
@@ -47,6 +51,8 @@ func _get_transition(_delta):
 				return states.dash_antic
 			elif parent.action == Globals.Action.COUNTER:
 				return states.counter
+			elif parent.action == Globals.Action.JUMP:
+				return states.jump_antic
 			elif parent.velocity.x == 0:
 				return states.idle
 		states.slashes:
@@ -94,6 +100,12 @@ func _get_transition(_delta):
 		states.riposte:
 			if !parent.is_riposting:
 				return states.idle
+		states.jump_antic:
+			if parent.can_jump:
+				return states.jump
+		states.jump:
+			if !parent.is_jumping and !parent.can_jump:
+				return states.idle
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -124,6 +136,10 @@ func _enter_state(new_state, _old_state):
 			parent.animation_player.play("counter")
 		states.riposte:
 			parent.animation_player.play("riposte")
+		states.jump_antic:
+			parent.animation_player.play("antic")
+		states.jump:
+			parent.animated_sprite.play("jump")
 	
 func _exit_state(old_state, new_state):
 	if old_state == states.rest_look_right and new_state == states.rest_look_left:

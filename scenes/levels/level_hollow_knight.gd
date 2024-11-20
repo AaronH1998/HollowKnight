@@ -14,6 +14,11 @@ const suspence_5: Resource = preload("res://assets/music/thk/Hollow Knight pre-f
 const phase_1_2 = preload("res://assets/music/thk/Sealed Vessel phase 1+2 - S61-216 Hollow Knight.wav")
 
 
+func _ready():
+	super()
+	hollow_knight.start_break_free()
+
+
 func _on_level_one_transition_area_body_entered(_body):
 	TransitionLayer.change_scene("res://scenes/levels/level_one.tscn")
 
