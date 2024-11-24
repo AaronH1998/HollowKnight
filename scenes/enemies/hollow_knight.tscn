@@ -1,4 +1,4 @@
-[gd_scene load_steps=161 format=3 uid="uid://csi2bpfjyl5so"]
+[gd_scene load_steps=165 format=3 uid="uid://csi2bpfjyl5so"]
 
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
 [ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
@@ -136,16 +136,19 @@
 [ext_resource type="Texture2D" uid="uid://dbqjy56e3ewth" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_003.png" id="70_rmanv"]
 [ext_resource type="Texture2D" uid="uid://bfvm2703nd1pc" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_004.png" id="71_mf74s"]
 [ext_resource type="AudioStream" uid="uid://bafogyvwfkj8r" path="res://assets/sounds/bosses/hollow_knight/hollow_knight_scream_v1.wav" id="109_uxqvu"]
-[ext_resource type="AudioStream" uid="uid://cbos2x1ry4tfs" path="res://assets/sounds/knight/sword_1.wav" id="110_rp10n"]
-[ext_resource type="AudioStream" uid="uid://cy4o3pgawdorr" path="res://assets/sounds/knight/hero_shade_dash_2.wav" id="111_5vapu"]
-[ext_resource type="AudioStream" uid="uid://gm3wtw5jkyv1" path="res://assets/sounds/spells_charms_abilities/focus_health_heal.wav" id="112_0rru7"]
 [ext_resource type="Texture2D" uid="uid://c6kvnp136oxkj" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_000.png" id="129_liwl7"]
 [ext_resource type="Texture2D" uid="uid://cte2mkrq1yqjy" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_001.png" id="130_gr2xa"]
 [ext_resource type="Texture2D" uid="uid://bmr6n2mopln74" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_002.png" id="131_hti2c"]
 [ext_resource type="Texture2D" uid="uid://5brvl7kuaylx" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_003.png" id="132_jwvbr"]
-[ext_resource type="AudioStream" uid="uid://cgumfwhwksf88" path="res://assets/sounds/bosses/false_knight/false_knight_land_1st_time.wav" id="137_6q42t"]
 [ext_resource type="AudioStream" uid="uid://de21mhq4uwvlj" path="res://assets/sounds/hornet/hornet_parry_prepare.wav" id="138_1c3yc"]
 [ext_resource type="AudioStream" uid="uid://cp0ik511ohgtf" path="res://assets/sounds/knight/sword_hit_reject.wav" id="139_b3wdd"]
+[ext_resource type="AudioStream" uid="uid://csf84kbmjxo85" path="res://assets/sounds/bosses/hollow_knight/ruin_shield_sentry_sword_1.wav" id="141_4sucm"]
+[ext_resource type="AudioStream" uid="uid://blgkcjplyb8ua" path="res://assets/sounds/bosses/hollow_knight/ruin_shield_sentry_sword_2.wav" id="143_kt67j"]
+[ext_resource type="AudioStream" uid="uid://corsm6jrsbjyu" path="res://assets/sounds/bosses/hollow_knight/brkn_wand_horizontal_dash_dash.wav" id="144_n013p"]
+[ext_resource type="AudioStream" uid="uid://bx81ulb5j0wgs" path="res://assets/sounds/bosses/hollow_knight/mage_knight_teleport.wav" id="145_7punu"]
+[ext_resource type="AudioStream" uid="uid://chvu5pcayfypt" path="res://assets/sounds/bosses/hollow_knight/false_knight_jump.wav" id="148_3okia"]
+[ext_resource type="AudioStream" uid="uid://hinpsuetns37" path="res://assets/sounds/bosses/hollow_knight/false_knight_land.wav" id="149_2fmy0"]
+[ext_resource type="AudioStream" uid="uid://dfhmntt33hclq" path="res://assets/sounds/bosses/hollow_knight/brkn_wand_horizontal_dash_prepare.wav" id="149_n8n37"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ji4xr"]
 radius = 56.0
@@ -791,6 +794,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/Attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/AttackAlt:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio/DashAntic:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ma2ms"]
 resource_name = "antic"
@@ -993,6 +1032,18 @@ tracks/2/keys = {
 "method": &"dash"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/DashAntic:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_a20hf"]
 resource_name = "dash recover"
@@ -1155,6 +1206,30 @@ tracks/2/keys = {
 "method": &"end_recover"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/Attack:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1.08333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/AttackAlt:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.833333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_pa3hp"]
 resource_name = "teleport"
@@ -1217,6 +1292,51 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_wsowd"]
+resource_name = "recover"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"recover"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start_recover"
+}, {
+"args": [],
+"method": &"end_recover"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqiu6"]
 _data = {
 "RESET": SubResource("Animation_hvlqm"),
@@ -1225,6 +1345,7 @@ _data = {
 "counter": SubResource("Animation_pomvo"),
 "dash antic": SubResource("Animation_tdwfn"),
 "dash recover": SubResource("Animation_a20hf"),
+"recover": SubResource("Animation_wsowd"),
 "riposte": SubResource("Animation_jvs0c"),
 "slashes": SubResource("Animation_g2s1k"),
 "teleport": SubResource("Animation_pa3hp")
@@ -1232,7 +1353,7 @@ _data = {
 
 [node name="HollowKnight" instance=ExtResource("1_metm4")]
 script = ExtResource("2_m1cco")
-hollow_knight_health = 20
+hollow_knight_health = 200
 attack_damage = 1
 
 [node name="StateMachine" parent="." index="0"]
@@ -1259,27 +1380,41 @@ volume_db = 3.805
 bus = &"Sound"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Audio" index="3"]
-stream = ExtResource("110_rp10n")
+stream = ExtResource("141_4sucm")
 bus = &"Sound"
 
-[node name="Dash" type="AudioStreamPlayer2D" parent="Audio" index="4"]
-stream = ExtResource("111_5vapu")
+[node name="AttackAlt" type="AudioStreamPlayer2D" parent="Audio" index="4"]
+stream = ExtResource("143_kt67j")
 bus = &"Sound"
 
-[node name="Teleport" type="AudioStreamPlayer2D" parent="Audio" index="5"]
-stream = ExtResource("112_0rru7")
+[node name="DashAntic" type="AudioStreamPlayer2D" parent="Audio" index="5"]
+stream = ExtResource("149_n8n37")
 bus = &"Sound"
 
-[node name="Land" type="AudioStreamPlayer2D" parent="Audio" index="6"]
-stream = ExtResource("137_6q42t")
+[node name="Dash" type="AudioStreamPlayer2D" parent="Audio" index="6"]
+stream = ExtResource("144_n013p")
 bus = &"Sound"
 
-[node name="Counter" type="AudioStreamPlayer2D" parent="Audio" index="7"]
+[node name="Teleport" type="AudioStreamPlayer2D" parent="Audio" index="7"]
+stream = ExtResource("145_7punu")
+pitch_scale = 0.85
+bus = &"Sound"
+
+[node name="Counter" type="AudioStreamPlayer2D" parent="Audio" index="8"]
 stream = ExtResource("138_1c3yc")
+pitch_scale = 0.85
 bus = &"Sound"
 
-[node name="Riposte" type="AudioStreamPlayer2D" parent="Audio" index="8"]
+[node name="Riposte" type="AudioStreamPlayer2D" parent="Audio" index="9"]
 stream = ExtResource("139_b3wdd")
+bus = &"Sound"
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Audio" index="10"]
+stream = ExtResource("148_3okia")
+bus = &"Sound"
+
+[node name="Land" type="AudioStreamPlayer2D" parent="Audio" index="11"]
+stream = ExtResource("149_2fmy0")
 bus = &"Sound"
 
 [node name="AttackRange" type="Area2D" parent="." index="5"]
@@ -1303,7 +1438,6 @@ disabled = true
 [node name="Timers" type="Node" parent="." index="8"]
 
 [node name="SequenceTimer" type="Timer" parent="Timers" index="0"]
-wait_time = 2.0
 one_shot = true
 
 [node name="Text" type="MarginContainer" parent="." index="9"]

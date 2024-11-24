@@ -2,12 +2,13 @@ extends Enemy
 
 signal start_fight
 
-@export var hollow_knight_health: int = 20
+@export var hollow_knight_health: int = 200
 @export var attack_damage: int = 1
 
 var action: Globals.Action = Globals.Action.NONE
 var player_direction: int = -1
 var attack_direction: int = player_direction
+var jump_modifier: float
 
 var is_target_in_attack_range: bool = false
 var is_recovering: bool = false
@@ -29,14 +30,18 @@ var is_jumping: bool = false
 @onready var sequence_timer: Timer = $Timers/SequenceTimer
 @onready var state_label: Label = $Text/Label
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var teleport_wall_detection: RayCast2D = $TeleportWallDetection
+
+# To find audio for HK, use unity explorer on scarab:
+# Boss Control -> Hollow Knight Boss -> PlayMakerFSM (Control) -> States -> Actions -> AudioPlayerOneShotSingle
 @onready var scream_audio: AudioStreamPlayer2D = $Audio/Scream
-@onready var slash_audio: AudioStreamPlayer2D = $Audio/Attack
 @onready var dash_audio: AudioStreamPlayer2D = $Audio/Dash
 @onready var teleport_audio: AudioStreamPlayer2D = $Audio/Teleport
+@onready var jump_audio: AudioStreamPlayer2D = $Audio/Jump
 @onready var land_audio: AudioStreamPlayer2D = $Audio/Land
 @onready var counter_audio: AudioStreamPlayer2D = $Audio/Counter
 @onready var riposte_audio: AudioStreamPlayer2D = $Audio/Riposte
-@onready var teleport_wall_detection: RayCast2D = $TeleportWallDetection
+
 
 func _ready():
 	super()
@@ -104,6 +109,7 @@ func _handle_movement():
 	elif can_jump:
 		if is_on_floor():
 			velocity.y = -2000
+			jump_modifier = randf_range(-5.0, 5.0)
 		else:
 			is_jumping = true
 			can_jump = false
@@ -115,7 +121,7 @@ func _handle_movement():
 	elif is_slashing:
 		velocity.x = attack_direction * speed * 3
 	elif is_jumping:
-		velocity.x = attack_direction * speed * -3
+		velocity.x = speed * jump_modifier
 	elif !is_target_in_attack_range and !is_attacking and action == Globals.Action.NONE:
 		face_player()
 		velocity.x = player_direction * speed
@@ -158,7 +164,6 @@ func end_recover():
 func slash():
 	is_slashing = true
 	slash_collion_box.disabled = false
-	slash_audio.play()
 	
 	
 func stop_slash():
@@ -248,5 +253,6 @@ func jump():
 
 func stop_jump():
 	is_jumping = false
+	land_audio.play()
 	action = Globals.Action.NONE
 	sequence_timer.start()

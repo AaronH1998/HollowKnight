@@ -105,7 +105,7 @@ func _get_transition(_delta):
 				return states.jump
 		states.jump:
 			if !parent.is_jumping and !parent.can_jump:
-				return states.idle
+				return states.recover
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -117,7 +117,7 @@ func _enter_state(new_state, _old_state):
 		states.slashes:
 			parent.animation_player.play("slashes")
 		states.recover:
-			parent.animated_sprite.play("recover")
+			parent.animation_player.play("recover")
 		states.teleport:
 			parent.animation_player.play("teleport")
 		states.dash_antic:
@@ -138,6 +138,7 @@ func _enter_state(new_state, _old_state):
 			parent.animation_player.play("riposte")
 		states.jump_antic:
 			parent.animation_player.play("antic")
+			parent.jump_audio.play()
 		states.jump:
 			parent.animated_sprite.play("jump")
 	
