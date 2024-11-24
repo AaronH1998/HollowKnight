@@ -5,7 +5,6 @@ func _ready():
 	add_state("rest_look_right")
 	add_state("break_free")
 	add_state("idle")
-	add_state("walk")
 	add_state("slashes")
 	add_state("recover")
 	add_state("teleport")
@@ -25,10 +24,9 @@ func _ready():
 func _state_logic(delta):
 	parent.state_label.text = states.find_key(state)
 	parent._calculate_player_position()
-	if not parent.is_resting:
+	if !parent.is_resting:
 		parent._apply_gravity(delta)
-	if not parent.is_resting and !Globals.level_preparing:
-		parent._handle_movement()
+	parent._handle_movement()
 	parent._apply_movement()
 
 func _get_transition(_delta):
@@ -46,30 +44,12 @@ func _get_transition(_delta):
 				return states.jump_antic
 			elif parent.is_transitioning:
 				return states.roar_antic
-			elif parent.velocity.x != 0:
-				return states.walk
-		states.walk:
-			if parent.action == Globals.Action.SLASHES:
-				return states.slashes
-			elif parent.action == Globals.Action.TELEPORT:
-				return states.teleport
-			elif parent.action == Globals.Action.DASH:
-				return states.dash_antic
-			elif parent.action == Globals.Action.COUNTER:
-				return states.counter
-			elif parent.action == Globals.Action.JUMP:
-				return states.jump_antic
-			elif parent.velocity.x == 0:
-				return states.idle
 		states.slashes:
 			if parent.is_recovering:
 				return states.recover
 		states.recover:
 			if !parent.is_recovering:
-				if parent.velocity.x == 0:
-					return states.idle
-				if parent.velocity.x != 0:
-					return states.walk
+				return states.idle
 		states.teleport:
 			if parent.action == Globals.Action.SLASHES:
 				return states.slashes
@@ -81,10 +61,7 @@ func _get_transition(_delta):
 				return states.dash_recover
 		states.dash_recover:
 			if !parent.is_dash_recovering:
-				if parent.velocity.x == 0:
-					return states.idle
-				if parent.velocity.x != 0:
-					return states.walk
+				return states.idle
 		states.rest_look_left:
 			if parent.is_breaking_free:
 				return states.break_free
@@ -130,8 +107,6 @@ func _enter_state(new_state, _old_state):
 	match new_state:
 		states.idle:
 			parent.animated_sprite.play("idle")
-		states.walk:
-			parent.animated_sprite.play("walk")
 		states.slashes:
 			parent.animation_player.play("slashes")
 		states.recover:

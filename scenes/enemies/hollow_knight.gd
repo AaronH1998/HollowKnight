@@ -25,6 +25,7 @@ var is_jumping: bool = false
 var is_screaming: bool = false
 var is_breaking_free: bool = false
 var is_transitioning: bool = false
+var is_movement_locked: bool = true
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_sprite: AnimatedSprite2D = $EffectAnimatedSprite
@@ -92,6 +93,7 @@ func scream(is_init:bool):
 func end_scream():
 	is_screaming = false
 	is_transitioning = false
+	is_movement_locked = false
 	Globals.level_preparing = false
 	sequence_timer.start()
 
@@ -143,9 +145,6 @@ func _handle_movement():
 		velocity.x = attack_direction * speed * 3
 	elif is_jumping:
 		velocity.x = speed * jump_modifier
-	elif !is_target_in_attack_range and !is_attacking and action == Globals.Action.NONE:
-		face_player()
-		velocity.x = player_direction * speed
 
 
 func face_player():

@@ -65,7 +65,7 @@ scale = Vector2(-1, -1)
 position = Vector2(1547, -309)
 
 [node name="Player" parent="." index="10"]
-position = Vector2(238, -58)
+position = Vector2(1193, -69)
 
 [node name="BreakFreeTimer" type="Timer" parent="Timers" index="1"]
 wait_time = 3.0
