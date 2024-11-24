@@ -16,6 +16,10 @@ func _ready():
 	add_state("riposte")
 	add_state("jump_antic")
 	add_state("jump")
+	add_state("roar_init")
+	add_state("scream")
+	add_state("roar_antic")
+	add_state("roar_recover")
 	call_deferred("set_state", states.rest_look_left)
 
 func _state_logic(delta):
@@ -23,7 +27,7 @@ func _state_logic(delta):
 	parent._calculate_player_position()
 	if not parent.is_resting:
 		parent._apply_gravity(delta)
-	if not parent.is_resting and not parent.is_breaking_free:
+	if not parent.is_resting and !Globals.level_preparing:
 		parent._handle_movement()
 	parent._apply_movement()
 
@@ -40,6 +44,8 @@ func _get_transition(_delta):
 				return states.counter
 			elif parent.action == Globals.Action.JUMP:
 				return states.jump_antic
+			elif parent.is_transitioning:
+				return states.roar_antic
 			elif parent.velocity.x != 0:
 				return states.walk
 		states.walk:
@@ -91,7 +97,7 @@ func _get_transition(_delta):
 				return states.rest_look_left
 		states.break_free:
 			if !parent.is_breaking_free:
-				return states.idle
+				return states.roar_init
 		states.counter:
 			if parent.is_riposting:
 				return states.riposte
@@ -106,6 +112,18 @@ func _get_transition(_delta):
 		states.jump:
 			if !parent.is_jumping and !parent.can_jump:
 				return states.recover
+		states.roar_init:
+			if parent.is_screaming:
+				return states.scream
+		states.scream:
+			if !parent.is_screaming:
+				return states.roar_recover
+		states.roar_antic:
+			if parent.is_screaming:
+				return states.scream
+		states.roar_recover:
+			if !parent.is_recovering:
+				return states.idle
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -141,8 +159,17 @@ func _enter_state(new_state, _old_state):
 			parent.jump_audio.play()
 		states.jump:
 			parent.animated_sprite.play("jump")
+		states.roar_init:
+			parent.animation_player.play("roar init")
+		states.scream:
+			parent.animated_sprite.play("roar")
+		states.roar_antic:
+			parent.animation_player.play("roar antic")
+		states.roar_recover:
+			parent.animation_player.play("roar recover")
 	
 func _exit_state(old_state, new_state):
+	parent.animated_sprite.stop()
 	if old_state == states.rest_look_right and new_state == states.rest_look_left:
 		parent.animated_sprite.play("rest look right return")
 	if old_state == states.rest_look_left and new_state == states.rest_look_right:

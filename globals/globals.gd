@@ -61,6 +61,15 @@ enum Action{
 	JUMP
 }
 
+enum Phase{
+	ONE,
+	TWO,
+	THREE,
+	FOUR,
+	HORNET
+}
+
+
 func reset():
 	player_health = max_health
 	player_soul = max_soul

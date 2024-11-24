@@ -6,6 +6,7 @@ signal start_fight
 @export var attack_damage: int = 1
 
 var action: Globals.Action = Globals.Action.NONE
+var phase: Globals.Phase = Globals.Phase.ONE
 var player_direction: int = -1
 var attack_direction: int = player_direction
 var jump_modifier: float
@@ -17,20 +18,25 @@ var is_attacking: bool = false
 var is_dashing: bool = false
 var is_dash_recovering: bool = false
 var is_resting: bool = true
-var is_breaking_free: bool = false
 var is_countering: bool = false
 var is_riposting: bool = false
 var can_jump: bool = false
 var is_jumping: bool = false
+var is_screaming: bool = false
+var is_breaking_free: bool = false
+var is_transitioning: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_sprite: AnimatedSprite2D = $EffectAnimatedSprite
 @onready var slash_collion_box: CollisionPolygon2D = $SlashHitBox/CollisionPolygon2D
 @onready var slash_area: Area2D = $SlashHitBox
-@onready var sequence_timer: Timer = $Timers/SequenceTimer
 @onready var state_label: Label = $Text/Label
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var teleport_wall_detection: RayCast2D = $TeleportWallDetection
+
+@onready var sequence_timer: Timer = $Timers/SequenceTimer
+@onready var initial_scream_timer: Timer = $Timers/InitalScreamTimer
+@onready var scream_timer: Timer = $Timers/ScreamTimer
 
 # To find audio for HK, use unity explorer on scarab:
 # Boss Control -> Hollow Knight Boss -> PlayMakerFSM (Control) -> States -> Actions -> AudioPlayerOneShotSingle
@@ -41,6 +47,8 @@ var is_jumping: bool = false
 @onready var land_audio: AudioStreamPlayer2D = $Audio/Land
 @onready var counter_audio: AudioStreamPlayer2D = $Audio/Counter
 @onready var riposte_audio: AudioStreamPlayer2D = $Audio/Riposte
+
+const PHASE_ONE_HEALTH_THRESHOLD: int = 199
 
 
 func _ready():
@@ -58,23 +66,33 @@ func break_chains():
 
 func fall():
 	is_resting = false
-
+	Globals.level_preparing = true
 
 func land():
-	Globals.level_preparing = true
 	land_audio.play()
 	Globals.shake_camera(10,2)
 
 
-func scream():
+func end_break_free():
+	is_breaking_free = false
+
+
+func scream(is_init:bool):
+	if is_init:
+		start_fight.emit()
+		initial_scream_timer.start()
+	else:
+		scream_timer.start()
+	Globals.level_preparing = true
+	is_screaming = true
 	scream_audio.play()
-	start_fight.emit()
 	Globals.shake_camera(20,2)
 
 
-func end_break_free():
+func end_scream():
+	is_screaming = false
+	is_transitioning = false
 	Globals.level_preparing = false
-	is_breaking_free = false
 	sequence_timer.start()
 
 
@@ -86,12 +104,15 @@ func filterActions(act: Globals.Action) -> bool:
 	return true
 
 func choose_next_action():
-	#var actions = Globals.Action.values()
-	var actions = [Globals.Action.JUMP]
+	if health < PHASE_ONE_HEALTH_THRESHOLD and phase == Globals.Phase.ONE:
+		is_transitioning = true
+		phase = Globals.Phase.TWO
+	
+	var actions = Globals.Action.values()
+	#var actions = [Globals.Action.JUMP]
 	var filtered_actions = actions.filter(filterActions)
 	action = filtered_actions.pick_random()
 	face_player()
-
 
 func _calculate_player_position():
 	if Globals.player_pos.x < global_position.x:

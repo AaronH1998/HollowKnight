@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://csi2bpfjyl5so"]
+[gd_scene load_steps=175 format=3 uid="uid://csi2bpfjyl5so"]
 
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
 [ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
@@ -135,6 +135,13 @@
 [ext_resource type="Texture2D" uid="uid://bihe4fcjnuxsu" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_002.png" id="69_wixuc"]
 [ext_resource type="Texture2D" uid="uid://dbqjy56e3ewth" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_003.png" id="70_rmanv"]
 [ext_resource type="Texture2D" uid="uid://bfvm2703nd1pc" path="res://assets/animations/hollow_knight/stun_to_idle/StunToIdle_004.png" id="71_mf74s"]
+[ext_resource type="Texture2D" uid="uid://byt5vrftx5ya0" path="res://assets/animations/hollow_knight/roar_antic/Roar Antic_000.png" id="86_cb32p"]
+[ext_resource type="Texture2D" uid="uid://ykuck7eg4b2r" path="res://assets/animations/hollow_knight/roar_antic/Roar Antic_001.png" id="87_cnsm8"]
+[ext_resource type="Texture2D" uid="uid://cofbr6epvluje" path="res://assets/animations/hollow_knight/roar_antic/Roar Antic_002.png" id="88_2glen"]
+[ext_resource type="Texture2D" uid="uid://bsva500jbsruy" path="res://assets/animations/hollow_knight/roar_antic/Roar Antic_003.png" id="89_p6tl2"]
+[ext_resource type="Texture2D" uid="uid://bmx2twyi4ogtt" path="res://assets/animations/hollow_knight/roar_antic/Roar Antic_004.png" id="90_pcl6k"]
+[ext_resource type="Texture2D" uid="uid://dkami7kj0bv4q" path="res://assets/animations/hollow_knight/roar_antic/Roar Antic_005.png" id="91_tfmjg"]
+[ext_resource type="Texture2D" uid="uid://di0dj06a72kqa" path="res://assets/animations/hollow_knight/roar_antic/Roar Antic_006.png" id="92_r72mr"]
 [ext_resource type="AudioStream" uid="uid://bafogyvwfkj8r" path="res://assets/sounds/bosses/hollow_knight/hollow_knight_scream_v1.wav" id="109_uxqvu"]
 [ext_resource type="Texture2D" uid="uid://c6kvnp136oxkj" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_000.png" id="129_liwl7"]
 [ext_resource type="Texture2D" uid="uid://cte2mkrq1yqjy" path="res://assets/animations/hollow_knight/counter_flash/Counter Flash_001.png" id="130_gr2xa"]
@@ -510,6 +517,49 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("53_resmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_kt6fb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_r0vso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_o6tsr")
+}],
+"loop": true,
+"name": &"roar",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("86_cb32p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_cnsm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_2glen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_p6tl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_pcl6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_tfmjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_r72mr")
+}],
+"loop": false,
+"name": &"roar antic",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("50_k5tfn")
 }, {
 "duration": 1.0,
@@ -876,7 +926,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rsx53"]
 resource_name = "break free"
-length = 5.41668
+length = 2.83334
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -885,10 +935,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.41667, 1.58333, 2.91667, 4.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.41667, 1.58333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [&"rest break", &"rest fall", &"rest land", &"roar init", &"roar to idle"]
+"values": [&"rest break", &"rest fall", &"rest land"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -897,10 +947,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2, 2.08333, 2.17134, 2.25, 2.33333, 2.41667, 2.5, 2.58333, 2.66667, 2.75, 2.83333, 2.91667, 3, 3.08333, 3.16667, 3.25, 3.33333, 3.41667, 3.5, 3.58333, 3.66667, 3.75, 3.83333, 3.91667, 4, 4.08333, 4.16667, 4.25, 4.33333, 4.41667, 4.5, 4.58333, 4.66667, 4.75, 4.83333, 4.91667, 5, 5.08333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2, 2.08333, 2.17134, 2.25, 2.33333, 2.41667, 2.5, 2.58333, 2.66667, 2.75, 2.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 5, 6, 7, 5, 6, 7, 5, 6, 7, 0, 1, 0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 5, 6, 7, 5, 6, 7, 5, 6, 7, 0, 1, 0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -909,8 +959,8 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.333333, 1.41667, 1.75, 3.08333, 5.08333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.333333, 1.41667, 1.75, 2.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"break_chains"
@@ -920,9 +970,6 @@ tracks/2/keys = {
 }, {
 "args": [],
 "method": &"land"
-}, {
-"args": [],
-"method": &"scream"
 }, {
 "args": [],
 "method": &"end_break_free"
@@ -1337,6 +1384,138 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_07h0d"]
+resource_name = "roar init"
+length = 0.166675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"roar init"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"scream"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5rm5j"]
+resource_name = "roar antic"
+length = 0.666675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"roar antic", &"roar init"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"scream"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_o60en"]
+resource_name = "roar recover"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"roar to idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start_recover"
+}, {
+"args": [],
+"method": &"end_recover"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqiu6"]
 _data = {
 "RESET": SubResource("Animation_hvlqm"),
@@ -1347,6 +1526,9 @@ _data = {
 "dash recover": SubResource("Animation_a20hf"),
 "recover": SubResource("Animation_wsowd"),
 "riposte": SubResource("Animation_jvs0c"),
+"roar antic": SubResource("Animation_5rm5j"),
+"roar init": SubResource("Animation_07h0d"),
+"roar recover": SubResource("Animation_o60en"),
 "slashes": SubResource("Animation_g2s1k"),
 "teleport": SubResource("Animation_pa3hp")
 }
@@ -1440,6 +1622,14 @@ disabled = true
 [node name="SequenceTimer" type="Timer" parent="Timers" index="0"]
 one_shot = true
 
+[node name="InitalScreamTimer" type="Timer" parent="Timers" index="1"]
+wait_time = 5.0
+one_shot = true
+
+[node name="ScreamTimer" type="Timer" parent="Timers" index="2"]
+wait_time = 2.0
+one_shot = true
+
 [node name="Text" type="MarginContainer" parent="." index="9"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1458,3 +1648,5 @@ collision_mask = 4
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="body_entered" from="SlashHitBox" to="." method="_on_slash_hit_box_body_entered"]
 [connection signal="timeout" from="Timers/SequenceTimer" to="." method="_on_sequence_timer_timeout"]
+[connection signal="timeout" from="Timers/InitalScreamTimer" to="." method="end_scream"]
+[connection signal="timeout" from="Timers/ScreamTimer" to="." method="end_scream"]
