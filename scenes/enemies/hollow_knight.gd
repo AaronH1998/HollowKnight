@@ -1,6 +1,7 @@
 extends Enemy
 
 signal start_fight
+signal break_chains
 
 @export var hollow_knight_health: int = 200
 @export var attack_damage: int = 1
@@ -10,6 +11,9 @@ var phase: Globals.Phase = Globals.Phase.ONE
 var player_direction: int = -1
 var attack_direction: int = player_direction
 var jump_modifier: float
+var dash_travel_max: float = 900.0
+var dash_travel_current: float = 0.0
+var dash_travel_start: float = 0.0
 
 var is_target_in_attack_range: bool = false
 var is_recovering: bool = false
@@ -57,17 +61,49 @@ func _ready():
 	health = hollow_knight_health
 
 
+func _handle_movement():
+	velocity.x = 0
+	
+	if is_jumping:
+		if is_on_floor():
+			stop_jump()
+	elif can_jump:
+		if is_on_floor():
+			velocity.y = -2000
+			jump_modifier = randf_range(-5.0, 5.0)
+		else:
+			is_jumping = true
+			can_jump = false
+	if is_dashing:
+		if dash_travel_current >= dash_travel_max:
+			stop_dash()
+		else:
+			velocity.x = attack_direction * speed * 5
+			dash_travel_current = attack_direction * (global_position.x - dash_travel_start)
+	elif is_slashing:
+		velocity.x = attack_direction * speed * 3
+	elif is_jumping:
+		velocity.x = speed * jump_modifier
+
+
+func _apply_movement():
+	move_and_slide()
+
+
 func start_break_free():
 	is_breaking_free = true
 
 
-func break_chains():
+func break_free():
 	Globals.shake_camera(20,2)
+	face(-1)
+	break_chains.emit()
 
 
 func fall():
 	is_resting = false
 	Globals.level_preparing = true
+
 
 func land():
 	land_audio.play()
@@ -111,10 +147,11 @@ func choose_next_action():
 		phase = Globals.Phase.TWO
 	
 	var actions = Globals.Action.values()
-	#var actions = [Globals.Action.JUMP]
+	#var actions = [Globals.Action.DASH]
 	var filtered_actions = actions.filter(filterActions)
 	action = filtered_actions.pick_random()
 	face_player()
+
 
 func _calculate_player_position():
 	if Globals.player_pos.x < global_position.x:
@@ -123,39 +160,15 @@ func _calculate_player_position():
 		player_direction = 1
 
 
-func _handle_movement():
-	velocity.x = 0
-	
-	if is_jumping:
-		if is_on_floor():
-			stop_jump()
-	elif can_jump:
-		if is_on_floor():
-			velocity.y = -2000
-			jump_modifier = randf_range(-5.0, 5.0)
-		else:
-			is_jumping = true
-			can_jump = false
-	if is_dashing:
-		if is_on_wall():
-			stop_dash()
-		else:
-			velocity.x = attack_direction * speed * 5
-	elif is_slashing:
-		velocity.x = attack_direction * speed * 3
-	elif is_jumping:
-		velocity.x = speed * jump_modifier
+func face(direction: int):
+	animated_sprite.flip_h = direction < 0
+	slash_area.scale.x = direction
+	teleport_wall_detection.scale.x = direction
+	attack_direction = direction
 
 
 func face_player():
-	animated_sprite.flip_h = player_direction < 0
-	slash_area.scale.x = player_direction
-	teleport_wall_detection.scale.x = player_direction
-	attack_direction = player_direction
-
-
-func _apply_movement():
-	move_and_slide()
+	face(player_direction)
 
 
 func _on_attack_range_body_entered(_body):
@@ -219,12 +232,14 @@ func teleport_attack():
 
 func dash():
 	is_dashing = true
+	dash_travel_start = global_position.x
 	dash_audio.play()
 
 
 func stop_dash():
 	is_dashing = false
 	is_dash_recovering = true
+	dash_travel_current = 0
 
 
 func stop_dash_recover():

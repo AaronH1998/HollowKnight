@@ -16,7 +16,7 @@ const phase_1_2 = preload("res://assets/music/thk/Sealed Vessel phase 1+2 - S61-
 
 func _ready():
 	super()
-	hollow_knight.start_break_free()
+	#hollow_knight.start_break_free()
 
 
 func _on_level_one_transition_area_body_entered(_body):
@@ -58,3 +58,7 @@ func _on_final_boss_chain_breaking():
 		music.stream = suspence_5
 		music.play()
 		break_free_timer.start()
+
+
+func _on_hollow_knight_break_chains():
+	$Forebackground/SuspensionChains.visible = false

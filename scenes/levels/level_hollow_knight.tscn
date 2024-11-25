@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://j8sql0akpahy"]
+[gd_scene load_steps=11 format=3 uid="uid://j8sql0akpahy"]
 
 [ext_resource type="PackedScene" uid="uid://dh7ffbm7ckmfq" path="res://scenes/levels/level.tscn" id="1_o832q"]
 [ext_resource type="Script" path="res://scenes/levels/level_hollow_knight.gd" id="2_lc5wl"]
 [ext_resource type="PackedScene" uid="uid://dhpmpth3gvolm" path="res://scenes/objects/camera_lock_area.tscn" id="3_cmyq3"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="3_uwcwv"]
 [ext_resource type="PackedScene" uid="uid://csi2bpfjyl5so" path="res://scenes/enemies/hollow_knight.tscn" id="4_d6ujn"]
+[ext_resource type="Texture2D" uid="uid://bc6bt0tras2r4" path="res://assets/sprites/environment/temple_of_black_egg/final_boss_chain.png" id="4_mbtr4"]
 [ext_resource type="PackedScene" uid="uid://oynlk5akiwwh" path="res://scenes/objects/ceiling.tscn" id="5_h260m"]
 [ext_resource type="AudioStream" uid="uid://sglytiveqleq" path="res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 1.wav" id="8_lnef7"]
 [ext_resource type="PackedScene" uid="uid://8vj7tc74frow" path="res://scenes/levels/environment/temple_of_black_egg/final_boss_chain.tscn" id="8_y7371"]
@@ -21,6 +22,28 @@ vertical_lock_marker = NodePath("../../Markers/InitalHorizontalMarker")
 
 [node name="InitalHorizontalMarker" type="Marker2D" parent="CameraLock/Markers" index="0"]
 position = Vector2(1547, -309)
+
+[node name="SuspensionChains" type="Node2D" parent="Forebackground" index="0"]
+
+[node name="LeftLowerChain" type="Sprite2D" parent="Forebackground/SuspensionChains" index="0"]
+position = Vector2(1343, -660)
+rotation = -0.691092
+texture = ExtResource("4_mbtr4")
+
+[node name="LeftUpperChain" type="Sprite2D" parent="Forebackground/SuspensionChains" index="1"]
+position = Vector2(1115, -936)
+rotation = -0.691092
+texture = ExtResource("4_mbtr4")
+
+[node name="RightLowerChain" type="Sprite2D" parent="Forebackground/SuspensionChains" index="2"]
+position = Vector2(1747, -650)
+rotation = 0.69115
+texture = ExtResource("4_mbtr4")
+
+[node name="RightUpperChain" type="Sprite2D" parent="Forebackground/SuspensionChains" index="3"]
+position = Vector2(1977, -928)
+rotation = 0.69115
+texture = ExtResource("4_mbtr4")
 
 [node name="Floor" parent="Obstacles" index="0" instance=ExtResource("3_uwcwv")]
 modulate = Color(0, 0, 0, 1)
@@ -42,7 +65,7 @@ position = Vector2(-131, 3)
 scale = Vector2(7.72197, 13.4479)
 
 [node name="FinalBossChain" parent="Obstacles" index="4" instance=ExtResource("8_y7371")]
-position = Vector2(555, -55)
+position = Vector2(546, -58)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
@@ -52,12 +75,12 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="FinalBossChain3" parent="Obstacles" index="6" instance=ExtResource("8_y7371")]
-position = Vector2(2107, -59)
+position = Vector2(2107, -58)
 rotation = 3.14159
 scale = Vector2(-1, -1)
 
 [node name="FinalBossChain4" parent="Obstacles" index="7" instance=ExtResource("8_y7371")]
-position = Vector2(2623, -61)
+position = Vector2(2624, -58)
 rotation = 3.14159
 scale = Vector2(-1, -1)
 
@@ -65,7 +88,7 @@ scale = Vector2(-1, -1)
 position = Vector2(1547, -309)
 
 [node name="Player" parent="." index="10"]
-position = Vector2(1193, -69)
+position = Vector2(1195, -72)
 
 [node name="BreakFreeTimer" type="Timer" parent="Timers" index="1"]
 wait_time = 3.0
@@ -90,6 +113,7 @@ stream = ExtResource("8_lnef7")
 [connection signal="broke" from="Obstacles/FinalBossChain3" to="." method="_on_final_boss_chain_broke"]
 [connection signal="breaking" from="Obstacles/FinalBossChain4" to="." method="_on_final_boss_chain_breaking"]
 [connection signal="broke" from="Obstacles/FinalBossChain4" to="." method="_on_final_boss_chain_broke"]
+[connection signal="break_chains" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_break_chains"]
 [connection signal="death" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_death"]
 [connection signal="start_fight" from="Enemies/HollowKnight" to="." method="_on_hollow_knight_start_fight"]
 [connection signal="timeout" from="Timers/BreakFreeTimer" to="." method="_on_break_free_timer_timeout"]
