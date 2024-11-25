@@ -14,6 +14,9 @@ var jump_modifier: float
 var dash_travel_max: float = 900.0
 var dash_travel_current: float = 0.0
 var dash_travel_start: float = 0.0
+var evade_travel_max: float = 600.0
+var evade_travel_current: float = 0.0
+var evade_travel_start: float = 0.0
 
 var is_target_in_attack_range: bool = false
 var is_recovering: bool = false
@@ -30,6 +33,7 @@ var is_screaming: bool = false
 var is_breaking_free: bool = false
 var is_transitioning: bool = false
 var is_movement_locked: bool = true
+var is_evading: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_sprite: AnimatedSprite2D = $EffectAnimatedSprite
@@ -67,6 +71,8 @@ func _handle_movement():
 	if is_jumping:
 		if is_on_floor():
 			stop_jump()
+		else:
+			velocity.x = speed * jump_modifier
 	elif can_jump:
 		if is_on_floor():
 			velocity.y = -2000
@@ -75,15 +81,26 @@ func _handle_movement():
 			is_jumping = true
 			can_jump = false
 	if is_dashing:
-		if dash_travel_current >= dash_travel_max:
+		if (dash_travel_current >= dash_travel_max) or is_on_wall():
 			stop_dash()
 		else:
 			velocity.x = attack_direction * speed * 5
 			dash_travel_current = attack_direction * (global_position.x - dash_travel_start)
 	elif is_slashing:
 		velocity.x = attack_direction * speed * 3
-	elif is_jumping:
-		velocity.x = speed * jump_modifier
+	elif action == Globals.Action.EVADE:
+		if !is_evading:
+			is_evading = true
+			evade_travel_start = global_position.x
+		elif (is_evading and evade_travel_current >= evade_travel_max) or is_on_wall():
+			is_evading = false
+			action = Globals.Action.NONE
+			sequence_timer.start()
+			evade_travel_current = 0
+		else:
+			velocity.x = -attack_direction * speed * 5
+			evade_travel_current = -attack_direction * (global_position.x - evade_travel_start)
+			print(evade_travel_current)
 
 
 func _apply_movement():
@@ -134,7 +151,7 @@ func end_scream():
 	sequence_timer.start()
 
 
-func filterActions(act: Globals.Action) -> bool:
+func filter_actions(act: Globals.Action) -> bool:
 	if act == Globals.Action.NONE:
 		return false
 	if act == Globals.Action.TELEPORT and teleport_wall_detection.is_colliding():
@@ -147,8 +164,8 @@ func choose_next_action():
 		phase = Globals.Phase.TWO
 	
 	var actions = Globals.Action.values()
-	#var actions = [Globals.Action.DASH]
-	var filtered_actions = actions.filter(filterActions)
+	#var actions = [Globals.Action.EVADE]
+	var filtered_actions = actions.filter(filter_actions)
 	action = filtered_actions.pick_random()
 	face_player()
 

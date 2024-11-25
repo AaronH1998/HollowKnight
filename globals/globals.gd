@@ -58,7 +58,8 @@ enum Action{
 	TELEPORT,
 	DASH,
 	COUNTER,
-	JUMP
+	JUMP,
+	EVADE
 }
 
 enum Phase{

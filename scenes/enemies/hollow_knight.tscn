@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=3 uid="uid://csi2bpfjyl5so"]
+[gd_scene load_steps=178 format=3 uid="uid://csi2bpfjyl5so"]
 
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
 [ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
@@ -115,6 +115,9 @@
 [ext_resource type="Texture2D" uid="uid://dam65rtfox8ql" path="res://assets/animations/hollow_knight/rest_land/Rest Land_003.png" id="42_srm7l"]
 [ext_resource type="Texture2D" uid="uid://clah8xnilmliy" path="res://assets/animations/hollow_knight/rest_land/Rest Land_004.png" id="43_an04t"]
 [ext_resource type="Texture2D" uid="uid://60h6u0qtsa8a" path="res://assets/animations/hollow_knight/tele_out/Tele Out_005.png" id="43_ws8xd"]
+[ext_resource type="Texture2D" uid="uid://urnl6sw74oj2" path="res://assets/animations/hollow_knight/evade/Evade_000.png" id="47_sgaoq"]
+[ext_resource type="Texture2D" uid="uid://byocf1e3b4b5i" path="res://assets/animations/hollow_knight/evade/Evade_001.png" id="48_vynwf"]
+[ext_resource type="Texture2D" uid="uid://dq66kv8n88dxn" path="res://assets/animations/hollow_knight/evade/Evade_002.png" id="49_tb8fc"]
 [ext_resource type="Texture2D" uid="uid://bmnyvvfxdmrk7" path="res://assets/animations/hollow_knight/roar_init/Roar Init_000.png" id="50_k5tfn"]
 [ext_resource type="Texture2D" uid="uid://5y0v8u0xabeo" path="res://assets/animations/hollow_knight/jump/Jump_000.png" id="50_ylgw0"]
 [ext_resource type="Texture2D" uid="uid://ghc77bfq6xog" path="res://assets/animations/hollow_knight/jump/Jump_001.png" id="51_bt72e"]
@@ -341,6 +344,20 @@ animations = [{
 "loop": false,
 "name": &"dash recover",
 "speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_sgaoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_vynwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_tb8fc")
+}],
+"loop": true,
+"name": &"evade",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
