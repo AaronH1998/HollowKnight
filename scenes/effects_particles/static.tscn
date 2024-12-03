@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://jpe2lfahua0o"]
+
+[ext_resource type="Shader" path="res://scenes/effects_particles/static.gdshader" id="1_jvpnc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5i7lh"]
+shader = ExtResource("1_jvpnc")
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/noise_amount = 0.05
+
+[node name="Static" type="Parallax2D"]
+repeat_size = Vector2(1920, 1080)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5i7lh")
+offset_right = 1920.0
+offset_bottom = 1080.0

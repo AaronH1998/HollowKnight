@@ -24,17 +24,17 @@ collision_mask = 3
 
 [node name="Forebackground" type="Node2D" parent="."]
 
-[node name="Foreground" type="Node2D" parent="."]
-
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Drops" type="Node2D" parent="."]
 
+[node name="Player" parent="." instance=ExtResource("2_7epvc")]
+
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("2_7epvc")]
+[node name="Foreground" type="Node2D" parent="."]
 
 [node name="Effects" type="Node2D" parent="."]
 

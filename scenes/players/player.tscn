@@ -1762,9 +1762,13 @@ script = ExtResource("1_vxu5b")
 script = ExtResource("2_uqae1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 2.35
+energy = 2.0
 texture = ExtResource("3_m8sk1")
 texture_scale = 2.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+energy = 4.0
+texture = ExtResource("3_m8sk1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hyy1a")
@@ -1804,7 +1808,6 @@ shape = SubResource("CapsuleShape2D_tfv70")
 [node name="Visual" type="Node2D" parent="."]
 script = ExtResource("1_yvi7j")
 target = NodePath("..")
-flags = 15
 
 [node name="MarginContainer" type="MarginContainer" parent="Visual"]
 visible = false
@@ -1840,7 +1843,8 @@ script = ExtResource("5_ltn3l")
 [node name="KnightAnimatedSprite" type="AnimatedSprite2D" parent="Visual"]
 material = SubResource("ShaderMaterial_kvd1q")
 position = Vector2(2, -38)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_o271f")
 animation = &"slash"
 autoplay = "idle"

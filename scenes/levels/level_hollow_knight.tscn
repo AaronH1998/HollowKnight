@@ -84,11 +84,11 @@ position = Vector2(2624, -58)
 rotation = 3.14159
 scale = Vector2(-1, -1)
 
+[node name="Player" parent="." index="8"]
+position = Vector2(369, -80)
+
 [node name="HollowKnight" parent="Enemies" index="0" instance=ExtResource("4_d6ujn")]
 position = Vector2(1547, -309)
-
-[node name="Player" parent="." index="10"]
-position = Vector2(1195, -72)
 
 [node name="BreakFreeTimer" type="Timer" parent="Timers" index="1"]
 wait_time = 3.0
