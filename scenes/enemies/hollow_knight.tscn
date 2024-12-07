@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=3 uid="uid://csi2bpfjyl5so"]
+[gd_scene load_steps=189 format=3 uid="uid://csi2bpfjyl5so"]
 
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
 [ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
@@ -1630,6 +1630,61 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_k3flw"]
+resource_name = "teleport_dstab"
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"tele out", &"tele out", &"tele in"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"teleport_to_player"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqiu6"]
 _data = {
 "RESET": SubResource("Animation_hvlqm"),
@@ -1645,7 +1700,8 @@ _data = {
 "roar init": SubResource("Animation_07h0d"),
 "roar recover": SubResource("Animation_o60en"),
 "slashes": SubResource("Animation_g2s1k"),
-"teleport": SubResource("Animation_pa3hp")
+"teleport": SubResource("Animation_pa3hp"),
+"teleport_dstab": SubResource("Animation_k3flw")
 }
 
 [node name="HollowKnight" instance=ExtResource("1_metm4")]
@@ -1738,7 +1794,6 @@ disabled = true
 one_shot = true
 
 [node name="InitalScreamTimer" type="Timer" parent="Timers" index="1"]
-wait_time = 5.0
 one_shot = true
 
 [node name="ScreamTimer" type="Timer" parent="Timers" index="2"]

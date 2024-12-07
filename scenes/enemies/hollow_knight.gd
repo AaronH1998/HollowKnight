@@ -131,12 +131,17 @@ func _handle_movement():
 				jump_to_velocity = calculate_jump_velocity()
 			else:
 				velocity.x = jump_to_velocity
-		elif !is_dstab_land and is_on_floor():
+		elif is_dstab and !is_dstab_land and is_on_floor():
 			is_dstab = false
 			is_dstab_land = true
 			dstab_land.emit(global_position)
-
-			
+	elif action == Globals.Action.DSTABTELEPORT:
+		if is_dstab_antic:
+			velocity = Vector2.ZERO
+		elif is_dstab and !is_dstab_land and is_on_floor():
+			is_dstab = false
+			is_dstab_land = true
+			dstab_land.emit(global_position)
 
 func _apply_movement():
 	move_and_slide()
@@ -155,6 +160,10 @@ func filter_actions(act: Globals.Action) -> bool:
 		return false
 	if act == Globals.Action.EVADE and !slashes_range.is_colliding():
 		return false
+	if act == Globals.Action.DSTAB and phase == Globals.Phase.ONE:
+		return false
+	if act == Globals.Action.DSTABTELEPORT and phase == Globals.Phase.ONE:
+		return false
 	return true
 
 
@@ -163,8 +172,8 @@ func choose_next_action():
 		is_transitioning = true
 		phase = Globals.Phase.TWO
 	
-	#var actions = Globals.Action.values()
-	var actions = [Globals.Action.DSTAB]
+	var actions = Globals.Action.values()
+	#var actions = [Globals.Action.DSTABTELEPORT]
 	var filtered_actions = actions.filter(filter_actions)
 	action = filtered_actions.pick_random()
 	face_player()
@@ -372,3 +381,7 @@ func calculate_jump_velocity() -> float:
 	var v_x = distance/t_up
 	return v_x
 	
+
+func teleport_to_player():
+	global_position.x = Globals.player_pos.x - (attack_direction * 100)
+	global_position.y = -750

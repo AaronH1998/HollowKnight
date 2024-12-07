@@ -22,6 +22,7 @@ func _ready():
 	add_state("evade")
 	add_state("walk")
 	add_state("dstab_jump")
+	add_state("dstab_teleport")
 	add_state("dstab_antic")
 	add_state("dstab")
 	add_state("dstab_land")
@@ -54,6 +55,8 @@ func _get_transition(_delta):
 				return states.walk
 			elif parent.action == Globals.Action.DSTAB:
 				return states.dstab_jump
+			elif parent.action == Globals.Action.DSTABTELEPORT:
+				return states.dstab_teleport
 			elif parent.is_transitioning:
 				return states.roar_antic
 		states.slashes:
@@ -131,6 +134,10 @@ func _get_transition(_delta):
 		states.dstab_jump:
 			if !parent.is_on_floor() and parent.velocity.y > 0:
 				return states.dstab_antic
+		states.dstab_teleport:
+			if !parent.is_on_floor() and parent.velocity.y > 0:
+				return states.dstab_antic
+		
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -184,6 +191,8 @@ func _enter_state(new_state, _old_state):
 			parent.animated_sprite.play("dstab_land")
 		states.dstab_jump:
 			parent.animated_sprite.play("jump")
+		states.dstab_teleport:
+			parent.animation_player.play("teleport_dstab")
 	
 func _exit_state(old_state, new_state):
 	parent.animated_sprite.stop()

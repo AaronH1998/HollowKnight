@@ -61,7 +61,8 @@ enum Action{
 	JUMP,
 	EVADE,
 	WALK,
-	DSTAB
+	DSTAB,
+	DSTABTELEPORT
 }
 
 enum Phase{
