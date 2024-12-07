@@ -20,6 +20,7 @@ func _ready():
 	add_state("roar_antic")
 	add_state("roar_recover")
 	add_state("evade")
+	add_state("walk")
 	call_deferred("set_state", states.rest_look_left)
 
 func _state_logic(delta):
@@ -45,6 +46,8 @@ func _get_transition(_delta):
 				return states.jump_antic
 			elif parent.action == Globals.Action.EVADE:
 				return states.evade
+			elif parent.action == Globals.Action.WALK:
+				return states.walk
 			elif parent.is_transitioning:
 				return states.roar_antic
 		states.slashes:
@@ -107,7 +110,9 @@ func _get_transition(_delta):
 		states.evade:
 			if parent.action != Globals.Action.EVADE:
 				return states.idle
-				
+		states.walk:
+			if parent.action != Globals.Action.WALK:
+				return states.idle
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -151,6 +156,8 @@ func _enter_state(new_state, _old_state):
 			parent.animation_player.play("roar recover")
 		states.evade:
 			parent.animated_sprite.play("evade")
+		states.walk:
+			parent.animated_sprite.play("walk")
 	
 func _exit_state(old_state, new_state):
 	parent.animated_sprite.stop()

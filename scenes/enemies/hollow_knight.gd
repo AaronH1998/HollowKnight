@@ -14,9 +14,12 @@ var jump_modifier: float
 var dash_travel_max: float = 900.0
 var dash_travel_current: float = 0.0
 var dash_travel_start: float = 0.0
-var evade_travel_max: float = 600.0
+var evade_travel_max: float = 500.0
 var evade_travel_current: float = 0.0
 var evade_travel_start: float = 0.0
+var walk_travel_max: float = 300.0
+var walk_travel_current: float = 0.0
+var walk_travel_start: float = 0.0
 
 var is_target_in_attack_range: bool = false
 var is_recovering: bool = false
@@ -34,6 +37,7 @@ var is_breaking_free: bool = false
 var is_transitioning: bool = false
 var is_movement_locked: bool = true
 var is_evading: bool = false
+var is_walking: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_sprite: AnimatedSprite2D = $EffectAnimatedSprite
@@ -42,6 +46,7 @@ var is_evading: bool = false
 @onready var state_label: Label = $Text/Label
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var teleport_wall_detection: RayCast2D = $TeleportWallDetection
+@onready var slashes_range: RayCast2D = $SlashesRange
 
 @onready var sequence_timer: Timer = $Timers/SequenceTimer
 @onready var initial_scream_timer: Timer = $Timers/InitalScreamTimer
@@ -100,11 +105,69 @@ func _handle_movement():
 		else:
 			velocity.x = -attack_direction * speed * 5
 			evade_travel_current = -attack_direction * (global_position.x - evade_travel_start)
-			print(evade_travel_current)
+	elif action == Globals.Action.WALK:
+		if !is_walking:
+			is_walking = true
+			walk_travel_start = global_position.x
+		elif (is_walking and walk_travel_current >= walk_travel_max) or is_on_wall():
+			is_walking = false
+			action = Globals.Action.NONE
+			sequence_timer.start()
+			walk_travel_current = 0
+		else:
+			velocity.x = attack_direction * speed
+			walk_travel_current = attack_direction * (global_position.x - walk_travel_start)
 
 
 func _apply_movement():
 	move_and_slide()
+
+
+func filter_actions(act: Globals.Action) -> bool:
+	if act == Globals.Action.NONE:
+		return false
+	if act == Globals.Action.TELEPORT and teleport_wall_detection.is_colliding():
+		return false
+	if act == Globals.Action.WALK and slashes_range.is_colliding():
+		return false
+	if act == Globals.Action.SLASHES and !slashes_range.is_colliding():
+		return false
+	if act == Globals.Action.COUNTER and !slashes_range.is_colliding():
+		return false
+	if act == Globals.Action.EVADE and !slashes_range.is_colliding():
+		return false
+	return true
+
+
+func choose_next_action():
+	if health < PHASE_ONE_HEALTH_THRESHOLD and phase == Globals.Phase.ONE:
+		is_transitioning = true
+		phase = Globals.Phase.TWO
+	
+	var actions = Globals.Action.values()
+	#var actions = [Globals.Action.WALK, Globals.Action.SLASHES]
+	var filtered_actions = actions.filter(filter_actions)
+	action = filtered_actions.pick_random()
+	face_player()
+
+
+func _calculate_player_position():
+	if Globals.player_pos.x < global_position.x:
+		player_direction = -1
+	if Globals.player_pos.x > global_position.x:
+		player_direction = 1
+
+
+func face(direction: int):
+	animated_sprite.flip_h = direction < 0
+	slash_area.scale.x = direction
+	teleport_wall_detection.scale.x = direction
+	slashes_range.scale.x = direction
+	attack_direction = direction
+
+
+func face_player():
+	face(player_direction)
 
 
 func start_break_free():
@@ -151,43 +214,6 @@ func end_scream():
 	sequence_timer.start()
 
 
-func filter_actions(act: Globals.Action) -> bool:
-	if act == Globals.Action.NONE:
-		return false
-	if act == Globals.Action.TELEPORT and teleport_wall_detection.is_colliding():
-		return false
-	return true
-
-func choose_next_action():
-	if health < PHASE_ONE_HEALTH_THRESHOLD and phase == Globals.Phase.ONE:
-		is_transitioning = true
-		phase = Globals.Phase.TWO
-	
-	var actions = Globals.Action.values()
-	#var actions = [Globals.Action.EVADE]
-	var filtered_actions = actions.filter(filter_actions)
-	action = filtered_actions.pick_random()
-	face_player()
-
-
-func _calculate_player_position():
-	if Globals.player_pos.x < global_position.x:
-		player_direction = -1
-	if Globals.player_pos.x > global_position.x:
-		player_direction = 1
-
-
-func face(direction: int):
-	animated_sprite.flip_h = direction < 0
-	slash_area.scale.x = direction
-	teleport_wall_detection.scale.x = direction
-	attack_direction = direction
-
-
-func face_player():
-	face(player_direction)
-
-
 func _on_attack_range_body_entered(_body):
 	is_target_in_attack_range = true
 
@@ -198,7 +224,7 @@ func _on_attack_range_body_exited(_body):
 
 func attack():
 	is_attacking = true
-
+	
 
 func start_recover():
 	is_recovering = true

@@ -1661,6 +1661,10 @@ text = "Example"
 target_position = Vector2(800, 0)
 collision_mask = 4
 
+[node name="SlashesRange" type="RayCast2D" parent="." index="11"]
+position = Vector2(3, 114)
+target_position = Vector2(600, 0)
+
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="body_entered" from="SlashHitBox" to="." method="_on_slash_hit_box_body_entered"]
