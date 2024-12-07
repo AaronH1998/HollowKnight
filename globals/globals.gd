@@ -60,7 +60,8 @@ enum Action{
 	COUNTER,
 	JUMP,
 	EVADE,
-	WALK
+	WALK,
+	DSTAB
 }
 
 enum Phase{

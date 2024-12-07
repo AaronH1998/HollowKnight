@@ -3,7 +3,7 @@ class_name Enemy
 
 signal enemy_hit(pos, dir)
 signal death(pos, dir, geo)
-
+@export var a = 1
 var gravity: float = 3848.0
 var speed: float = 2 * Globals.UNIT_SIZE
 var move_direction: int = 1

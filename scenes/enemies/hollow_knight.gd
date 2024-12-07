@@ -2,6 +2,7 @@ extends Enemy
 
 signal start_fight
 signal break_chains
+signal dstab_land(pos)
 
 @export var hollow_knight_health: int = 200
 @export var attack_damage: int = 1
@@ -20,6 +21,7 @@ var evade_travel_start: float = 0.0
 var walk_travel_max: float = 300.0
 var walk_travel_current: float = 0.0
 var walk_travel_start: float = 0.0
+var jump_to_velocity: float = 0.0
 
 var is_target_in_attack_range: bool = false
 var is_recovering: bool = false
@@ -38,6 +40,9 @@ var is_transitioning: bool = false
 var is_movement_locked: bool = true
 var is_evading: bool = false
 var is_walking: bool = false
+var is_dstab: bool = false
+var is_dstab_land: bool = false
+var is_dstab_antic: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_sprite: AnimatedSprite2D = $EffectAnimatedSprite
@@ -117,7 +122,21 @@ func _handle_movement():
 		else:
 			velocity.x = attack_direction * speed
 			walk_travel_current = attack_direction * (global_position.x - walk_travel_start)
+	elif action == Globals.Action.DSTAB:
+		if is_dstab_antic:
+			velocity = Vector2.ZERO
+		elif !is_dstab and !is_dstab_land:
+			if is_on_floor():
+				velocity.y = -2000
+				jump_to_velocity = calculate_jump_velocity()
+			else:
+				velocity.x = jump_to_velocity
+		elif !is_dstab_land and is_on_floor():
+			is_dstab = false
+			is_dstab_land = true
+			dstab_land.emit(global_position)
 
+			
 
 func _apply_movement():
 	move_and_slide()
@@ -144,8 +163,8 @@ func choose_next_action():
 		is_transitioning = true
 		phase = Globals.Phase.TWO
 	
-	var actions = Globals.Action.values()
-	#var actions = [Globals.Action.WALK, Globals.Action.SLASHES]
+	#var actions = Globals.Action.values()
+	var actions = [Globals.Action.DSTAB]
 	var filtered_actions = actions.filter(filter_actions)
 	action = filtered_actions.pick_random()
 	face_player()
@@ -234,7 +253,7 @@ func start_recover():
 func end_recover():
 	action = Globals.Action.NONE
 	is_recovering = false
-	start_sequence_timer()
+	sequence_timer.start()
 
 
 func slash():
@@ -250,10 +269,6 @@ func stop_slash():
 func _on_slash_hit_box_body_entered(body):
 	if "hit" in body:
 		body.hit(body.global_position, attack_damage)
-
-
-func start_sequence_timer():
-	sequence_timer.start()
 
 
 func _on_sequence_timer_timeout():
@@ -334,3 +349,26 @@ func stop_jump():
 	land_audio.play()
 	action = Globals.Action.NONE
 	sequence_timer.start()
+
+
+func dstab_antic():
+	is_dstab_antic = true
+
+
+func dbstab():
+	is_dstab = true
+	is_dstab_antic = false
+
+
+func stop_dstab_land():
+	is_dstab_land = false
+	action = Globals.Action.NONE
+	
+
+func calculate_jump_velocity() -> float:
+	var distance = Globals.player_pos.x - global_position.x
+	distance -= attack_direction * 100
+	var t_up = 2000 / gravity
+	var v_x = distance/t_up
+	return v_x
+	

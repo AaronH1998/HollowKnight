@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=3 uid="uid://csi2bpfjyl5so"]
+[gd_scene load_steps=188 format=3 uid="uid://csi2bpfjyl5so"]
 
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
 [ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
@@ -116,17 +116,26 @@
 [ext_resource type="Texture2D" uid="uid://clah8xnilmliy" path="res://assets/animations/hollow_knight/rest_land/Rest Land_004.png" id="43_an04t"]
 [ext_resource type="Texture2D" uid="uid://60h6u0qtsa8a" path="res://assets/animations/hollow_knight/tele_out/Tele Out_005.png" id="43_ws8xd"]
 [ext_resource type="Texture2D" uid="uid://urnl6sw74oj2" path="res://assets/animations/hollow_knight/evade/Evade_000.png" id="47_sgaoq"]
+[ext_resource type="Texture2D" uid="uid://bhyx1f2ufknl3" path="res://assets/animations/hollow_knight/dstab_antic/DStab Antic_000.png" id="47_vuuri"]
+[ext_resource type="Texture2D" uid="uid://ckdx0jluaq7qw" path="res://assets/animations/hollow_knight/dstab_antic/DStab Antic_001.png" id="48_gtcgs"]
 [ext_resource type="Texture2D" uid="uid://byocf1e3b4b5i" path="res://assets/animations/hollow_knight/evade/Evade_001.png" id="48_vynwf"]
+[ext_resource type="Texture2D" uid="uid://cdpgy761unghx" path="res://assets/animations/hollow_knight/dstab_antic/DStab Antic_002.png" id="49_nvfwe"]
 [ext_resource type="Texture2D" uid="uid://dq66kv8n88dxn" path="res://assets/animations/hollow_knight/evade/Evade_002.png" id="49_tb8fc"]
 [ext_resource type="Texture2D" uid="uid://bmnyvvfxdmrk7" path="res://assets/animations/hollow_knight/roar_init/Roar Init_000.png" id="50_k5tfn"]
+[ext_resource type="Texture2D" uid="uid://yif7itgiwbyi" path="res://assets/animations/hollow_knight/dstab_antic/DStab Antic_003.png" id="50_tyb3h"]
 [ext_resource type="Texture2D" uid="uid://5y0v8u0xabeo" path="res://assets/animations/hollow_knight/jump/Jump_000.png" id="50_ylgw0"]
+[ext_resource type="Texture2D" uid="uid://bdkl6mkeeapfk" path="res://assets/animations/hollow_knight/dstab_antic/DStab Antic_004.png" id="51_bp0fc"]
 [ext_resource type="Texture2D" uid="uid://ghc77bfq6xog" path="res://assets/animations/hollow_knight/jump/Jump_001.png" id="51_bt72e"]
 [ext_resource type="Texture2D" uid="uid://b1cmwvee0xinm" path="res://assets/animations/hollow_knight/roar_init/Roar Init_001.png" id="51_j2ii2"]
 [ext_resource type="Texture2D" uid="uid://ce7eg0e8lem4v" path="res://assets/animations/hollow_knight/jump/Jump_002.png" id="52_bahnw"]
+[ext_resource type="Texture2D" uid="uid://dbn84hgcs35xv" path="res://assets/animations/hollow_knight/dstab_land/DStab Land_000.png" id="52_fs32u"]
 [ext_resource type="Texture2D" uid="uid://burqoo5a4vrvs" path="res://assets/animations/hollow_knight/roar_init/Roar Init_002.png" id="52_g65tu"]
+[ext_resource type="Texture2D" uid="uid://do36y020k1n6a" path="res://assets/animations/hollow_knight/dstab_land/DStab Land_001.png" id="53_2uvjj"]
 [ext_resource type="Texture2D" uid="uid://ds05wfww7o5oj" path="res://assets/animations/hollow_knight/roar_init/Roar Init_003.png" id="53_resmy"]
 [ext_resource type="Texture2D" uid="uid://sb61hybv8e4v" path="res://assets/animations/hollow_knight/roar_init/Roar Init_004.png" id="54_kt6fb"]
+[ext_resource type="Texture2D" uid="uid://dfi3awy0qviiq" path="res://assets/animations/hollow_knight/dstab_land/DStab Land_002.png" id="54_uvkru"]
 [ext_resource type="Texture2D" uid="uid://duucsqh81sppw" path="res://assets/animations/hollow_knight/roar_init/Roar Init_005.png" id="55_r0vso"]
+[ext_resource type="Texture2D" uid="uid://b65usdmjhghgb" path="res://assets/animations/hollow_knight/dstab_stomp/Dstab Stomp_000.png" id="55_sls40"]
 [ext_resource type="Texture2D" uid="uid://c4icn56w78jd2" path="res://assets/animations/hollow_knight/roar_init/Roar Init_006.png" id="56_o6tsr"]
 [ext_resource type="Texture2D" uid="uid://u807w54nqmjv" path="res://assets/animations/hollow_knight/roar_to_idle/RoarToIdle_000.png" id="57_k4h8p"]
 [ext_resource type="Texture2D" uid="uid://pfai3tsmg5bn" path="res://assets/animations/hollow_knight/roar_to_idle/RoarToIdle_001.png" id="58_v4iva"]
@@ -344,6 +353,48 @@ animations = [{
 "loop": false,
 "name": &"dash recover",
 "speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_vuuri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_gtcgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_nvfwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_tyb3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_bp0fc")
+}],
+"loop": false,
+"name": &"dstab_antic",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_fs32u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_2uvjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_uvkru")
+}],
+"loop": true,
+"name": &"dstab_land",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_sls40")
+}],
+"loop": true,
+"name": &"dstab_stomp",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1152,6 +1203,52 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_wpilg"]
+resource_name = "dstab_antic"
+length = 0.266673
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dstab_antic"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"dstab_antic"
+}, {
+"args": [],
+"method": &"dbstab"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_wsowd"]
 resource_name = "recover"
 step = 0.0833333
@@ -1541,6 +1638,7 @@ _data = {
 "counter": SubResource("Animation_pomvo"),
 "dash antic": SubResource("Animation_tdwfn"),
 "dash recover": SubResource("Animation_a20hf"),
+"dstab_antic": SubResource("Animation_wpilg"),
 "recover": SubResource("Animation_wsowd"),
 "riposte": SubResource("Animation_jvs0c"),
 "roar antic": SubResource("Animation_5rm5j"),

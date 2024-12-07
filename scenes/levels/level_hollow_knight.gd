@@ -12,6 +12,7 @@ const suspence_4: Resource = preload("res://assets/music/thk/Hollow Knight pre-f
 const suspence_5: Resource = preload("res://assets/music/thk/Hollow Knight pre-fight - S61-161 Suspence 5.wav")
 
 const phase_1_2 = preload("res://assets/music/thk/Sealed Vessel phase 1+2 - S61-216 Hollow Knight.wav")
+const plume_scene = preload("res://scenes/effects_particles/hollow_knight_plume.tscn")
 
 
 func _ready():
@@ -62,3 +63,22 @@ func _on_final_boss_chain_breaking():
 
 func _on_hollow_knight_break_chains():
 	$Forebackground/SuspensionChains.visible = false
+
+
+func _on_hollow_knight_dstab_land(pos):
+	var initial_node = _create_plume(pos.x + 50)
+	initial_node.connect("burst", _burst)
+	_create_plume(pos.x - 50)
+	
+	for i in range(1,5):
+		_create_plume(pos.x + (i * 400))
+		_create_plume(pos.x - (i * 400))
+		
+func _create_plume(pos_x) -> Node:
+	var plume = plume_scene.instantiate()
+	plume.global_position.x = pos_x
+	$Effects.add_child(plume)
+	return plume
+	
+func _burst():
+	hollow_knight.stop_dstab_land()

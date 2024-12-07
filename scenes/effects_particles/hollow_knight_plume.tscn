@@ -1,0 +1,105 @@
+[gd_scene load_steps=21 format=3 uid="uid://bkqjcfxs5s08x"]
+
+[ext_resource type="Texture2D" uid="uid://buqj2boxv6wca" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_000.png" id="1_2vdg4"]
+[ext_resource type="Script" path="res://scenes/effects_particles/hollow_knight_plume.gd" id="1_owdqa"]
+[ext_resource type="Texture2D" uid="uid://dtpa0hw7bs48h" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_001.png" id="2_qimc7"]
+[ext_resource type="Texture2D" uid="uid://d0lihgxhe4fke" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_002.png" id="3_gtk2h"]
+[ext_resource type="Texture2D" uid="uid://c3yvphwlce2v1" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_003.png" id="4_x8plb"]
+[ext_resource type="Texture2D" uid="uid://k1lpuvrwf7yl" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_004.png" id="5_ox5cq"]
+[ext_resource type="Texture2D" uid="uid://lvyaqrdidb8y" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_005.png" id="6_aedq5"]
+[ext_resource type="Texture2D" uid="uid://c8epf44v0qw1u" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_000.png" id="7_n1xcm"]
+[ext_resource type="Texture2D" uid="uid://dpvaiavwj60af" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_001.png" id="8_43u0k"]
+[ext_resource type="Texture2D" uid="uid://b5g1khfp3pbrh" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_002.png" id="9_c6m1h"]
+[ext_resource type="Texture2D" uid="uid://cfj2f7fp72jll" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_003.png" id="10_q8suw"]
+[ext_resource type="Texture2D" uid="uid://pdoqelomckeb" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_004.png" id="11_jvduj"]
+[ext_resource type="Texture2D" uid="uid://ba0muqhq53x4d" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_005.png" id="12_o76uw"]
+[ext_resource type="Texture2D" uid="uid://5fexye5q6bg1" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_006.png" id="13_fqfn2"]
+[ext_resource type="Texture2D" uid="uid://dntqggsy3tvjj" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_007.png" id="14_61gru"]
+[ext_resource type="Texture2D" uid="uid://cm384k08wa6nf" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_008.png" id="15_rg1qi"]
+[ext_resource type="Texture2D" uid="uid://d3any7ppui65n" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_009.png" id="16_gtpn1"]
+[ext_resource type="Texture2D" uid="uid://ddqfd840anfuf" path="res://assets/animations/hollow_knight/plume_burst/Plume Burst_010.png" id="17_qs6vr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m13hu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2vdg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qimc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gtk2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x8plb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ox5cq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aedq5")
+}],
+"loop": false,
+"name": &"antic",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_n1xcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_43u0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_c6m1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_q8suw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jvduj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_o76uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fqfn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_61gru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rg1qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gtpn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qs6vr")
+}],
+"loop": false,
+"name": &"burst",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8fb2"]
+size = Vector2(98.5, 1088)
+
+[node name="HollowKnightPlume" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_owdqa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -618)
+scale = Vector2(1, 3)
+sprite_frames = SubResource("SpriteFrames_m13hu")
+animation = &"burst"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -542)
+shape = SubResource("RectangleShape2D_q8fb2")
+disabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

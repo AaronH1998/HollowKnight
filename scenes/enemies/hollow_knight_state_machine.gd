@@ -21,6 +21,10 @@ func _ready():
 	add_state("roar_recover")
 	add_state("evade")
 	add_state("walk")
+	add_state("dstab_jump")
+	add_state("dstab_antic")
+	add_state("dstab")
+	add_state("dstab_land")
 	call_deferred("set_state", states.rest_look_left)
 
 func _state_logic(delta):
@@ -48,6 +52,8 @@ func _get_transition(_delta):
 				return states.evade
 			elif parent.action == Globals.Action.WALK:
 				return states.walk
+			elif parent.action == Globals.Action.DSTAB:
+				return states.dstab_jump
 			elif parent.is_transitioning:
 				return states.roar_antic
 		states.slashes:
@@ -113,6 +119,18 @@ func _get_transition(_delta):
 		states.walk:
 			if parent.action != Globals.Action.WALK:
 				return states.idle
+		states.dstab_antic:
+			if parent.is_dstab:
+				return states.dstab
+		states.dstab:
+			if parent.is_on_floor():
+				return states.dstab_land
+		states.dstab_land:
+			if !parent.is_dstab_land:
+				return states.recover
+		states.dstab_jump:
+			if !parent.is_on_floor() and parent.velocity.y > 0:
+				return states.dstab_antic
 	return null
 
 func _enter_state(new_state, _old_state):
@@ -158,6 +176,14 @@ func _enter_state(new_state, _old_state):
 			parent.animated_sprite.play("evade")
 		states.walk:
 			parent.animated_sprite.play("walk")
+		states.dstab_antic:
+			parent.animation_player.play("dstab_antic")
+		states.dstab:
+			parent.animated_sprite.play("dstab_stomp")
+		states.dstab_land:
+			parent.animated_sprite.play("dstab_land")
+		states.dstab_jump:
+			parent.animated_sprite.play("jump")
 	
 func _exit_state(old_state, new_state):
 	parent.animated_sprite.stop()
