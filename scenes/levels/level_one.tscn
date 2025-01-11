@@ -31,9 +31,9 @@ size = Vector2(9290, 782)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lb7vg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jq7bm"]
-vertices = PackedVector2Array(916.047, -678.023, 919.938, -20.9531, -670.023, -13.0391, -671.969, -681.969)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(930, -11, 926, -688, -682, -692, -680, -3)])
+vertices = PackedVector2Array(-670.023, -13.0391, -671.883, -651.523, -346.25, -36.6719, 919.938, -20.9531, 916.094, -671.82)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2), PackedInt32Array(4, 3, 2)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(930, -11, 926, -688, -342, -50, -682, -692, -680, -3)])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2jyyh"]
 shader = ExtResource("4_cewof")
@@ -194,15 +194,14 @@ scale = Vector2(105.666, 14.2143)
 position = Vector2(-2726, 6)
 scale = Vector2(-109.095, 71.854)
 
-[node name="Player" parent="." index="8"]
-z_as_relative = false
-position = Vector2(-468, -130)
-
 [node name="Crawlid" parent="Enemies" index="0" instance=ExtResource("19_p5bgd")]
 position = Vector2(1070, -55)
 
 [node name="Vengefly" parent="Enemies" index="1" instance=ExtResource("20_n2dt7")]
 position = Vector2(532, -544)
+
+[node name="Player" parent="." index="9"]
+position = Vector2(-273, -113)
 
 [node name="Layer_1_0" type="Parallax2D" parent="Foreground" index="0"]
 

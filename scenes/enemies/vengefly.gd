@@ -9,8 +9,6 @@ var previous_direction: int = 0
 
 func _ready():
 	super()
-	navigation_agent.path_desired_distance = 20.0
-	navigation_agent.target_desired_distance = 10.0
 	navigation_agent.target_position = Globals.player_pos
 	health = vengefly_health
 
