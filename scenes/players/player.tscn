@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=3 uid="uid://dhmttpr42027r"]
+[gd_scene load_steps=213 format=3 uid="uid://dhmttpr42027r"]
 
 [ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
@@ -1754,6 +1754,29 @@ _data = {
 "invulnerable": SubResource("Animation_qwrgw")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kema1"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("ActionAnimationPlayer:current_animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Visual/KnightAnimatedSprite:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Visual/SlashAnimatedSprite:scale")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Visual/AltSlashAnimatedSprite:scale")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Visual/UpSlashAnimatedSprite:scale")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Visual/DownSlashAnimatedSprite:scale")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D" groups=["Persist"]]
 collision_mask = 29
 script = ExtResource("1_vxu5b")
@@ -1837,6 +1860,7 @@ theme_override_font_sizes/font_size = 20
 position = Vector2(100, 0)
 scale = Vector2(1.5, 1.5)
 offset = Vector2(-27.585, -13.195)
+enabled = false
 position_smoothing_enabled = true
 script = ExtResource("5_ltn3l")
 
@@ -1953,6 +1977,9 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_dhmg2")
 }
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_kema1")
 
 [connection signal="body_entered" from="DownAttackArea" to="." method="_on_down_attack_area_body_entered"]
 [connection signal="body_entered" from="UpAttackArea" to="." method="_on_up_attack_area_body_entered"]

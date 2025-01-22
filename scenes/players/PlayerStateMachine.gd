@@ -18,6 +18,9 @@ func _ready():
 	call_deferred("set_state", states.idle)
 
 func _input(event):
+	if !parent.is_multiplayer_authority():
+		return
+		
 	if Globals.level_preparing or parent.dead:
 		return
 	

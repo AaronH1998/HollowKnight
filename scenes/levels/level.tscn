@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh7ffbm7ckmfq"]
+[gd_scene load_steps=4 format=3 uid="uid://dh7ffbm7ckmfq"]
 
 [ext_resource type="PackedScene" uid="uid://chwvd05ndg0ki" path="res://scenes/UI/ui.tscn" id="1_ig3ka"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_th0bb"]
-[ext_resource type="PackedScene" uid="uid://dhmttpr42027r" path="res://scenes/players/player.tscn" id="2_8bipy"]
 [ext_resource type="PackedScene" uid="uid://cudxrbju5mf3o" path="res://scenes/UI/pause_menu.tscn" id="2_blfmg"]
 
 [node name="Level" type="Node2D"]
@@ -31,8 +30,6 @@ collision_mask = 3
 [node name="Drops" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("2_8bipy")]
 
 [node name="Foreground" type="Node2D" parent="."]
 

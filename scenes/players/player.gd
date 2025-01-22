@@ -83,6 +83,10 @@ var death_mask_scene: PackedScene = preload("res://scenes/objects/death_mask.tsc
 
 
 func _ready():
+	set_multiplayer_authority(name.to_int())
+	if !is_multiplayer_authority():
+		return
+	camera.enabled = true
 	gravity = 2.0 * max_jump_height / pow(jump_duration, 2)
 	max_jump_velocity = -sqrt(2.0 * gravity * max_jump_height)
 	min_jump_velocity = -sqrt(2.0 * gravity * min_jump_height)
@@ -91,10 +95,14 @@ func _ready():
 
 
 func _process(delta):
+	if !is_multiplayer_authority():
+		return
 	_handle_camera(delta)
 
 
 func _handle_camera(delta):
+	if !is_multiplayer_authority():
+		return
 	var cam_mod: float
 	if Globals.look_ups.has(true) and camera_modifier < 0:
 		cam_mod = camera_modifier
@@ -117,6 +125,8 @@ func _handle_camera(delta):
 
 
 func _handle_move_input():
+	if !is_multiplayer_authority():
+		return
 	var direction = int(Input.get_axis("left", "right"))
 	
 	if direction != 0 and direction != move_direction:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://diqg338m4xrxx"]
+[gd_scene load_steps=31 format=3 uid="uid://diqg338m4xrxx"]
 
 [ext_resource type="PackedScene" uid="uid://dh7ffbm7ckmfq" path="res://scenes/levels/level.tscn" id="1_b17gb"]
 [ext_resource type="Texture2D" uid="uid://bcumr6iwhf4tg" path="res://assets/sprites/backgrounds/shell_medium_center_cracked.png" id="2_d0r4b"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="2_yidja"]
 [ext_resource type="PackedScene" uid="uid://dhpmpth3gvolm" path="res://scenes/objects/camera_lock_area.tscn" id="3_femty"]
 [ext_resource type="Texture2D" uid="uid://ljrgqw2vusd6" path="res://assets/sprites/backgrounds/two_shells.png" id="3_iiqur"]
+[ext_resource type="PackedScene" uid="uid://dhmttpr42027r" path="res://scenes/players/player.tscn" id="3_sq8e4"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="4_cewof"]
 [ext_resource type="Texture2D" uid="uid://bdm3im67i5bg4" path="res://assets/sprites/placeholders/Circle/Circle-0002.png" id="5_xn53n"]
 [ext_resource type="Texture2D" uid="uid://ivmwfkocva5d" path="res://assets/sprites/environment/tut/tut_wall_l_0007_02.png" id="6_ns3i3"]
@@ -44,6 +45,7 @@ size = Vector2(21.5593, 20)
 
 [node name="LevelOne" instance=ExtResource("1_b17gb")]
 script = ExtResource("2_ihwnx")
+player_scene = ExtResource("3_sq8e4")
 level = "King's Pass"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox" index="0"]
@@ -200,9 +202,6 @@ position = Vector2(1070, -55)
 [node name="Vengefly" parent="Enemies" index="1" instance=ExtResource("20_n2dt7")]
 position = Vector2(532, -544)
 
-[node name="Player" parent="." index="9"]
-position = Vector2(-273, -113)
-
 [node name="Layer_1_0" type="Parallax2D" parent="Foreground" index="0"]
 
 [node name="Ground" type="Sprite2D" parent="Foreground/Layer_1_0" index="0"]
@@ -278,8 +277,38 @@ position = Vector2(776, -105)
 scale = Vector2(83.6812, 15.4853)
 shape = SubResource("RectangleShape2D_xr7de")
 
-[node name="AudioStreamPlayer" parent="." index="18"]
+[node name="AudioStreamPlayer" parent="." index="17"]
 stream = ExtResource("2_yidja")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="18"]
+
+[node name="Control" type="Control" parent="CanvasLayer" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" index="0"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Host: 1"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "Join: 2"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." index="19"]
+_spawnable_scenes = PackedStringArray("res://scenes/players/player.tscn")
+spawn_path = NodePath("..")
 
 [connection signal="body_entered" from="CameraLock/Areas/CaveCameraLock" to="." method="_on_cave_camera_lock_body_entered"]
 [connection signal="body_exited" from="CameraLock/Areas/CaveCameraLock" to="." method="_on_cave_camera_lock_body_exited"]
