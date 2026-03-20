@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://8vj7tc74frow"]
 
-[ext_resource type="Script" path="res://scenes/levels/environment/temple_of_black_egg/final_boss_chain.gd" id="1_2d6tr"]
+[ext_resource type="Script" uid="uid://orvntlwhc2l1" path="res://scenes/levels/environment/temple_of_black_egg/final_boss_chain.gd" id="1_2d6tr"]
 [ext_resource type="Texture2D" uid="uid://bc6bt0tras2r4" path="res://assets/sprites/environment/temple_of_black_egg/final_boss_chain.png" id="1_2nab3"]
 [ext_resource type="Texture2D" uid="uid://dj66u7uvp588d" path="res://assets/sprites/environment/temple_of_black_egg/chain_base.png" id="2_hvaf4"]
 [ext_resource type="Texture2D" uid="uid://b4jib7ku776hq" path="res://assets/sprites/environment/temple_of_black_egg/chain_base_break_1.png" id="3_qrf5a"]
@@ -217,8 +217,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3phdp"]
 _data = {
-"RESET": SubResource("Animation_ysibe"),
-"break": SubResource("Animation_h6bp2")
+&"RESET": SubResource("Animation_ysibe"),
+&"break": SubResource("Animation_h6bp2")
 }
 
 [node name="FinalBossChain" type="StaticBody2D"]

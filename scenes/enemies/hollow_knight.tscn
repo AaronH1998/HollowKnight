@@ -1,8 +1,8 @@
-[gd_scene load_steps=189 format=3 uid="uid://csi2bpfjyl5so"]
+[gd_scene load_steps=190 format=3 uid="uid://csi2bpfjyl5so"]
 
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_metm4"]
-[ext_resource type="Script" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
-[ext_resource type="Script" path="res://scenes/enemies/hollow_knight_state_machine.gd" id="3_2kgyv"]
+[ext_resource type="Script" uid="uid://b5o6jjbunrue1" path="res://scenes/enemies/hollow_knight.gd" id="2_m1cco"]
+[ext_resource type="Script" uid="uid://4ansfd447clj" path="res://scenes/enemies/hollow_knight_state_machine.gd" id="3_2kgyv"]
 [ext_resource type="Texture2D" uid="uid://be1hibcncwi7a" path="res://assets/animations/hollow_knight/idle/Idle_000.png" id="3_ff8xf"]
 [ext_resource type="Texture2D" uid="uid://cspv5mut5bebm" path="res://assets/animations/hollow_knight/idle/Idle_001.png" id="4_1fnti"]
 [ext_resource type="Texture2D" uid="uid://cqd3x0m2f788k" path="res://assets/animations/hollow_knight/counter_block/Counter Block_000.png" id="4_3budr"]
@@ -1687,22 +1687,33 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqiu6"]
 _data = {
-"RESET": SubResource("Animation_hvlqm"),
-"antic": SubResource("Animation_ma2ms"),
-"break free": SubResource("Animation_rsx53"),
-"counter": SubResource("Animation_pomvo"),
-"dash antic": SubResource("Animation_tdwfn"),
-"dash recover": SubResource("Animation_a20hf"),
-"dstab_antic": SubResource("Animation_wpilg"),
-"recover": SubResource("Animation_wsowd"),
-"riposte": SubResource("Animation_jvs0c"),
-"roar antic": SubResource("Animation_5rm5j"),
-"roar init": SubResource("Animation_07h0d"),
-"roar recover": SubResource("Animation_o60en"),
-"slashes": SubResource("Animation_g2s1k"),
-"teleport": SubResource("Animation_pa3hp"),
-"teleport_dstab": SubResource("Animation_k3flw")
+&"RESET": SubResource("Animation_hvlqm"),
+&"antic": SubResource("Animation_ma2ms"),
+&"break free": SubResource("Animation_rsx53"),
+&"counter": SubResource("Animation_pomvo"),
+&"dash antic": SubResource("Animation_tdwfn"),
+&"dash recover": SubResource("Animation_a20hf"),
+&"dstab_antic": SubResource("Animation_wpilg"),
+&"recover": SubResource("Animation_wsowd"),
+&"riposte": SubResource("Animation_jvs0c"),
+&"roar antic": SubResource("Animation_5rm5j"),
+&"roar init": SubResource("Animation_07h0d"),
+&"roar recover": SubResource("Animation_o60en"),
+&"slashes": SubResource("Animation_g2s1k"),
+&"teleport": SubResource("Animation_pa3hp"),
+&"teleport_dstab": SubResource("Animation_k3flw")
 }
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0pvmc"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimatedSprite2D:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="HollowKnight" instance=ExtResource("1_metm4")]
 script = ExtResource("2_m1cco")
@@ -1778,7 +1789,7 @@ shape = SubResource("CircleShape2D_70jv5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
-"": SubResource("AnimationLibrary_eqiu6")
+&"": SubResource("AnimationLibrary_eqiu6")
 }
 
 [node name="SlashHitBox" type="Area2D" parent="." index="7"]
@@ -1817,6 +1828,9 @@ collision_mask = 4
 [node name="SlashesRange" type="RayCast2D" parent="." index="11"]
 position = Vector2(3, 114)
 target_position = Vector2(600, 0)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="12"]
+replication_config = SubResource("SceneReplicationConfig_0pvmc")
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

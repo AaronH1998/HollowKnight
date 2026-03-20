@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://cmquejq3d4quu"]
 
 [ext_resource type="Texture2D" uid="uid://cdvxkys4sry3u" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_000.png" id="1_bmy25"]
-[ext_resource type="Script" path="res://scenes/UI/menu_button.gd" id="1_johb2"]
+[ext_resource type="Script" uid="uid://c0d4uud5fgowx" path="res://scenes/UI/menu_button.gd" id="1_johb2"]
 [ext_resource type="Texture2D" uid="uid://bjpspjvoc5ucn" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_001.png" id="2_donl7"]
 [ext_resource type="Texture2D" uid="uid://xu2ggvbrn6vu" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_002.png" id="3_oesne"]
 [ext_resource type="Texture2D" uid="uid://br5lyk7wb6lhf" path="res://assets/animations/ui/menus/pointer_down/Pointer Down_003.png" id="4_raj76"]
@@ -28,15 +28,15 @@
 [ext_resource type="AudioStream" uid="uid://cuh05l3p0gfey" path="res://assets/sounds/ui/ui_change_selection.wav" id="26_wvaf7"]
 [ext_resource type="AudioStream" uid="uid://c0ebtuu5yq1hy" path="res://assets/sounds/ui/ui_button_confirm.wav" id="27_dswu7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80u7b"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gofyx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqnj5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6mqu8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hafgl"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqnj5"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gofyx"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80u7b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vyes"]
 animations = [{
@@ -210,11 +210,11 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("24_ams3c")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxEmpty_80u7b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gofyx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nqnj5")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_6mqu8")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_hafgl")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_nqnj5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_gofyx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_80u7b")
 text = "Button Text"
 script = ExtResource("1_johb2")
 

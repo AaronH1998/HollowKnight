@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dh7ffbm7ckmfq" path="res://scenes/levels/level.tscn" id="1_b17gb"]
 [ext_resource type="Texture2D" uid="uid://bcumr6iwhf4tg" path="res://assets/sprites/backgrounds/shell_medium_center_cracked.png" id="2_d0r4b"]
-[ext_resource type="Script" path="res://scenes/levels/level_one.gd" id="2_ihwnx"]
+[ext_resource type="Script" uid="uid://bnoapwhkdjkep" path="res://scenes/levels/level_one.gd" id="2_ihwnx"]
 [ext_resource type="AudioStream" uid="uid://oqvctdyuktx6" path="res://assets/sounds/ambience/cave_wind_loop.wav" id="2_yidja"]
 [ext_resource type="PackedScene" uid="uid://dhpmpth3gvolm" path="res://scenes/objects/camera_lock_area.tscn" id="3_femty"]
 [ext_resource type="Texture2D" uid="uid://ljrgqw2vusd6" path="res://assets/sprites/backgrounds/two_shells.png" id="3_iiqur"]
-[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="4_cewof"]
+[ext_resource type="Shader" uid="uid://bfynqjy6dip3b" path="res://shaders/blur.gdshader" id="4_cewof"]
 [ext_resource type="Texture2D" uid="uid://bdm3im67i5bg4" path="res://assets/sprites/placeholders/Circle/Circle-0002.png" id="5_xn53n"]
 [ext_resource type="Texture2D" uid="uid://ivmwfkocva5d" path="res://assets/sprites/environment/tut/tut_wall_l_0007_02.png" id="6_ns3i3"]
 [ext_resource type="Texture2D" uid="uid://bfn67bdc2mu2r" path="res://assets/sprites/environment/tut/long_rocky_floor.png" id="7_sxkeh"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bd8dgwj5p25uk"]
 
-[ext_resource type="Script" path="res://scenes/UI/load_game_row.gd" id="1_a0xcp"]
+[ext_resource type="Script" uid="uid://dvuhxv2omoci0" path="res://scenes/UI/load_game_row.gd" id="1_a0xcp"]
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_ei0yn"]
 [ext_resource type="Texture2D" uid="uid://d1gax2mgcdfxf" path="res://assets/animations/ui/menus/area_save_art/Area_Kings_Pass.png" id="26_q1n1q"]
 [ext_resource type="PackedScene" uid="uid://bism2h27dolkx" path="res://scenes/UI/player_details.tscn" id="26_w7nh8"]

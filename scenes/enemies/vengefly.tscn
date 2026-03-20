@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://co5edir6pe305"]
+[gd_scene load_steps=23 format=3 uid="uid://co5edir6pe305"]
 
-[ext_resource type="Script" path="res://scenes/enemies/vengefly.gd" id="1_dtmph"]
+[ext_resource type="Script" uid="uid://bf0u451owdt3t" path="res://scenes/enemies/vengefly.gd" id="1_dtmph"]
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_n5tca"]
-[ext_resource type="Script" path="res://scenes/enemies/VengeflyStateMachine.gd" id="3_hqwj0"]
+[ext_resource type="Script" uid="uid://cgm8q5bwqxv5c" path="res://scenes/enemies/VengeflyStateMachine.gd" id="3_hqwj0"]
 [ext_resource type="Texture2D" uid="uid://cwt7g6ydluk82" path="res://assets/animations/vengefly/death air/Death Air_000.png" id="4_o41rh"]
 [ext_resource type="Texture2D" uid="uid://bktc0sic71tb5" path="res://assets/animations/vengefly/death air/Death Air_001.png" id="5_pcucn"]
 [ext_resource type="Texture2D" uid="uid://diw5v0eow01nc" path="res://assets/animations/vengefly/death air/Death Air_002.png" id="6_4w31m"]
@@ -93,6 +93,17 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0pvmc"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimatedSprite2D:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Vengefly" instance=ExtResource("1_n5tca")]
 script = ExtResource("1_dtmph")
 
@@ -120,6 +131,9 @@ debug_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="Timer" index="0"]
 autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="7"]
+replication_config = SubResource("SceneReplicationConfig_0pvmc")
 
 [connection signal="body_entered" from="AggroRange" to="." method="_on_aggro_range_body_entered"]
 [connection signal="body_exited" from="AggroRange" to="." method="_on_aggro_range_body_exited"]

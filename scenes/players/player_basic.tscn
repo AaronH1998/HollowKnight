@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bga52l47jflp6"]
 
-[ext_resource type="Script" path="res://scenes/players/player_basic.gd" id="1_xv0to"]
+[ext_resource type="Script" uid="uid://dowvonhwuiu4n" path="res://scenes/players/player_basic.gd" id="1_xv0to"]
 [ext_resource type="Texture2D" uid="uid://b1o3mgm1v7exo" path="res://assets/animations/knight/idle/Idle_000.png" id="2_2jtpj"]
 [ext_resource type="Texture2D" uid="uid://irohn41f8h2v" path="res://assets/animations/knight/idle/Idle_001.png" id="3_7hn7g"]
 [ext_resource type="Texture2D" uid="uid://bo07fxj8hrhtw" path="res://assets/animations/knight/idle/Idle_002.png" id="4_aa3df"]

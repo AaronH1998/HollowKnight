@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://c3kxckx8krbx7"]
 
 [ext_resource type="Texture2D" uid="uid://d2xi83mmddcr7" path="res://assets/animations/objects/geo/small_air/Small Air_000.png" id="1_odudd"]
-[ext_resource type="Script" path="res://scenes/objects/small_geo.gd" id="1_syect"]
+[ext_resource type="Script" uid="uid://dkqj3su2qlyim" path="res://scenes/objects/small_geo.gd" id="1_syect"]
 [ext_resource type="Texture2D" uid="uid://dqgkkaw0jvav4" path="res://assets/animations/objects/geo/small_air/Small Air_001.png" id="2_gjo3l"]
 [ext_resource type="Texture2D" uid="uid://c21km4ocand3g" path="res://assets/animations/objects/geo/small_air/Small Air_002.png" id="3_evovm"]
 [ext_resource type="Texture2D" uid="uid://b785euhunflwv" path="res://assets/animations/objects/geo/small_air/Small Air_003.png" id="4_fwqed"]

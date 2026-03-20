@@ -1,6 +1,6 @@
 [gd_scene load_steps=65 format=3 uid="uid://daotjxqiewrwk"]
 
-[ext_resource type="Script" path="res://scenes/enemies/shade.gd" id="1_7fq73"]
+[ext_resource type="Script" uid="uid://c0ktt7o0juopb" path="res://scenes/enemies/shade.gd" id="1_7fq73"]
 [ext_resource type="Texture2D" uid="uid://ditp8urkh8ldd" path="res://assets/animations/shade/appear/Appear_000.png" id="1_k80yl"]
 [ext_resource type="Texture2D" uid="uid://brkw1u2g8l78o" path="res://assets/animations/shade/appear/Appear_001.png" id="2_vcsqt"]
 [ext_resource type="Texture2D" uid="uid://co2hiaqkpj0j6" path="res://assets/animations/shade/appear/Appear_002.png" id="3_stl5x"]

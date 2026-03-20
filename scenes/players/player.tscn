@@ -1,13 +1,13 @@
 [gd_scene load_steps=212 format=3 uid="uid://dhmttpr42027r"]
 
-[ext_resource type="Script" path="res://scenes/players/player.gd" id="1_vxu5b"]
-[ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
-[ext_resource type="Script" path="res://scenes/players/PlayerStateMachine.gd" id="2_uqae1"]
+[ext_resource type="Script" uid="uid://bhciqacl0antx" path="res://scenes/players/player.gd" id="1_vxu5b"]
+[ext_resource type="Script" uid="uid://cbda2ot6b6ikx" path="res://addons/smoothing/smoothing_2d.gd" id="1_yvi7j"]
+[ext_resource type="Script" uid="uid://dqqpllvf4ps1t" path="res://scenes/players/PlayerStateMachine.gd" id="2_uqae1"]
 [ext_resource type="Texture2D" uid="uid://pnuqea280sri" path="res://assets/textures/lights/circle.png" id="3_m8sk1"]
 [ext_resource type="Texture2D" uid="uid://clj25ygq4tvu6" path="res://assets/animations/knight/death/Death_000.png" id="5_4nj00"]
 [ext_resource type="Texture2D" uid="uid://b1o3mgm1v7exo" path="res://assets/animations/knight/idle/Idle_000.png" id="5_31uuw"]
-[ext_resource type="Script" path="res://scenes/players/camera_2d.gd" id="5_ltn3l"]
-[ext_resource type="Shader" path="res://shaders/invulenerable.gdshader" id="5_qwsj2"]
+[ext_resource type="Script" uid="uid://dnrykcxs7lo03" path="res://scenes/players/camera_2d.gd" id="5_ltn3l"]
+[ext_resource type="Shader" uid="uid://mvp3jlmx4tgb" path="res://shaders/invulenerable.gdshader" id="5_qwsj2"]
 [ext_resource type="Texture2D" uid="uid://bp5cty5mew2t4" path="res://assets/animations/knight/fall/Fall_000.png" id="5_v7p8w"]
 [ext_resource type="Texture2D" uid="uid://bnrr3jdig8681" path="res://assets/animations/knight/fall/Fall_001.png" id="6_ecx22"]
 [ext_resource type="Texture2D" uid="uid://irohn41f8h2v" path="res://assets/animations/knight/idle/Idle_001.png" id="6_gs2ec"]
@@ -1689,21 +1689,21 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bypv"]
 _data = {
-"RESET": SubResource("Animation_hc54j"),
-"attack": SubResource("Animation_ivosl"),
-"attack alt": SubResource("Animation_o31gn"),
-"attack down": SubResource("Animation_d4hep"),
-"attack up": SubResource("Animation_qxory"),
-"death": SubResource("Animation_3lim3"),
-"fall": SubResource("Animation_pu5to"),
-"focus": SubResource("Animation_dlami"),
-"focus get once": SubResource("Animation_6fl4k"),
-"idle": SubResource("Animation_5hvui"),
-"jump": SubResource("Animation_e315v"),
-"look down": SubResource("Animation_dtnv8"),
-"look up": SubResource("Animation_4uqvj"),
-"recoil": SubResource("Animation_n3b40"),
-"walk": SubResource("Animation_wkrx2")
+&"RESET": SubResource("Animation_hc54j"),
+&"attack": SubResource("Animation_ivosl"),
+&"attack alt": SubResource("Animation_o31gn"),
+&"attack down": SubResource("Animation_d4hep"),
+&"attack up": SubResource("Animation_qxory"),
+&"death": SubResource("Animation_3lim3"),
+&"fall": SubResource("Animation_pu5to"),
+&"focus": SubResource("Animation_dlami"),
+&"focus get once": SubResource("Animation_6fl4k"),
+&"idle": SubResource("Animation_5hvui"),
+&"jump": SubResource("Animation_e315v"),
+&"look down": SubResource("Animation_dtnv8"),
+&"look up": SubResource("Animation_4uqvj"),
+&"recoil": SubResource("Animation_n3b40"),
+&"walk": SubResource("Animation_wkrx2")
 }
 
 [sub_resource type="Animation" id="Animation_3hwok"]
@@ -1750,8 +1750,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dhmg2"]
 _data = {
-"RESET": SubResource("Animation_3hwok"),
-"invulnerable": SubResource("Animation_qwrgw")
+&"RESET": SubResource("Animation_3hwok"),
+&"invulnerable": SubResource("Animation_qwrgw")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Persist"]]
@@ -1946,12 +1946,12 @@ bus = &"Sound"
 
 [node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1bypv")
+&"": SubResource("AnimationLibrary_1bypv")
 }
 
 [node name="SecondaryAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_dhmg2")
+&"": SubResource("AnimationLibrary_dhmg2")
 }
 
 [connection signal="body_entered" from="DownAttackArea" to="." method="_on_down_attack_area_body_entered"]

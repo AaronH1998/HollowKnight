@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://jpe2lfahua0o"]
 
-[ext_resource type="Shader" path="res://scenes/effects_particles/static.gdshader" id="1_jvpnc"]
+[ext_resource type="Shader" uid="uid://dbjqu7bpusu4t" path="res://scenes/effects_particles/static.gdshader" id="1_jvpnc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5i7lh"]
 shader = ExtResource("1_jvpnc")

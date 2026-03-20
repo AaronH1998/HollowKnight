@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhpmpth3gvolm"]
 
-[ext_resource type="Script" path="res://scenes/objects/camera_lock_area.gd" id="1_pttje"]
+[ext_resource type="Script" uid="uid://cahkspq30ac7r" path="res://scenes/objects/camera_lock_area.gd" id="1_pttje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqomi"]
 

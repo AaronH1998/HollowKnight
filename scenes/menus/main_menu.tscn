@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmujy7uvasd54"]
 
-[ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_7qlmg"]
+[ext_resource type="Script" uid="uid://c410nl28utq04" path="res://scenes/menus/main_menu.gd" id="1_7qlmg"]
 [ext_resource type="AudioStream" uid="uid://cj4duay5vmcbw" path="res://assets/music/Main menu theme - Title.wav" id="2_gm8mr"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_a0tfe"]

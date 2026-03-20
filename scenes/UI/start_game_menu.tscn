@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://guydad0nsg1f"]
 
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="1_trxyt"]
-[ext_resource type="Script" path="res://scenes/UI/start_game_menu.gd" id="1_ydrv3"]
+[ext_resource type="Script" uid="uid://dajxbe3qpu0eu" path="res://scenes/UI/start_game_menu.gd" id="1_ydrv3"]
 [ext_resource type="Texture2D" uid="uid://ck8qr2l113u80" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0000.png" id="2_cnx5u"]
 [ext_resource type="Texture2D" uid="uid://5nsokes51tf8" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0001.png" id="3_bmgit"]
 [ext_resource type="Texture2D" uid="uid://kmqelbwj02bl" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0002.png" id="4_56frg"]

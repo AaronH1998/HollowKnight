@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjl5yt5m45s0v"]
 
-[ext_resource type="Script" path="res://scenes/menus/game_complete.gd" id="1_m144r"]
+[ext_resource type="Script" uid="uid://m226xvwcf7tg" path="res://scenes/menus/game_complete.gd" id="1_m144r"]
 [ext_resource type="Texture2D" uid="uid://cygp0v8aptkb2" path="res://assets/sprites/ui/fleurs/game_over_fleur.png" id="2_5mdm4"]
 [ext_resource type="Texture2D" uid="uid://ctj2jm41vk2qk" path="res://assets/sprites/menus/team_cherry_logo_main_menu.png" id="3_s5tj6"]
 [ext_resource type="AudioStream" uid="uid://c7yyv47qg1xkr" path="res://assets/music/White Palace - S30 White Palace.wav" id="4_4cew2"]
@@ -70,7 +70,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6mnjy"]
 _data = {
-"appear": SubResource("Animation_d04bg")
+&"appear": SubResource("Animation_d04bg")
 }
 
 [node name="GameComplete" type="CanvasLayer"]

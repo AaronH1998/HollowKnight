@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bqo8vwp4bn1qr"]
 
-[ext_resource type="Script" path="res://scenes/effects_particles/orange_puff.gd" id="1_fl4sn"]
+[ext_resource type="Script" uid="uid://cp7vyujqeitln" path="res://scenes/effects_particles/orange_puff.gd" id="1_fl4sn"]
 [ext_resource type="Texture2D" uid="uid://b4dssmvro31uw" path="res://assets/animations/effects_particles/orange_puff_animated.png" id="1_jcbp3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twcj7"]
@@ -52,8 +52,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vyfr"]
 _data = {
-"RESET": SubResource("Animation_8vgqg"),
-"puff": SubResource("Animation_2wvs0")
+&"RESET": SubResource("Animation_8vgqg"),
+&"puff": SubResource("Animation_2wvs0")
 }
 
 [node name="OrangePuff" type="RigidBody2D"]

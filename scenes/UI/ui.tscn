@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://chwvd05ndg0ki"]
 
-[ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_qq0ct"]
+[ext_resource type="Script" uid="uid://bp7g6br5ncji0" path="res://scenes/UI/ui.gd" id="1_qq0ct"]
 [ext_resource type="Texture2D" uid="uid://sk3lai1twgj3" path="res://assets/animations/ui/frame/appear/HUD Frame_000.png" id="1_tvfk6"]
 [ext_resource type="Texture2D" uid="uid://rxaqlu6xggsq" path="res://assets/animations/ui/frame/appear/HUD Frame_001.png" id="2_7hyw1"]
 [ext_resource type="Texture2D" uid="uid://dh3i6kwwci00r" path="res://assets/animations/ui/frame/appear/HUD Frame_002.png" id="3_j6ud8"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://mum7qri13bib" path="res://assets/animations/ui/soul/idle/Idle_004.png" id="14_83d6o"]
 [ext_resource type="Texture2D" uid="uid://b5qdxvacbrves" path="res://assets/animations/ui/soul/idle/Idle_005.png" id="15_3qsn8"]
 [ext_resource type="Texture2D" uid="uid://3yxe8csgxyq7" path="res://assets/animations/objects/geo/small_idle/Small Idle_000.png" id="17_j3y2a"]
-[ext_resource type="Shader" path="res://scenes/UI/animation_mask.gdshader" id="17_vffyu"]
+[ext_resource type="Shader" uid="uid://dwmskm3w6ochs" path="res://scenes/UI/animation_mask.gdshader" id="17_vffyu"]
 [ext_resource type="Texture2D" uid="uid://bc756nh8i7cas" path="res://assets/animations/objects/geo/small_idle/Small Idle_001.png" id="18_1bomn"]
 [ext_resource type="Texture2D" uid="uid://bdfw2t63i0oqc" path="res://assets/animations/objects/geo/small_idle/Small Idle_002.png" id="19_ywp0d"]
 [ext_resource type="Texture2D" uid="uid://drwwaud8wsybk" path="res://assets/animations/objects/geo/small_idle/Small Idle_003.png" id="20_j4883"]
@@ -77,9 +77,9 @@ frame_5/duration = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_856ui"]
 shader = ExtResource("17_vffyu")
+shader_parameter/mask = SubResource("AnimatedTexture_d6fro")
 shader_parameter/mask_translation = 1.0
 shader_parameter/enabled = false
-shader_parameter/mask = SubResource("AnimatedTexture_d6fro")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_832ah"]
 animations = [{

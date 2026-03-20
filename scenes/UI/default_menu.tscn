@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvhht7yulrk1m"]
 
-[ext_resource type="Script" path="res://scenes/UI/default_menu.gd" id="1_2nbnt"]
+[ext_resource type="Script" uid="uid://dwsi58gym0v0f" path="res://scenes/UI/default_menu.gd" id="1_2nbnt"]
 [ext_resource type="Texture2D" uid="uid://meqevyf8h6yw" path="res://assets/sprites/ui/menus/HollowKnightTitle.png" id="1_mkpt2"]
 [ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="3_8ibmj"]
 [ext_resource type="Texture2D" uid="uid://ctj2jm41vk2qk" path="res://assets/sprites/menus/team_cherry_logo_main_menu.png" id="3_47p48"]

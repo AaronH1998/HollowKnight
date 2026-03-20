@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bkqjcfxs5s08x"]
 
 [ext_resource type="Texture2D" uid="uid://buqj2boxv6wca" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_000.png" id="1_2vdg4"]
-[ext_resource type="Script" path="res://scenes/effects_particles/hollow_knight_plume.gd" id="1_owdqa"]
+[ext_resource type="Script" uid="uid://xax2lx3xsn73" path="res://scenes/effects_particles/hollow_knight_plume.gd" id="1_owdqa"]
 [ext_resource type="Texture2D" uid="uid://dtpa0hw7bs48h" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_001.png" id="2_qimc7"]
 [ext_resource type="Texture2D" uid="uid://d0lihgxhe4fke" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_002.png" id="3_gtk2h"]
 [ext_resource type="Texture2D" uid="uid://c3yvphwlce2v1" path="res://assets/animations/hollow_knight/plume_antic/Plume Antic_003.png" id="4_x8plb"]

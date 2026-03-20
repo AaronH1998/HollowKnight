@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://wmbaf4o1rspp"]
 
 [ext_resource type="PackedScene" uid="uid://cmquejq3d4quu" path="res://scenes/UI/menu_button.tscn" id="1_6qspn"]
-[ext_resource type="Script" path="res://scenes/menus/volume_slider.gd" id="2_ehwlr"]
+[ext_resource type="Script" uid="uid://p15c10ynmy15" path="res://scenes/menus/volume_slider.gd" id="2_ehwlr"]
 [ext_resource type="FontFile" uid="uid://1o5m344gd2l7" path="res://assets/fonts/Trajan Pro Bold.ttf" id="3_dfqyc"]
 [ext_resource type="Texture2D" uid="uid://cmvtrj0i820yq" path="res://assets/sprites/ui/pointers/VMenuSliderHandle.png" id="4_664pv"]
 

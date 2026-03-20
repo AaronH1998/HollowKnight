@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://b81ymn53eah66"]
 
-[ext_resource type="Script" path="res://scenes/menus/quit_pause_menu.gd" id="1_udhfg"]
+[ext_resource type="Script" uid="uid://dk27oiycvgppw" path="res://scenes/menus/quit_pause_menu.gd" id="1_udhfg"]
 [ext_resource type="Texture2D" uid="uid://ck8qr2l113u80" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0000.png" id="2_tonnu"]
 [ext_resource type="Texture2D" uid="uid://5nsokes51tf8" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0001.png" id="3_5k384"]
 [ext_resource type="Texture2D" uid="uid://kmqelbwj02bl" path="res://assets/animations/ui/menus/fleurs/warning_fleur/Warning_Fleur0002.png" id="4_7nsjl"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://cn81e8kugttma"]
 
-[ext_resource type="Script" path="res://scenes/enemies/crawlid.gd" id="1_2bkdx"]
+[ext_resource type="Script" uid="uid://b0i2oe6c4cg3l" path="res://scenes/enemies/crawlid.gd" id="1_2bkdx"]
 [ext_resource type="PackedScene" uid="uid://detelx6bb7bog" path="res://scenes/enemies/enemy.tscn" id="1_8t0ub"]
-[ext_resource type="Script" path="res://scenes/enemies/CrawlidStateMachine.gd" id="2_l5y7s"]
+[ext_resource type="Script" uid="uid://1ciyf8tq3vve" path="res://scenes/enemies/CrawlidStateMachine.gd" id="2_l5y7s"]
 [ext_resource type="AudioStream" uid="uid://pdfqubyl1tmq" path="res://assets/sounds/crawlid/crawler.wav" id="4_1ulu1"]
 [ext_resource type="Texture2D" uid="uid://b8sp6w2i3loyn" path="res://assets/animations/crawlid/death air/Death Air_000.png" id="4_in0hd"]
 [ext_resource type="Texture2D" uid="uid://3oj2dlxq1pnm" path="res://assets/animations/crawlid/death air/Death Air_001.png" id="5_3amno"]

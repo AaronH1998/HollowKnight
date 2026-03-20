@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://j8sql0akpahy"]
 
 [ext_resource type="PackedScene" uid="uid://dh7ffbm7ckmfq" path="res://scenes/levels/level.tscn" id="1_o832q"]
-[ext_resource type="Script" path="res://scenes/levels/level_hollow_knight.gd" id="2_lc5wl"]
+[ext_resource type="Script" uid="uid://7vjgklj82qub" path="res://scenes/levels/level_hollow_knight.gd" id="2_lc5wl"]
 [ext_resource type="PackedScene" uid="uid://dhpmpth3gvolm" path="res://scenes/objects/camera_lock_area.tscn" id="3_cmyq3"]
 [ext_resource type="PackedScene" uid="uid://blmjo3hrx08cl" path="res://scenes/objects/floor.tscn" id="3_uwcwv"]
 [ext_resource type="PackedScene" uid="uid://csi2bpfjyl5so" path="res://scenes/enemies/hollow_knight.tscn" id="4_d6ujn"]
@@ -99,7 +99,7 @@ position = Vector2(26, -246)
 scale = Vector2(11.3831, 26.9349)
 shape = SubResource("RectangleShape2D_fa651")
 
-[node name="AudioStreamPlayer" parent="." index="17"]
+[node name="AudioStreamPlayer" parent="." index="18"]
 stream = ExtResource("8_lnef7")
 
 [connection signal="breaking" from="Obstacles/FinalBossChain" to="." method="_on_final_boss_chain_breaking"]
